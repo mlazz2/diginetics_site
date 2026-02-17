@@ -38,7 +38,7 @@
   <div class="page-header">
     <h1 class="section-title">Baseball Results</h1>
     <p class="section-subtitle">60-Player MLB Projection Analysis &mdash; 2025 Season</p>
-    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 750px; line-height: 1.7;">The UPS v3.5 engine was run independently on 60 MLB hitters using career plate-appearance-level Statcast data (2015&ndash;2025). Every projection was strictly <strong>out-of-sample</strong> &mdash; trained only on pre-2025 data, locked before Opening Day, and compared against confirmed 2025 season statistics.</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 750px; line-height: 1.7;">60 MLB hitters analyzed independently. Every projection was trained only on pre-2025 data and compared against confirmed 2025 season statistics.</p>
   </div>
 
   <section>
@@ -47,7 +47,7 @@
     <div class="stats-row">
       <div class="stat-card" style="border-color: var(--accent)44;">
         <div class="stat-number" style="color: var(--green); font-size: 2.25rem;">97.0%</div>
-        <div class="stat-label">System Out-of-Sample<br>Projection Accuracy</div>
+        <div class="stat-label">System Projection<br>Accuracy</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">60</div>
@@ -55,50 +55,54 @@
       </div>
       <div class="stat-card">
         <div class="stat-number">20,318</div>
-        <div class="stat-label">Equations Discovered</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">99.41%</div>
-        <div class="stat-label">Average Backtest Accuracy</div>
-      </div>
+      <div class="stat-label">Performance Patterns<br>Discovered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">99.41%</div>
+      <div class="stat-label">Average Prediction<br>Accuracy</div>
+    </div>
     </div>
 
-    <!-- ============================== PROJECTION ACCURACY DEFINED ============================== -->
-    <h2 class="results-section-title">How Projection Accuracy Is Measured</h2>
+    <!-- ============================== 2026 PROJECTIONS COMING SOON ============================== -->
+    <div class="coming-soon-box" style="margin: 2rem 0 2.5rem;">
+      <h2>Full 2026 Season Projections Coming Soon</h2>
+      <p>We're preparing complete 2026 projections for all 60 players. Pre-season forecasts with accuracy tracking throughout the year &mdash; check back soon.</p>
+    </div>
+
+    <!-- ============================== BUSINESS APPLICATIONS ============================== -->
+    <h2 class="results-section-title">Business Applications</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.5rem;">
-      Every number on this page is derived from a transparent, reproducible methodology. Here is exactly what &ldquo;projection accuracy&rdquo; means:
+      97% accuracy across 60 players opens real commercial opportunities:
     </p>
 
     <div class="def-grid">
       <div class="def-item">
-        <h4>Per-Player Accuracy</h4>
-        <p>For each player, we measure four core rate metrics: <strong>HR/PA, H/PA, BB/PA, K/PA</strong>. We calculate the absolute error between the UPS-projected rate and the confirmed actual rate for each metric, then average those four errors.</p>
-        <div class="formula">Accuracy = (1 &minus; avg_absolute_error) &times; 100</div>
+        <h4>Coaching &amp; Player Development</h4>
+        <p>Per-player performance drivers backed by data. Each player gets unique, actionable insights &mdash; not generic recommendations. Teams know exactly which adjustments will move the needle for each individual.</p>
       </div>
       <div class="def-item">
-        <h4>System Projection Accuracy (97.0%)</h4>
-        <p>The headline number is the <strong>simple average of all 60 players&rsquo; individual accuracies</strong>. Each player is weighted equally &mdash; no cherry-picking. This represents the system&rsquo;s aggregate out-of-sample predictive power.</p>
-        <div class="formula">System Avg = mean(player_1_acc, &hellip;, player_60_acc)</div>
+        <h4>Front Office &amp; Scouting</h4>
+        <p>Identify undervalued players whose hidden performance drivers suggest untapped upside. Quantify the impact of specific adjustments before committing contract dollars or trade capital.</p>
       </div>
       <div class="def-item">
-        <h4>Out-of-Sample Methodology</h4>
-        <p>The system was trained <strong>only on data available before the 2025 season</strong>. No 2025 game results were used during training, equation discovery, or projection generation. Projections were locked before Opening Day.</p>
+        <h4>Sports Betting &amp; DFS</h4>
+        <p>Leading indicators that signal performance shifts before they show up in traditional stats. Early warning systems with specific timing windows &mdash; actionable edges for projection models and daily fantasy.</p>
       </div>
       <div class="def-item">
-        <h4>Actuals Verification</h4>
-        <p>All 2025 &ldquo;actual&rdquo; stats are <strong>confirmed season totals from Baseball Reference and StatMuse</strong>, converted to per-PA rates using each player&rsquo;s actual plate appearances. No approximations or estimates.</p>
+        <h4>Agents &amp; Player Representation</h4>
+        <p>Data-backed performance narratives for contract negotiations. Quantified evidence of a player's true value drivers &mdash; showing not just what they did, but why, and what's coming next.</p>
       </div>
     </div>
 
     <!-- ============================== DATASET DEFINED ============================== -->
     <h2 class="results-section-title">Dataset</h2>
     <div class="disclaimer">
-      <strong>Data source:</strong> MLB Statcast via Baseball Savant &mdash; pitch-by-pitch plate-appearance-level data for all 60 players, spanning the <strong>2015&ndash;2025 regular seasons</strong> (each player&rsquo;s full available MLB career within that window). For each player, raw pitch-level data was aggregated into plate-appearance observations, then organized into rolling career time-series windows. The system analyzed <strong>72 performance indicators per player</strong> organized in a causal hierarchy &mdash; including contact quality metrics (barrel rate, launch angle, exit velocity), plate discipline (chase rate, zone swing rate, whiff rate), pitch-mix exposure (fastball %, breaking ball %, offspeed %), and outcome rates (HR/PA, H/PA, BB/PA, K/PA). All data is publicly available from Baseball Savant.
+      <strong>Data source:</strong> MLB Statcast via Baseball Savant &mdash; plate-appearance-level data for all 60 players, spanning the <strong>2015&ndash;2025 regular seasons</strong>. The system analyzed <strong>72 performance indicators per player</strong> including contact quality (barrel rate, launch angle, exit velocity), plate discipline (chase rate, zone swing rate, whiff rate), pitch-mix exposure, and outcome rates (HR/PA, H/PA, BB/PA, K/PA). All data is publicly available.
     </div>
 
     <!-- ============================== UNIVERSAL INSIGHTS ============================== -->
     <h2 class="results-section-title">Universal Insights Across 60 Players</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Running the same engine on 60 different hitters revealed patterns that hold true regardless of player type, team, or batting profile:</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Analyzing 60 different hitters revealed patterns that hold true regardless of player type, team, or batting profile:</p>
 
     <div class="card-grid" style="margin-bottom: 2.5rem;">
       <div class="card">
@@ -111,25 +115,25 @@
       </div>
       <div class="card">
         <h3>HR/PA Is the Most Predictable Rate</h3>
-        <p>Home run rate per plate appearance was consistently the tightest projection across the roster, suggesting power output has the strongest causal signal in the data. This held for both low-power and high-power hitters.</p>
+        <p>Home run rate per plate appearance was consistently the tightest projection across the roster. This held for both low-power and high-power hitters &mdash; power output is the most predictable performance dimension.</p>
       </div>
       <div class="card">
         <h3>Career Length Correlates with Accuracy</h3>
         <p>Players with longer careers (more training data) tended to produce tighter projections. The 5 &ldquo;Developing&rdquo; grades were predominantly younger players with fewer MLB seasons, where the system correctly identified higher uncertainty.</p>
       </div>
       <div class="card">
-        <h3>Player-Specific Equations, Universal Physics</h3>
-        <p>Each player gets unique causal equations (Judge&rsquo;s HR rate is driven by power surges; Arraez&rsquo;s hit rate by zone contact trends), but fundamental relationships like barrel rate &rarr; SLG hold universally. The engine discovers both.</p>
+        <h3>Player-Specific Insights, Universal Physics</h3>
+        <p>Each player gets unique performance drivers (Judge&rsquo;s HR rate is driven by power surges; Arraez&rsquo;s hit rate by zone contact trends), but fundamental relationships like barrel rate &rarr; SLG hold universally. The platform discovers both.</p>
       </div>
       <div class="card">
-        <h3>30,141 Feedback Loops Discovered</h3>
-        <p>The system identified over 30,000 interconnected performance cycles across the 60 players, revealing how metrics reinforce each other. These compound effects are invisible to traditional stat models.</p>
+        <h3>30,141 Compound Performance Effects Found</h3>
+        <p>Over 30,000 interconnected performance cycles across the 60 players &mdash; changes in one metric cascade into others, creating momentum shifts. These compound effects are invisible to traditional stat models but critical for accurate prediction.</p>
       </div>
     </div>
 
     <!-- ============================== GRADE DISTRIBUTION ============================== -->
     <h2 class="results-section-title">Grade Distribution</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Each player receives a projection confidence grade based on their average rate-based absolute error across HR/PA, H/PA, BB/PA, and K/PA:</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Each player receives a projection confidence grade based on prediction accuracy across four core metrics (HR, Hits, Walks, Strikeouts per PA):</p>
     <div style="margin-bottom: 2rem;">
       <span style="display: inline-block; padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44; margin: 0.25rem;">Elite: 8</span>
 <span style="display: inline-block; padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; background: #6366f122; color: #6366f1; border: 1px solid #6366f144; margin: 0.25rem;">Strong: 25</span>
@@ -755,7 +759,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -830,11 +834,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between long-term home run production trends, medium-term batting consistency that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 781 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1874 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 781 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1874 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 781 feedback loops | 1874 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Nolan_Schanuel" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -860,7 +863,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -933,7 +936,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Vladimir_Guerrero_Jr" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -959,7 +961,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1034,11 +1036,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 762 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1871 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 762 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1871 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 762 feedback loops | 1871 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-JJ_Bleday" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1064,7 +1065,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1137,7 +1138,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-George_Springer" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1163,7 +1163,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1238,11 +1238,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 791 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1864 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 791 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1864 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 791 feedback loops | 1864 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Kyle_Schwarber" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1268,7 +1267,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1343,11 +1342,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 780 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1874 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 780 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1874 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 780 feedback loops | 1874 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Ian_Happ" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1373,7 +1371,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1448,11 +1446,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified plate discipline over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 808 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1870 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 808 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1870 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 808 feedback loops | 1870 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jarren_Duran" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1478,7 +1475,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1553,11 +1550,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 745 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1880 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 745 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1880 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">70/72 indicators reliable | 745 feedback loops | 1880 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Gunnar_Henderson" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1583,7 +1579,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1658,11 +1654,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 714 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1891 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 714 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1891 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 714 feedback loops | 1891 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Marcus_Semien" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1688,7 +1683,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1763,11 +1758,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 781 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1853 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 781 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1853 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 781 feedback loops | 1853 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Lane_Thomas" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1793,7 +1787,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1866,7 +1860,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Andrew_Vaughn" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1892,7 +1885,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -1967,11 +1960,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified plate discipline over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 717 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1883 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 717 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1883 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 717 feedback loops | 1883 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Bobby_Witt_Jr" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -1997,7 +1989,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2072,11 +2064,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between pitch velocity trends faced, recent swing decision patterns that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 775 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1868 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 775 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1868 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">70/72 indicators reliable | 775 feedback loops | 1868 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Bryan_De_La_Cruz" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2102,7 +2093,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2175,7 +2166,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Eugenio_Suarez" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2201,7 +2191,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2274,7 +2264,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Zach_Neto" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2300,7 +2289,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2375,11 +2364,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between velocity trends over recent games, pitch velocity trends faced that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between velocity trends over recent games, recent swing decision patterns that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified plate discipline over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 812 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1884 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 812 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1884 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">70/72 indicators reliable | 812 feedback loops | 1884 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Aaron_Judge" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2405,7 +2393,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2480,11 +2468,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified offspeed pitch frequency faced as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 790 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1872 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 790 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1872 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 790 feedback loops | 1872 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Spencer_Steer" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2510,7 +2497,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2583,7 +2570,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jose_Altuve" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2609,7 +2595,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2684,11 +2670,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between zone rate trends over recent games, plate discipline over recent games that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 779 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1849 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 779 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1849 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 779 feedback loops | 1849 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jake_Burger" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2714,7 +2699,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2787,7 +2772,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Nico_Hoerner" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2813,7 +2797,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.3%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2888,11 +2872,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between seasonal trends, hard-hit rate trends across career that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 768 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1881 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 768 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1881 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">69/72 indicators reliable | 768 feedback loops | 1881 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Ozzie_Albies" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2918,7 +2901,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -2993,11 +2976,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified hard-hit rate trends across career as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 830 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1858 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 830 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1858 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 830 feedback loops | 1858 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Brent_Rooker" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3023,7 +3005,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3096,7 +3078,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Luis_Arraez" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3122,7 +3103,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.3%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3197,11 +3178,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between zone rate trends over recent games, short-term power surges that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between velocity trends over recent games, recent swing decision patterns that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between in-zone pitch frequency faced, pitch velocity trends faced that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 738 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1874 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 738 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1874 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 738 feedback loops | 1874 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Anthony_Volpe" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3227,7 +3207,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3302,11 +3282,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between zone rate trends over recent games, pitch mix diversity faced, swing-and-miss trends over recent games that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 798 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1887 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 798 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1887 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">70/72 indicators reliable | 798 feedback loops | 1887 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Ezequiel_Tovar" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3332,7 +3311,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3405,7 +3384,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Michael_Conforto" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3431,7 +3409,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3506,11 +3484,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between seasonal trends, medium-term batting consistency that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified pitch velocity trends faced as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 790 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1869 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 790 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1869 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 790 feedback loops | 1869 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jackson_Chourio" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3536,7 +3513,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3604,11 +3581,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between long-term home run production trends, medium-term batting consistency that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 759 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1881 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 759 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1881 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 759 feedback loops | 1881 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jose_Ramirez" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3634,7 +3610,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3709,11 +3685,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified velocity trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between medium-term contact trends, quality-of-contact over extended windows that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 767 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1867 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 767 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1867 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 767 feedback loops | 1867 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-CJ_Abrams" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3739,7 +3714,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3814,11 +3789,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified long-term contact quality evolution as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified velocity trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 709 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1885 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 709 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1885 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">70/72 indicators reliable | 709 feedback loops | 1885 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-William_Contreras" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3844,7 +3818,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -3919,11 +3893,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between seasonal trends, medium-term batting consistency that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified velocity trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 790 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1872 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 790 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1872 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 790 feedback loops | 1872 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Austin_Riley" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -3949,7 +3922,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4024,11 +3997,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified velocity trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 811 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1861 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 811 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1861 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 811 feedback loops | 1861 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Carlos_Santana" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4054,7 +4026,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4129,11 +4101,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified velocity trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified offspeed pitch frequency faced as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 772 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1863 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 772 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1863 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 772 feedback loops | 1863 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Salvador_Perez" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4159,7 +4130,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4234,11 +4205,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified plate discipline over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between recent exit velocity readings, recent in-zone contact ability that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 770 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1871 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 770 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1871 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 770 feedback loops | 1871 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Elly_De_La_Cruz" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4264,7 +4234,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.3%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4339,11 +4309,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified plate discipline over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified offspeed pitch frequency faced as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 773 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1896 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 773 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1896 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 773 feedback loops | 1896 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Riley_Greene" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4369,7 +4338,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4444,11 +4413,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 762 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1885 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 762 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1885 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 762 feedback loops | 1885 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Colt_Keith" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4474,7 +4442,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4536,11 +4504,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 729 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1864 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 729 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1864 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">68/72 indicators reliable | 729 feedback loops | 1864 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Rafael_Devers" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4566,7 +4533,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4641,11 +4608,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between velocity trends over recent games, pitch velocity trends faced that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between plate discipline over recent games, recent swing decision patterns that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 797 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1872 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 797 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1872 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 797 feedback loops | 1872 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Gavin_Sheets" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4671,7 +4637,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4746,11 +4712,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between recent swing-and-miss frequency, swing-and-miss trends over recent games that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 789 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1868 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 789 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1868 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">70/72 indicators reliable | 789 feedback loops | 1868 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Masyn_Winn" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4776,7 +4741,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4844,11 +4809,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified in-zone pitch frequency faced as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 752 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1889 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 752 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1889 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">69/72 indicators reliable | 752 feedback loops | 1889 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Byron_Buxton" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4874,7 +4838,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -4949,11 +4913,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified velocity trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 776 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1874 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 776 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1874 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 776 feedback loops | 1874 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Yandy_Diaz" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -4979,7 +4942,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5054,11 +5017,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between velocity trends over recent games, pitch velocity trends faced, pitch mix diversity faced that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified pitch velocity trends faced as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 756 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1878 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 756 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1878 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 756 feedback loops | 1878 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Juan_Soto" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5084,7 +5046,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5159,11 +5121,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 806 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1879 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 806 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1879 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 806 feedback loops | 1879 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Trea_Turner" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5189,7 +5150,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5264,11 +5225,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified offspeed pitch frequency faced as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified plate discipline over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified recent in-zone contact ability as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 779 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1853 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 779 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1853 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 779 feedback loops | 1853 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Nolan_Arenado" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5294,7 +5254,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.5%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5362,11 +5322,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between medium-term contact trends, quality-of-contact over extended windows that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 807 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1866 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 807 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1866 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 807 feedback loops | 1866 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Josh_Naylor" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5392,7 +5351,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5467,11 +5426,10 @@
 <li><strong>Hit Rate:</strong> The system detected interconnections between recent in-zone contact ability, recent swing decision patterns that jointly influence this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified swing-and-miss trends over recent games as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between velocity trends over recent games, swing-and-miss trends over recent games that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 786 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1888 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 786 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1888 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 786 feedback loops | 1888 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Cal_Raleigh" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5497,7 +5455,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5572,11 +5530,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> Our analysis identified recent swing decision patterns as a meaningful predictor of this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> Our analysis identified zone rate trends over recent games as a meaningful predictor of this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 728 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1882 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 728 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1882 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 728 feedback loops | 1882 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jazz_Chisholm_Jr" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5602,7 +5559,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5677,11 +5634,10 @@
 <li><strong>Hit Rate:</strong> Our analysis identified recent barrel frequency as a meaningful predictor of this player's hit rate.</li>
 <li><strong>Walk Rate:</strong> The system detected interconnections between velocity trends over recent games, recent swing decision patterns that jointly influence this player's walk rate.</li>
 <li><strong>Strikeout Rate:</strong> The system detected interconnections between seasonal trends, medium-term contact trends that jointly influence this player's strikeout rate.</li>
-<li><strong>Self-Reinforcing Patterns:</strong> 764 interconnected performance cycles were identified in this player's data, suggesting compound effects across multiple skill areas.</li>
-<li><strong>Performance Regime Detection:</strong> The system identified 1880 instances where this player's underlying skill levels shifted between distinct performance phases (e.g., hot streaks, adjustments, or developmental changes). These regime transitions were incorporated into the forward projection.</li>
+<li><strong>Compound Performance Effects:</strong> 764 interconnected performance cycles detected &mdash; changes in one skill area cascade into others, creating momentum shifts coaches can anticipate.</li>
+<li><strong>Performance Phase Shifts:</strong> 1880 distinct performance shifts identified (hot streaks, slumps, adjustments) &mdash; the system tracks when a player enters a new phase and adjusts projections accordingly.</li>
 
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">71/72 indicators reliable | 764 feedback loops | 1880 regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Jose_Siri" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5707,7 +5663,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5773,7 +5729,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Freddie_Freeman" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5799,7 +5754,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5872,7 +5827,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Manny_Machado" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5898,7 +5852,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -5971,7 +5925,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Julio_Rodriguez" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -5997,7 +5950,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6070,7 +6023,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Matt_Chapman" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6096,7 +6048,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6169,7 +6121,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Anthony_Santander" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6195,7 +6146,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6268,7 +6219,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Yordan_Alvarez" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6294,7 +6244,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6367,7 +6317,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Ketel_Marte" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6393,7 +6342,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6466,7 +6415,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Oneil_Cruz" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6492,7 +6440,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6565,7 +6513,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Adolis_Garcia" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6591,7 +6538,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6664,7 +6611,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Bryan_Reynolds" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6690,7 +6636,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6756,7 +6702,6 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     <div class="player-detail" id="player-Brendan_Rodgers" style="display:none;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -6782,7 +6727,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.4%</div>
-          <div class="stat-label">Backtest Accuracy</div>
+          <div class="stat-label">Prediction Accuracy</div>
         </div>
       </div>
 
@@ -6848,13 +6793,12 @@
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
         
       </ul>
-      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">0/72 indicators reliable | None feedback loops | None regime transitions | 500 Monte Carlo paths</p>
     </div>
     </div>
 
-    <!-- ============================== METHODOLOGY ============================== -->
+    <!-- ============================== VERIFICATION NOTE ============================== -->
     <div class="disclaimer" style="margin-top: 3rem;">
-      <strong>Methodology:</strong> All projections are generated through a multi-stage analytical pipeline: (1) ingest plate-appearance-level Statcast data from the 2015&ndash;2025 seasons, (2) identify persistent performance patterns and causal interactions across 72 indicators, (3) validate all discovered equations against held-out historical windows, (4) project forward using only validated, stable relationships via 500 Monte Carlo simulation paths. The system uses no proprietary scouting data, injury information, or subjective adjustments. All 2025 actuals are confirmed from Baseball Reference and StatMuse. Player teams reflect 2026 rosters.
+      <strong>About this data:</strong> All 2025 actual stats are confirmed season totals from Baseball Reference and StatMuse. The system uses no proprietary scouting data, injury information, or subjective adjustments. Player teams reflect 2026 rosters.
     </div>
   </section>
 

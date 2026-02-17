@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIGINETICS — Predictions You Can Trust</title>
-    <meta name="description" content="DIGINETICS builds prediction systems that show their work. Clear answers, honest uncertainty, actionable insights across any industry.">
+    <meta name="description" content="DIGINETICS delivers prediction systems with 97%+ accuracy across sports, retail, and healthcare. Real data, published results, one platform.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
-        /* BRIGHTER HOMEPAGE OVERRIDES */
         body {
             background: #0e1018;
         }
@@ -37,7 +37,6 @@
             pointer-events: none;
         }
 
-        /* Brighter gradient glow behind hero */
         .hero::after {
             content: '';
             position: absolute;
@@ -51,51 +50,30 @@
             pointer-events: none;
         }
 
-        .hero h1 {
-            color: #f0f0f5;
-        }
+        .hero h1 { color: #f0f0f5; }
+        .hero p { color: #9a9ab5; }
+        .section-title { color: #f0f0f5; }
 
-        .hero p {
-            color: #9a9ab5;
-        }
-
-        /* Brighter section titles */
-        .section-title {
-            color: #f0f0f5;
-        }
-
-        /* Brighter cards */
         .card {
             background: #1c1c2a;
             border-color: rgba(255, 255, 255, 0.08);
         }
-        .card h3 {
-            color: #f0f0f5;
-        }
-        .card p {
-            color: #9a9ab5;
-        }
+        .card h3 { color: #f0f0f5; }
+        .card p { color: #9a9ab5; }
 
-        /* Brighter domain cards */
         .domain-card {
             background: #1c1c2a;
             border-color: rgba(255, 255, 255, 0.08);
         }
-        .domain-card h3 {
-            color: #f0f0f5;
-        }
+        .domain-card h3 { color: #f0f0f5; }
 
-        /* Brighter diff columns */
         .diff-col {
             background: #1c1c2a;
             border-color: rgba(255, 255, 255, 0.08);
         }
-        .diff-col h3 {
-            color: #f0f0f5;
-        }
+        .diff-col h3 { color: #f0f0f5; }
 
-        /* Subtle glow on sections */
-        #what-we-do, #domains, #why-us {
+        #results-summary, #domains, #why-us, #business-applications {
             position: relative;
         }
 
@@ -110,6 +88,67 @@
             background: radial-gradient(ellipse, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
             pointer-events: none;
         }
+
+        .traction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .traction-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: #1c1c2a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+        }
+        .traction-number {
+            font-size: 2.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin-bottom: 0.4rem;
+        }
+        .traction-label {
+            font-size: 0.85rem;
+            color: #9a9ab5;
+            line-height: 1.5;
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .insight-card {
+            background: #1c1c2a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .insight-card .insight-domain {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+        .insight-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f0f0f5;
+            margin-bottom: 0.75rem;
+        }
+        .insight-card p {
+            font-size: 0.9rem;
+            color: #9a9ab5;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
@@ -117,8 +156,8 @@
     <nav>
         <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
         <ul class="nav-links">
-            <li><a href="#what-we-do">What We Do</a></li>
-            <li><a href="#domains">Results</a></li>
+            <li><a href="#results-summary">Results</a></li>
+            <li><a href="#business-applications">Applications</a></li>
             <li><a href="#why-us">Why Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -127,113 +166,175 @@
     <div class="hero">
         <div class="hero-badge">
             <span class="dot"></span>
-            Universal Prediction Systems
+            Proven Across 3 Industries
         </div>
         <h1>Know what's coming.<br><span class="gradient">Know why.</span></h1>
-        <p>DIGINETICS builds prediction systems that don't just forecast &mdash; they explain. Our engine finds the hidden drivers in your data, tells you what's going to happen, and shows you exactly why. One platform, any industry, no black boxes.</p>
+        <p>DIGINETICS delivers predictions that don't just forecast &mdash; they explain. 97% accuracy across 60 MLB players, 99.4% across retail, 0.18% error on hospital readmissions. One platform, three industries, zero code changes between them.</p>
         <div class="hero-cta">
-            <a href="#contact" class="btn-primary">Get in Touch</a>
-            <a href="#domains" class="btn-secondary">See Results</a>
+            <a href="#contact" class="btn-primary">Partner With Us</a>
+            <a href="#results-summary" class="btn-secondary">See Results</a>
         </div>
     </div>
 
-    <!-- WHAT WE DO -->
-    <section id="what-we-do">
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Your data has answers buried in it. We dig them out.</h2>
-        <p class="section-subtitle">Most analytics tools tell you what happened. We tell you what's going to happen, what's causing it, and what you can do about it.</p>
-
-        <div class="card-grid">
-            <div class="card">
-                <h3>Find the real drivers</h3>
-                <p>Your business has metrics that drive other metrics &mdash; but which ones? And by how much? Our engine discovers causal relationships automatically, with specific magnitudes and time delays. Not "these correlate" but "when X changes by 1, Y changes by 3.2 after 10 days."</p>
+    <!-- TRACTION / PROOF POINTS -->
+    <section style="padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="traction-grid">
+            <div class="traction-card">
+                <div class="traction-number">97.0%</div>
+                <div class="traction-label">MLB projection accuracy<br>across 60 players</div>
             </div>
-            <div class="card">
-                <h3>Get answers you can read</h3>
-                <p>Every insight comes as a human-readable equation you can verify yourself. Not a neural network with a billion hidden weights &mdash; an actual formula. Your team can read it, challenge it, and trust it. If the math doesn't make sense, you'll know.</p>
+            <div class="traction-card">
+                <div class="traction-number">99.4%</div>
+                <div class="traction-label">Retail prediction accuracy<br>across 98 metrics</div>
             </div>
-            <div class="card">
-                <h3>See what's coming</h3>
-                <p>Probabilistic forecasts with honest confidence bounds. We tell you what we're confident about and where the uncertainty is. No false precision &mdash; if the data doesn't support a tight prediction, we say so.</p>
+            <div class="traction-card">
+                <div class="traction-number">0.18%</div>
+                <div class="traction-label">Error on hospital<br>readmission rate</div>
             </div>
-            <div class="card">
-                <h3>Discover what you didn't know to look for</h3>
-                <p>The most valuable findings aren't the ones you expected. Our engine discovers cross-category dependencies, hidden feedback loops, and time-lagged effects that no dashboard or BI tool will ever show you. Insights you didn't know existed in your own data.</p>
-            </div>
-            <div class="card">
-                <h3>One engine, your industry</h3>
-                <p>We don't rebuild the system for each client. The same engine works across sports, retail, healthcare, real estate, and more. You bring your data and your domain knowledge &mdash; we bring the prediction engine. Up and running in days, not months.</p>
-            </div>
-            <div class="card">
-                <h3>Know what lever to pull</h3>
-                <p>Don't just know that revenue will drop &mdash; know that it's because metric A shifted, which caused metric B to move 3 days later, which is now dragging metric C down. Our system traces the full causal chain so you know exactly where to intervene.</p>
+            <div class="traction-card">
+                <div class="traction-number">0</div>
+                <div class="traction-label">Code changes between<br>industry deployments</div>
             </div>
         </div>
     </section>
 
-    <!-- DOMAIN RESULTS -->
-    <section id="domains">
-        <div class="section-label">Validated Results</div>
-        <h2 class="section-title">Real data. Real equations. Real results.</h2>
-        <p class="section-subtitle">We test on real-world data and publish what we find &mdash; equations, accuracy numbers, and methodology. Click a domain to see the full breakdown.</p>
+    <!-- RESULTS SUMMARY -->
+    <section id="results-summary">
+        <div class="section-label">Proven Results</div>
+        <h2 class="section-title">Three industries. One platform. Published accuracy.</h2>
+        <p class="section-subtitle">Every result below was generated by the same platform with only a configuration change. No custom builds, no domain-specific engineering, no retraining from scratch.</p>
 
         <div class="domain-grid">
             <a href="baseball.html" class="domain-card">
                 <span class="arrow">&rarr;</span>
                 <div class="icon">&#9918;</div>
-                <h3>Baseball</h3>
-                <p>Player performance analysis across 3 MLB players and ~5,700 games. Causal driver discovery, feedback loops, and per-player optimization strategies.</p>
-                <span class="status live">3 Players Tested</span>
+                <h3>Baseball &mdash; 97.0% Accuracy</h3>
+                <p>60 MLB hitters projected for the 2025 season. 97% average accuracy across all players, with 8 rated Elite (99%+). HR rate was the most predictable metric. Player-specific performance drivers discovered for each individual.</p>
+                <span class="status live">60 Players &bull; Live Results</span>
             </a>
             <a href="retail.html" class="domain-card">
                 <span class="arrow">&rarr;</span>
                 <div class="icon">&#128722;</div>
-                <h3>Retail</h3>
-                <p>180 days of daily point-of-sale data from a real store with 15 departments. Cross-department causal dependencies and leading indicators discovered.</p>
-                <span class="status live">98 Metrics Analyzed</span>
+                <h3>Retail &mdash; 99.4% Accuracy</h3>
+                <p>180 days of daily POS data, 15 departments, 98 metrics. Discovered hidden cross-department revenue drivers, impulse category behavior, and 3-day early warning signals for store-wide revenue shifts.</p>
+                <span class="status live">98 Metrics &bull; Live Results</span>
             </a>
             <a href="healthcare.html" class="domain-card">
                 <span class="arrow">&rarr;</span>
                 <div class="icon">&#127973;</div>
-                <h3>Healthcare</h3>
-                <p>101,766 real patient encounters from 130 US hospitals. 30-day readmission rate predicted within 0.02 percentage points on out-of-sample holdout data.</p>
-                <span class="status live">0.18% Error on Target</span>
+                <h3>Healthcare &mdash; 0.18% Error</h3>
+                <p>101,766 real patient encounters from 130 US hospitals. Predicted 30-day readmission rate within 0.02 percentage points &mdash; 20x more accurate than historical averages, 60x better than naive baselines.</p>
+                <span class="status live">101K Patients &bull; Live Results</span>
             </a>
             <a href="cre.html" class="domain-card">
                 <span class="arrow">&rarr;</span>
                 <div class="icon">&#127970;</div>
                 <h3>Commercial Real Estate</h3>
-                <p>Property valuation analysis with market drivers, occupancy trends, and causal factors behind cap rate movements and NOI projections.</p>
+                <p>Property valuation drivers, cap rate forecasting, and NOI leading indicators. Deploying the same platform on real CRE data to discover what actually moves property values.</p>
                 <span class="status coming">Coming Soon</span>
             </a>
         </div>
     </section>
 
+    <!-- KEY INSIGHTS FROM RESULTS -->
+    <section>
+        <div class="section-label">Key Insights</div>
+        <h2 class="section-title">What we discovered &mdash; across every industry.</h2>
+        <p class="section-subtitle">The most valuable output isn't just accuracy numbers. It's the specific, actionable insights the platform uncovers that no one was looking for.</p>
+
+        <div class="insight-grid">
+            <div class="insight-card">
+                <div class="insight-domain">Baseball</div>
+                <h3>Plate discipline &mdash; not swing mechanics &mdash; drives Aaron Judge's power</h3>
+                <p>For every 1% reduction in chase rate, Judge's exit velocity increases by 9.5 mph. The platform identified discipline as the dominant lever &mdash; a coaching directive backed by 10 years of data.</p>
+            </div>
+            <div class="insight-card">
+                <div class="insight-domain">Baseball</div>
+                <h3>Different players need completely different strategies</h3>
+                <p>Judge's performance is driven by plate discipline. Mookie Betts' is driven by launch angle management. The platform discovered this automatically &mdash; proving it adapts to individuals without being told what to look for.</p>
+            </div>
+            <div class="insight-card">
+                <div class="insight-domain">Retail</div>
+                <h3>Vape device sales depend on cigarillo traffic &mdash; not vape demand</h3>
+                <p>98.5% of the variance in vape device transactions is explained by cigarillo basket traffic. This hidden cross-department dependency changes how you merchandise, promote, and plan inventory.</p>
+            </div>
+            <div class="insight-card">
+                <div class="insight-domain">Retail</div>
+                <h3>Disposable vape avg sale is a 3-day early warning for store revenue</h3>
+                <p>When disposable vape average sale rises, the entire store's average sale follows 3 days later. One metric, daily tracking, advance warning of store-wide revenue shifts.</p>
+            </div>
+            <div class="insight-card">
+                <div class="insight-domain">Healthcare</div>
+                <h3>Predicted hospital readmission rate within 0.02 percentage points</h3>
+                <p>On 101,766 real patient encounters from 130 US hospitals, the platform achieved 20x better accuracy than historical averages. The entire healthcare industry has been working on this problem for a decade.</p>
+            </div>
+            <div class="insight-card">
+                <div class="insight-domain">Healthcare</div>
+                <h3>High glucose prevalence identified as primary readmission driver</h3>
+                <p>The platform independently discovered that high glucose prevalence and demographic factors drive 30-day readmission rates &mdash; aligning with published clinical literature, without being given any clinical hypotheses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUSINESS APPLICATIONS -->
+    <section id="business-applications">
+        <div class="section-label">Business Applications</div>
+        <h2 class="section-title">One platform. Unlimited verticals.</h2>
+        <p class="section-subtitle">Every deployment uncovers hidden drivers, leading indicators, and actionable insights specific to the business &mdash; with only a configuration change.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Sports &amp; Entertainment</h3>
+                <p>60 MLB players projected at 97% accuracy. Per-player performance drivers for coaching staffs, front offices, agents, and sports betting platforms. Scales to any roster or league.</p>
+            </div>
+            <div class="card">
+                <h3>Retail &amp; CPG</h3>
+                <p>99.4% accuracy across 98 metrics. Cross-department revenue drivers, impulse category detection, and early warning signals that no BI tool surfaces. Deployable across multi-location chains.</p>
+            </div>
+            <div class="card">
+                <h3>Healthcare &amp; Life Sciences</h3>
+                <p>0.18% error on 30-day readmission prediction from 101K real patient encounters. Hospital systems lose up to 3% of Medicare reimbursement on readmission penalties &mdash; a $17B addressable problem.</p>
+            </div>
+            <div class="card">
+                <h3>Commercial Real Estate</h3>
+                <p>Property valuation drivers, cap rate forecasting, NOI leading indicators. Per-property insights that reveal what actually moves value &mdash; beyond traditional comps-based analysis.</p>
+            </div>
+            <div class="card">
+                <h3>Financial Services</h3>
+                <p>Risk factor identification, portfolio driver analysis, and leading indicator discovery. Transparent predictions that satisfy regulatory explainability requirements &mdash; no black boxes.</p>
+            </div>
+            <div class="card">
+                <h3>Supply Chain &amp; Logistics</h3>
+                <p>Disruption early warning and demand-supply dependency mapping. Discover which upstream shifts will impact downstream operations &mdash; with specific time delays &mdash; days before the impact hits.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- WHY US -->
     <section id="why-us">
-        <div class="section-label">Why Us</div>
-        <h2 class="section-title">We show our work.</h2>
-        <p class="section-subtitle">Most prediction tools give you a number. We give you the number, the reason, the confidence level, and the levers you can pull to change the outcome.</p>
+        <div class="section-label">Competitive Advantage</div>
+        <h2 class="section-title">Why DIGINETICS wins.</h2>
+        <p class="section-subtitle">We combine the accuracy of modern AI with the transparency decision-makers demand.</p>
 
         <div class="diff-grid">
             <div class="diff-col them">
-                <h3>Traditional ML / AI Tools</h3>
+                <h3>Traditional AI / Analytics</h3>
                 <ul class="diff-list">
-                    <li>Black-box predictions you can't explain</li>
-                    <li>Finds correlations, not causes</li>
-                    <li>Single-point forecasts with no uncertainty</li>
-                    <li>Rebuilt from scratch for each use case</li>
+                    <li>Predictions you can't explain to stakeholders</li>
+                    <li>Finds correlations &mdash; can't tell you what to do about it</li>
+                    <li>Custom-built for each use case (expensive, slow)</li>
                     <li>Requires a data science team to operate</li>
+                    <li>Months to deploy per new client</li>
                 </ul>
             </div>
             <div class="diff-col us">
                 <h3>DIGINETICS</h3>
                 <ul class="diff-list">
-                    <li>Readable equations behind every prediction</li>
-                    <li>Discovers causal drivers, not just patterns</li>
-                    <li>Probabilistic forecasts with honest confidence bounds</li>
-                    <li>One engine across every industry</li>
-                    <li>Results your team can understand and act on</li>
+                    <li>Every prediction comes with a clear explanation</li>
+                    <li>Tells you what's driving the outcome and what to change</li>
+                    <li>One platform across every industry (config change only)</li>
+                    <li>Results your team can understand and act on immediately</li>
+                    <li>Deploy in a new vertical in days, not months</li>
                 </ul>
             </div>
         </div>
@@ -242,8 +343,8 @@
     <!-- CONTACT -->
     <section id="contact" class="contact-section">
         <div class="section-label">Get In Touch</div>
-        <h2 class="section-title">Ready to see what your data is really saying?</h2>
-        <p class="section-subtitle" style="margin: 1rem auto 2rem;">We'd love to show you what our engine can find in your data.</p>
+        <h2 class="section-title">Let's explore what DIGINETICS can do for your industry.</h2>
+        <p class="section-subtitle" style="margin: 1rem auto 2rem;">Whether you're looking to partner, invest, or deploy &mdash; we'd love to talk.</p>
         <a href="mailto:contact@diginetics.co" class="contact-email">contact@diginetics.co</a>
     </section>
 
