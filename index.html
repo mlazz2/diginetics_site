@@ -9,6 +9,108 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* BRIGHTER HOMEPAGE OVERRIDES */
+        body {
+            background: #0e1018;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Brighter gradient glow behind hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(167, 139, 250, 0.04) 40%, transparent 70%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            color: #f0f0f5;
+        }
+
+        .hero p {
+            color: #9a9ab5;
+        }
+
+        /* Brighter section titles */
+        .section-title {
+            color: #f0f0f5;
+        }
+
+        /* Brighter cards */
+        .card {
+            background: #1c1c2a;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        .card h3 {
+            color: #f0f0f5;
+        }
+        .card p {
+            color: #9a9ab5;
+        }
+
+        /* Brighter domain cards */
+        .domain-card {
+            background: #1c1c2a;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        .domain-card h3 {
+            color: #f0f0f5;
+        }
+
+        /* Brighter diff columns */
+        .diff-col {
+            background: #1c1c2a;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        .diff-col h3 {
+            color: #f0f0f5;
+        }
+
+        /* Subtle glow on sections */
+        #what-we-do, #domains, #why-us {
+            position: relative;
+        }
+
+        #domains::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
 
