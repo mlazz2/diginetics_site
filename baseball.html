@@ -14,6 +14,11 @@
     #player-select { width: 100%; max-width: 500px; padding: 0.75rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.95rem; font-family: inherit; cursor: pointer; }
     #player-select:focus { outline: none; border-color: var(--accent); }
     #player-select option { background: var(--bg-secondary); color: var(--text-primary); }
+    .def-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
+    .def-item { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+    .def-item h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.5rem; }
+    .def-item p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .def-item .formula { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-primary); background: var(--bg-primary); padding: 0.5rem 0.75rem; border-radius: 6px; margin-top: 0.5rem; display: inline-block; }
   </style>
 </head>
 <body>
@@ -33,23 +38,20 @@
   <div class="page-header">
     <h1 class="section-title">Baseball Results</h1>
     <p class="section-subtitle">60-Player MLB Projection Analysis &mdash; 2025 Season</p>
-    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 750px; line-height: 1.7;">The UPS v3.5 engine was run on 60 MLB hitters using career plate-appearance-level Statcast data. Every projection was strictly out-of-sample &mdash; trained only on pre-2025 data, locked before Opening Day. Below are the system-wide findings and individual player results.</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 750px; line-height: 1.7;">The UPS v3.5 engine was run independently on 60 MLB hitters using career plate-appearance-level Statcast data (2015&ndash;2025). Every projection was strictly <strong>out-of-sample</strong> &mdash; trained only on pre-2025 data, locked before Opening Day, and compared against confirmed 2025 season statistics.</p>
   </div>
 
   <section>
-    <div class="disclaimer">
-      <strong>About this data:</strong> All analysis used real MLB Statcast data at the plate-appearance level. 60 players were selected across all 30 MLB teams. Each player&rsquo;s full career was analyzed with 72 performance indicators organized in a causal hierarchy. &ldquo;Backtest accuracy&rdquo; means the discovered equation outperformed baseline methods (last-value and mean-value) on held-out time windows. All 2025 projections were compared against confirmed season statistics from Baseball Reference and StatMuse.
-    </div>
 
-    <!-- ============================== OVERVIEW STATS ============================== -->
+    <!-- ============================== SYSTEM HEADLINE ============================== -->
     <div class="stats-row">
+      <div class="stat-card" style="border-color: var(--accent)44;">
+        <div class="stat-number" style="color: var(--green); font-size: 2.25rem;">97.0%</div>
+        <div class="stat-label">System Out-of-Sample<br>Projection Accuracy</div>
+      </div>
       <div class="stat-card">
         <div class="stat-number">60</div>
         <div class="stat-label">Players Analyzed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">97.0%</div>
-        <div class="stat-label">Average Projection Accuracy</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">20,318</div>
@@ -59,6 +61,39 @@
         <div class="stat-number">99.41%</div>
         <div class="stat-label">Average Backtest Accuracy</div>
       </div>
+    </div>
+
+    <!-- ============================== PROJECTION ACCURACY DEFINED ============================== -->
+    <h2 class="results-section-title">How Projection Accuracy Is Measured</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.5rem;">
+      Every number on this page is derived from a transparent, reproducible methodology. Here is exactly what &ldquo;projection accuracy&rdquo; means:
+    </p>
+
+    <div class="def-grid">
+      <div class="def-item">
+        <h4>Per-Player Accuracy</h4>
+        <p>For each player, we measure four core rate metrics: <strong>HR/PA, H/PA, BB/PA, K/PA</strong>. We calculate the absolute error between the UPS-projected rate and the confirmed actual rate for each metric, then average those four errors.</p>
+        <div class="formula">Accuracy = (1 &minus; avg_absolute_error) &times; 100</div>
+      </div>
+      <div class="def-item">
+        <h4>System Projection Accuracy (97.0%)</h4>
+        <p>The headline number is the <strong>simple average of all 60 players&rsquo; individual accuracies</strong>. Each player is weighted equally &mdash; no cherry-picking. This represents the system&rsquo;s aggregate out-of-sample predictive power.</p>
+        <div class="formula">System Avg = mean(player_1_acc, &hellip;, player_60_acc)</div>
+      </div>
+      <div class="def-item">
+        <h4>Out-of-Sample Methodology</h4>
+        <p>The system was trained <strong>only on data available before the 2025 season</strong>. No 2025 game results were used during training, equation discovery, or projection generation. Projections were locked before Opening Day.</p>
+      </div>
+      <div class="def-item">
+        <h4>Actuals Verification</h4>
+        <p>All 2025 &ldquo;actual&rdquo; stats are <strong>confirmed season totals from Baseball Reference and StatMuse</strong>, converted to per-PA rates using each player&rsquo;s actual plate appearances. No approximations or estimates.</p>
+      </div>
+    </div>
+
+    <!-- ============================== DATASET DEFINED ============================== -->
+    <h2 class="results-section-title">Dataset</h2>
+    <div class="disclaimer">
+      <strong>Data source:</strong> MLB Statcast via Baseball Savant &mdash; pitch-by-pitch plate-appearance-level data for all 60 players, spanning the <strong>2015&ndash;2025 regular seasons</strong> (each player&rsquo;s full available MLB career within that window). For each player, raw pitch-level data was aggregated into plate-appearance observations, then organized into rolling career time-series windows. The system analyzed <strong>72 performance indicators per player</strong> organized in a causal hierarchy &mdash; including contact quality metrics (barrel rate, launch angle, exit velocity), plate discipline (chase rate, zone swing rate, whiff rate), pitch-mix exposure (fastball %, breaking ball %, offspeed %), and outcome rates (HR/PA, H/PA, BB/PA, K/PA). All data is publicly available from Baseball Savant.
     </div>
 
     <!-- ============================== UNIVERSAL INSIGHTS ============================== -->
@@ -83,8 +118,8 @@
         <p>Players with longer careers (more training data) tended to produce tighter projections. The 5 &ldquo;Developing&rdquo; grades were predominantly younger players with fewer MLB seasons, where the system correctly identified higher uncertainty.</p>
       </div>
       <div class="card">
-        <h3>Player-Specific Strategies, Universal Physics</h3>
-        <p>Each player gets unique causal equations (Judge&rsquo;s power is driven by plate discipline, Betts&rsquo; by launch angle management), but fundamental relationships like barrel rate &rarr; SLG hold universally. The engine discovers both.</p>
+        <h3>Player-Specific Equations, Universal Physics</h3>
+        <p>Each player gets unique causal equations (Judge&rsquo;s HR rate is driven by power surges; Arraez&rsquo;s hit rate by zone contact trends), but fundamental relationships like barrel rate &rarr; SLG hold universally. The engine discovers both.</p>
       </div>
       <div class="card">
         <h3>30,141 Feedback Loops Discovered</h3>
@@ -94,7 +129,7 @@
 
     <!-- ============================== GRADE DISTRIBUTION ============================== -->
     <h2 class="results-section-title">Grade Distribution</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Each player receives a projection confidence grade based on average rate-based error across HR/PA, H/PA, BB/PA, and K/PA:</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Each player receives a projection confidence grade based on their average rate-based absolute error across HR/PA, H/PA, BB/PA, and K/PA:</p>
     <div style="margin-bottom: 2rem;">
       <span style="display: inline-block; padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44; margin: 0.25rem;">Elite: 8</span>
 <span style="display: inline-block; padding: 0.35rem 0.9rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; background: #6366f122; color: #6366f1; border: 1px solid #6366f144; margin: 0.25rem;">Strong: 25</span>
@@ -112,7 +147,7 @@
       <tr>
       <td>1</td>
       <td><strong style="color: var(--text-primary);">Cody Bellinger</strong></td>
-      <td>CHC</td>
+      <td>NYY</td>
       <td style="color: #22c55e;">Elite</td>
       <td style="color: var(--green);">99.0%</td>
       <td>0.0096</td>
@@ -136,7 +171,7 @@
 <tr>
       <td>4</td>
       <td><strong style="color: var(--text-primary);">JJ Bleday</strong></td>
-      <td>OAK</td>
+      <td>CIN</td>
       <td style="color: #22c55e;">Elite</td>
       <td style="color: var(--green);">98.8%</td>
       <td>0.0117</td>
@@ -184,7 +219,7 @@
 <tr>
       <td>10</td>
       <td><strong style="color: var(--text-primary);">Marcus Semien</strong></td>
-      <td>TEX</td>
+      <td>NYM</td>
       <td style="color: #6366f1;">Strong</td>
       <td style="color: var(--green);">98.3%</td>
       <td>0.0168</td>
@@ -194,13 +229,13 @@
 
     <!-- ============================== FULL ROSTER TABLE ============================== -->
     <h2 class="results-section-title">Full 60-Player Roster</h2>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Click any player to jump to their detailed results below.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Click any row to jump to that player&rsquo;s detailed results below. Teams shown are 2026 rosters.</p>
     <div style="overflow-x: auto;">
     <table class="results-table" id="roster-table">
-      <tr><th>Player</th><th>Team</th><th>Pos</th><th>Grade</th><th>Accuracy</th><th>Avg Error/PA</th></tr>
+      <tr><th>Player</th><th>Team (2026)</th><th>Pos</th><th>Grade</th><th>Accuracy</th><th>Avg Error/PA</th></tr>
       <tr class="player-row" onclick="selectPlayer('Cody_Bellinger')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Cody Bellinger</strong></td>
-      <td>CHC</td>
+      <td>NYY</td>
       <td>1B/CF</td>
       <td style="color: #22c55e;">Elite</td>
       <td>99.0%</td>
@@ -224,7 +259,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('JJ_Bleday')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">JJ Bleday</strong></td>
-      <td>OAK</td>
+      <td>CIN</td>
       <td>CF</td>
       <td style="color: #22c55e;">Elite</td>
       <td>98.8%</td>
@@ -272,7 +307,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Marcus_Semien')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Marcus Semien</strong></td>
-      <td>TEX</td>
+      <td>NYM</td>
       <td>2B</td>
       <td style="color: #6366f1;">Strong</td>
       <td>98.3%</td>
@@ -280,7 +315,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Lane_Thomas')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Lane Thomas</strong></td>
-      <td>CLE</td>
+      <td>KC</td>
       <td>RF</td>
       <td style="color: #6366f1;">Strong</td>
       <td>98.3%</td>
@@ -312,7 +347,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Eugenio_Suarez')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Eugenio Suarez</strong></td>
-      <td>ARI</td>
+      <td>CIN</td>
       <td>3B</td>
       <td style="color: #6366f1;">Strong</td>
       <td>98.2%</td>
@@ -456,7 +491,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Carlos_Santana')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Carlos Santana</strong></td>
-      <td>MIN</td>
+      <td>ARI</td>
       <td>1B</td>
       <td style="color: #6366f1;">Strong</td>
       <td>97.1%</td>
@@ -560,7 +595,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Josh_Naylor')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Josh Naylor</strong></td>
-      <td>ARI</td>
+      <td>SEA</td>
       <td>1B</td>
       <td style="color: #ef4444;">Developing</td>
       <td>94.2%</td>
@@ -584,7 +619,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Jose_Siri')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Jose Siri</strong></td>
-      <td>TB</td>
+      <td>LAA</td>
       <td>CF</td>
       <td style="color: #ef4444;">Developing</td>
       <td>92.1%</td>
@@ -656,7 +691,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Adolis_Garcia')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Adolis Garcia</strong></td>
-      <td>TEX</td>
+      <td>PHI</td>
       <td>RF</td>
       <td style="color: #f97316;">Fair</td>
       <td>95.5%</td>
@@ -672,7 +707,7 @@
     </tr>
 <tr class="player-row" onclick="selectPlayer('Brendan_Rodgers')" style="cursor: pointer;">
       <td><strong style="color: var(--text-primary);">Brendan Rodgers</strong></td>
-      <td>COL</td>
+      <td>BOS</td>
       <td>2B</td>
       <td style="color: #f97316;">Fair</td>
       <td>94.1%</td>
@@ -685,9 +720,9 @@
     <!-- ============================== PLAYER SELECTOR ============================== -->
     <h2 class="results-section-title" id="player-results">Individual Player Results</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">Select a player to view their full projection breakdown, rate accuracy, analytical insights, and validation metrics.</p>
-    
+
     <select id="player-select" onchange="showPlayer(this.value)">
-      <option value="">Select a player...</option><option value="Cody_Bellinger">Cody Bellinger (CHC) — Elite</option><option value="Nolan_Schanuel">Nolan Schanuel (LAA) — Elite</option><option value="Vladimir_Guerrero_Jr">Vladimir Guerrero Jr (TOR) — Elite</option><option value="JJ_Bleday">JJ Bleday (OAK) — Elite</option><option value="George_Springer">George Springer (TOR) — Elite</option><option value="Kyle_Schwarber">Kyle Schwarber (PHI) — Elite</option><option value="Ian_Happ">Ian Happ (CHC) — Elite</option><option value="Jarren_Duran">Jarren Duran (BOS) — Elite</option><option value="Gunnar_Henderson">Gunnar Henderson (BAL) — Strong</option><option value="Marcus_Semien">Marcus Semien (TEX) — Strong</option><option value="Lane_Thomas">Lane Thomas (CLE) — Strong</option><option value="Andrew_Vaughn">Andrew Vaughn (CWS) — Strong</option><option value="Bobby_Witt_Jr">Bobby Witt Jr (KC) — Strong</option><option value="Bryan_De_La_Cruz">Bryan De La Cruz (PIT) — Strong</option><option value="Eugenio_Suarez">Eugenio Suarez (ARI) — Strong</option><option value="Zach_Neto">Zach Neto (LAA) — Strong</option><option value="Aaron_Judge">Aaron Judge (NYY) — Strong</option><option value="Spencer_Steer">Spencer Steer (CIN) — Strong</option><option value="Jose_Altuve">Jose Altuve (HOU) — Strong</option><option value="Jake_Burger">Jake Burger (MIA) — Strong</option><option value="Nico_Hoerner">Nico Hoerner (CHC) — Strong</option><option value="Ozzie_Albies">Ozzie Albies (ATL) — Strong</option><option value="Brent_Rooker">Brent Rooker (OAK) — Strong</option><option value="Luis_Arraez">Luis Arraez (SD) — Strong</option><option value="Anthony_Volpe">Anthony Volpe (NYY) — Strong</option><option value="Ezequiel_Tovar">Ezequiel Tovar (COL) — Strong</option><option value="Michael_Conforto">Michael Conforto (SF) — Strong</option><option value="Jackson_Chourio">Jackson Chourio (MIL) — Strong</option><option value="Jose_Ramirez">Jose Ramirez (CLE) — Strong</option><option value="CJ_Abrams">CJ Abrams (WSH) — Strong</option><option value="William_Contreras">William Contreras (MIL) — Strong</option><option value="Austin_Riley">Austin Riley (ATL) — Strong</option><option value="Carlos_Santana">Carlos Santana (MIN) — Strong</option><option value="Salvador_Perez">Salvador Perez (KC) — Moderate</option><option value="Elly_De_La_Cruz">Elly De La Cruz (CIN) — Moderate</option><option value="Riley_Greene">Riley Greene (DET) — Moderate</option><option value="Colt_Keith">Colt Keith (DET) — Moderate</option><option value="Rafael_Devers">Rafael Devers (BOS) — Moderate</option><option value="Gavin_Sheets">Gavin Sheets (CWS) — Moderate</option><option value="Masyn_Winn">Masyn Winn (STL) — Moderate</option><option value="Byron_Buxton">Byron Buxton (MIN) — Moderate</option><option value="Yandy_Diaz">Yandy Diaz (TB) — Moderate</option><option value="Juan_Soto">Juan Soto (NYM) — Moderate</option><option value="Trea_Turner">Trea Turner (PHI) — Moderate</option><option value="Nolan_Arenado">Nolan Arenado (ARI) — Developing</option><option value="Josh_Naylor">Josh Naylor (ARI) — Developing</option><option value="Cal_Raleigh">Cal Raleigh (SEA) — Developing</option><option value="Jazz_Chisholm_Jr">Jazz Chisholm Jr (NYY) — Developing</option><option value="Jose_Siri">Jose Siri (TB) — Developing</option><option value="Freddie_Freeman">Freddie Freeman (LAD) — Good</option><option value="Manny_Machado">Manny Machado (SD) — Good</option><option value="Julio_Rodriguez">Julio Rodriguez (SEA) — Good</option><option value="Matt_Chapman">Matt Chapman (SF) — Good</option><option value="Anthony_Santander">Anthony Santander (TOR) — Good</option><option value="Yordan_Alvarez">Yordan Alvarez (HOU) — Good</option><option value="Ketel_Marte">Ketel Marte (ARI) — Good</option><option value="Oneil_Cruz">Oneil Cruz (PIT) — Fair</option><option value="Adolis_Garcia">Adolis Garcia (TEX) — Fair</option><option value="Bryan_Reynolds">Bryan Reynolds (PIT) — Fair</option><option value="Brendan_Rodgers">Brendan Rodgers (COL) — Fair</option>
+      <option value="">Select a player...</option><option value="Cody_Bellinger">Cody Bellinger (NYY) &mdash; Elite</option><option value="Nolan_Schanuel">Nolan Schanuel (LAA) &mdash; Elite</option><option value="Vladimir_Guerrero_Jr">Vladimir Guerrero Jr (TOR) &mdash; Elite</option><option value="JJ_Bleday">JJ Bleday (CIN) &mdash; Elite</option><option value="George_Springer">George Springer (TOR) &mdash; Elite</option><option value="Kyle_Schwarber">Kyle Schwarber (PHI) &mdash; Elite</option><option value="Ian_Happ">Ian Happ (CHC) &mdash; Elite</option><option value="Jarren_Duran">Jarren Duran (BOS) &mdash; Elite</option><option value="Gunnar_Henderson">Gunnar Henderson (BAL) &mdash; Strong</option><option value="Marcus_Semien">Marcus Semien (NYM) &mdash; Strong</option><option value="Lane_Thomas">Lane Thomas (KC) &mdash; Strong</option><option value="Andrew_Vaughn">Andrew Vaughn (CWS) &mdash; Strong</option><option value="Bobby_Witt_Jr">Bobby Witt Jr (KC) &mdash; Strong</option><option value="Bryan_De_La_Cruz">Bryan De La Cruz (PIT) &mdash; Strong</option><option value="Eugenio_Suarez">Eugenio Suarez (CIN) &mdash; Strong</option><option value="Zach_Neto">Zach Neto (LAA) &mdash; Strong</option><option value="Aaron_Judge">Aaron Judge (NYY) &mdash; Strong</option><option value="Spencer_Steer">Spencer Steer (CIN) &mdash; Strong</option><option value="Jose_Altuve">Jose Altuve (HOU) &mdash; Strong</option><option value="Jake_Burger">Jake Burger (MIA) &mdash; Strong</option><option value="Nico_Hoerner">Nico Hoerner (CHC) &mdash; Strong</option><option value="Ozzie_Albies">Ozzie Albies (ATL) &mdash; Strong</option><option value="Brent_Rooker">Brent Rooker (OAK) &mdash; Strong</option><option value="Luis_Arraez">Luis Arraez (SD) &mdash; Strong</option><option value="Anthony_Volpe">Anthony Volpe (NYY) &mdash; Strong</option><option value="Ezequiel_Tovar">Ezequiel Tovar (COL) &mdash; Strong</option><option value="Michael_Conforto">Michael Conforto (SF) &mdash; Strong</option><option value="Jackson_Chourio">Jackson Chourio (MIL) &mdash; Strong</option><option value="Jose_Ramirez">Jose Ramirez (CLE) &mdash; Strong</option><option value="CJ_Abrams">CJ Abrams (WSH) &mdash; Strong</option><option value="William_Contreras">William Contreras (MIL) &mdash; Strong</option><option value="Austin_Riley">Austin Riley (ATL) &mdash; Strong</option><option value="Carlos_Santana">Carlos Santana (ARI) &mdash; Strong</option><option value="Salvador_Perez">Salvador Perez (KC) &mdash; Moderate</option><option value="Elly_De_La_Cruz">Elly De La Cruz (CIN) &mdash; Moderate</option><option value="Riley_Greene">Riley Greene (DET) &mdash; Moderate</option><option value="Colt_Keith">Colt Keith (DET) &mdash; Moderate</option><option value="Rafael_Devers">Rafael Devers (BOS) &mdash; Moderate</option><option value="Gavin_Sheets">Gavin Sheets (CWS) &mdash; Moderate</option><option value="Masyn_Winn">Masyn Winn (STL) &mdash; Moderate</option><option value="Byron_Buxton">Byron Buxton (MIN) &mdash; Moderate</option><option value="Yandy_Diaz">Yandy Diaz (TB) &mdash; Moderate</option><option value="Juan_Soto">Juan Soto (NYM) &mdash; Moderate</option><option value="Trea_Turner">Trea Turner (PHI) &mdash; Moderate</option><option value="Nolan_Arenado">Nolan Arenado (ARI) &mdash; Developing</option><option value="Josh_Naylor">Josh Naylor (SEA) &mdash; Developing</option><option value="Cal_Raleigh">Cal Raleigh (SEA) &mdash; Developing</option><option value="Jazz_Chisholm_Jr">Jazz Chisholm Jr (NYY) &mdash; Developing</option><option value="Jose_Siri">Jose Siri (LAA) &mdash; Developing</option><option value="Freddie_Freeman">Freddie Freeman (LAD) &mdash; Good</option><option value="Manny_Machado">Manny Machado (SD) &mdash; Good</option><option value="Julio_Rodriguez">Julio Rodriguez (SEA) &mdash; Good</option><option value="Matt_Chapman">Matt Chapman (SF) &mdash; Good</option><option value="Anthony_Santander">Anthony Santander (TOR) &mdash; Good</option><option value="Yordan_Alvarez">Yordan Alvarez (HOU) &mdash; Good</option><option value="Ketel_Marte">Ketel Marte (ARI) &mdash; Good</option><option value="Oneil_Cruz">Oneil Cruz (PIT) &mdash; Fair</option><option value="Adolis_Garcia">Adolis Garcia (PHI) &mdash; Fair</option><option value="Bryan_Reynolds">Bryan Reynolds (PIT) &mdash; Fair</option><option value="Brendan_Rodgers">Brendan Rodgers (BOS) &mdash; Fair</option>
     </select>
 
     <div id="player-container" style="margin-top: 2rem;">
@@ -700,19 +735,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Cody Bellinger</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CHC | 1B/CF | 2025 Season | 656 PA in 152 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | 1B/CF | 2025 Season Projection | 656 PA in 152 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.0%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0096</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">295/335</div>
@@ -726,7 +761,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>27</td>
@@ -758,9 +793,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0412</td>
@@ -805,19 +840,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Nolan Schanuel</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAA | 1B | 2025 Season | 581 PA in 142 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAA | 1B | 2025 Season Projection | 581 PA in 142 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">99.0%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0096</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">309/334</div>
@@ -831,7 +866,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>13</td>
@@ -863,9 +898,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0226</td>
@@ -904,19 +939,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Vladimir Guerrero Jr</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TOR | 1B | 2025 Season | 680 PA in 156 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">TOR | 1B | 2025 Season Projection | 680 PA in 156 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.9%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0114</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">312/342</div>
@@ -930,7 +965,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>24</td>
@@ -962,9 +997,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0348</td>
@@ -1009,19 +1044,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">JJ Bleday</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">OAK | CF | 2025 Season | 558 PA in 141 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CIN | CF | 2025 Season Projection | 558 PA in 141 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0117</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">318/338</div>
@@ -1035,7 +1070,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>18</td>
@@ -1067,9 +1102,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0330</td>
@@ -1108,19 +1143,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">George Springer</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TOR | DH/OF | 2025 Season | 586 PA in 140 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">TOR | DH/OF | 2025 Season Projection | 586 PA in 140 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0118</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">307/342</div>
@@ -1134,7 +1169,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>27</td>
@@ -1166,9 +1201,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0457</td>
@@ -1213,19 +1248,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Kyle Schwarber</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">PHI | DH/LF | 2025 Season | 724 PA in 162 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">PHI | DH/LF | 2025 Season Projection | 724 PA in 162 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0120</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">335/350</div>
@@ -1239,7 +1274,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>58</td>
@@ -1271,9 +1306,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0805</td>
@@ -1318,19 +1353,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Ian Happ</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CHC | LF | 2025 Season | 663 PA in 150 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CHC | LF | 2025 Season Projection | 663 PA in 150 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.7%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0126</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">303/338</div>
@@ -1344,7 +1379,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>13</td>
@@ -1376,9 +1411,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0204</td>
@@ -1423,19 +1458,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jarren Duran</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">BOS | CF | 2025 Season | 696 PA in 157 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">BOS | CF | 2025 Season Projection | 696 PA in 157 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #22c55e22; color: #22c55e; border: 1px solid #22c55e44;">Elite</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.7%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0134</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">311/341</div>
@@ -1449,7 +1484,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>15</td>
@@ -1481,9 +1516,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0215</td>
@@ -1528,19 +1563,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Gunnar Henderson</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">BAL | SS/3B | 2025 Season | 651 PA in 154 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">BAL | SS/3B | 2025 Season Projection | 651 PA in 154 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.5%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0153</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">318/338</div>
@@ -1554,7 +1589,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>31</td>
@@ -1586,9 +1621,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0473</td>
@@ -1633,19 +1668,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Marcus Semien</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TEX | 2B | 2025 Season | 528 PA in 127 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYM | 2B | 2025 Season Projection | 528 PA in 127 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.3%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0168</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">302/342</div>
@@ -1659,7 +1694,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>26</td>
@@ -1691,9 +1726,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0487</td>
@@ -1738,19 +1773,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Lane Thomas</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CLE | RF | 2025 Season | 522 PA in 135 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">KC | RF | 2025 Season Projection | 522 PA in 135 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.3%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0173</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">311/341</div>
@@ -1764,7 +1799,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>9</td>
@@ -1796,9 +1831,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0167</td>
@@ -1837,19 +1872,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Andrew Vaughn</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CWS | 1B/DH | 2025 Season | 447 PA in 112 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CWS | 1B/DH | 2025 Season Projection | 447 PA in 112 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0176</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">301/331</div>
@@ -1863,7 +1898,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>10</td>
@@ -1895,9 +1930,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0217</td>
@@ -1942,19 +1977,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Bobby Witt Jr</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">KC | SS | 2025 Season | 687 PA in 157 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">KC | SS | 2025 Season Projection | 687 PA in 157 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0176</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">318/338</div>
@@ -1968,7 +2003,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>18</td>
@@ -2000,9 +2035,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0262</td>
@@ -2047,19 +2082,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Bryan De La Cruz</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">PIT | LF | 2025 Season | 536 PA in 139 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">PIT | LF | 2025 Season Projection | 536 PA in 139 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0178</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">308/338</div>
@@ -2073,7 +2108,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>17</td>
@@ -2105,9 +2140,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0318</td>
@@ -2146,19 +2181,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Eugenio Suarez</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 3B | 2025 Season | 571 PA in 148 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CIN | 3B | 2025 Season Projection | 571 PA in 148 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0184</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">307/332</div>
@@ -2172,7 +2207,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>21</td>
@@ -2204,9 +2239,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0359</td>
@@ -2245,19 +2280,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Zach Neto</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAA | SS | 2025 Season | 554 PA in 128 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAA | SS | 2025 Season Projection | 554 PA in 128 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0189</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">311/331</div>
@@ -2271,7 +2306,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>25</td>
@@ -2303,9 +2338,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0449</td>
@@ -2350,19 +2385,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Aaron Judge</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | RF/DH | 2025 Season | 679 PA in 152 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | RF/DH | 2025 Season Projection | 679 PA in 152 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0191</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">333/348</div>
@@ -2376,7 +2411,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>54</td>
@@ -2408,9 +2443,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0799</td>
@@ -2455,19 +2490,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Spencer Steer</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CIN | 3B/1B | 2025 Season | 568 PA in 146 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CIN | 3B/1B | 2025 Season Projection | 568 PA in 146 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.0%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0197</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">309/334</div>
@@ -2481,7 +2516,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>19</td>
@@ -2513,9 +2548,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0327</td>
@@ -2554,19 +2589,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jose Altuve</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">HOU | 2B | 2025 Season | 654 PA in 155 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">HOU | 2B | 2025 Season Projection | 654 PA in 155 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.0%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0198</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">305/335</div>
@@ -2580,7 +2615,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>27</td>
@@ -2612,9 +2647,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0409</td>
@@ -2659,19 +2694,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jake Burger</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIA | 3B/DH | 2025 Season | 530 PA in 130 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIA | 3B/DH | 2025 Season Projection | 530 PA in 130 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.0%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0202</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">309/339</div>
@@ -2685,7 +2720,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>16</td>
@@ -2717,9 +2752,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0300</td>
@@ -2758,19 +2793,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Nico Hoerner</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CHC | 2B | 2025 Season | 653 PA in 155 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CHC | 2B | 2025 Season Projection | 653 PA in 155 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">98.0%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0205</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">303/338</div>
@@ -2784,7 +2819,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>7</td>
@@ -2816,9 +2851,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0112</td>
@@ -2863,19 +2898,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Ozzie Albies</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">ATL | 2B | 2025 Season | 667 PA in 157 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">ATL | 2B | 2025 Season Projection | 667 PA in 157 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.9%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0207</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">294/334</div>
@@ -2889,7 +2924,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>29</td>
@@ -2921,9 +2956,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0432</td>
@@ -2968,19 +3003,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Brent Rooker</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">OAK | DH/RF | 2025 Season | 630 PA in 149 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">OAK | DH/RF | 2025 Season Projection | 630 PA in 149 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0217</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">328/332</div>
@@ -2994,7 +3029,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>19</td>
@@ -3026,9 +3061,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0300</td>
@@ -3067,19 +3102,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Luis Arraez</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">SD | 1B/2B | 2025 Season | 675 PA in 154 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SD | 1B/2B | 2025 Season Projection | 675 PA in 154 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0217</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">302/342</div>
@@ -3093,7 +3128,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>6</td>
@@ -3125,9 +3160,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0095</td>
@@ -3172,19 +3207,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Anthony Volpe</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | SS | 2025 Season | 596 PA in 153 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | SS | 2025 Season Projection | 596 PA in 153 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0224</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">304/334</div>
@@ -3198,7 +3233,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>17</td>
@@ -3230,9 +3265,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0279</td>
@@ -3277,19 +3312,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Ezequiel Tovar</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">COL | SS | 2025 Season | 586 PA in 145 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">COL | SS | 2025 Season Projection | 586 PA in 145 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.7%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0226</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">322/342</div>
@@ -3303,7 +3338,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>32</td>
@@ -3335,9 +3370,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0549</td>
@@ -3376,19 +3411,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Michael Conforto</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">SF | RF | 2025 Season | 486 PA in 138 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SF | RF | 2025 Season Projection | 486 PA in 138 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.6%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0241</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">317/342</div>
@@ -3402,7 +3437,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>21</td>
@@ -3434,9 +3469,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0429</td>
@@ -3481,19 +3516,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jackson Chourio</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIL | CF | 2025 Season | 589 PA in 131 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIL | CF | 2025 Season Projection | 589 PA in 131 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.5%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0249</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">330/340</div>
@@ -3507,7 +3542,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>25</td>
@@ -3532,9 +3567,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0432</td>
@@ -3579,19 +3614,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jose Ramirez</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CLE | 3B | 2025 Season | 673 PA in 158 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CLE | 3B | 2025 Season Projection | 673 PA in 158 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.4%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0263</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">308/338</div>
@@ -3605,7 +3640,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>29</td>
@@ -3637,9 +3672,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0428</td>
@@ -3684,19 +3719,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">CJ Abrams</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">WSH | SS | 2025 Season | 635 PA in 144 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">WSH | SS | 2025 Season Projection | 635 PA in 144 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.3%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0266</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">286/326</div>
@@ -3710,7 +3745,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>18</td>
@@ -3742,9 +3777,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0278</td>
@@ -3789,19 +3824,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">William Contreras</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIL | C/DH | 2025 Season | 659 PA in 150 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIL | C/DH | 2025 Season Projection | 659 PA in 150 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0275</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">306/341</div>
@@ -3815,7 +3850,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>18</td>
@@ -3847,9 +3882,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0279</td>
@@ -3894,19 +3929,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Austin Riley</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">ATL | 3B | 2025 Season | 447 PA in 102 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">ATL | 3B | 2025 Season Projection | 447 PA in 102 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0293</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">308/338</div>
@@ -3920,7 +3955,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>23</td>
@@ -3952,9 +3987,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0526</td>
@@ -3999,19 +4034,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Carlos Santana</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIN | 1B | 2025 Season | 474 PA in 124 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 1B | 2025 Season Projection | 474 PA in 124 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #6366f122; color: #6366f1; border: 1px solid #6366f144;">Strong</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">97.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0293</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">306/336</div>
@@ -4025,7 +4060,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>11</td>
@@ -4057,9 +4092,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0240</td>
@@ -4104,19 +4139,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Salvador Perez</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">KC | C | 2025 Season | 641 PA in 155 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">KC | C | 2025 Season Projection | 641 PA in 155 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.9%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0306</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">289/334</div>
@@ -4130,7 +4165,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>18</td>
@@ -4162,9 +4197,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0280</td>
@@ -4209,19 +4244,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Elly De La Cruz</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CIN | SS | 2025 Season | 699 PA in 162 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CIN | SS | 2025 Season Projection | 699 PA in 162 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.7%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0332</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">317/342</div>
@@ -4235,7 +4270,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>26</td>
@@ -4267,9 +4302,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0378</td>
@@ -4314,19 +4349,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Riley Greene</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">DET | CF | 2025 Season | 655 PA in 157 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">DET | CF | 2025 Season Projection | 655 PA in 157 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.7%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0333</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">311/346</div>
@@ -4340,7 +4375,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>13</td>
@@ -4372,9 +4407,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0196</td>
@@ -4419,19 +4454,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Colt Keith</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">DET | 2B | 2025 Season | 468 PA in 137 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">DET | 2B | 2025 Season Projection | 468 PA in 137 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.6%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0339</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">307/342</div>
@@ -4445,7 +4480,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Hits</td>
               <td>90</td>
@@ -4470,9 +4505,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>H/PA</td>
               <td>0.1922</td>
@@ -4511,19 +4546,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Rafael Devers</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">BOS | 3B | 2025 Season | 729 PA in 163 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">BOS | 3B | 2025 Season Projection | 729 PA in 163 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.6%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0341</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">305/330</div>
@@ -4537,7 +4572,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>38</td>
@@ -4569,9 +4604,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0524</td>
@@ -4616,19 +4651,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Gavin Sheets</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">CWS | 1B/DH | 2025 Season | 545 PA in 145 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">CWS | 1B/DH | 2025 Season Projection | 545 PA in 145 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.4%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0356</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">306/341</div>
@@ -4642,7 +4677,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>13</td>
@@ -4674,9 +4709,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0240</td>
@@ -4721,19 +4756,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Masyn Winn</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">STL | SS | 2025 Season | 537 PA in 129 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">STL | SS | 2025 Season Projection | 537 PA in 129 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0382</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">311/341</div>
@@ -4747,7 +4782,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>7</td>
@@ -4772,9 +4807,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0134</td>
@@ -4819,19 +4854,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Byron Buxton</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIN | CF | 2025 Season | 542 PA in 126 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">MIN | CF | 2025 Season Projection | 542 PA in 126 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">95.9%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0408</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">312/342</div>
@@ -4845,7 +4880,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>5</td>
@@ -4877,9 +4912,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0094</td>
@@ -4924,19 +4959,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Yandy Diaz</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TB | 1B/3B | 2025 Season | 651 PA in 150 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">TB | 1B/3B | 2025 Season Projection | 651 PA in 150 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">95.3%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0468</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">304/334</div>
@@ -4950,7 +4985,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>28</td>
@@ -4982,9 +5017,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0424</td>
@@ -5029,19 +5064,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Juan Soto</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYM | RF | 2025 Season | 715 PA in 160 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYM | RF | 2025 Season Projection | 715 PA in 160 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">95.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0476</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">303/338</div>
@@ -5055,7 +5090,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>33</td>
@@ -5087,9 +5122,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0465</td>
@@ -5134,19 +5169,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Trea Turner</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">PHI | SS | 2025 Season | 639 PA in 141 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">PHI | SS | 2025 Season Projection | 639 PA in 141 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f59e0b22; color: #f59e0b; border: 1px solid #f59e0b44;">Moderate</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">95.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0494</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">307/342</div>
@@ -5160,7 +5195,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>23</td>
@@ -5192,9 +5227,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0360</td>
@@ -5239,19 +5274,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Nolan Arenado</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 3B | 2025 Season | 436 PA in 107 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 3B | 2025 Season Projection | 436 PA in 107 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #ef444422; color: #ef4444; border: 1px solid #ef444444;">Developing</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">94.4%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0564</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">316/346</div>
@@ -5265,7 +5300,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>24</td>
@@ -5290,9 +5325,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0544</td>
@@ -5337,19 +5372,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Josh Naylor</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 1B | 2025 Season | 604 PA in 147 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SEA | 1B | 2025 Season Projection | 604 PA in 147 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #ef444422; color: #ef4444; border: 1px solid #ef444444;">Developing</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">94.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0580</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">297/337</div>
@@ -5363,7 +5398,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>19</td>
@@ -5395,9 +5430,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0309</td>
@@ -5442,19 +5477,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Cal Raleigh</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">SEA | C | 2025 Season | 705 PA in 159 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SEA | C | 2025 Season Projection | 705 PA in 159 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #ef444422; color: #ef4444; border: 1px solid #ef444444;">Developing</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">93.2%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0684</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">308/338</div>
@@ -5468,7 +5503,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>19</td>
@@ -5500,9 +5535,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0271</td>
@@ -5547,19 +5582,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jazz Chisholm Jr</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | 3B | 2025 Season | 531 PA in 130 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">NYY | 3B | 2025 Season Projection | 531 PA in 130 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #ef444422; color: #ef4444; border: 1px solid #ef444444;">Developing</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">93.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0693</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">322/342</div>
@@ -5573,7 +5608,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>23</td>
@@ -5605,9 +5640,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0439</td>
@@ -5652,19 +5687,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Jose Siri</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TB | CF | 2025 Season | 449 PA in 125 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAA | CF | 2025 Season Projection | 449 PA in 125 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #ef444422; color: #ef4444; border: 1px solid #ef444444;">Developing</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">92.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0787</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">312/342</div>
@@ -5678,7 +5713,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>15</td>
@@ -5703,9 +5738,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0330</td>
@@ -5744,19 +5779,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Freddie Freeman</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAD | 1B | 2025 Season | 627 PA in 147 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">LAD | 1B | 2025 Season Projection | 627 PA in 147 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.9%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0314</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">317/342</div>
@@ -5770,7 +5805,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>36</td>
@@ -5802,9 +5837,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0579</td>
@@ -5843,19 +5878,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Manny Machado</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">SD | 3B | 2025 Season | 670 PA in 159 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SD | 3B | 2025 Season Projection | 670 PA in 159 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.8%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0323</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">308/338</div>
@@ -5869,7 +5904,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>15</td>
@@ -5901,9 +5936,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0226</td>
@@ -5942,19 +5977,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Julio Rodriguez</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">SEA | CF | 2025 Season | 663 PA in 155 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SEA | CF | 2025 Season Projection | 663 PA in 155 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.6%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0341</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">296/326</div>
@@ -5968,7 +6003,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>33</td>
@@ -6000,9 +6035,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0492</td>
@@ -6041,19 +6076,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Matt Chapman</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">SF | 3B | 2025 Season | 649 PA in 154 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">SF | 3B | 2025 Season Projection | 649 PA in 154 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.6%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0343</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">317/342</div>
@@ -6067,7 +6102,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>31</td>
@@ -6099,9 +6134,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0482</td>
@@ -6140,19 +6175,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Anthony Santander</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TOR | LF/DH | 2025 Season | 706 PA in 162 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">TOR | LF/DH | 2025 Season Projection | 706 PA in 162 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.5%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0349</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">316/341</div>
@@ -6166,7 +6201,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>35</td>
@@ -6198,9 +6233,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0491</td>
@@ -6239,19 +6274,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Yordan Alvarez</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">HOU | DH/LF | 2025 Season | 631 PA in 147 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">HOU | DH/LF | 2025 Season Projection | 631 PA in 147 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.5%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0354</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">293/333</div>
@@ -6265,7 +6300,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>12</td>
@@ -6297,9 +6332,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0196</td>
@@ -6338,19 +6373,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Ketel Marte</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 2B/DH | 2025 Season | 556 PA in 126 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">ARI | 2B/DH | 2025 Season Projection | 556 PA in 126 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #818cf822; color: #818cf8; border: 1px solid #818cf844;">Good</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">96.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0393</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">308/338</div>
@@ -6364,7 +6399,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>13</td>
@@ -6396,9 +6431,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0229</td>
@@ -6437,19 +6472,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Oneil Cruz</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">PIT | SS | 2025 Season | 544 PA in 135 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">PIT | SS | 2025 Season Projection | 544 PA in 135 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f9731622; color: #f97316; border: 1px solid #f9731644;">Fair</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">95.7%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0427</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">312/342</div>
@@ -6463,7 +6498,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>22</td>
@@ -6495,9 +6530,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0406</td>
@@ -6536,19 +6571,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Adolis Garcia</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">TEX | RF | 2025 Season | 470 PA in 118 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">PHI | RF | 2025 Season Projection | 470 PA in 118 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f9731622; color: #f97316; border: 1px solid #f9731644;">Fair</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">95.5%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0448</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">331/341</div>
@@ -6562,7 +6597,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>24</td>
@@ -6594,9 +6629,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0519</td>
@@ -6635,19 +6670,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Bryan Reynolds</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">PIT | CF | 2025 Season | 665 PA in 145 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">PIT | CF | 2025 Season Projection | 665 PA in 145 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f9731622; color: #f97316; border: 1px solid #f9731644;">Fair</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">94.9%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0513</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">326/346</div>
@@ -6661,7 +6696,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Hits</td>
               <td>106</td>
@@ -6686,9 +6721,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0494</td>
@@ -6727,19 +6762,19 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.25rem;">Brendan Rodgers</h2>
-          <p style="color: var(--text-secondary); font-size: 0.95rem;">COL | 2B | 2025 Season | 344 PA in 88 games</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">BOS | 2B | 2025 Season Projection | 344 PA in 88 games</p>
         </div>
         <span style="display: inline-block; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #f9731622; color: #f97316; border: 1px solid #f9731644;">Fair</span>
       </div>
-      
+
       <div class="stats-row" style="margin-bottom: 2rem;">
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">94.1%</div>
-          <div class="stat-label">Overall Accuracy</div>
+          <div class="stat-label">Projection Accuracy</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">0.0589</div>
-          <div class="stat-label">Avg Error / PA</div>
+          <div class="stat-label">Avg Rate Error / PA</div>
         </div>
         <div class="stat-card">
           <div class="stat-number" style="font-size: 1.5rem;">317/342</div>
@@ -6753,7 +6788,7 @@
 
       <h3 class="results-section-title">2025 Projection vs. Actual</h3>
       <table class="results-table">
-        <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Diff</th><th>Accuracy</th></tr>
+        <tr><th>Metric</th><th>UPS Projected</th><th>Actual (Confirmed)</th><th>Diff</th><th>Accuracy</th></tr>
         <tr>
               <td>Home Runs</td>
               <td>11</td>
@@ -6778,9 +6813,9 @@
 
       </table>
 
-      <h3 class="results-section-title">Rate-Based Accuracy</h3>
+      <h3 class="results-section-title">Rate-Based Accuracy (Per Plate Appearance)</h3>
       <table class="results-table">
-        <tr><th>Rate</th><th>Projected</th><th>Actual</th><th>Abs Error</th></tr>
+        <tr><th>Rate</th><th>UPS Projected</th><th>Actual</th><th>Absolute Error</th></tr>
         <tr>
               <td>HR/PA</td>
               <td>0.0310</td>
@@ -6819,7 +6854,7 @@
 
     <!-- ============================== METHODOLOGY ============================== -->
     <div class="disclaimer" style="margin-top: 3rem;">
-      <strong>Methodology:</strong> All projections are generated through a multi-stage analytical pipeline: (1) ingest plate-appearance-level Statcast data, (2) identify persistent performance patterns and causal interactions, (3) validate all discovered patterns against held-out historical data, (4) project forward using only validated, stable relationships. The system uses no proprietary scouting data, injury information, or subjective adjustments. All 2025 actuals are confirmed from Baseball Reference and StatMuse.
+      <strong>Methodology:</strong> All projections are generated through a multi-stage analytical pipeline: (1) ingest plate-appearance-level Statcast data from the 2015&ndash;2025 seasons, (2) identify persistent performance patterns and causal interactions across 72 indicators, (3) validate all discovered equations against held-out historical windows, (4) project forward using only validated, stable relationships via 500 Monte Carlo simulation paths. The system uses no proprietary scouting data, injury information, or subjective adjustments. All 2025 actuals are confirmed from Baseball Reference and StatMuse. Player teams reflect 2026 rosters.
     </div>
   </section>
 
@@ -6829,10 +6864,7 @@
 
   <script>
     function showPlayer(playerId) {
-      // Hide all player details
       document.querySelectorAll('.player-detail').forEach(el => el.style.display = 'none');
-      
-      // Show/hide the placeholder
       const placeholder = document.getElementById('no-player-selected');
       if (playerId && playerId !== '') {
         if (placeholder) placeholder.style.display = 'none';
