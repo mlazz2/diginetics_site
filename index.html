@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGINETICS — Universal Prediction Systems</title>
-    <meta name="description" content="DIGINETICS builds UPS, a domain-agnostic prediction engine that discovers causal relationships, generates interpretable equations, and produces probabilistic forecasts.">
+    <title>DIGINETICS — Predictions You Can Trust</title>
+    <meta name="description" content="DIGINETICS delivers prediction systems that show their work. Clear answers. Honest uncertainty. Actionable insights across any industry.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -221,14 +221,53 @@
             line-height: 1.7;
         }
 
-        /* WHAT WE BUILD */
-        .features-grid {
+        /* RESULTS */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .result-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.25rem 2rem;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        .result-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .result-number {
+            font-size: 2.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* PROMISES */
+        .promises-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .feature-card {
+        .promise-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -236,84 +275,51 @@
             transition: border-color 0.3s, transform 0.2s;
         }
 
-        .feature-card:hover {
+        .promise-card:hover {
             border-color: rgba(99, 102, 241, 0.3);
             transform: translateY(-2px);
         }
 
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-glow);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .feature-card h3 {
+        .promise-card h3 {
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
         }
 
-        .feature-card p {
+        .promise-card p {
             font-size: 0.9rem;
             color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* INSIGHT EXAMPLE */
+        .insight-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .insight-section .section-label {
+            margin-bottom: 1rem;
+        }
+
+        .insight-quote {
+            font-size: 1.35rem;
+            font-weight: 500;
             line-height: 1.6;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
         }
 
-        /* HOW IT WORKS */
-        .pipeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
+        .insight-quote em {
+            color: var(--accent-hover);
+            font-style: normal;
         }
 
-        .pipeline-step {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            position: relative;
-        }
-
-        .pipeline-marker {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .pipeline-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 2px solid var(--bg-primary);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-            z-index: 1;
-        }
-
-        .pipeline-line {
-            width: 2px;
-            height: 80px;
-            background: linear-gradient(to bottom, var(--accent), rgba(99, 102, 241, 0.1));
-        }
-
-        .pipeline-content {
-            padding-bottom: 2.5rem;
-        }
-
-        .pipeline-content h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-
-        .pipeline-content p {
-            font-size: 0.875rem;
+        .insight-caption {
+            font-size: 0.85rem;
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -352,55 +358,67 @@
         .domain-card p {
             font-size: 0.8rem;
             color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        /* CODE BLOCK */
-        .code-section {
-            background: var(--bg-secondary);
+        /* DIFFERENCE */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .diff-col {
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
-            margin-top: 3rem;
-            overflow-x: auto;
         }
 
-        .code-header {
+        .diff-col.them {
+            opacity: 0.6;
+        }
+
+        .diff-col h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
         }
 
-        .code-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+        .diff-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .code-dot.red { background: #ff5f57; }
-        .code-dot.yellow { background: #febc2e; }
-        .code-dot.green { background: #28c840; }
-
-        .code-label {
-            margin-left: 0.75rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+        .diff-list li {
+            font-size: 0.9rem;
             color: var(--text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
         }
 
-        pre {
-            font-family: 'JetBrains Mono', monospace;
+        .diff-list li::before {
+            position: absolute;
+            left: 0;
             font-size: 0.85rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
         }
 
-        pre .comment { color: #4a4a6a; }
-        pre .key { color: var(--accent-hover); }
-        pre .value { color: #22c55e; }
-        pre .string { color: #f59e0b; }
+        .diff-col.us .diff-list li::before {
+            content: "\2713";
+            color: var(--green);
+        }
+
+        .diff-col.them .diff-list li::before {
+            content: "\2717";
+            color: #ef4444;
+        }
 
         /* CONTACT */
         .contact-section {
@@ -443,12 +461,20 @@
                 padding: 4rem 1.25rem;
             }
 
-            .features-grid {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promises-grid {
                 grid-template-columns: 1fr;
             }
 
             .domains-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr;
             }
 
             .hero-cta {
@@ -466,9 +492,9 @@
     <nav>
         <a href="#" class="logo">DIGI<span>NETICS</span></a>
         <ul class="nav-links">
-            <li><a href="#product">Product</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="#domains">Domains</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#difference">Why Us</a></li>
+            <li><a href="#industries">Industries</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -476,166 +502,124 @@
     <div class="hero">
         <div class="hero-badge">
             <span class="dot"></span>
-            Universal Prediction Systems v2.5
+            Universal Prediction Systems
         </div>
-        <h1>Predictions you can<br><span class="gradient">actually understand.</span></h1>
-        <p>DIGINETICS builds UPS &mdash; a domain-agnostic prediction engine that discovers causal relationships in your data, generates interpretable equations, and produces probabilistic forecasts. One engine. Any industry. No black boxes.</p>
+        <h1>Know what's coming.<br><span class="gradient">Know why.</span></h1>
+        <p>DIGINETICS builds prediction systems that don't just forecast &mdash; they explain. Our engine finds the hidden drivers in your data, tells you what's going to happen, and shows you exactly why. One platform, any industry, no black boxes.</p>
         <div class="hero-cta">
             <a href="#contact" class="btn-primary">Get in Touch</a>
-            <a href="#product" class="btn-secondary">Learn More</a>
+            <a href="#results" class="btn-secondary">See Results</a>
         </div>
     </div>
 
-    <section id="product">
-        <div class="section-label">What We Build</div>
-        <h2 class="section-title">One engine. Every domain.</h2>
-        <p class="section-subtitle">UPS replaces black-box ML with transparent, causal prediction. Swap a config file to switch industries &mdash; no code changes required.</p>
+    <section id="results">
+        <div class="section-label">Real Results</div>
+        <h2 class="section-title">Predictions that actually work.</h2>
+        <p class="section-subtitle">Validated on real-world data across multiple industries. Not hypothetical &mdash; measured.</p>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">&#x1D453;</div>
-                <h3>Interpretable Equations</h3>
-                <p>Symbolic regression discovers human-readable formulas from your data. See exactly why a prediction was made, audit it, and trust it.</p>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-number">93%</div>
+                <div class="result-label">Directional accuracy on<br>30-day forecasts</div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&Delta;</div>
-                <h3>Causal Discovery</h3>
-                <p>Goes beyond correlation. UPS models how upstream metrics propagate through causal hierarchies to drive outcomes.</p>
+            <div class="result-card">
+                <div class="result-number">4</div>
+                <div class="result-label">Industries validated with<br>the same engine</div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&sigma;</div>
+            <div class="result-card">
+                <div class="result-number">0</div>
+                <div class="result-label">Lines of code changed<br>between domains</div>
+            </div>
+        </div>
+
+        <div class="promises-grid">
+            <div class="promise-card">
+                <h3>Answers You Can Read</h3>
+                <p>Every prediction comes with a human-readable equation. Not a billion neural network weights &mdash; an actual formula you can verify, challenge, and understand. Your analysts don't need a PhD to use it.</p>
+            </div>
+            <div class="promise-card">
+                <h3>Insights That Drive Action</h3>
+                <p>Don't just know that revenue will drop &mdash; know that it's because customer churn in segment B increased 12%, driven by a 3-day shipping delay. Our system traces causation, not just correlation.</p>
+            </div>
+            <div class="promise-card">
                 <h3>Honest Uncertainty</h3>
-                <p>Monte Carlo simulation produces probabilistic forecasts with confidence bounds. Know what you know &mdash; and what you don't.</p>
+                <p>Every forecast includes confidence bounds. We tell you what we're confident about and where the risk is. No false precision, no overconfident guesses &mdash; just the truth about what the data supports.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&harr;</div>
-                <h3>Domain-Agnostic</h3>
-                <p>YAML configuration files inject domain physics, constraints, and hierarchies. Same codebase, different config, different industry.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&lambda;</div>
-                <h3>Jump-Diffusion Modeling</h3>
-                <p>Captures both gradual trends and sudden regime shifts in temporal data. Real-world systems aren't smooth &mdash; UPS doesn't pretend they are.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&part;</div>
-                <h3>Sensitivity Analysis</h3>
-                <p>14 Greeks-style metrics quantify exactly how sensitive each output is to each input. Actionable insight, not just numbers.</p>
+            <div class="promise-card">
+                <h3>Works On Your Data</h3>
+                <p>Bring your own time-series data from any domain. Our engine adapts to your industry's rules and constraints through configuration, not custom development. Up and running in days, not months.</p>
             </div>
         </div>
 
-        <div class="code-section">
-            <div class="code-header">
-                <span class="code-dot red"></span>
-                <span class="code-dot yellow"></span>
-                <span class="code-dot green"></span>
-                <span class="code-label">domain_config.yaml</span>
-            </div>
-<pre><span class="comment"># Switch domains by changing this file. No code changes.</span>
-<span class="key">domain:</span> <span class="string">"baseball"</span>
-<span class="key">hierarchy:</span>
-  <span class="key">layer_1:</span> <span class="value">[swing_pct, chase_rate, contact_pct]</span>
-  <span class="key">layer_2:</span> <span class="value">[exit_velocity, barrel_pct, hard_hit_pct]</span>
-  <span class="key">layer_3:</span> <span class="value">[HR, BA, OBP, SLG]</span>
-<span class="key">constraints:</span>
-  <span class="key">monotonic:</span> <span class="value">[[barrel_pct, HR, positive]]</span>
-  <span class="key">bounds:</span> <span class="value">{BA: [0.0, 1.0], chase_rate: [0.0, 1.0]}</span>
-<span class="key">forecast_horizon:</span> <span class="value">30</span></pre>
+        <div class="insight-section">
+            <div class="section-label">Sample Insight</div>
+            <p class="insight-quote">"Reducing chase rate by <em>1%</em> increases exit velocity by <em>~9.5 mph</em>, which drives a projected <em>+3.2 HR</em> increase over 30 games."</p>
+            <p class="insight-caption">A real causal chain discovered by our engine from MLB player data. Not a correlation &mdash; a directional, quantified cause-and-effect relationship with propagated uncertainty. This is the kind of insight our system surfaces in every domain it touches.</p>
         </div>
     </section>
 
-    <section id="how">
-        <div class="section-label">How It Works</div>
-        <h2 class="section-title">Data in. Causal understanding out.</h2>
-        <p class="section-subtitle">UPS runs a multi-stage pipeline that progressively refines its understanding of your data.</p>
+    <section id="difference">
+        <div class="section-label">The Difference</div>
+        <h2 class="section-title">We show our work.</h2>
+        <p class="section-subtitle">Most prediction tools give you a number. We give you the number, the reason, the confidence level, and the levers you can pull to change the outcome.</p>
 
-        <div class="pipeline">
-            <div class="pipeline-step">
-                <div class="pipeline-marker">
-                    <div class="pipeline-dot"></div>
-                    <div class="pipeline-line"></div>
-                </div>
-                <div class="pipeline-content">
-                    <h3>Ingest & Feature Engineering</h3>
-                    <p>Raw time-series data is ingested, validated, and transformed into rolling windows with temporal features.</p>
-                </div>
+        <div class="diff-grid">
+            <div class="diff-col them">
+                <h3>Traditional ML / AI Tools</h3>
+                <ul class="diff-list">
+                    <li>Black-box predictions you can't explain</li>
+                    <li>Finds correlations, not causes</li>
+                    <li>Single-point forecasts with no uncertainty</li>
+                    <li>Rebuilt from scratch for each use case</li>
+                    <li>Requires a data science team to operate</li>
+                </ul>
             </div>
-            <div class="pipeline-step">
-                <div class="pipeline-marker">
-                    <div class="pipeline-dot"></div>
-                    <div class="pipeline-line"></div>
-                </div>
-                <div class="pipeline-content">
-                    <h3>Jump-Diffusion Modeling</h3>
-                    <p>Temporal dynamics are modeled with drift, volatility, and regime-shift detection to capture real-world behavior.</p>
-                </div>
-            </div>
-            <div class="pipeline-step">
-                <div class="pipeline-marker">
-                    <div class="pipeline-dot"></div>
-                    <div class="pipeline-line"></div>
-                </div>
-                <div class="pipeline-content">
-                    <h3>Symbolic Regression</h3>
-                    <p>Genetic programming discovers interpretable equations that explain relationships in the data &mdash; not black-box weights.</p>
-                </div>
-            </div>
-            <div class="pipeline-step">
-                <div class="pipeline-marker">
-                    <div class="pipeline-dot"></div>
-                    <div class="pipeline-line"></div>
-                </div>
-                <div class="pipeline-content">
-                    <h3>Causal Propagation</h3>
-                    <p>Discovered equations are composed into a causal hierarchy, propagating uncertainty through layers.</p>
-                </div>
-            </div>
-            <div class="pipeline-step">
-                <div class="pipeline-marker">
-                    <div class="pipeline-dot"></div>
-                    <div class="pipeline-line" style="background: transparent;"></div>
-                </div>
-                <div class="pipeline-content">
-                    <h3>Probabilistic Forecasts</h3>
-                    <p>Monte Carlo simulation generates forecasts with confidence intervals, validated against held-out data at every stage.</p>
-                </div>
+            <div class="diff-col us">
+                <h3>DIGINETICS</h3>
+                <ul class="diff-list">
+                    <li>Readable equations behind every prediction</li>
+                    <li>Discovers causal drivers, not just patterns</li>
+                    <li>Probabilistic forecasts with honest confidence bounds</li>
+                    <li>One engine across every industry</li>
+                    <li>Results your team can understand and act on</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="domains">
-        <div class="section-label">Validated Domains</div>
-        <h2 class="section-title">Same engine. Different config.</h2>
-        <p class="section-subtitle">UPS has been validated across multiple industries using real-world data. No domain-specific code &mdash; just a different YAML file.</p>
+    <section id="industries">
+        <div class="section-label">Industries</div>
+        <h2 class="section-title">One engine. Any domain.</h2>
+        <p class="section-subtitle">Our system has been validated across industries using real data. Same engine, different configuration &mdash; the insights adapt to your world.</p>
 
         <div class="domains-grid">
             <div class="domain-card">
                 <div class="domain-icon">&#9918;</div>
-                <h3>Sports Analytics</h3>
-                <p>Player performance prediction, causal driver analysis, front-office decision support</p>
+                <h3>Sports</h3>
+                <p>Player performance forecasting, causal driver analysis, front-office decision support</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">&#128200;</div>
                 <h3>Finance</h3>
-                <p>Explainable price forecasting, risk sensitivity analysis, regime detection</p>
+                <p>Explainable price forecasting, risk quantification, regime shift detection</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">&#127973;</div>
                 <h3>Healthcare</h3>
-                <p>Patient outcome prediction, readmission risk, treatment response modeling</p>
+                <p>Patient outcome prediction, readmission risk, treatment response analysis</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">&#128230;</div>
                 <h3>Supply Chain</h3>
-                <p>Demand forecasting, disruption prediction, inventory optimization</p>
+                <p>Demand forecasting, disruption prediction, causal bottleneck identification</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
         <div class="section-label">Get In Touch</div>
-        <h2 class="section-title">Let's talk prediction.</h2>
-        <p class="section-subtitle" style="margin: 1rem auto 2rem;">Interested in what UPS can do for your data? Reach out.</p>
+        <h2 class="section-title">Ready to see what your data is really saying?</h2>
+        <p class="section-subtitle" style="margin: 1rem auto 2rem;">We'd love to show you what our engine can find in your data.</p>
         <a href="mailto:contact@diginetics.co" class="contact-email">contact@diginetics.co</a>
     </section>
 
