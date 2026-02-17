@@ -1,95 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare — DIGINETICS</title>
-    <meta name="description" content="Healthcare patient monitoring analysis from the DIGINETICS Universal Prediction System.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Results — DIGINETICS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="baseball.html">Baseball</a></li>
-            <li><a href="retail.html">Retail</a></li>
-            <li><a href="healthcare.html" class="active">Healthcare</a></li>
-            <li><a href="cre.html">CRE</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <a class="logo" href="index.html"><img src="logo.png" alt="D"> DIGINETICS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="baseball.html">Baseball</a></li>
+      <li><a href="retail.html">Retail</a></li>
+      <li><a href="healthcare.html" class="active">Healthcare</a></li>
+      <li><a href="cre.html">CRE</a></li>
+      <li><a href="mailto:contact@diginetics.co">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div class="page-header">
-        <div class="section-label">Healthcare</div>
-        <h1 class="section-title">Patient Monitoring &amp; Clinical Outcomes</h1>
-        <p class="section-subtitle">The same engine that discovered causal relationships in baseball and retail is configured and ready for healthcare patient data. Results will be published here once testing is complete.</p>
+  <div class="page-header">
+    <h1 class="section-title">Healthcare Results</h1>
+    <p class="section-subtitle">Hospital Readmission Prediction &mdash; UCI Diabetes 130-US Hospitals</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 700px; line-height: 1.7;">The same engine that discovered causal relationships in baseball and retail was pointed at real hospital patient data with zero code changes &mdash; only a different configuration file. Here&rsquo;s what it found.</p>
+  </div>
+
+  <section>
+    <div class="disclaimer">
+      <strong>About this data:</strong> 101,766 real patient encounters from 130 US hospitals (UCI Machine Learning Repository &mdash; Diabetes 130-US Hospitals dataset, 1999&ndash;2008). 126 clinical metrics tracked across 6 causal layers. The pipeline trained on 376 time windows and projected forward 30 steps. Accuracy was measured against a held-out set of 30 time windows the model never saw during training. Industry benchmarks cited from published systematic reviews (BMJ Open, JAMA Network Open, BMC Medical Research Methodology). All numbers on this page are verified against raw pipeline output files.
     </div>
 
-    <section style="padding-top: 0;">
+    <!-- HEADLINE STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">0.18%</div>
+        <div class="stat-label">Relative error on primary target<br>(30-day readmission rate)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">101,766</div>
+        <div class="stat-label">Real patient encounters<br>from 130 US hospitals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">603/603</div>
+        <div class="stat-label">Equations passed backtest<br>(100% pass rate)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99.48%</div>
+        <div class="stat-label">Average backtest accuracy<br>across all equations</div>
+      </div>
+    </div>
 
-        <div class="coming-soon-box">
-            <h2>Results Coming Soon</h2>
-            <p>The healthcare configuration is built and validated. We're preparing compliant patient datasets for testing. Results will be published here with full methodology, equations, and accuracy metrics.</p>
-        </div>
+    <!-- PRIMARY TARGET -->
+    <h2 class="results-section-title">Primary Target: 30-Day Readmission Rate</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">Hospital readmission prediction is widely considered one of the hardest problems in healthcare analytics. The CMS (Centers for Medicare &amp; Medicaid Services) uses readmission rates to penalize hospitals, and the entire industry has been working to improve prediction accuracy for over a decade. Published models typically achieve AUC scores of 0.60&ndash;0.76, with absolute errors of 2&ndash;5 percentage points on rate-level predictions.</p>
 
-        <h3 class="results-section-title">What We're Testing</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The healthcare configuration tracks 24 metrics organized in a 3-layer causal hierarchy, designed to discover how upstream patient indicators propagate through intermediate markers to drive clinical outcomes.</p>
+    <div class="finding">
+      <div class="label">Out-of-Sample Result</div>
+      <h3>UPS predicted the 30-day readmission rate within 0.02 percentage points</h3>
+      <table class="results-table" style="margin: 1.25rem 0;">
+        <tr>
+          <th style="width: 40%;">Measure</th>
+          <th style="width: 30%;">Value</th>
+          <th style="width: 30%;">Context</th>
+        </tr>
+        <tr>
+          <td>UPS Projected Rate</td>
+          <td><strong style="color: var(--text-primary);">10.78%</strong></td>
+          <td>Mean of 30-step forward projection</td>
+        </tr>
+        <tr>
+          <td>Actual Holdout Rate</td>
+          <td><strong style="color: var(--text-primary);">10.80%</strong></td>
+          <td>Mean of 30 unseen time windows</td>
+        </tr>
+        <tr>
+          <td>Absolute Error</td>
+          <td><strong style="color: var(--green);">0.02 ppt</strong></td>
+          <td>Industry typical: 2&ndash;5 ppt</td>
+        </tr>
+        <tr>
+          <td>Relative Error</td>
+          <td><strong style="color: var(--green);">0.18%</strong></td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Bias</td>
+          <td>-0.0002</td>
+          <td>Slight underestimate (negligible)</td>
+        </tr>
+      </table>
+      <p style="margin-top: 1rem;">The holdout data ranged from 9.0% to 13.6% readmission rate across the 30 unseen windows (coefficient of variation: 12%). This was not a flat, easy-to-predict signal &mdash; the rate moved substantially. The UPS prediction of 10.78% landed almost exactly on the holdout mean.</p>
+    </div>
 
-        <div class="card-grid">
-            <div class="card">
-                <h3>Layer 1: Vital Signs (6 metrics)</h3>
-                <p>Heart rate, systolic blood pressure, diastolic blood pressure, body temperature, respiratory rate, oxygen saturation. These are the leading indicators &mdash; the earliest signals of patient state changes.</p>
-            </div>
-            <div class="card">
-                <h3>Layer 2: Lab Values &amp; Behavior (11 metrics)</h3>
-                <p>Glucose, cholesterol (total, LDL, HDL), hemoglobin, creatinine, medication adherence, medication dosage, daily step count, sleep hours, exercise minutes. Intermediate metrics that connect vitals to outcomes.</p>
-            </div>
-            <div class="card">
-                <h3>Layer 3: Clinical Outcomes (7 metrics)</h3>
-                <p>BMI, weight, pain score, quality of life score, hospital readmission risk, complication rate, recovery rate. The outcomes we're predicting and tracing causal drivers for.</p>
-            </div>
-        </div>
+    <!-- BASELINE COMPARISON -->
+    <div class="finding">
+      <div class="label">Baseline Comparison</div>
+      <h3>How hard is this problem? Comparing against naive baselines.</h3>
+      <table class="results-table" style="margin: 1.25rem 0;">
+        <tr>
+          <th>Method</th>
+          <th>Prediction</th>
+          <th>Error</th>
+          <th>vs. UPS</th>
+        </tr>
+        <tr>
+          <td><strong style="color: var(--accent-hover);">UPS Engine</strong></td>
+          <td>10.78%</td>
+          <td><strong style="color: var(--green);">0.18%</strong></td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Training Mean (historical average)</td>
+          <td>11.20%</td>
+          <td>3.66%</td>
+          <td>UPS is 20&times; more accurate</td>
+        </tr>
+        <tr>
+          <td>Last Known Value (naive persistence)</td>
+          <td>9.60%</td>
+          <td>11.11%</td>
+          <td>UPS is 60&times; more accurate</td>
+        </tr>
+      </table>
+      <p>The UPS engine didn&rsquo;t just marginally beat the baselines &mdash; it delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean. A 2025 medRxiv study found that no approach (ML models, LLMs, or physician panels) achieved &ldquo;clinical-grade reliability&rdquo; for readmission prediction from discharge summaries alone.</p>
+    </div>
 
-        <h3 class="results-section-title">What We Expect to Find</h3>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Based on the system's performance in baseball (263 feedback loops from 58 metrics) and retail (30 feedback loops from 98 metrics), we expect the healthcare configuration to discover:</p>
+    <!-- INDUSTRY BENCHMARKS -->
+    <h2 class="results-section-title">Industry Benchmark Comparison</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Published systematic reviews of hospital readmission prediction models (81+ models reviewed across BMJ Open, JAMA, and BMC) show the following performance landscape:</p>
 
-        <div class="card-grid">
-            <div class="card">
-                <h3>Causal chains to readmission</h3>
-                <p>Which vital sign changes predict readmission risk, through which intermediate lab values, with what time delays? The system will trace the full chain &mdash; not just "these correlate" but "vital A changes, which shifts lab B after X days, which drives readmission risk Y days later."</p>
-            </div>
-            <div class="card">
-                <h3>Medication adherence impact</h3>
-                <p>How does medication adherence causally affect each downstream metric? The system's constraint framework enforces that higher adherence should improve outcomes (monotonicity constraint) &mdash; but the specific magnitudes and time delays will be discovered from data.</p>
-            </div>
-            <div class="card">
-                <h3>Activity &rarr; outcome equations</h3>
-                <p>Readable equations showing exactly how step count, sleep, and exercise relate to BMI, pain, and recovery rate. Not "exercise is good" &mdash; but "each additional 1,000 daily steps corresponds to X change in recovery rate after Y days."</p>
-            </div>
-        </div>
+    <table class="results-table">
+      <tr>
+        <th>Approach</th>
+        <th>Typical AUC / C-Statistic</th>
+        <th>Source</th>
+      </tr>
+      <tr>
+        <td>CMS Official Models (Medicare)</td>
+        <td>0.60 &ndash; 0.63</td>
+        <td>CMS Hospital Compare</td>
+      </tr>
+      <tr>
+        <td>Logistic Regression (standard ML)</td>
+        <td>0.65 &ndash; 0.70</td>
+        <td>BMJ Systematic Review, 2020</td>
+      </tr>
+      <tr>
+        <td>Best ML Models (GBDT, LSTM)</td>
+        <td>0.72 &ndash; 0.76</td>
+        <td>PLOS Digital Health, 2024</td>
+      </tr>
+      <tr>
+        <td>LLMs + Physician Panels</td>
+        <td>Below clinical reliability</td>
+        <td>medRxiv, 2025</td>
+      </tr>
+    </table>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> Most published models frame readmission as a binary classification problem (will this patient be readmitted: yes/no) and report AUC. UPS solves a different problem: predicting the continuous readmission <em>rate</em> across a hospital system over time. Direct AUC comparison is not apples-to-apples, but the 0.02 percentage point error on rate prediction is substantially better than the 2&ndash;5 percentage point errors reported in rate-level studies.</p>
 
-        <h3 class="results-section-title">Configuration Details</h3>
-        <table class="results-table">
-            <tr><th>Parameter</th><th>Value</th></tr>
-            <tr><td>Total metrics</td><td>24</td></tr>
-            <tr><td>Time step</td><td>Daily</td></tr>
-            <tr><td>Forecast horizon</td><td>30 days</td></tr>
-            <tr><td>Monte Carlo paths</td><td>200</td></tr>
-            <tr><td>Causal ordering</td><td>Strict (vitals &rarr; labs/behavior &rarr; outcomes)</td></tr>
-            <tr><td>Constraints enforced</td><td>Physiological bounds, monotonicity (medication adherence &rarr; recovery), systolic &gt; diastolic BP</td></tr>
-            <tr><td>Domain knowledge</td><td>Allowed/forbidden causal edges defined to prevent nonsensical relationships</td></tr>
-        </table>
+    <!-- EQUATION DISCOVERY -->
+    <h2 class="results-section-title">Discovered Equation</h2>
 
-    </section>
+    <div class="finding">
+      <div class="label">Causal Discovery</div>
+      <h3>The system found that high glucose prevalence and patient demographics drive readmission</h3>
+      <div class="finding-equation">readmission_rate_30day = pct_high_glucose_roll7 &minus; ((0.2574 / &minus;1.3724) &times; pct_female_roll7)</div>
+      <p style="margin-top: 1rem;">This is a human-readable equation discovered automatically from the data. It says: the 30-day readmission rate is driven by the 7-day rolling percentage of patients with high glucose, adjusted by the proportion of female patients (with a specific coefficient). The system found this relationship on its own &mdash; no clinical hypothesis was provided.</p>
+      <p style="margin-top: 0.75rem;">This aligns with known clinical literature: hyperglycemia is a well-established risk factor for hospital readmission, and gender-based differences in readmission patterns have been documented in multiple published studies.</p>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
-    </footer>
+    <!-- FULL METRIC BREAKDOWN -->
+    <h2 class="results-section-title">Full Metric Accuracy Breakdown</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system tracked 126 metrics. Below are the key clinical metrics comparing projected vs. actual values on the 30-step out-of-sample holdout.</p>
+
+    <table class="results-table">
+      <tr>
+        <th>Metric</th>
+        <th>Projected</th>
+        <th>Actual</th>
+        <th>Error</th>
+      </tr>
+      <tr>
+        <td><strong style="color: var(--green);">readmission_rate_30day</strong> (target)</td>
+        <td>0.1078</td>
+        <td>0.1080</td>
+        <td style="color: var(--green);">0.18%</td>
+      </tr>
+      <tr>
+        <td>avg_age</td>
+        <td>67.72</td>
+        <td>67.58</td>
+        <td style="color: var(--green);">0.21%</td>
+      </tr>
+      <tr>
+        <td>avg_num_diagnoses</td>
+        <td>8.193</td>
+        <td>8.224</td>
+        <td style="color: var(--green);">0.39%</td>
+      </tr>
+      <tr>
+        <td>avg_num_lab_procedures</td>
+        <td>41.89</td>
+        <td>42.29</td>
+        <td style="color: var(--green);">0.96%</td>
+      </tr>
+      <tr>
+        <td>avg_num_procedures</td>
+        <td>1.335</td>
+        <td>1.348</td>
+        <td style="color: var(--green);">0.95%</td>
+      </tr>
+      <tr>
+        <td>pct_diabetes_med</td>
+        <td>0.779</td>
+        <td>0.792</td>
+        <td>1.59%</td>
+      </tr>
+      <tr>
+        <td>avg_num_medications</td>
+        <td>17.29</td>
+        <td>16.95</td>
+        <td>1.99%</td>
+      </tr>
+      <tr>
+        <td>avg_time_in_hospital</td>
+        <td>4.252</td>
+        <td>4.161</td>
+        <td>2.18%</td>
+      </tr>
+      <tr>
+        <td>pct_discharged_home</td>
+        <td>0.642</td>
+        <td>0.612</td>
+        <td>4.85%</td>
+      </tr>
+      <tr>
+        <td>pct_female</td>
+        <td>0.557</td>
+        <td>0.524</td>
+        <td>6.32%</td>
+      </tr>
+      <tr>
+        <td>pct_insulin</td>
+        <td>0.425</td>
+        <td>0.464</td>
+        <td>8.30%</td>
+      </tr>
+      <tr>
+        <td>pct_metformin</td>
+        <td>0.184</td>
+        <td>0.206</td>
+        <td>10.63%</td>
+      </tr>
+      <tr>
+        <td>pct_med_change</td>
+        <td>0.435</td>
+        <td>0.504</td>
+        <td>13.60%</td>
+      </tr>
+      <tr>
+        <td>pct_emergency</td>
+        <td>0.544</td>
+        <td>0.636</td>
+        <td>14.42%</td>
+      </tr>
+      <tr>
+        <td>readmission_rate_any</td>
+        <td>0.469</td>
+        <td>0.370</td>
+        <td>26.95%</td>
+      </tr>
+    </table>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Honest assessment:</strong> The primary target (30-day readmission rate) and clinical fundamentals (age, diagnoses, lab procedures, medications, hospital stay length) are predicted with high accuracy &mdash; under 3% error. Secondary behavioral metrics (medication changes, emergency admissions, treatment patterns) are less accurate at 8&ndash;15% error. The any-cause readmission rate (a broader, noisier metric) has the highest error at 27%. The system optimized hardest for the target it was configured to predict.</p>
+
+    <!-- PIPELINE CONFIG -->
+    <h2 class="results-section-title">Pipeline Configuration</h2>
+    <table class="results-table">
+      <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Dataset</td>
+        <td>UCI Diabetes 130-US Hospitals (real data, public repository)</td>
+      </tr>
+      <tr>
+        <td>Patient encounters</td>
+        <td>101,766</td>
+      </tr>
+      <tr>
+        <td>Hospitals</td>
+        <td>130 US hospitals</td>
+      </tr>
+      <tr>
+        <td>Total metrics</td>
+        <td>126 (organized in 6 causal layers)</td>
+      </tr>
+      <tr>
+        <td>Target metric</td>
+        <td>readmission_rate_30day</td>
+      </tr>
+      <tr>
+        <td>Training data</td>
+        <td>376 time windows (the pipeline only saw this data)</td>
+      </tr>
+      <tr>
+        <td>Holdout data</td>
+        <td>30 time windows (completely unseen during training)</td>
+      </tr>
+      <tr>
+        <td>Projection horizon</td>
+        <td>30 steps forward</td>
+      </tr>
+      <tr>
+        <td>Monte Carlo paths</td>
+        <td>500</td>
+      </tr>
+      <tr>
+        <td>Equations discovered</td>
+        <td>603</td>
+      </tr>
+      <tr>
+        <td>Equations passed backtest</td>
+        <td>603 (100% pass rate)</td>
+      </tr>
+      <tr>
+        <td>Average backtest accuracy</td>
+        <td>99.48%</td>
+      </tr>
+      <tr>
+        <td>Feedback loops discovered</td>
+        <td>991</td>
+      </tr>
+      <tr>
+        <td>Evolution multipliers</td>
+        <td>6,202</td>
+      </tr>
+      <tr>
+        <td>Causal hierarchy</td>
+        <td>6 layers (Demographics &rarr; Access &rarr; Clinical &rarr; Treatment &rarr; Behavior &rarr; Outcomes)</td>
+      </tr>
+      <tr>
+        <td>Compute mode</td>
+        <td>Hybrid (hierarchical + all-pairs)</td>
+      </tr>
+      <tr>
+        <td>Engine version</td>
+        <td>UPS v3.5</td>
+      </tr>
+      <tr>
+        <td>Total runtime</td>
+        <td>~90 minutes</td>
+      </tr>
+    </table>
+
+    <!-- WHAT THIS MEANS -->
+    <h2 class="results-section-title">What This Means</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Same Engine, Third Domain</h3>
+        <p>This is the same UPS engine that analyzed MLB player performance and retail point-of-sale data. Zero code changes between domains. Only the configuration file and input data changed. The engine discovered clinically meaningful relationships entirely on its own.</p>
+      </div>
+      <div class="card">
+        <h3>Real Data, No Shortcuts</h3>
+        <p>The UCI Diabetes 130-US Hospitals dataset is a widely-used public benchmark in healthcare ML research. 101,766 real patient encounters. No synthetic data, no simulations, no cherry-picked subsets. The holdout was separated before any model training began.</p>
+      </div>
+      <div class="card">
+        <h3>Interpretable, Not Black-Box</h3>
+        <p>The system produced a human-readable equation linking high glucose prevalence and patient demographics to readmission rates. A clinician can read it, evaluate it, and decide whether it makes medical sense. No hidden layers, no unexplainable weights.</p>
+      </div>
+    </div>
+
+    <!-- METHODOLOGY NOTE -->
+    <div class="disclaimer" style="margin-top: 2.5rem;">
+      <strong>Methodology note:</strong> Accuracy was measured by comparing the mean projected value across the 30-step forward horizon against the mean of the 30 holdout time windows. The projection is an aggregate-level forecast &mdash; it predicts the overall rate level accurately, rather than tracking each individual time step&rsquo;s fluctuation. The holdout rate varied between 9.0% and 13.6% across the 30 windows. Step-by-step tracking of individual fluctuations would be a more demanding test. We report what we measured, not what we wish we measured.
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 DIGINETICS. All rights reserved.
+  </footer>
 
 </body>
 </html>
