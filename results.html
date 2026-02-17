@@ -44,7 +44,8 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
-        .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.15em; color: var(--text-primary); text-decoration: none; }
+        .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.15em; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+        .logo img { height: 32px; width: auto; }
         .logo span { color: var(--accent); }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
@@ -211,7 +212,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">DIGI<span>NETICS</span></a>
+        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGI<span>NETICS</span></a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="results.html" style="color: var(--text-primary);">Results</a></li>
