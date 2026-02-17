@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founders — DIGINETICS</title>
+    <meta name="description" content="Meet the founders of DIGINETICS and learn why this platform is uniquely difficult to replicate.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        .founder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .founder-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .founder-card .founder-initials {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        .founder-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .founder-card .founder-title {
+            font-size: 0.9rem;
+            color: var(--accent-hover);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .founder-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .moat-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-hover);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        .moat-item {
+            display: flex;
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        .moat-item-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .moat-item-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .vision-statement {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        .vision-statement h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .vision-statement p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="baseball.html">Baseball</a></li>
+            <li><a href="retail.html">Retail</a></li>
+            <li><a href="healthcare.html">Healthcare</a></li>
+            <li><a href="cre.html">CRE</a></li>
+            <li><a href="founders.html" class="active">Founders</a></li>
+            <li><a href="mailto:contact@diginetics.co">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <div class="section-label">About</div>
+        <h1 class="section-title">The Team Behind DIGINETICS</h1>
+        <p class="section-subtitle">We built a prediction platform that works across industries because we believe the best insights come from one system that adapts &mdash; not dozens of custom builds that break.</p>
+    </div>
+
+    <section style="padding-top: 0;">
+
+        <!-- FOUNDERS -->
+        <div class="founder-grid">
+            <div class="founder-card">
+                <div class="founder-initials">ML</div>
+                <h3>Michael Lazzarotti</h3>
+                <div class="founder-title">CEO &amp; Co-Founder</div>
+                <p>Designed and built the core prediction platform from the ground up. Led the system through three industry deployments &mdash; baseball, retail, and healthcare &mdash; each achieving 97%+ accuracy with zero code changes. Responsible for the technical vision, product architecture, and the R&amp;D process that turned a single-sport prototype into a universal prediction engine.</p>
+            </div>
+            <div class="founder-card">
+                <div class="founder-initials">EO</div>
+                <h3>Evan O'Connell</h3>
+                <div class="founder-title">CFO, COO &amp; Co-Founder</div>
+                <p>Leads business operations, financial strategy, and go-to-market planning. Responsible for identifying high-value verticals, structuring commercial partnerships, and building the operational foundation to scale from proof-of-concept to revenue. Ensures the business side moves as fast as the technology.</p>
+            </div>
+        </div>
+
+        <!-- VISION -->
+        <div class="vision-statement">
+            <h2>Our Thesis</h2>
+            <p>Every industry has the same problem: too much data, not enough understanding of what's actually driving outcomes. We built one platform that solves this universally. The same engine that predicts Aaron Judge's home run rate predicts hospital readmission rates and retail revenue shifts. That's not a coincidence &mdash; it's the architecture.</p>
+        </div>
+
+        <!-- DEFENSIBILITY / MOAT -->
+        <h2 class="results-section-title">Why This Is Hard to Replicate</h2>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">Building a prediction model for one domain is straightforward. Building a single platform that works across unrelated industries at 97%+ accuracy &mdash; without changing code &mdash; requires solving problems most teams never encounter.</p>
+
+        <div class="moat-item">
+            <div class="moat-number">1</div>
+            <div class="moat-item-content">
+                <h3>Integration complexity, not algorithmic novelty</h3>
+                <p>The platform combines sensitivity analysis, simulation, relationship discovery, feedback loop detection, and regime shift tracking into one coherent system. Each component is useful alone; the value comes from how they interact. A competitor would need to solve not just each piece, but the integration &mdash; which took years of iterative refinement where each component's output feeds the next.</p>
+            </div>
+        </div>
+
+        <div class="moat-item">
+            <div class="moat-number">2</div>
+            <div class="moat-item-content">
+                <h3>Three-stage validation prevents the shortcuts competitors take</h3>
+                <p>Most prediction systems train a model and test it once. Ours validates each component independently before integration &mdash; three separate validation stages, each refining only its piece. This prevents the error compounding that plagues complex systems and is the reason our accuracy holds across domains. Skipping this process (as most teams do) produces models that look good in testing and fail in production.</p>
+            </div>
+        </div>
+
+        <div class="moat-item">
+            <div class="moat-number">3</div>
+            <div class="moat-item-content">
+                <h3>Domain-agnostic architecture is the moat, not just a feature</h3>
+                <p>The platform adapts to new industries through configuration, not code. Baseball, retail, and healthcare each required only a settings file change &mdash; defining which metrics matter, how they relate, and what constraints apply. This architecture took significant upfront R&amp;D, but now means we can enter a new vertical in days while a competitor builds from scratch for months. Every new deployment widens the gap.</p>
+            </div>
+        </div>
+
+        <div class="moat-item">
+            <div class="moat-number">4</div>
+            <div class="moat-item-content">
+                <h3>Relationship discovery guided by sensitivity analysis</h3>
+                <p>The platform doesn't just find correlations &mdash; it computes how sensitive each metric is to every other metric across multiple dimensions, then uses those sensitivities to guide what relationships to explore. This means it finds the right relationships faster and more reliably than brute-force approaches. The sensitivity framework computes interactions across 14 dimensions per metric pair &mdash; a search space competitors would need years to map out.</p>
+            </div>
+        </div>
+
+        <div class="moat-item">
+            <div class="moat-number">5</div>
+            <div class="moat-item-content">
+                <h3>Compound performance effects create prediction advantages that grow over time</h3>
+                <p>The platform detected over 30,000 interconnected performance cycles across 60 MLB players alone. These compound effects &mdash; where changes in one metric cascade through others &mdash; are invisible to traditional models. Each new dataset adds to the platform's understanding of how compound effects behave across domains, creating a data-informed advantage that deepens with every deployment.</p>
+            </div>
+        </div>
+
+        <div class="moat-item">
+            <div class="moat-number">6</div>
+            <div class="moat-item-content">
+                <h3>Dual validation catches errors that single-method systems miss</h3>
+                <p>Every relationship is validated two independent ways &mdash; numerically and analytically. If both methods agree, the relationship is real. If they disagree, it's flagged. This dual-check approach is why the platform achieves near-perfect validation rates (100% in healthcare, 99.4% in retail) &mdash; and why competitors who use a single validation method will consistently have lower accuracy at scale.</p>
+            </div>
+        </div>
+
+        <!-- BOTTOM LINE -->
+        <div class="disclaimer" style="margin-top: 2.5rem;">
+            <strong>The bottom line:</strong> Any team can build a prediction model for one domain. The defensibility of DIGINETICS is that it took years of R&amp;D to build a platform where all these components work together, validate each other, and adapt to new industries without engineering effort. That integration &mdash; not any single algorithm &mdash; is what a competitor would need to replicate. And every new vertical we deploy makes replication harder, because we learn how the platform behaves across domains while they're still building for one.
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="mailto:contact@diginetics.co" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Get in Touch</a>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">contact@diginetics.co</p>
+        </div>
+
+    </section>
+
+    <footer>
+        &copy; 2026 DIGINETICS. All rights reserved.
+    </footer>
+
+</body>
+</html>
