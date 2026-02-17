@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGINETICS — Universal Prediction Systems</title>
+    <meta name="description" content="DIGINETICS builds UPS, a domain-agnostic prediction engine that discovers causal relationships, generates interpretable equations, and produces probabilistic forecasts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --text-primary: #e8e8ed;
+            --text-secondary: #8888a0;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-hover: #818cf8;
+            --green: #22c55e;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-hover);
+            width: fit-content;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 620px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
+        }
+
+        /* WHAT WE BUILD */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* HOW IT WORKS */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .pipeline-step {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .pipeline-marker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .pipeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            z-index: 1;
+        }
+
+        .pipeline-line {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--accent), rgba(99, 102, 241, 0.1));
+        }
+
+        .pipeline-content {
+            padding-bottom: 2.5rem;
+        }
+
+        .pipeline-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .pipeline-content p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* DOMAINS */
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .domain-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .domain-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .domain-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .domain-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .domain-card p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* CODE BLOCK */
+        .code-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            overflow-x: auto;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .code-dot.red { background: #ff5f57; }
+        .code-dot.yellow { background: #febc2e; }
+        .code-dot.green { background: #28c840; }
+
+        .code-label {
+            margin-left: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        pre .comment { color: #4a4a6a; }
+        pre .key { color: var(--accent-hover); }
+        pre .value { color: #22c55e; }
+        pre .string { color: #f59e0b; }
+
+        /* CONTACT */
+        .contact-section {
+            text-align: center;
+            padding: 6rem 2rem 8rem;
+        }
+
+        .contact-email {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 600;
+            color: var(--accent-hover);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-email:hover {
+            color: var(--text-primary);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.25rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .domains-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">DIGI<span>NETICS</span></a>
+        <ul class="nav-links">
+            <li><a href="#product">Product</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#domains">Domains</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Universal Prediction Systems v2.5
+        </div>
+        <h1>Predictions you can<br><span class="gradient">actually understand.</span></h1>
+        <p>DIGINETICS builds UPS &mdash; a domain-agnostic prediction engine that discovers causal relationships in your data, generates interpretable equations, and produces probabilistic forecasts. One engine. Any industry. No black boxes.</p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn-primary">Get in Touch</a>
+            <a href="#product" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+
+    <section id="product">
+        <div class="section-label">What We Build</div>
+        <h2 class="section-title">One engine. Every domain.</h2>
+        <p class="section-subtitle">UPS replaces black-box ML with transparent, causal prediction. Swap a config file to switch industries &mdash; no code changes required.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#x1D453;</div>
+                <h3>Interpretable Equations</h3>
+                <p>Symbolic regression discovers human-readable formulas from your data. See exactly why a prediction was made, audit it, and trust it.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&Delta;</div>
+                <h3>Causal Discovery</h3>
+                <p>Goes beyond correlation. UPS models how upstream metrics propagate through causal hierarchies to drive outcomes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&sigma;</div>
+                <h3>Honest Uncertainty</h3>
+                <p>Monte Carlo simulation produces probabilistic forecasts with confidence bounds. Know what you know &mdash; and what you don't.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&harr;</div>
+                <h3>Domain-Agnostic</h3>
+                <p>YAML configuration files inject domain physics, constraints, and hierarchies. Same codebase, different config, different industry.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&lambda;</div>
+                <h3>Jump-Diffusion Modeling</h3>
+                <p>Captures both gradual trends and sudden regime shifts in temporal data. Real-world systems aren't smooth &mdash; UPS doesn't pretend they are.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&part;</div>
+                <h3>Sensitivity Analysis</h3>
+                <p>14 Greeks-style metrics quantify exactly how sensitive each output is to each input. Actionable insight, not just numbers.</p>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-header">
+                <span class="code-dot red"></span>
+                <span class="code-dot yellow"></span>
+                <span class="code-dot green"></span>
+                <span class="code-label">domain_config.yaml</span>
+            </div>
+<pre><span class="comment"># Switch domains by changing this file. No code changes.</span>
+<span class="key">domain:</span> <span class="string">"baseball"</span>
+<span class="key">hierarchy:</span>
+  <span class="key">layer_1:</span> <span class="value">[swing_pct, chase_rate, contact_pct]</span>
+  <span class="key">layer_2:</span> <span class="value">[exit_velocity, barrel_pct, hard_hit_pct]</span>
+  <span class="key">layer_3:</span> <span class="value">[HR, BA, OBP, SLG]</span>
+<span class="key">constraints:</span>
+  <span class="key">monotonic:</span> <span class="value">[[barrel_pct, HR, positive]]</span>
+  <span class="key">bounds:</span> <span class="value">{BA: [0.0, 1.0], chase_rate: [0.0, 1.0]}</span>
+<span class="key">forecast_horizon:</span> <span class="value">30</span></pre>
+        </div>
+    </section>
+
+    <section id="how">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Data in. Causal understanding out.</h2>
+        <p class="section-subtitle">UPS runs a multi-stage pipeline that progressively refines its understanding of your data.</p>
+
+        <div class="pipeline">
+            <div class="pipeline-step">
+                <div class="pipeline-marker">
+                    <div class="pipeline-dot"></div>
+                    <div class="pipeline-line"></div>
+                </div>
+                <div class="pipeline-content">
+                    <h3>Ingest & Feature Engineering</h3>
+                    <p>Raw time-series data is ingested, validated, and transformed into rolling windows with temporal features.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-marker">
+                    <div class="pipeline-dot"></div>
+                    <div class="pipeline-line"></div>
+                </div>
+                <div class="pipeline-content">
+                    <h3>Jump-Diffusion Modeling</h3>
+                    <p>Temporal dynamics are modeled with drift, volatility, and regime-shift detection to capture real-world behavior.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-marker">
+                    <div class="pipeline-dot"></div>
+                    <div class="pipeline-line"></div>
+                </div>
+                <div class="pipeline-content">
+                    <h3>Symbolic Regression</h3>
+                    <p>Genetic programming discovers interpretable equations that explain relationships in the data &mdash; not black-box weights.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-marker">
+                    <div class="pipeline-dot"></div>
+                    <div class="pipeline-line"></div>
+                </div>
+                <div class="pipeline-content">
+                    <h3>Causal Propagation</h3>
+                    <p>Discovered equations are composed into a causal hierarchy, propagating uncertainty through layers.</p>
+                </div>
+            </div>
+            <div class="pipeline-step">
+                <div class="pipeline-marker">
+                    <div class="pipeline-dot"></div>
+                    <div class="pipeline-line" style="background: transparent;"></div>
+                </div>
+                <div class="pipeline-content">
+                    <h3>Probabilistic Forecasts</h3>
+                    <p>Monte Carlo simulation generates forecasts with confidence intervals, validated against held-out data at every stage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="domains">
+        <div class="section-label">Validated Domains</div>
+        <h2 class="section-title">Same engine. Different config.</h2>
+        <p class="section-subtitle">UPS has been validated across multiple industries using real-world data. No domain-specific code &mdash; just a different YAML file.</p>
+
+        <div class="domains-grid">
+            <div class="domain-card">
+                <div class="domain-icon">&#9918;</div>
+                <h3>Sports Analytics</h3>
+                <p>Player performance prediction, causal driver analysis, front-office decision support</p>
+            </div>
+            <div class="domain-card">
+                <div class="domain-icon">&#128200;</div>
+                <h3>Finance</h3>
+                <p>Explainable price forecasting, risk sensitivity analysis, regime detection</p>
+            </div>
+            <div class="domain-card">
+                <div class="domain-icon">&#127973;</div>
+                <h3>Healthcare</h3>
+                <p>Patient outcome prediction, readmission risk, treatment response modeling</p>
+            </div>
+            <div class="domain-card">
+                <div class="domain-icon">&#128230;</div>
+                <h3>Supply Chain</h3>
+                <p>Demand forecasting, disruption prediction, inventory optimization</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's talk prediction.</h2>
+        <p class="section-subtitle" style="margin: 1rem auto 2rem;">Interested in what UPS can do for your data? Reach out.</p>
+        <a href="mailto:contact@diginetics.co" class="contact-email">contact@diginetics.co</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
