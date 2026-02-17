@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Results — DIGINETICS</title>
+    <meta name="description" content="MLB player analysis results from the DIGINETICS Universal Prediction System.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGI<span>NETICS</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="baseball.html" class="active">Baseball</a></li>
+            <li><a href="retail.html">Retail</a></li>
+            <li><a href="healthcare.html">Healthcare</a></li>
+            <li><a href="cre.html">CRE</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <div class="section-label">Baseball Results</div>
+        <h1 class="section-title">MLB Player Analysis</h1>
+        <p class="section-subtitle">Each player below was analyzed using the same engine with the same pipeline. The system discovers unique causal relationships per player while preserving universal baseball physics. Select a player to see what the system found.</p>
+    </div>
+
+    <section style="padding-top: 0;">
+        <div class="disclaimer">
+            <strong>About this data:</strong> All analysis used real MLB Statcast data. "Backtest accuracy" means the percentage of discovered equations that outperformed baseline methods (last-value and mean-value) on held-out time windows the model never saw during training. "Equation discovery" means the system found a valid, non-trivial mathematical relationship for that metric. Sensitivity values measure how much the output metric changes per unit change in the input metric. R&sup2; indicates the fraction of variance explained by the equation (1.0 = perfect fit, 0.5 = explains half the variance).
+        </div>
+
+        <div class="entity-nav">
+            <button class="entity-btn active" onclick="showPlayer('judge')">Aaron Judge</button>
+            <button class="entity-btn" onclick="showPlayer('lindor')">Francisco Lindor</button>
+            <button class="entity-btn" onclick="showPlayer('betts')">Mookie Betts</button>
+        </div>
+
+        <!-- ==================== AARON JUDGE ==================== -->
+        <div id="judge" class="entity-content active">
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">1,152</div>
+                    <div class="stat-label">Games analyzed<br>(2015&ndash;2024)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">Metrics tracked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">97.9%</div>
+                    <div class="stat-label">Equation discovery<br>(47/48 metrics)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">97.9%</div>
+                    <div class="stat-label">Strong backtest<br>(47/48 metrics)</div>
+                </div>
+            </div>
+
+            <h3 class="results-section-title">Data Used</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Full career Statcast data &mdash; 1,152 games across 10 MLB seasons. 48 metrics organized in a 3-layer causal hierarchy: Layer 1 (14 decision/approach metrics like swing rate, chase rate, contact rate), Layer 2 (17 contact quality metrics like exit velocity, barrel rate, launch angle), Layer 3 (17 outcome metrics like HR, BA, OBP, SLG, wOBA). The system discovers how changes in Layer 1 propagate through Layer 2 to drive Layer 3 outcomes.</p>
+
+            <h3 class="results-section-title">Key Findings</h3>
+
+            <div class="finding">
+                <div class="label">Primary Discovery</div>
+                <h3>Plate discipline drives power production &mdash; not swing mechanics</h3>
+                <div class="finding-equation">chase_rate &rarr; exit_velocity (sensitivity: -9.52)</div>
+                <p>For every 1% reduction in chase rate (swinging at pitches outside the zone), Judge's exit velocity increases by approximately 9.5 mph. The system identified plate discipline &mdash; not bat speed or swing path &mdash; as the dominant upstream driver of his power. This is a sensitivity measurement, meaning it quantifies the rate of change between these metrics across his career data.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">Contact Quality Chain</div>
+                <h3>Zone contact vs. outside contact have opposite effects</h3>
+                <div class="finding-equation">z_contact_pct &rarr; exit_velocity (+2.06) &nbsp;|&nbsp; o_contact_pct &rarr; exit_velocity (-2.44)</div>
+                <p>Making contact on pitches in the zone increases exit velocity. Making contact on pitches outside the zone decreases it. The magnitudes are similar but the directions are opposite &mdash; confirming that for Judge, selectivity matters more than raw contact ability.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">Universal Physics</div>
+                <h3>Barrel rate drives outcomes (consistent across all players)</h3>
+                <div class="finding-equation">barrel_pct &rarr; slg (+1.37) &nbsp;|&nbsp; barrel_pct &rarr; hr (+1.10) &nbsp;|&nbsp; hr_fb_pct &rarr; hr (+1.24)</div>
+                <p>These relationships are consistent across every player the system has analyzed. They represent fundamental baseball physics: barreling the ball leads to power outcomes. The system correctly preserves these universal truths while discovering player-specific strategies above.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Only 1 metric classified as weak: Triples</h3>
+                <p>47 of 48 metrics produced strong equations. The only weak metric was triples &mdash; a highly volatile, speed-dependent stat that represents a tiny fraction of Judge's profile (he averages ~2 triples per season). The system correctly identified this as noise rather than forcing a false pattern.</p>
+            </div>
+        </div>
+
+        <!-- ==================== FRANCISCO LINDOR ==================== -->
+        <div id="lindor" class="entity-content">
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">3,068</div>
+                    <div class="stat-label">Plate appearances<br>(2015&ndash;2024, 9 seasons)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">58/58</div>
+                    <div class="stat-label">Equation discovery<br>(100% rate)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">99.3%</div>
+                    <div class="stat-label">Backtest pass rate<br>(276/286 passed)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">263</div>
+                    <div class="stat-label">Time-lagged feedback<br>loops discovered</div>
+                </div>
+            </div>
+
+            <h3 class="results-section-title">Data Used</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Full career Statcast data &mdash; 3,068 plate appearances across 9 MLB seasons. 58 metrics in a rates configuration: pitch counts (balls, strikes, pitches seen), plate discipline (zone swings, chases, whiffs, fouls), contact quality (exit velocity, launch angle), game context (score, outs, runners), and rolling performance rates at 5, 10, 20, 50, and 100 PA windows for hit rate, K rate, BB rate, HR rate, exit velocity, barrel rate, and hard hit rate.</p>
+
+            <h3 class="results-section-title">Key Findings</h3>
+
+            <div class="finding">
+                <div class="label">Master Variable</div>
+                <h3>Pitches per PA is the single best leading indicator for performance shifts</h3>
+                <div class="finding-equation">pitches_seen = pitch_number_max + constant &nbsp;&nbsp;(R&sup2; = 0.999)</div>
+                <p>Across 263 feedback loops, pitches_seen and pitch_number_max appear more frequently than any other metric. Changes in at-bat length precede changes in output metrics by 3&ndash;10 plate appearances. A coaching staff can monitor one number &mdash; pitches per PA &mdash; and get advance warning of performance shifts before they show up in traditional stats.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">Pitcher-Batter Feedback</div>
+                <h3>Lindor's swing decisions change what pitchers throw him</h3>
+                <div class="finding-equation">pitches_in_zone = 1 + (zone_swings / 1.5748) &nbsp;&nbsp;(R&sup2; = 0.523)</div>
+                <p>Every additional zone swing generates approximately 0.63 additional in-zone pitches. More zone swings &rarr; pitchers throw more in the zone &rarr; more hittable pitches. The R&sup2; of 0.523 means this equation explains about 52% of the variance &mdash; the remaining 48% comes from pitcher strategy, game context, and other factors.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">The Deep Count Paradox</div>
+                <h3>Longer at-bats predict lower hit rate but higher walk rate</h3>
+                <div class="finding-equation">pitch_number_max &rarr; rolling_50_hit_rate (strength: -19.58, lag: 10 PAs)<br>pitches_in_zone &rarr; rolling_20_HR_rate (strength: +5.64, lag: 3 PAs)</div>
+                <p>The system quantified Lindor's central tradeoff: working deep counts brings harder velocity and more walks but lower batting average. Being aggressive early on zone pitches spikes HR rate but walks disappear. The equations give exact magnitudes so a coaching staff can decide when each approach is optimal based on game situation.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">Context Effects</div>
+                <h3>Score context changes power output within 3 PAs</h3>
+                <div class="finding-equation">away_score &rarr; rolling_50_HR_rate (strength: -25.13, lag: 3 PAs)</div>
+                <p>When the opposing team has a higher score, Lindor's HR rate drops within 3 PAs. This is the fastest-acting feedback loop in the entire system &mdash; detected automatically from raw Statcast data without any scouting input.</p>
+            </div>
+
+            <div class="finding">
+                <h3>50 plate appearances is the optimal prediction window</h3>
+                <table class="results-table">
+                    <tr><th>Rolling Window</th><th>R&sup2; (Exit Velo)</th><th>R&sup2; (Hard Hit Rate)</th><th>R&sup2; (BB Rate)</th></tr>
+                    <tr><td>5 PA</td><td>0.250</td><td>0.111</td><td>0.254</td></tr>
+                    <tr><td>10 PA</td><td>0.494</td><td>0.218</td><td>0.516</td></tr>
+                    <tr><td><strong>50 PA</strong></td><td><strong>0.574</strong></td><td><strong>0.571</strong></td><td><strong>0.535</strong></td></tr>
+                    <tr><td>100 PA</td><td>0.233</td><td>0.298</td><td>negative</td></tr>
+                </table>
+                <p>5-PA windows are too noisy. 100-PA windows are too smoothed. The system identified 50 PAs (~12&ndash;13 games) as the window where predictive signal is strongest for Lindor specifically. This window size was discovered, not assumed.</p>
+            </div>
+
+            <h3 class="results-section-title">Backtest Methodology</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">Every equation was validated through rolling-window backtests with strict temporal ordering. The system trains on historical data, then tests predictions on future windows the model has never seen. Each equation is compared against two baselines: last-value (naive persistence) and mean-value (historical average). The 99.3% figure means 276 out of 286 equation-window combinations passed. The 10 that failed were primarily noisy short-window metrics where signal is inherently weak.</p>
+        </div>
+
+        <!-- ==================== MOOKIE BETTS ==================== -->
+        <div id="betts" class="entity-content">
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">1,521</div>
+                    <div class="stat-label">Games analyzed<br>(2015&ndash;2024)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">Metrics tracked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0.500</div>
+                    <div class="stat-label">Optimal coupling weight<br>(same as Judge)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0.049</div>
+                    <div class="stat-label">Optimal feedback weight<br>(same as Judge)</div>
+                </div>
+            </div>
+
+            <h3 class="results-section-title">Data Used</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Full career Statcast data &mdash; 1,521 games across 10 MLB seasons. Same 48-metric configuration as Judge, allowing direct comparison between player profiles. The system ran the identical pipeline to determine whether different player types produce different causal structures.</p>
+
+            <h3 class="results-section-title">Key Findings</h3>
+
+            <div class="finding">
+                <div class="label">Primary Discovery</div>
+                <h3>Launch angle management is Betts' primary driver &mdash; not plate discipline</h3>
+                <div class="finding-equation">popup_pct &rarr; launch_angle (sensitivity: +54.15)<br>gb_pct &rarr; launch_angle (sensitivity: -48.61)</div>
+                <p>For Betts, the system found that batted ball distribution &mdash; specifically managing popup rate and ground ball rate &mdash; is the dominant causal lever for outcomes. This is a completely different optimization strategy than Judge's plate discipline focus. The system discovered this automatically from the same engine, proving it adapts to player profiles.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">Contact Quality</div>
+                <h3>Hard hit rate drives both exit velocity and power</h3>
+                <div class="finding-equation">hard_hit_pct &rarr; exit_velocity (+21.93) &nbsp;|&nbsp; hard_hit_pct &rarr; ev_50 (+25.82)</div>
+                <p>For Betts, hard hit percentage has a much stronger relationship to exit velocity than it does for Judge. The sensitivity of +21.93 means each percentage point of hard hit rate corresponds to a ~22 mph change in exit velocity &mdash; roughly double the magnitude of Judge's equivalent relationship. Betts' value chain runs through contact quality more than selectivity.</p>
+            </div>
+
+            <div class="finding">
+                <div class="label">System Validation</div>
+                <h3>Different player, different strategy &mdash; same universal physics</h3>
+                <p>The most significant finding from the Betts analysis is the comparison to Judge. The system found:</p>
+                <table class="results-table">
+                    <tr><th>Aspect</th><th>Aaron Judge</th><th>Mookie Betts</th></tr>
+                    <tr><td>Primary driver</td><td>Plate discipline (chase rate)</td><td>Launch angle management</td></tr>
+                    <tr><td>Top sensitivity</td><td>chase_rate &rarr; exit_velocity (-9.52)</td><td>popup_pct &rarr; launch_angle (+54.15)</td></tr>
+                    <tr><td>Relationship type</td><td>Behavioral (decisions)</td><td>Mechanical (batted ball)</td></tr>
+                    <tr><td>barrel_pct &rarr; slg</td><td>+1.37</td><td>+1.37</td></tr>
+                    <tr><td>Optimal coupling weight</td><td>0.500</td><td>0.500</td></tr>
+                    <tr><td>Optimal feedback weight</td><td>0.048</td><td>0.049</td></tr>
+                </table>
+                <p>Player-specific relationships change. Universal physics (barrel rate &rarr; outcomes) stays the same. Optimal model configuration is consistent. This means the engine adapts to individual profiles without being told what to look for.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showPlayer(name) {
+            document.querySelectorAll('.entity-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.entity-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

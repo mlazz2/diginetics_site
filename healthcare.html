@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare — DIGINETICS</title>
+    <meta name="description" content="Healthcare patient monitoring analysis from the DIGINETICS Universal Prediction System.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGI<span>NETICS</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="baseball.html">Baseball</a></li>
+            <li><a href="retail.html">Retail</a></li>
+            <li><a href="healthcare.html" class="active">Healthcare</a></li>
+            <li><a href="cre.html">CRE</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <div class="section-label">Healthcare</div>
+        <h1 class="section-title">Patient Monitoring &amp; Clinical Outcomes</h1>
+        <p class="section-subtitle">The same engine that discovered causal relationships in baseball and retail is configured and ready for healthcare patient data. Results will be published here once testing is complete.</p>
+    </div>
+
+    <section style="padding-top: 0;">
+
+        <div class="coming-soon-box">
+            <h2>Results Coming Soon</h2>
+            <p>The healthcare configuration is built and validated. We're preparing compliant patient datasets for testing. Results will be published here with full methodology, equations, and accuracy metrics.</p>
+        </div>
+
+        <h3 class="results-section-title">What We're Testing</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The healthcare configuration tracks 24 metrics organized in a 3-layer causal hierarchy, designed to discover how upstream patient indicators propagate through intermediate markers to drive clinical outcomes.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Layer 1: Vital Signs (6 metrics)</h3>
+                <p>Heart rate, systolic blood pressure, diastolic blood pressure, body temperature, respiratory rate, oxygen saturation. These are the leading indicators &mdash; the earliest signals of patient state changes.</p>
+            </div>
+            <div class="card">
+                <h3>Layer 2: Lab Values &amp; Behavior (11 metrics)</h3>
+                <p>Glucose, cholesterol (total, LDL, HDL), hemoglobin, creatinine, medication adherence, medication dosage, daily step count, sleep hours, exercise minutes. Intermediate metrics that connect vitals to outcomes.</p>
+            </div>
+            <div class="card">
+                <h3>Layer 3: Clinical Outcomes (7 metrics)</h3>
+                <p>BMI, weight, pain score, quality of life score, hospital readmission risk, complication rate, recovery rate. The outcomes we're predicting and tracing causal drivers for.</p>
+            </div>
+        </div>
+
+        <h3 class="results-section-title">What We Expect to Find</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Based on the system's performance in baseball (263 feedback loops from 58 metrics) and retail (30 feedback loops from 98 metrics), we expect the healthcare configuration to discover:</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Causal chains to readmission</h3>
+                <p>Which vital sign changes predict readmission risk, through which intermediate lab values, with what time delays? The system will trace the full chain &mdash; not just "these correlate" but "vital A changes, which shifts lab B after X days, which drives readmission risk Y days later."</p>
+            </div>
+            <div class="card">
+                <h3>Medication adherence impact</h3>
+                <p>How does medication adherence causally affect each downstream metric? The system's constraint framework enforces that higher adherence should improve outcomes (monotonicity constraint) &mdash; but the specific magnitudes and time delays will be discovered from data.</p>
+            </div>
+            <div class="card">
+                <h3>Activity &rarr; outcome equations</h3>
+                <p>Readable equations showing exactly how step count, sleep, and exercise relate to BMI, pain, and recovery rate. Not "exercise is good" &mdash; but "each additional 1,000 daily steps corresponds to X change in recovery rate after Y days."</p>
+            </div>
+        </div>
+
+        <h3 class="results-section-title">Configuration Details</h3>
+        <table class="results-table">
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Total metrics</td><td>24</td></tr>
+            <tr><td>Time step</td><td>Daily</td></tr>
+            <tr><td>Forecast horizon</td><td>30 days</td></tr>
+            <tr><td>Monte Carlo paths</td><td>200</td></tr>
+            <tr><td>Causal ordering</td><td>Strict (vitals &rarr; labs/behavior &rarr; outcomes)</td></tr>
+            <tr><td>Constraints enforced</td><td>Physiological bounds, monotonicity (medication adherence &rarr; recovery), systolic &gt; diastolic BP</td></tr>
+            <tr><td>Domain knowledge</td><td>Allowed/forbidden causal edges defined to prevent nonsensical relationships</td></tr>
+        </table>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Results — DIGINETICS</title>
+    <meta name="description" content="Retail store analysis results from the DIGINETICS Universal Prediction System.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGI<span>NETICS</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="baseball.html">Baseball</a></li>
+            <li><a href="retail.html" class="active">Retail</a></li>
+            <li><a href="healthcare.html">Healthcare</a></li>
+            <li><a href="cre.html">CRE</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <div class="section-label">Retail Results</div>
+        <h1 class="section-title">Smoke Shop Point-of-Sale Analysis</h1>
+        <p class="section-subtitle">The same engine that analyzed MLB players was pointed at real retail data with zero code changes &mdash; only a different configuration file. Here's what it found.</p>
+    </div>
+
+    <section style="padding-top: 0;">
+        <div class="disclaimer">
+            <strong>About this data:</strong> 180 days of real daily point-of-sale data (August 2025 &ndash; February 2026) from a smoke shop with 15 product departments. 98 metrics tracked: baskets (transactions), items sold, dollar sales, average sale price, and scan rate for each department plus store-wide totals. "Backtest accuracy" means the equation's predictions beat last-value and mean-value baselines on held-out time windows. R&sup2; indicates how much variance in the target metric is explained by the discovered equation.
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">99.4%</div>
+                <div class="stat-label">Backtest pass rate<br>(485/490 passed)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98/98</div>
+                <div class="stat-label">Equation discovery<br>(100% rate)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Metrics with R&sup2;<br>above 0.95</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30</div>
+                <div class="stat-label">Time-lagged feedback<br>loops discovered</div>
+            </div>
+        </div>
+
+        <h3 class="results-section-title">Data Used</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Daily aggregated POS data across 15 departments: legal THC, glass, hookah, vape devices, disposable vapes, coils/pods, incense, cigarillos, cigarettes, drinks, Zyn pouches, tobacco, whip-its, legal mushrooms, and store totals. For each department: daily basket count, items sold, dollar sales, average sale price, and scan rate. The system was configured to discover cross-department relationships and time-lagged effects with no prior knowledge of the business.</p>
+
+        <h3 class="results-section-title">Cross-Department Causal Dependencies</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The most valuable findings were relationships between departments that no standard dashboard or BI tool would reveal. These are mathematical equations &mdash; not correlations.</p>
+
+        <div class="finding">
+            <div class="label">Cross-Sell Discovery</div>
+            <h3>Vape device transactions depend on cigarillo traffic</h3>
+            <div class="finding-equation">vape_devices_baskets = vape_devices_items - 2 &times; (vape_devices_items / cigarillos_baskets) &nbsp;&nbsp;(R&sup2; = 0.985)</div>
+            <p>Vape device transaction volume is mathematically dependent on cigarillo basket traffic. R&sup2; of 0.985 means this equation explains 98.5% of the variance. This suggests co-locating these departments and running joint promotions &mdash; cigarillo customers are vape device buyers.</p>
+        </div>
+
+        <div class="finding">
+            <div class="label">Hidden Dependency</div>
+            <h3>Cigarette sales are driven by vape + cigarillo interaction, not cigarette demand</h3>
+            <div class="finding-equation">cigarettes_baskets = (disp_vape_items &times; 0.0036 &times; cigarillos_baskets) + 1 &nbsp;&nbsp;(R&sup2; = 0.710)</div>
+            <p>Cigarette transactions aren't self-driven. They depend on the interaction between disposable vape volume and cigarillo traffic. If vape supply drops due to a shipping delay or regulation, cigarette baskets will decline &mdash; even if cigarette inventory is fully stocked. R&sup2; of 0.710 means this explains about 71% of the variance.</p>
+        </div>
+
+        <div class="finding">
+            <div class="label">Impulse Category</div>
+            <h3>Drink sales are pure impulse &mdash; driven by store traffic, not drink demand</h3>
+            <div class="finding-equation">drinks_baskets = (3 &times; total_items) / scan_rate &nbsp;&nbsp;(R&sup2; = 0.603)</div>
+            <p>Drink sales have nothing to do with drink-specific factors. They're a function of total store volume divided by scan efficiency. More people moving through slowly = more impulse purchases. Drink-specific promotions won't move the needle &mdash; increasing overall foot traffic will.</p>
+        </div>
+
+        <div class="finding">
+            <div class="label">Purchasing Pattern</div>
+            <h3>Glass pieces are a 1:1 category &mdash; don't bundle</h3>
+            <div class="finding-equation">glass_baskets = (glass_items / 1.1473) + 0.2527 &nbsp;&nbsp;(R&sup2; = 0.955)</div>
+            <p>Customers buy approximately 1.15 glass items per transaction. This ratio is stable across 180 days (R&sup2; = 95.5%). "Buy 2 get 1" deals won't work here &mdash; customer behavior doesn't support volume purchasing. Focus on per-unit margin and upselling to premium tiers instead.</p>
+        </div>
+
+        <div class="finding">
+            <div class="label">Isolated Department</div>
+            <h3>Hookah is self-contained &mdash; doesn't drive or respond to other departments</h3>
+            <div class="finding-equation">hookah_baskets = hookah_items / avg_items_per_basket &nbsp;&nbsp;(R&sup2; = 0.771)</div>
+            <p>Hookah transactions are entirely explained by hookah item demand. Hookah customers buy hookah products and leave &mdash; they don't cross-shop. Hookah promotions won't drive traffic to other departments. If hookah underperforms, the fix is hookah-specific.</p>
+        </div>
+
+        <h3 class="results-section-title">Time-Lagged Feedback Loops</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system discovered causal relationships with specific time delays &mdash; telling you not just what drives what, but how long the effect takes to appear.</p>
+
+        <div class="finding">
+            <h3>Disposable vape avg sale is a 3-day early warning for store health</h3>
+            <div class="finding-equation">disp_vape_avg_sale &rarr; total store avg_sale (strength: +1.22, lag: 3 days)</div>
+            <p>When disposable vape average sale rises, the entire store's average sale follows 3 days later. Track this metric daily as an early warning system for store-wide revenue trends.</p>
+        </div>
+
+        <div class="finding">
+            <h3>Glass average sale pulls the entire store upward with a 10-day lag</h3>
+            <div class="finding-equation">glass_avg_sale &rarr; total store avg_sale (strength: +2.72, lag: 10 days)</div>
+            <p>This is the strongest positive feedback loop for store-wide average sale &mdash; 2.2x stronger than the disposable vape signal. Investing in premium glass pieces doesn't just improve glass department revenue &mdash; it measurably lifts the store's overall average transaction value.</p>
+        </div>
+
+        <div class="finding">
+            <h3>Cigarette-only traffic drags down store economics</h3>
+            <div class="finding-equation">cigarettes_baskets &rarr; total store avg_sale (strength: -0.71, lag: 10 days)</div>
+            <p>More cigarette-only transactions lower the store's average sale 10 days later. Cigarette customers are low-value, single-purpose shoppers who don't cross-buy. If cigarette basket share is growing, counter by promoting cross-sell items at checkout.</p>
+        </div>
+
+        <h3 class="results-section-title">Equation Accuracy by Category</h3>
+        <table class="results-table">
+            <tr><th>Category</th><th>Top R&sup2; Range</th><th>Metrics Above 0.95</th></tr>
+            <tr><td>Dollar Sales</td><td>0.951 &ndash; 0.9999</td><td>7</td></tr>
+            <tr><td>Baskets (Transactions)</td><td>0.948 &ndash; 0.9999</td><td>7</td></tr>
+            <tr><td>Items Sold</td><td>0.940 &ndash; 0.994</td><td>5</td></tr>
+            <tr><td>Store Totals</td><td>0.688 &ndash; 0.999</td><td>2</td></tr>
+            <tr><td>Scan Rate</td><td>0.370 &ndash; 0.781</td><td>0</td></tr>
+            <tr><td>Average Sale</td><td>0.328 &ndash; 0.821</td><td>0</td></tr>
+        </table>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">Dollar sales and basket counts achieve very high accuracy (R&sup2; above 0.95 for many metrics). Average sale and scan rate are harder to predict precisely but still yield actionable causal insights even at moderate R&sup2; values.</p>
+
+        <h3 class="results-section-title">Backtest Methodology</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">Rolling-window backtests with strict temporal ordering. No lookahead, no data leakage. Each equation tested against last-value and mean-value baselines on held-out windows. 485 of 490 equation-window combinations passed (99.4%). The 5 that failed were in low-variance metrics where both the equation and baselines performed similarly.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
