@@ -70,7 +70,7 @@
 
     <div class="finding">
       <div class="label">Primary Result</div>
-      <h3>UPS predicted the 30-day readmission rate within 0.02 percentage points</h3>
+      <h3>Predicted the 30-day readmission rate within 0.02 percentage points</h3>
       <table class="results-table" style="margin: 1.25rem 0;">
         <tr>
           <th style="width: 40%;">Measure</th>
@@ -78,14 +78,14 @@
           <th style="width: 30%;">Context</th>
         </tr>
         <tr>
-          <td>UPS Projected Rate</td>
+          <td>Projected Rate</td>
           <td><strong style="color: var(--text-primary);">10.78%</strong></td>
           <td>Mean of 30-step forward projection</td>
         </tr>
         <tr>
-          <td>Actual Holdout Rate</td>
+          <td>Actual Rate</td>
           <td><strong style="color: var(--text-primary);">10.80%</strong></td>
-          <td>Mean of 30 unseen time windows</td>
+          <td>Mean of 30 out-of-sample time windows</td>
         </tr>
         <tr>
           <td>Absolute Error</td>
@@ -103,7 +103,7 @@
           <td>Slight underestimate (negligible)</td>
         </tr>
       </table>
-      <p style="margin-top: 1rem;">The holdout data ranged from 9.0% to 13.6% readmission rate across the 30 unseen windows (coefficient of variation: 12%). This was not a flat, easy-to-predict signal. The rate moved substantially. The UPS prediction of 10.78% landed almost exactly on the holdout mean.</p>
+      <p style="margin-top: 1rem;">The out-of-sample data ranged from 9.0% to 13.6% readmission rate across the 30 unseen windows (coefficient of variation: 12%). This was not a flat, easy-to-predict signal. The rate moved substantially. The predicted 10.78% landed almost exactly on the actual mean.</p>
     </div>
 
     <div class="finding">
@@ -114,10 +114,10 @@
           <th>Method</th>
           <th>Prediction</th>
           <th>Error</th>
-          <th>vs. UPS</th>
+          <th>vs. DIGINETICS</th>
         </tr>
         <tr>
-          <td><strong style="color: var(--accent-hover);">UPS Engine</strong></td>
+          <td><strong style="color: var(--accent-hover);">DIGINETICS</strong></td>
           <td>10.78%</td>
           <td><strong style="color: var(--green);">0.18%</strong></td>
           <td></td>
@@ -126,16 +126,16 @@
           <td>Training Mean (historical average)</td>
           <td>11.20%</td>
           <td>3.66%</td>
-          <td>UPS is 20&times; more accurate</td>
+          <td>20&times; more accurate</td>
         </tr>
         <tr>
           <td>Last Known Value (naive persistence)</td>
           <td>9.60%</td>
           <td>11.11%</td>
-          <td>UPS is 60&times; more accurate</td>
+          <td>60&times; more accurate</td>
         </tr>
       </table>
-      <p>The UPS engine didn't just marginally beat the baselines. It delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean. A 2025 medRxiv study found that no approach (ML models, LLMs, or physician panels) achieved "clinical-grade reliability" for readmission prediction from discharge summaries alone.</p>
+      <p>The platform didn't just marginally beat the baselines. It delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean. A 2025 medRxiv study found that no approach (ML models, LLMs, or physician panels) achieved "clinical-grade reliability" for readmission prediction from discharge summaries alone.</p>
     </div>
 
     <h2 class="results-section-title">Industry Benchmark Comparison</h2>
@@ -168,7 +168,7 @@
         <td>medRxiv, 2025</td>
       </tr>
     </table>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> Most published models frame readmission as a binary classification problem (will this patient be readmitted: yes/no) and report AUC. UPS solves a different problem: predicting the continuous readmission <em>rate</em> across a hospital system over time. Direct AUC comparison is not apples-to-apples, but the 0.02 percentage point error on rate prediction is substantially better than the 2&ndash;5 percentage point errors reported in rate-level studies.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> Most published models frame readmission as a binary classification problem (will this patient be readmitted: yes/no) and report AUC. DIGINETICS solves a different problem: predicting the continuous readmission <em>rate</em> across a hospital system over time. Direct AUC comparison is not apples-to-apples, but the 0.02 percentage point error on rate prediction is substantially better than the 2&ndash;5 percentage point errors reported in rate-level studies.</p>
 
     <h2 class="results-section-title">Key Discovery</h2>
 
@@ -180,7 +180,7 @@
     </div>
 
     <h2 class="results-section-title">Full Metric Accuracy Breakdown</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system tracked 126 metrics. Below are the key clinical metrics comparing projected vs. actual values on the 30-step out-of-sample holdout.</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system tracked 126 metrics. Below are the key clinical metrics comparing projected vs. actual values on the 30-step out-of-sample validation.</p>
 
     <table class="results-table">
       <tr>
@@ -310,7 +310,7 @@
       </div>
       <div class="card">
         <h3>Real Data, No Shortcuts</h3>
-        <p>101,766 real patient encounters from 130 US hospitals. No synthetic data, no simulations, no cherry-picked subsets. The holdout data was completely unseen during training.</p>
+        <p>101,766 real patient encounters from 130 US hospitals. No synthetic data, no simulations, no cherry-picked subsets. The validation data was completely unseen during training.</p>
       </div>
       <div class="card">
         <h3>Explainable Results</h3>
