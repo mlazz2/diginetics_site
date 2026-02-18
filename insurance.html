@@ -47,8 +47,8 @@
     <section style="padding-top: 0;">
 
         <div class="coming-soon-box">
-            <h2>Results Coming Soon</h2>
-            <p>We're preparing deployments on claims and policyholder datasets. Published accuracy numbers and discovered risk drivers will appear here once validation is complete.</p>
+            <h2>Actively Researching &amp; Testing</h2>
+            <p>We're running initial tests on claims, policyholder, and loss-ratio datasets. Published accuracy numbers and discovered risk drivers will appear here once validation is complete.</p>
         </div>
 
         <h3 class="results-section-title">Market Opportunity</h3>
@@ -71,23 +71,90 @@
             </div>
         </div>
 
-        <h3 class="results-section-title">What We'll Deliver</h3>
+        <h3 class="results-section-title">What We're Investigating</h3>
 
         <div class="card-grid">
             <div class="card">
                 <h3>Claims Frequency Modeling</h3>
-                <p>Predict which policyholders are most likely to file claims and when. The platform discovers which behavioral patterns and external factors are genuine leading indicators of claims activity vs. noise.</p>
+                <p>We're testing whether the platform can discover which behavioral patterns and external factors are genuine leading indicators of claims activity vs. noise, predicting which policyholders are most likely to file claims and when.</p>
             </div>
             <div class="card">
                 <h3>Loss Ratio Drivers</h3>
-                <p>Which factors actually drive loss ratios for specific product lines? Not generic actuarial tables. Specific, quantified relationships between policyholder attributes, market conditions, and claims outcomes.</p>
+                <p>Which factors actually drive loss ratios for specific product lines? We're researching whether the platform can discover specific, quantified relationships between policyholder attributes, market conditions, and claims outcomes that go beyond generic actuarial tables.</p>
             </div>
             <div class="card">
                 <h3>Risk Segmentation</h3>
-                <p>Discover natural risk segments the platform finds in your data, not pre-defined categories. Just as it found that different MLB players need completely different strategies, it finds that different policyholder segments have completely different risk profiles.</p>
+                <p>Just as the platform found that different MLB players need completely different strategies, we're testing whether it discovers natural risk segments in policyholder data that don't map to pre-defined categories.</p>
             </div>
         </div>
 
+    </section>
+
+    <section>
+        <div class="section-label">Why This Is Feasible</div>
+        <h2 class="section-title">What we've already proven that applies directly to insurance.</h2>
+        <p class="section-subtitle">Insurance is fundamentally a prediction problem: estimate future claims from historical data. Our healthcare deployment already solved a closely related problem on 101,766 real patient encounters.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Healthcare Rate Prediction: Already Proven</h3>
+                <p>The platform predicted hospital readmission rates within 0.02 percentage points on 101,766 patient encounters. Insurance claims prediction is structurally identical: predict a rate (claims frequency) from a population (policyholders) using historical data (claims history + risk factors). The 0.18% error achieved in healthcare demonstrates the platform's capability on exactly this type of problem.</p>
+            </div>
+            <div class="card">
+                <h3>Autonomous Risk Driver Discovery: Already Proven</h3>
+                <p>In healthcare, the platform independently discovered that high glucose prevalence and demographic factors drive readmission, without being given any clinical hypotheses. For insurance, we're testing whether it can autonomously discover which policyholder attributes, behavioral patterns, and external factors drive claims, without needing actuaries to specify what to look for.</p>
+            </div>
+            <div class="card">
+                <h3>Per-Entity Risk Profiles: Already Proven</h3>
+                <p>60 MLB players each received unique performance drivers. Different policyholders have fundamentally different risk profiles driven by different factors. We're testing whether the platform produces per-segment (and eventually per-policy) risk models that identify the specific drivers for each risk class automatically.</p>
+            </div>
+            <div class="card">
+                <h3>Explainability for Regulators: Already Proven</h3>
+                <p>Every prediction the platform makes comes with a transparent causal explanation. Insurance regulators (Solvency II, IFRS 17, state DOIs) increasingly require model explainability. The platform doesn't produce black-box scores. It produces specific, auditable reasoning: "this policy is high risk because of X, Y, and Z, with these specific magnitudes."</p>
+            </div>
+            <div class="card">
+                <h3>Compound Risk Interactions: Already Proven</h3>
+                <p>24% of discovered relationships in baseball were multi-factor interactions. Insurance risk is notoriously multi-factor: a policyholder's risk depends on the interaction between age, location, claims history, coverage type, and external conditions simultaneously. Single-factor actuarial models miss these. We're testing whether the platform captures compound risk interactions that improve pricing accuracy.</p>
+            </div>
+            <div class="card">
+                <h3>Regime Transition Detection: Already Proven</h3>
+                <p>73,076 regime transitions detected in baseball. Insurance portfolios undergo analogous regime shifts: a hard market transitions to soft, catastrophe frequency changes, and loss development patterns shift. We're researching whether the platform detects these transitions early enough to inform reserve adjustments and pricing changes before losses materialize.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="results-section-title">Specific Areas We're Researching</h3>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Auto Insurance: Telematics-Based Risk</h3>
+                <p>We're testing whether driving behavior data (hard braking, speed patterns, time-of-day driving) serves as a genuine leading indicator for claims frequency, or whether some commonly tracked telematics signals are correlated noise. The platform is designed to separate true causal drivers from coincidental patterns.</p>
+            </div>
+            <div class="card">
+                <h3>Homeowners: Climate Risk Pricing</h3>
+                <p>Climate change is repricing property risk in real time. We're investigating whether the platform can quantify how specific climate indicators (flood frequency, wildfire proximity, hail corridor exposure) transmit to claims severity for specific property types in specific geographies, replacing broad actuarial zones with per-property risk signals.</p>
+            </div>
+            <div class="card">
+                <h3>Life Insurance: Mortality Driver Discovery</h3>
+                <p>We're researching whether the platform can discover which combinations of medical, behavioral, and socioeconomic factors are genuine mortality predictors for specific age cohorts. The same platform that found clinical readmission drivers in healthcare data should discover mortality drivers in life insurance data.</p>
+            </div>
+            <div class="card">
+                <h3>Workers' Compensation: Industry-Specific Claims Patterns</h3>
+                <p>Different industries have fundamentally different injury profiles. We're testing whether the platform discovers industry-specific claims drivers that improve loss prediction beyond generic NCCI class codes, identifying which workplace conditions actually lead to claims vs. which are theoretical risks.</p>
+            </div>
+            <div class="card">
+                <h3>Reinsurance: Catastrophe Correlation Discovery</h3>
+                <p>Catastrophe risk is driven by correlations between perils that traditional models may not capture. We're investigating whether the platform can discover hidden correlations between natural catastrophe events, economic conditions, and aggregate loss patterns across cedant portfolios.</p>
+            </div>
+            <div class="card">
+                <h3>Fraud Detection: Behavioral Leading Indicators</h3>
+                <p>We're testing whether the platform can identify which sequences of policyholder behaviors serve as leading indicators for fraudulent claims, discovering the behavioral "attack chains" (analogous to the causal chains it discovered in baseball) that precede fraudulent filings.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
         <h3 class="results-section-title">Business Applications</h3>
         <div class="card-grid">
             <div class="card">
@@ -107,7 +174,6 @@
                 <p>Every prediction and pricing decision comes with transparent, auditable reasoning. Built for Solvency II, IFRS 17, and state regulatory requirements. Replace "the model says so" with "here's exactly what drives this price."</p>
             </div>
         </div>
-
     </section>
 
     <footer>
