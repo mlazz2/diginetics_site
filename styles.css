@@ -325,7 +325,7 @@ footer { padding: 2rem; text-align: center; border-top: 1px solid var(--border);
 
 /* INSIGHT GRID (homepage) */
 .insight-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1.25rem; margin-top: 1.5rem;
 }
 .insight-card {
