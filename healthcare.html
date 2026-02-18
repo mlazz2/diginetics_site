@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Healthcare Results — DIGINETICS</title>
+  <title>Healthcare Results | DIGINETICS</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,16 +37,15 @@
 
   <div class="page-header">
     <h1 class="section-title">Healthcare Results</h1>
-    <p class="section-subtitle">Hospital Readmission Prediction &mdash; UCI Diabetes 130-US Hospitals</p>
-    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 700px; line-height: 1.7;">The same platform proven in sports and retail was deployed on real hospital patient data with zero code changes. Here&rsquo;s what it found.</p>
+    <p class="section-subtitle">Hospital Readmission Prediction: UCI Diabetes 130-US Hospitals</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 700px; line-height: 1.7;">The same platform proven in sports and retail was deployed on real hospital patient data with zero code changes. Here's what it found.</p>
   </div>
 
   <section>
     <div class="disclaimer">
-      <strong>About this data:</strong> 101,766 real patient encounters from 130 US hospitals (UCI Machine Learning Repository &mdash; Diabetes 130-US Hospitals dataset, 1999&ndash;2008). 126 clinical metrics tracked. Accuracy was measured against held-out data the system never saw during training. Industry benchmarks cited from published systematic reviews (BMJ Open, JAMA Network Open, BMC Medical Research Methodology).
+      <strong>About this data:</strong> 101,766 real patient encounters from 130 US hospitals (UCI Machine Learning Repository, Diabetes 130-US Hospitals dataset, 1999&ndash;2008). 126 clinical metrics tracked. Accuracy was measured against held-out data the system never saw during training. Industry benchmarks cited from published systematic reviews (BMJ Open, JAMA Network Open, BMC Medical Research Methodology).
     </div>
 
-    <!-- HEADLINE STATS -->
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-number">0.18%</div>
@@ -66,7 +65,6 @@
       </div>
     </div>
 
-    <!-- PRIMARY TARGET -->
     <h2 class="results-section-title">Primary Target: 30-Day Readmission Rate</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">Hospital readmission prediction is widely considered one of the hardest problems in healthcare analytics. The CMS (Centers for Medicare &amp; Medicaid Services) uses readmission rates to penalize hospitals, and the entire industry has been working to improve prediction accuracy for over a decade. Published models typically achieve AUC scores of 0.60&ndash;0.76, with absolute errors of 2&ndash;5 percentage points on rate-level predictions.</p>
 
@@ -97,7 +95,7 @@
         <tr>
           <td>Relative Error</td>
           <td><strong style="color: var(--green);">0.18%</strong></td>
-          <td>&mdash;</td>
+          <td></td>
         </tr>
         <tr>
           <td>Bias</td>
@@ -105,10 +103,9 @@
           <td>Slight underestimate (negligible)</td>
         </tr>
       </table>
-      <p style="margin-top: 1rem;">The holdout data ranged from 9.0% to 13.6% readmission rate across the 30 unseen windows (coefficient of variation: 12%). This was not a flat, easy-to-predict signal &mdash; the rate moved substantially. The UPS prediction of 10.78% landed almost exactly on the holdout mean.</p>
+      <p style="margin-top: 1rem;">The holdout data ranged from 9.0% to 13.6% readmission rate across the 30 unseen windows (coefficient of variation: 12%). This was not a flat, easy-to-predict signal. The rate moved substantially. The UPS prediction of 10.78% landed almost exactly on the holdout mean.</p>
     </div>
 
-    <!-- BASELINE COMPARISON -->
     <div class="finding">
       <div class="label">Baseline Comparison</div>
       <h3>How hard is this problem? Comparing against naive baselines.</h3>
@@ -123,7 +120,7 @@
           <td><strong style="color: var(--accent-hover);">UPS Engine</strong></td>
           <td>10.78%</td>
           <td><strong style="color: var(--green);">0.18%</strong></td>
-          <td>&mdash;</td>
+          <td></td>
         </tr>
         <tr>
           <td>Training Mean (historical average)</td>
@@ -138,10 +135,9 @@
           <td>UPS is 60&times; more accurate</td>
         </tr>
       </table>
-      <p>The UPS engine didn&rsquo;t just marginally beat the baselines &mdash; it delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean. A 2025 medRxiv study found that no approach (ML models, LLMs, or physician panels) achieved &ldquo;clinical-grade reliability&rdquo; for readmission prediction from discharge summaries alone.</p>
+      <p>The UPS engine didn't just marginally beat the baselines. It delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean. A 2025 medRxiv study found that no approach (ML models, LLMs, or physician panels) achieved "clinical-grade reliability" for readmission prediction from discharge summaries alone.</p>
     </div>
 
-    <!-- INDUSTRY BENCHMARKS -->
     <h2 class="results-section-title">Industry Benchmark Comparison</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Published systematic reviews of hospital readmission prediction models (81+ models reviewed across BMJ Open, JAMA, and BMC) show the following performance landscape:</p>
 
@@ -174,17 +170,15 @@
     </table>
     <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> Most published models frame readmission as a binary classification problem (will this patient be readmitted: yes/no) and report AUC. UPS solves a different problem: predicting the continuous readmission <em>rate</em> across a hospital system over time. Direct AUC comparison is not apples-to-apples, but the 0.02 percentage point error on rate prediction is substantially better than the 2&ndash;5 percentage point errors reported in rate-level studies.</p>
 
-    <!-- KEY DISCOVERY -->
     <h2 class="results-section-title">Key Discovery</h2>
 
     <div class="finding">
       <div class="label">Key Discovery</div>
       <h3>High glucose prevalence and patient demographics are the primary readmission drivers</h3>
-      <p style="margin-top: 1rem;">The system independently discovered that the 30-day readmission rate is driven by the percentage of patients with high glucose, adjusted by demographic factors. No clinical hypothesis was provided &mdash; the platform found this on its own.</p>
+      <p style="margin-top: 1rem;">The system independently discovered that the 30-day readmission rate is driven by the percentage of patients with high glucose, adjusted by demographic factors. No clinical hypothesis was provided. The platform found this on its own.</p>
       <p style="margin-top: 0.75rem;">This aligns with known clinical literature: hyperglycemia is a well-established risk factor for hospital readmission, and gender-based differences in readmission patterns have been documented in multiple published studies.</p>
     </div>
 
-    <!-- FULL METRIC BREAKDOWN -->
     <h2 class="results-section-title">Full Metric Accuracy Breakdown</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system tracked 126 metrics. Below are the key clinical metrics comparing projected vs. actual values on the 30-step out-of-sample holdout.</p>
 
@@ -286,30 +280,28 @@
         <td>26.95%</td>
       </tr>
     </table>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Honest assessment:</strong> The primary target (30-day readmission rate) and clinical fundamentals (age, diagnoses, lab procedures, medications, hospital stay length) are predicted with high accuracy &mdash; under 3% error. Secondary behavioral metrics (medication changes, emergency admissions, treatment patterns) are less accurate at 8&ndash;15% error. The any-cause readmission rate (a broader, noisier metric) has the highest error at 27%. The system optimized hardest for the target it was configured to predict.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Honest assessment:</strong> The primary target (30-day readmission rate) and clinical fundamentals (age, diagnoses, lab procedures, medications, hospital stay length) are predicted with high accuracy, under 3% error. Secondary behavioral metrics (medication changes, emergency admissions, treatment patterns) are less accurate at 8&ndash;15% error. The any-cause readmission rate (a broader, noisier metric) has the highest error at 27%. The system optimized hardest for the target it was configured to predict.</p>
 
-    <!-- BUSINESS APPLICATIONS -->
     <h2 class="results-section-title">Business Applications</h2>
     <div class="card-grid">
       <div class="card">
         <h3>Hospital Systems</h3>
-        <p>Reduce readmission penalties (up to 3% of Medicare reimbursement) with early warning systems that identify at-risk patient populations. Our platform predicted the 30-day readmission rate within 0.02 percentage points &mdash; 20x more accurate than historical averages.</p>
+        <p>Reduce readmission penalties (up to 3% of Medicare reimbursement) with early warning systems that identify at-risk patient populations. Our platform predicted the 30-day readmission rate within 0.02 percentage points, 20x more accurate than historical averages.</p>
       </div>
       <div class="card">
         <h3>Health Insurance &amp; Payers</h3>
-        <p>Identify high-risk populations earlier. Quantify which clinical factors actually drive readmission &mdash; with specific magnitudes &mdash; to target preventive interventions where they'll have the most impact on costs.</p>
+        <p>Identify high-risk populations earlier. Quantify which clinical factors actually drive readmission, with specific magnitudes, to target preventive interventions where they'll have the most impact on costs.</p>
       </div>
       <div class="card">
         <h3>Clinical Trials &amp; Pharma</h3>
-        <p>Discover which patient subgroups respond differently to treatments. The platform automatically identifies clinical drivers without prior hypotheses &mdash; finding relationships that align with published literature but weren't told to look for.</p>
+        <p>Discover which patient subgroups respond differently to treatments. The platform automatically identifies clinical drivers without prior hypotheses, finding relationships that align with published literature but weren't told to look for.</p>
       </div>
       <div class="card">
         <h3>Remote Patient Monitoring</h3>
-        <p>Turn raw clinical data into actionable predictions. 126 metrics tracked simultaneously, with the platform identifying which ones actually matter for each outcome &mdash; not just "out of range" alerts but specific, quantified risk signals.</p>
+        <p>Turn raw clinical data into actionable predictions. 126 metrics tracked simultaneously, with the platform identifying which ones actually matter for each outcome: not just "out of range" alerts but specific, quantified risk signals.</p>
       </div>
     </div>
 
-    <!-- KEY TAKEAWAYS -->
     <h2 class="results-section-title">Key Takeaways</h2>
     <div class="card-grid">
       <div class="card">
@@ -322,11 +314,10 @@
       </div>
       <div class="card">
         <h3>Explainable Results</h3>
-        <p>Every prediction comes with a clear explanation of what's driving it. Clinicians and administrators can evaluate and trust the results &mdash; critical for regulatory compliance and clinical adoption.</p>
+        <p>Every prediction comes with a clear explanation of what's driving it. Clinicians and administrators can evaluate and trust the results. Critical for regulatory compliance and clinical adoption.</p>
       </div>
     </div>
 
-    <!-- DATA NOTE -->
     <div class="disclaimer" style="margin-top: 2.5rem;">
       <strong>About this data:</strong> The UCI Diabetes 130-US Hospitals dataset is a widely-used public benchmark in healthcare ML research. All numbers on this page are verified against raw output files. We report what we measured, not what we wish we measured.
     </div>

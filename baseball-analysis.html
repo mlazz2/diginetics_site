@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>System Analysis &mdash; Baseball &mdash; DIGINETICS</title>
+  <title>System Analysis | Baseball | DIGINETICS</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -46,15 +46,15 @@
   <div class="page-header">
     <a href="baseball.html" class="back-link">&larr; Back to Player Results</a>
     <h1 class="section-title">What the System Learned About Baseball</h1>
-    <p class="section-subtitle">60-Player Cross-Roster Analysis &mdash; Patterns, Biases, and Future Directions</p>
-    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 800px; line-height: 1.7;">After independently analyzing 60 MLB hitters &mdash; with <strong>zero domain knowledge</strong> about baseball theory, sabermetrics, or scouting &mdash; the UPS v3.5 engine organically discovered fundamental truths about how hitting performance works. These findings emerged purely from equation search, backtest validation, and out-of-sample confirmation.</p>
+    <p class="section-subtitle">60-Player Cross-Roster Analysis - Patterns, Biases, and Future Directions</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 800px; line-height: 1.7;">After independently analyzing 60 MLB hitters - with <strong>zero domain knowledge</strong> about baseball theory, sabermetrics, or scouting - the UPS v3.5 engine organically discovered fundamental truths about how hitting performance works. These findings emerged purely from equation search, backtest validation, and out-of-sample confirmation.</p>
   </div>
 
   <section>
 
     <!-- ══════════════════════ CAUSAL CHAIN ══════════════════════ -->
     <h2 class="results-section-title">The Discovered Causal Model of Hitting</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Across all 60 players, the system converged on a consistent 4-layer causal chain. This was not programmed &mdash; it was discovered from 20,318 candidate equations validated against holdout data:</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Across all 60 players, the system converged on a consistent 4-layer causal chain. This was not programmed - it was discovered from 20,318 candidate equations validated against holdout data:</p>
 
     <div class="causal-chain">
       <strong>Pitch Environment</strong> <span class="arrow">&rarr;</span>
@@ -80,7 +80,7 @@
       <div class="insight-card">
         <div class="metric-label" style="color: #22c55e;">Home Run Rate (HR/PA)</div>
         <h3>Opportunity + Mechanical Readiness</h3>
-        <p>HR rate is driven by <strong>pitch velocity trends</strong> (43% of players) and <strong>multi-factor interactions</strong> (22%). Power output depends on seeing hittable pitches combined with being mechanically ready to turn on them. This was the <strong>most predictable metric</strong> &mdash; it had the lowest error for 36 of 60 players.</p>
+        <p>HR rate is driven by <strong>pitch velocity trends</strong> (43% of players) and <strong>multi-factor interactions</strong> (22%). Power output depends on seeing hittable pitches combined with being mechanically ready to turn on them. This was the <strong>most predictable metric</strong> - it had the lowest error for 36 of 60 players.</p>
         <div style="margin-top: 1rem;">
           <table class="results-table" style="font-size: 0.8rem;">
             <tr><th>Stat</th><th>Value</th></tr>
@@ -96,7 +96,7 @@
       <div class="insight-card">
         <div class="metric-label" style="color: #f59e0b;">Hit Rate (H/PA)</div>
         <h3>Bat-to-Ball Skill + BABIP Noise</h3>
-        <p>Hit rate is driven by <strong>zone rate patterns</strong> and <strong>swing-and-miss trends</strong>. However, it was the <strong>hardest metric to predict</strong> (worst for 24 of 60 players) because batting average is heavily influenced by BABIP &mdash; defensive alignment, batted ball luck, and sprint speed that the system doesn&rsquo;t currently observe.</p>
+        <p>Hit rate is driven by <strong>zone rate patterns</strong> and <strong>swing-and-miss trends</strong>. However, it was the <strong>hardest metric to predict</strong> (worst for 24 of 60 players) because batting average is heavily influenced by BABIP - defensive alignment, batted ball luck, and sprint speed that the system doesn&rsquo;t currently observe.</p>
         <div style="margin-top: 1rem;">
           <table class="results-table" style="font-size: 0.8rem;">
             <tr><th>Stat</th><th>Value</th></tr>
@@ -127,7 +127,7 @@
       <div class="insight-card">
         <div class="metric-label" style="color: #ef4444;">Strikeout Rate (K/PA)</div>
         <h3>Mirror Image of Hit Rate</h3>
-        <p>K rate is driven by the same signal as hit rate &mdash; <strong>swing-and-miss trends</strong> (20%) and <strong>zone rate patterns</strong> (20%). This confirms that strikeouts and hits share the same underlying mechanical process: bat-to-ball contact ability. When whiff rate goes up, both K/PA rises and H/PA falls.</p>
+        <p>K rate is driven by the same signal as hit rate - <strong>swing-and-miss trends</strong> (20%) and <strong>zone rate patterns</strong> (20%). This confirms that strikeouts and hits share the same underlying mechanical process: bat-to-ball contact ability. When whiff rate goes up, both K/PA rises and H/PA falls.</p>
         <div style="margin-top: 1rem;">
           <table class="results-table" style="font-size: 0.8rem;">
             <tr><th>Stat</th><th>Value</th></tr>
@@ -150,22 +150,22 @@
       <tr>
         <td>HR/PA</td><td>30</td><td>29</td>
         <td style="font-family: 'JetBrains Mono', monospace;">&minus;0.0025</td>
-        <td>Nearly unbiased &mdash; slight under-prediction of power</td>
+        <td>Nearly unbiased - slight under-prediction of power</td>
       </tr>
       <tr>
         <td>H/PA</td><td>30</td><td>30</td>
         <td style="font-family: 'JetBrains Mono', monospace;">+0.0016</td>
-        <td>Nearly unbiased &mdash; minimal directional tendency</td>
+        <td>Nearly unbiased - minimal directional tendency</td>
       </tr>
       <tr>
         <td>BB/PA</td><td style="color: #f59e0b;"><strong>38</strong></td><td>22</td>
         <td style="font-family: 'JetBrains Mono', monospace; color: #f59e0b;">+0.0085</td>
-        <td>Largest bias &mdash; system expects more patience than 2025 showed</td>
+        <td>Largest bias - system expects more patience than 2025 showed</td>
       </tr>
       <tr>
         <td>K/PA</td><td>33</td><td>27</td>
         <td style="font-family: 'JetBrains Mono', monospace;">&minus;0.0007</td>
-        <td>Nearly unbiased &mdash; trivial under-prediction</td>
+        <td>Nearly unbiased - trivial under-prediction</td>
       </tr>
     </table>
 
@@ -210,7 +210,7 @@
       </div>
     </div>
 
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>Regime transitions</strong> are the moments where these loops flip direction &mdash; the tipping points between hot streaks and slumps. The system&rsquo;s ability to detect and model these transitions (73,076 across 60 players) is a key differentiator from traditional projection systems that assume smooth, stable performance.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>Regime transitions</strong> are the moments where these loops flip direction - the tipping points between hot streaks and slumps. The system&rsquo;s ability to detect and model these transitions (73,076 across 60 players) is a key differentiator from traditional projection systems that assume smooth, stable performance.</p>
 
     <!-- ══════════════════════ COMPOUND RELATIONSHIPS ══════════════════════ -->
     <h2 class="results-section-title">Single-Factor vs. Compound Relationships</h2>
@@ -226,7 +226,7 @@
       </div>
     </div>
 
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>24% of all discovered relationships</strong> involve compound interactions that cannot be captured by single-variable regression. For example, Bobby Witt Jr.&rsquo;s walk rate is jointly influenced by pitch velocity trends <em>and</em> swing decision patterns &mdash; neither alone is sufficient. This validates the UPS engine&rsquo;s multi-stage approach of discovering pairwise relationships first, then searching for higher-order interactions.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>24% of all discovered relationships</strong> involve compound interactions that cannot be captured by single-variable regression. For example, Bobby Witt Jr.&rsquo;s walk rate is jointly influenced by pitch velocity trends <em>and</em> swing decision patterns - neither alone is sufficient. This validates the UPS engine&rsquo;s multi-stage approach of discovering pairwise relationships first, then searching for higher-order interactions.</p>
 
     <!-- ══════════════════════ ELITE vs DEVELOPING ══════════════════════ -->
     <h2 class="results-section-title">What Separates Elite from Developing Projections</h2>
@@ -240,7 +240,7 @@
     </table>
 
     <div class="disclaimer" style="margin-top: 1.5rem;">
-      <strong>Key finding:</strong> The primary driver of projection quality is <strong>career data depth</strong>. Players with longer careers provide more historical patterns to validate against, producing tighter forward projections. The 5 &ldquo;Developing&rdquo; grade players (Cal Raleigh, Jazz Chisholm Jr., Jose Siri, Josh Naylor, Nolan Arenado) were predominantly players who experienced significant role changes, position switches, or volatile recent performance that disrupted historical trends. This is not a system weakness &mdash; it&rsquo;s appropriate epistemic humility.
+      <strong>Key finding:</strong> The primary driver of projection quality is <strong>career data depth</strong>. Players with longer careers provide more historical patterns to validate against, producing tighter forward projections. The 5 &ldquo;Developing&rdquo; grade players (Cal Raleigh, Jazz Chisholm Jr., Jose Siri, Josh Naylor, Nolan Arenado) were predominantly players who experienced significant role changes, position switches, or volatile recent performance that disrupted historical trends. This is not a system weakness - it&rsquo;s appropriate epistemic humility.
     </div>
 
     <!-- ══════════════════════ BIGGEST OUTLIERS ══════════════════════ -->
@@ -248,20 +248,20 @@
 
     <div class="card-grid" style="margin-bottom: 2.5rem;">
       <div class="card">
-        <h3 style="color: var(--green);">Cody Bellinger &mdash; 99.0%</h3>
+        <h3 style="color: var(--green);">Cody Bellinger - 99.0%</h3>
         <p><strong>Why so accurate:</strong> Bellinger&rsquo;s performance was driven by swing decisions (HR) and long-term HR production trends interconnected with medium-term batting consistency (H/PA). These are stable, persistent signals. Even his worst metric (H/PA) had only 0.024 error. The system captured his renaissance perfectly.</p>
       </div>
       <div class="card">
-        <h3 style="color: var(--green);">Luis Arraez &mdash; K/PA Error: 0.0000</h3>
-        <p><strong>Perfect K/PA projection.</strong> Arraez&rsquo;s strikeout rate was projected to four decimal places with zero error. His extreme contact-first approach produces the most stable, predictable K/PA signal in baseball &mdash; a finding that would interest any team evaluating plate discipline.</p>
+        <h3 style="color: var(--green);">Luis Arraez - K/PA Error: 0.0000</h3>
+        <p><strong>Perfect K/PA projection.</strong> Arraez&rsquo;s strikeout rate was projected to four decimal places with zero error. His extreme contact-first approach produces the most stable, predictable K/PA signal in baseball - a finding that would interest any team evaluating plate discipline.</p>
       </div>
       <div class="card">
-        <h3 style="color: #ef4444;">Jose Siri &mdash; 92.1%</h3>
+        <h3 style="color: #ef4444;">Jose Siri - 92.1%</h3>
         <p><strong>Largest miss:</strong> K/PA error of 0.1908 (projected 0.183, actual 0.374). Siri&rsquo;s strikeout rate nearly doubled from what his career trends predicted. This likely reflects injury impact (fractured tibia) and role change. The system correctly flagged high uncertainty.</p>
       </div>
       <div class="card">
-        <h3 style="color: #ef4444;">Cal Raleigh &mdash; H/PA Miss</h3>
-        <p><strong>Largest single-metric miss:</strong> H/PA error of 0.156 (projected .365, actual .209). Raleigh&rsquo;s hit rate collapsed far below career norms. The system over-projected his contact ability &mdash; a case where adding batted ball direction data could have signaled the decline earlier.</p>
+        <h3 style="color: #ef4444;">Cal Raleigh - H/PA Miss</h3>
+        <p><strong>Largest single-metric miss:</strong> H/PA error of 0.156 (projected .365, actual .209). Raleigh&rsquo;s hit rate collapsed far below career norms. The system over-projected his contact ability - a case where adding batted ball direction data could have signaled the decline earlier.</p>
       </div>
     </div>
 
@@ -295,7 +295,7 @@
         <span class="rec-number">4</span>
         <div class="rec-body">
           <h4>Implement League-Environment Bias Correction</h4>
-          <p>The systematic over-prediction of BB/PA (bias: +0.0085 across 38 of 60 players) suggests a post-processing calibration step that adjusts for league-wide trends &mdash; like the observed decline in walk rates &mdash; would improve accuracy for every player simultaneously.</p>
+          <p>The systematic over-prediction of BB/PA (bias: +0.0085 across 38 of 60 players) suggests a post-processing calibration step that adjusts for league-wide trends - like the observed decline in walk rates - would improve accuracy for every player simultaneously.</p>
         </div>
       </div>
       <div class="rec-item">
@@ -378,7 +378,7 @@
     </table>
 
     <div class="disclaimer" style="margin-top: 2.5rem;">
-      <strong>Methodology note:</strong> This analysis was auto-generated from all 60 individual UPS v3.5 player projection reports. All findings are data-driven &mdash; no manual curation or cherry-picking was applied. The predictor frequency tables were built by parsing every player&rsquo;s insight text and categorizing the described predictors. The bias analysis uses confirmed 2025 season statistics from Baseball Reference and StatMuse. The Universal Prediction System is developed by DIGINETICS.
+      <strong>Methodology note:</strong> This analysis was auto-generated from all 60 individual UPS v3.5 player projection reports. All findings are data-driven - no manual curation or cherry-picking was applied. The predictor frequency tables were built by parsing every player&rsquo;s insight text and categorizing the described predictors. The bias analysis uses confirmed 2025 season statistics from Baseball Reference and StatMuse. The Universal Prediction System is developed by DIGINETICS.
     </div>
 
     <div style="text-align: center; margin-top: 3rem;">
