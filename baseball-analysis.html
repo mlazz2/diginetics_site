@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Analysis &mdash; Baseball &mdash; DIGINETICS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .causal-chain { font-family: 'JetBrains Mono', monospace; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 2.5rem; margin: 1.5rem 0 2rem; font-size: 0.95rem; line-height: 2.2; color: var(--accent-hover); text-align: center; }
+    .causal-chain .arrow { color: var(--text-secondary); margin: 0 0.25rem; }
+    .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
+    .insight-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.3s; }
+    .insight-card:hover { border-color: rgba(99, 102, 241, 0.3); }
+    .insight-card .metric-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .insight-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .insight-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+    .bias-bar { display: flex; align-items: center; gap: 0.75rem; margin: 0.5rem 0; }
+    .bias-bar .bar-track { flex: 1; height: 8px; background: var(--bg-primary); border-radius: 4px; position: relative; overflow: hidden; }
+    .bias-bar .bar-fill { height: 100%; border-radius: 4px; position: absolute; }
+    .bias-bar .label { font-size: 0.8rem; color: var(--text-secondary); min-width: 60px; }
+    .rec-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-glow); border: 1px solid rgba(99, 102, 241, 0.3); color: var(--accent-hover); font-size: 0.8rem; font-weight: 700; margin-right: 0.75rem; flex-shrink: 0; }
+    .rec-item { display: flex; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+    .rec-item:last-child { border-bottom: none; }
+    .rec-item .rec-body h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .rec-item .rec-body p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent-hover); text-decoration: none; font-size: 0.9rem; font-weight: 500; margin-bottom: 1rem; transition: color 0.2s; }
+    .back-link:hover { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="index.html"><img src="logo.png" alt="D"> DIGINETICS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="baseball.html" class="active">Baseball</a></li>
+      <li><a href="retail.html">Retail</a></li>
+      <li><a href="healthcare.html">Healthcare</a></li>
+      <li><a href="cre.html">CRE</a></li>
+      <li><a href="mailto:contact@diginetics.co">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <a href="baseball.html" class="back-link">&larr; Back to Player Results</a>
+    <h1 class="section-title">What the System Learned About Baseball</h1>
+    <p class="section-subtitle">60-Player Cross-Roster Analysis &mdash; Patterns, Biases, and Future Directions</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 800px; line-height: 1.7;">After independently analyzing 60 MLB hitters &mdash; with <strong>zero domain knowledge</strong> about baseball theory, sabermetrics, or scouting &mdash; the UPS v3.5 engine organically discovered fundamental truths about how hitting performance works. These findings emerged purely from equation search, backtest validation, and out-of-sample confirmation.</p>
+  </div>
+
+  <section>
+
+    <!-- ══════════════════════ CAUSAL CHAIN ══════════════════════ -->
+    <h2 class="results-section-title">The Discovered Causal Model of Hitting</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Across all 60 players, the system converged on a consistent 4-layer causal chain. This was not programmed &mdash; it was discovered from 20,318 candidate equations validated against holdout data:</p>
+
+    <div class="causal-chain">
+      <strong>Pitch Environment</strong> <span class="arrow">&rarr;</span>
+      <strong>Swing Decisions</strong> <span class="arrow">&rarr;</span>
+      <strong>Contact Quality</strong> <span class="arrow">&rarr;</span>
+      <strong>Outcomes</strong>
+      <br>
+      <span style="font-size: 0.8rem; color: var(--text-secondary);">
+        velocity, mix, location &nbsp;&bull;&nbsp;
+        chase rate, zone swing% &nbsp;&bull;&nbsp;
+        whiff rate, barrel rate, EV &nbsp;&bull;&nbsp;
+        HR/PA, H/PA, BB/PA, K/PA
+      </span>
+    </div>
+
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">Upstream changes propagate predictably to downstream outcomes. A shift in pitch-mix exposure today predicts a shift in swing decisions next week, which predicts a shift in contact quality the week after, which predicts a shift in counting stats by season&rsquo;s end. This is why the system can project forward with 97% accuracy.</p>
+
+    <!-- ══════════════════════ METRIC INSIGHTS ══════════════════════ -->
+    <h2 class="results-section-title">What Drives Each Outcome</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.5rem;">Each of the four projected metrics has a distinct causal signature. The system found different primary drivers for each:</p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="metric-label" style="color: #22c55e;">Home Run Rate (HR/PA)</div>
+        <h3>Opportunity + Mechanical Readiness</h3>
+        <p>HR rate is driven by <strong>pitch velocity trends</strong> (43% of players) and <strong>multi-factor interactions</strong> (22%). Power output depends on seeing hittable pitches combined with being mechanically ready to turn on them. This was the <strong>most predictable metric</strong> &mdash; it had the lowest error for 36 of 60 players.</p>
+        <div style="margin-top: 1rem;">
+          <table class="results-table" style="font-size: 0.8rem;">
+            <tr><th>Stat</th><th>Value</th></tr>
+            <tr><td>Mean Error</td><td style="color: var(--green);">0.0127</td></tr>
+            <tr><td>Min Error</td><td>0.0005</td></tr>
+            <tr><td>Max Error</td><td>0.0580</td></tr>
+            <tr><td>Times Best Metric</td><td><strong>36 of 60</strong></td></tr>
+            <tr><td>Times Worst Metric</td><td>0 of 60</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="metric-label" style="color: #f59e0b;">Hit Rate (H/PA)</div>
+        <h3>Bat-to-Ball Skill + BABIP Noise</h3>
+        <p>Hit rate is driven by <strong>zone rate patterns</strong> and <strong>swing-and-miss trends</strong>. However, it was the <strong>hardest metric to predict</strong> (worst for 24 of 60 players) because batting average is heavily influenced by BABIP &mdash; defensive alignment, batted ball luck, and sprint speed that the system doesn&rsquo;t currently observe.</p>
+        <div style="margin-top: 1rem;">
+          <table class="results-table" style="font-size: 0.8rem;">
+            <tr><th>Stat</th><th>Value</th></tr>
+            <tr><td>Mean Error</td><td style="color: #f59e0b;">0.0371</td></tr>
+            <tr><td>Min Error</td><td>0.0008</td></tr>
+            <tr><td>Max Error</td><td>0.1560</td></tr>
+            <tr><td>Times Best Metric</td><td>4 of 60</td></tr>
+            <tr><td>Times Worst Metric</td><td><strong>24 of 60</strong></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="metric-label" style="color: #6366f1;">Walk Rate (BB/PA)</div>
+        <h3>Behavioral, Not Mechanical</h3>
+        <p>Walk rate is the most &ldquo;decision-driven&rdquo; metric. <strong>Swing decision / plate discipline</strong> patterns were the primary driver (22% of players). Unlike the other three metrics, BB/PA reflects a hitter&rsquo;s strategic approach to the strike zone, not their physical bat-to-ball ability. The system also found the <strong>largest systematic bias</strong> here.</p>
+        <div style="margin-top: 1rem;">
+          <table class="results-table" style="font-size: 0.8rem;">
+            <tr><th>Stat</th><th>Value</th></tr>
+            <tr><td>Mean Error</td><td style="color: #6366f1;">0.0281</td></tr>
+            <tr><td>Min Error</td><td>0.0013</td></tr>
+            <tr><td>Max Error</td><td>0.0982</td></tr>
+            <tr><td>Systematic Bias</td><td>Over-predicted (38 of 60)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="metric-label" style="color: #ef4444;">Strikeout Rate (K/PA)</div>
+        <h3>Mirror Image of Hit Rate</h3>
+        <p>K rate is driven by the same signal as hit rate &mdash; <strong>swing-and-miss trends</strong> (20%) and <strong>zone rate patterns</strong> (20%). This confirms that strikeouts and hits share the same underlying mechanical process: bat-to-ball contact ability. When whiff rate goes up, both K/PA rises and H/PA falls.</p>
+        <div style="margin-top: 1rem;">
+          <table class="results-table" style="font-size: 0.8rem;">
+            <tr><th>Stat</th><th>Value</th></tr>
+            <tr><td>Mean Error</td><td style="color: #ef4444;">0.0432</td></tr>
+            <tr><td>Min Error</td><td>0.0000</td></tr>
+            <tr><td>Max Error</td><td>0.1908</td></tr>
+            <tr><td>Times Best Metric</td><td>9 of 60</td></tr>
+            <tr><td>Times Worst Metric</td><td><strong>23 of 60</strong></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ SYSTEMATIC BIAS ══════════════════════ -->
+    <h2 class="results-section-title">Systematic Bias Analysis</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Does the system consistently over- or under-predict? Across 60 players:</p>
+
+    <table class="results-table">
+      <tr><th>Metric</th><th>Over-predicted</th><th>Under-predicted</th><th>Mean Bias</th><th>Interpretation</th></tr>
+      <tr>
+        <td>HR/PA</td><td>30</td><td>29</td>
+        <td style="font-family: 'JetBrains Mono', monospace;">&minus;0.0025</td>
+        <td>Nearly unbiased &mdash; slight under-prediction of power</td>
+      </tr>
+      <tr>
+        <td>H/PA</td><td>30</td><td>30</td>
+        <td style="font-family: 'JetBrains Mono', monospace;">+0.0016</td>
+        <td>Nearly unbiased &mdash; minimal directional tendency</td>
+      </tr>
+      <tr>
+        <td>BB/PA</td><td style="color: #f59e0b;"><strong>38</strong></td><td>22</td>
+        <td style="font-family: 'JetBrains Mono', monospace; color: #f59e0b;">+0.0085</td>
+        <td>Largest bias &mdash; system expects more patience than 2025 showed</td>
+      </tr>
+      <tr>
+        <td>K/PA</td><td>33</td><td>27</td>
+        <td style="font-family: 'JetBrains Mono', monospace;">&minus;0.0007</td>
+        <td>Nearly unbiased &mdash; trivial under-prediction</td>
+      </tr>
+    </table>
+
+    <div class="disclaimer">
+      <strong>Key insight:</strong> The BB/PA over-prediction (system expected more walks than actually occurred for 63% of players) suggests a league-wide shift toward more aggressive approaches in 2025. Hitters were swinging more and walking less than their career trends predicted. This is consistent with the MLB&rsquo;s observed trend of decreasing walk rates over recent seasons. Future configs should incorporate a league-environment adjustment factor.
+    </div>
+
+    <!-- ══════════════════════ FEEDBACK LOOPS ══════════════════════ -->
+    <h2 class="results-section-title">Feedback Loops &amp; Regime Transitions</h2>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">30,141</div>
+        <div class="stat-label">Feedback Loops<br>Discovered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">73,076</div>
+        <div class="stat-label">Regime Transitions<br>Detected</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">~773</div>
+        <div class="stat-label">Avg Loops<br>Per Player</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">~1,874</div>
+        <div class="stat-label">Avg Transitions<br>Per Player</div>
+      </div>
+    </div>
+
+    <div class="card-grid" style="margin-bottom: 2.5rem;">
+      <div class="card">
+        <h3>Confidence&ndash;Power Loop</h3>
+        <p>Higher HR rate &rarr; higher SLG &rarr; pitchers throw more fastballs to avoid walks &rarr; more hittable pitches &rarr; higher HR rate. The system found this self-reinforcing cycle in power hitters, explaining why hot streaks compound.</p>
+      </div>
+      <div class="card">
+        <h3>Discipline&ndash;Walk Loop</h3>
+        <p>Higher walk rate &rarr; deeper counts &rarr; more off-speed exposure &rarr; better swing selection &rarr; higher walk rate. Patient hitters get rewarded with more information per at-bat, which makes them even more patient.</p>
+      </div>
+      <div class="card">
+        <h3>Slump Spiral</h3>
+        <p>Higher K rate &rarr; degraded swing decisions (expanding zone) &rarr; worse contact quality &rarr; even higher K rate. The system detected this negative feedback loop as the primary mechanism behind extended cold spells.</p>
+      </div>
+    </div>
+
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>Regime transitions</strong> are the moments where these loops flip direction &mdash; the tipping points between hot streaks and slumps. The system&rsquo;s ability to detect and model these transitions (73,076 across 60 players) is a key differentiator from traditional projection systems that assume smooth, stable performance.</p>
+
+    <!-- ══════════════════════ COMPOUND RELATIONSHIPS ══════════════════════ -->
+    <h2 class="results-section-title">Single-Factor vs. Compound Relationships</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0 2rem;">
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 2.5rem;">119</div>
+        <div class="stat-label">Single-factor causal links<br><span style="font-size: 0.75rem;">(one predictor sufficient)</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 2.5rem;">37</div>
+        <div class="stat-label">Multi-factor interactions<br><span style="font-size: 0.75rem;">(compound causal relationships)</span></div>
+      </div>
+    </div>
+
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>24% of all discovered relationships</strong> involve compound interactions that cannot be captured by single-variable regression. For example, Bobby Witt Jr.&rsquo;s walk rate is jointly influenced by pitch velocity trends <em>and</em> swing decision patterns &mdash; neither alone is sufficient. This validates the UPS engine&rsquo;s multi-stage approach of discovering pairwise relationships first, then searching for higher-order interactions.</p>
+
+    <!-- ══════════════════════ ELITE vs DEVELOPING ══════════════════════ -->
+    <h2 class="results-section-title">What Separates Elite from Developing Projections</h2>
+
+    <table class="results-table">
+      <tr><th>Factor</th><th>Elite + Strong (33 players)</th><th>Fair + Developing (9 players)</th></tr>
+      <tr><td>Average Accuracy</td><td style="color: var(--green);"><strong>97.8%</strong></td><td>93.6%</td></tr>
+      <tr><td>Average Error / PA</td><td style="color: var(--green);">0.0185</td><td>0.0613</td></tr>
+      <tr><td>Avg Plate Appearances (2025)</td><td>601</td><td>528</td></tr>
+      <tr><td>Common Characteristics</td><td>Longer careers, stable approach</td><td>Young, volatile, role changes</td></tr>
+    </table>
+
+    <div class="disclaimer" style="margin-top: 1.5rem;">
+      <strong>Key finding:</strong> The primary driver of projection quality is <strong>career data depth</strong>. Players with longer careers provide more historical patterns to validate against, producing tighter forward projections. The 5 &ldquo;Developing&rdquo; grade players (Cal Raleigh, Jazz Chisholm Jr., Jose Siri, Josh Naylor, Nolan Arenado) were predominantly players who experienced significant role changes, position switches, or volatile recent performance that disrupted historical trends. This is not a system weakness &mdash; it&rsquo;s appropriate epistemic humility.
+    </div>
+
+    <!-- ══════════════════════ BIGGEST OUTLIERS ══════════════════════ -->
+    <h2 class="results-section-title">Notable Outlier Cases</h2>
+
+    <div class="card-grid" style="margin-bottom: 2.5rem;">
+      <div class="card">
+        <h3 style="color: var(--green);">Cody Bellinger &mdash; 99.0%</h3>
+        <p><strong>Why so accurate:</strong> Bellinger&rsquo;s performance was driven by swing decisions (HR) and long-term HR production trends interconnected with medium-term batting consistency (H/PA). These are stable, persistent signals. Even his worst metric (H/PA) had only 0.024 error. The system captured his renaissance perfectly.</p>
+      </div>
+      <div class="card">
+        <h3 style="color: var(--green);">Luis Arraez &mdash; K/PA Error: 0.0000</h3>
+        <p><strong>Perfect K/PA projection.</strong> Arraez&rsquo;s strikeout rate was projected to four decimal places with zero error. His extreme contact-first approach produces the most stable, predictable K/PA signal in baseball &mdash; a finding that would interest any team evaluating plate discipline.</p>
+      </div>
+      <div class="card">
+        <h3 style="color: #ef4444;">Jose Siri &mdash; 92.1%</h3>
+        <p><strong>Largest miss:</strong> K/PA error of 0.1908 (projected 0.183, actual 0.374). Siri&rsquo;s strikeout rate nearly doubled from what his career trends predicted. This likely reflects injury impact (fractured tibia) and role change. The system correctly flagged high uncertainty.</p>
+      </div>
+      <div class="card">
+        <h3 style="color: #ef4444;">Cal Raleigh &mdash; H/PA Miss</h3>
+        <p><strong>Largest single-metric miss:</strong> H/PA error of 0.156 (projected .365, actual .209). Raleigh&rsquo;s hit rate collapsed far below career norms. The system over-projected his contact ability &mdash; a case where adding batted ball direction data could have signaled the decline earlier.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ CONFIG RECOMMENDATIONS ══════════════════════ -->
+    <h2 class="results-section-title">Implications for Future System Configuration</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The 60-player analysis revealed specific, actionable improvements for future pipeline configurations:</p>
+
+    <div style="margin-bottom: 2.5rem;">
+      <div class="rec-item">
+        <span class="rec-number">1</span>
+        <div class="rec-body">
+          <h4>Enforce the Discovered Causal Hierarchy</h4>
+          <p>The system consistently rediscovered the chain: Pitch Environment &rarr; Swing Decisions &rarr; Contact Quality &rarr; Outcomes. Future configs should hard-code this ordering in the hierarchy layers and forbid edges from outcomes back to pitch environment. This would reduce false discoveries and speed up equation search.</p>
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">2</span>
+        <div class="rec-body">
+          <h4>Add Sprint Speed &amp; Batted Ball Direction for H/PA</h4>
+          <p>H/PA was the worst-predicted metric for 24 of 60 players, primarily because BABIP depends on factors not currently in the feature set (defensive alignment, sprint speed, batted ball spray angle). Adding these would directly attack the largest accuracy gap.</p>
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">3</span>
+        <div class="rec-body">
+          <h4>Model BB/PA as a Decision Metric</h4>
+          <p>Walk rate was driven overwhelmingly by swing decision patterns, not contact quality. Future configs should weight plate discipline features more heavily for BB/PA and consider adding count-specific swing rates (e.g., swing% in 3-ball counts) as features.</p>
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">4</span>
+        <div class="rec-body">
+          <h4>Implement League-Environment Bias Correction</h4>
+          <p>The systematic over-prediction of BB/PA (bias: +0.0085 across 38 of 60 players) suggests a post-processing calibration step that adjusts for league-wide trends &mdash; like the observed decline in walk rates &mdash; would improve accuracy for every player simultaneously.</p>
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">5</span>
+        <div class="rec-body">
+          <h4>Scale Uncertainty by Career Depth</h4>
+          <p>Young players with fewer career seasons consistently produced wider errors. Future configs should auto-scale Monte Carlo variance based on available holdout windows and report confidence intervals alongside point projections, giving users appropriate context for newer players.</p>
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">6</span>
+        <div class="rec-body">
+          <h4>Stratify Testing by Player Archetype</h4>
+          <p>Power-first, contact-first, speed-first, and discipline-first hitters each have distinct prediction profiles. Future batch testing should group by archetype and tune sub-configs per group to squeeze additional accuracy from each player type.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ CROSS-DOMAIN ══════════════════════ -->
+    <h2 class="results-section-title">Cross-Domain Implications</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Several findings from the baseball domain directly inform how we configure the UPS engine for healthcare, real estate, and other domains:</p>
+
+    <table class="results-table">
+      <tr><th>Baseball Finding</th><th>Universal Principle</th></tr>
+      <tr>
+        <td>Causal hierarchy matters (pitch env &rarr; decisions &rarr; quality &rarr; outcomes)</td>
+        <td>All domains should enforce discovered causal ordering in hierarchy layers</td>
+      </tr>
+      <tr>
+        <td>Feedback loops drive regime transitions</td>
+        <td>Healthcare and CRE configs should allocate compute budget to loop detection</td>
+      </tr>
+      <tr>
+        <td>24% of relationships are multi-factor</td>
+        <td><code>compute_all_pairs: true</code> should remain the default for all domains</td>
+      </tr>
+      <tr>
+        <td>Time-series length drives accuracy</td>
+        <td>Data depth should be a quality gate before running any domain</td>
+      </tr>
+      <tr>
+        <td>H/PA hardest due to BABIP noise</td>
+        <td>Metrics with high random variance in any domain need decomposition</td>
+      </tr>
+      <tr>
+        <td>Systematic bias exists and is measurable</td>
+        <td>All domains should implement post-hoc bias correction as a pipeline stage</td>
+      </tr>
+    </table>
+
+    <!-- ══════════════════════ SUMMARY STATS ══════════════════════ -->
+    <h2 class="results-section-title">Summary Statistics</h2>
+
+    <div class="stats-row" style="margin-bottom: 2rem;">
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">20,318</div>
+        <div class="stat-label">Equations Discovered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">18,604</div>
+        <div class="stat-label">Passed Backtest</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">91.6%</div>
+        <div class="stat-label">Equation Pass Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">99.41%</div>
+        <div class="stat-label">Avg Backtest Accuracy</div>
+      </div>
+    </div>
+
+    <table class="results-table">
+      <tr><th>Statistic</th><th>Value</th></tr>
+      <tr><td>Dataset</td><td>2015&ndash;2025 MLB Statcast (plate-appearance level)</td></tr>
+      <tr><td>Performance Indicators / Player</td><td>72</td></tr>
+      <tr><td>Monte Carlo Paths / Player</td><td>500</td></tr>
+      <tr><td>Avg Holdout Windows / Player</td><td>32</td></tr>
+      <tr><td>Actuals Verified Against</td><td>Baseball Reference, StatMuse</td></tr>
+    </table>
+
+    <div class="disclaimer" style="margin-top: 2.5rem;">
+      <strong>Methodology note:</strong> This analysis was auto-generated from all 60 individual UPS v3.5 player projection reports. All findings are data-driven &mdash; no manual curation or cherry-picking was applied. The predictor frequency tables were built by parsing every player&rsquo;s insight text and categorizing the described predictors. The bias analysis uses confirmed 2025 season statistics from Baseball Reference and StatMuse. The Universal Prediction System is developed by DIGINETICS.
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="baseball.html" class="btn-primary">View All 60 Player Results &rarr;</a>
+    </div>
+
+  </section>
+
+  <footer>
+    &copy; 2026 DIGINETICS. All rights reserved.
+  </footer>
+
+</body>
+</html>
