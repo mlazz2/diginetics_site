@@ -262,38 +262,32 @@
         <div class="finding">
             <div class="label" style="color: #6366f1;">Primary Target - 98.90% OOS Accuracy</div>
             <h3>price_yoy_change</h3>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Price Growth &asymp; CPI Inflation &times; Market Competitiveness&sup2;</p>
             <p>Home price appreciation is fundamentally driven by the interaction of inflation pressure and market competitiveness. When CPI rises and homes sell near or above asking, prices accelerate. This held across COVID, the 2021-22 boom, rate hikes, and the 2024-25 normalization - 21 independent out-of-sample windows.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #22c55e;">Strongest Discovery - 99.90% OOS Accuracy</div>
             <h3>months_supply</h3>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Months Supply &asymp; 1.78 + Mortgage Rate</p>
-            <p>One of the cleanest structural relationships discovered: housing inventory is almost entirely a function of mortgage rates. The ~1.78 intercept represents the irreducible supply floor. At 6% rates, expect ~7.8 months of supply. At 4%, expect ~5.8. This relationship held stable across a decade of wildly different rate environments.</p>
+            <p>One of the cleanest structural relationships discovered: housing inventory is almost entirely a function of mortgage rates. As rates rise, supply increases predictably. As rates fall, supply tightens. This relationship held stable across a decade of wildly different rate environments.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #22c55e;">Supply-Demand Link - 99.85% OOS Accuracy</div>
             <h3>new_home_sales</h3>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">New Sales &asymp; 1070 &minus; 42.5 &times; (Months Supply + 1.4)</p>
-            <p>New home sales are a direct linear function of housing inventory. Every additional month of supply destroys ~42.5K in annualized new sales. At 99.85% OOS accuracy across a decade, this is a clean structural relationship: when supply is tight (3 months), sales hit ~880K. When supply bloats to 8 months, sales crash to ~670K.</p>
+            <p>New home sales are a direct function of housing inventory. As supply rises, sales decline at a consistent, quantifiable rate. At 99.85% OOS accuracy across a decade, this is one of the most reliable structural relationships in real estate. Tight supply drives high sales volume; excess supply suppresses it predictably.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #818cf8;">Inflation Channel - 94.59% OOS Accuracy</div>
             <h3>rent_yoy_change</h3>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Rent Growth &asymp; CPI Inflation &times; 1.15</p>
-            <p>Rents track inflation with a ~15% amplification factor. When CPI hits 3%, rents grow ~3.45%. This is the most direct inflation transmission channel in real estate. The lower accuracy (94.59%) reflects local rent dynamics that diverge from national CPI trends.</p>
+            <p>Rents track inflation with a measurable amplification factor, consistently growing faster than CPI. This is the most direct inflation transmission channel in real estate. The lower accuracy (94.59%) reflects local rent dynamics that diverge from national CPI trends.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #22c55e;">Rate Transmission - 99.86% OOS Accuracy</div>
             <h3>mortgage_rate_30yr_roll7</h3>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">30yr Mortgage &asymp; Fed Funds + 2.62%</p>
-            <p>The 30-year mortgage rate is structurally the Fed funds rate plus a ~2.62% credit spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% OOS accuracy, the spread is remarkably stable - mortgage pricing is almost purely a function of Fed policy, not market sentiment.</p>
+            <p>The 30-year mortgage rate is structurally linked to the Fed funds rate with a remarkably stable credit spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% OOS accuracy, the spread is remarkably stable - mortgage pricing is almost purely a function of Fed policy, not market sentiment.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #22c55e;">Construction Pipeline - 99.89% OOS Accuracy</div>
             <h3>housing_permits</h3>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Permits &asymp; 2 &times; (New Sales + 1.73)</p>
-            <p>Housing permits are almost exactly twice new home sales plus a small offset. This reveals the structural pipeline: the construction industry issues roughly 2 permits for every completed sale (accounting for multi-unit projects, cancellations, and regulatory lead time). A 10% drop in new sales predicts a ~10% permit decline. 99.89% OOS accuracy across a full housing cycle.</p>
+            <p>Housing permits track new home sales with a consistent structural ratio. This reveals the structural pipeline: the construction industry issues roughly 2 permits for every completed sale (accounting for multi-unit projects, cancellations, and regulatory lead time). A 10% drop in new sales predicts a ~10% permit decline. 99.89% OOS accuracy across a full housing cycle.</p>
         </div>
 
     <!-- ═══════════ METRO PROJECTIONS ═══════════ -->
@@ -485,8 +479,8 @@
       <h3>Dynamic Risk Assessment</h3>
       <p>Move beyond static underwriting models. The platform gives you forward-looking, metro-specific risk signals:</p>
       <ul>
-        <li><strong>Quantified collateral risk</strong> - The new home sales discovery (99.85% accuracy) tells you exactly how sales respond to inventory shifts. A 1-month supply increase? Sales drop by ~42.5K annualized. Chain that to the months supply discovery and you can forecast supply &rarr; sales &rarr; prices from a single rate move.</li>
-        <li><strong>Early warning for distress</strong> - The rent growth relationship shows rent tracks CPI x 1.15. When CPI decelerates, you know rental income is about to follow - weeks before it shows up in borrower financials.</li>
+        <li><strong>Quantified collateral risk</strong> - The new home sales discovery (99.85% accuracy) tells you exactly how sales respond to inventory shifts. The platform quantifies the precise impact of supply changes on sales volume. Chain that to the months supply discovery and you can forecast supply &rarr; sales &rarr; prices from a single rate move.</li>
+        <li><strong>Early warning for distress</strong> - The rent growth relationship shows rent tracks CPI with a consistent amplification factor. When CPI decelerates, you know rental income is about to follow - weeks before it shows up in borrower financials.</li>
         <li><strong>Portfolio-wide monitoring</strong> - Run 31 metros simultaneously. Flag the ones where fundamentals are deteriorating before defaults materialize.</li>
       </ul>
     </div>
@@ -496,7 +490,7 @@
       <h3>Operational Decision Support</h3>
       <p>Know what's actually driving your market before you set next quarter's strategy:</p>
       <ul>
-        <li><strong>Rent pricing intelligence</strong> - Rent growth tracks CPI with a 15% amplifier. When inflation is 2.5%, your rent increases should target ~2.9% to stay competitive. Push harder and you lose occupancy; too conservative and you leave money on the table.</li>
+        <li><strong>Rent pricing intelligence</strong> - Rent growth tracks CPI with a consistent amplifier. The platform quantifies exactly what your rent increases should target to stay competitive based on current inflation. Push harder and you lose occupancy; too conservative and you leave money on the table.</li>
         <li><strong>Rate impact forecasting</strong> - The mortgage-to-Fed-funds discovery (99.86% accuracy) gives you a direct link from Fed policy to mortgage costs. Combine with months supply to project inventory changes from rate decisions before they hit the market.</li>
         <li><strong>Market-specific intelligence</strong> - Each metro has its own dynamics. Austin's price trajectory differs from Boston's for quantifiable reasons. Use metro-specific projections to tailor strategies for each property in your portfolio.</li>
       </ul>
@@ -508,7 +502,7 @@
       <p>Differentiate your advisory practice with insights no one else has:</p>
       <ul>
         <li><strong>Quantified pitch decks</strong> - "Prices in this metro are projected to grow 5.1% based on current CPI and market competitiveness conditions" beats "we think the market is strong."</li>
-        <li><strong>Causal explanations for clients</strong> - When a client asks "why is this market softening?", show them the relationship: months supply = 1.78 + mortgage rate. Rates went up, supply followed. It's math, not opinion.</li>
+        <li><strong>Causal explanations for clients</strong> - When a client asks "why is this market softening?", show them the discovered relationship: mortgage rates drive supply levels directly. Rates went up, supply followed. It's data, not opinion.</li>
         <li><strong>Cross-metro comparison tools</strong> - Rank 31 metros on any combination of 84 indicators. Show investors exactly where fundamentals are strongest.</li>
       </ul>
     </div>
