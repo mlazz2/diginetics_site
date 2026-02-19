@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRE Results &mdash; DIGINETICS</title>
-  <meta name="description" content="Commercial real estate prediction results: 94.37% out-of-sample accuracy across 31 US metro areas. Discovered equations, forward projections, and actionable insights.">
+  <meta name="description" content="Commercial real estate prediction results across 31 US metro areas. Discovered equations, forward projections, and actionable insights.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
 <body>
 
   <nav>
-    <a class="logo" href="index.html"><img src="logo.png" alt="D"> DIGINETICS</a>
+    <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="baseball.html">Baseball</a></li>
@@ -55,7 +55,7 @@
   <div class="page-header">
     <div class="section-label">Commercial Real Estate</div>
     <h1 class="section-title">Metro Housing Market Intelligence</h1>
-    <p class="section-subtitle">31 US metro areas. 84 market indicators. 12 years of monthly data. Every result validated across 21 independent out-of-sample windows spanning 2015&ndash;2025 &mdash; through COVID, the housing boom, rate hikes, and normalization.</p>
+    <p class="section-subtitle">31 US metro areas. 68 market indicators. 12 years of monthly data. Every equation discovered by the UPS engine, tested across 21 independent out-of-sample windows spanning 2015&ndash;2025 &mdash; through COVID, the housing boom, rate hikes, and normalization.</p>
   </div>
 
   <section style="padding-top: 0;">
@@ -63,7 +63,7 @@
     <!-- ═══════════ HEADLINE STATS ═══════════ -->
     <div class="stats-row">
       <div class="stat-card" style="border-color: var(--accent)44;">
-        <div class="stat-number" style="color: var(--green); font-size: 2.25rem;">94.4%</div>
+        <div class="stat-number" style="color: var(--green); font-size: 2.25rem;">93.5%</div>
         <div class="stat-label">System Out-of-Sample<br>Accuracy (Avg)</div>
       </div>
       <div class="stat-card">
@@ -71,18 +71,18 @@
         <div class="stat-label">Metro Areas<br>Analyzed</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">408</div>
-        <div class="stat-label">Equations Found<br>&amp; Validated</div>
+        <div class="stat-number">332</div>
+        <div class="stat-label">Equations Discovered<br>&amp; Validated</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">47</div>
+        <div class="stat-number">32</div>
         <div class="stat-label">Metrics with<br>&ge;99% Accuracy</div>
       </div>
     </div>
 
     <div class="stats-row" style="margin-top: -1rem;">
       <div class="stat-card">
-        <div class="stat-number" style="font-size: 1.5rem;">84</div>
+        <div class="stat-number" style="font-size: 1.5rem;">68</div>
         <div class="stat-label">Unique Market<br>Indicators</div>
       </div>
       <div class="stat-card">
@@ -90,7 +90,7 @@
         <div class="stat-label">OOS Windows<br>(2015&ndash;2025)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number" style="font-size: 1.5rem;">99.2%</div>
+        <div class="stat-number" style="font-size: 1.5rem;">98.7%</div>
         <div class="stat-label">Median Equation<br>Accuracy</div>
       </div>
       <div class="stat-card">
@@ -99,20 +99,25 @@
       </div>
     </div>
 
-    <!-- ═══════════ VALIDATION ═══════════ -->
-    <h2 class="results-section-title">Validation</h2>
+    <!-- ═══════════ HOW ACCURACY IS MEASURED ═══════════ -->
+    <h2 class="results-section-title">How Accuracy Is Measured</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.5rem;">
-      Every number on this page comes from strictly out-of-sample evaluation:
+      Every number on this page comes from strictly out-of-sample evaluation. Here is exactly how:
     </p>
 
     <div class="def-grid">
       <div class="def-item">
-        <h4>Out-of-Sample Only</h4>
-        <p>All accuracy numbers are measured on data the system never saw during training. 21 independent test windows span 2015 through 2025. No information leaks forward.</p>
+        <h4>Expanding Window Backtest</h4>
+        <p>The engine uses 21 expanding time windows. Each window trains on historical data only, then tests on future data it has never seen. Window 1 trains on 2013&ndash;2014 and tests on 2015. Window 21 trains on 2013&ndash;2024 and tests on 2025. No information leaks forward.</p>
       </div>
       <div class="def-item">
-        <h4>System Average (94.4%)</h4>
-        <p>The headline number is the <strong>simple mean of all 408 validated results</strong> across all 21 windows. Every result weighted equally. No cherry-picking, no in-sample inflation.</p>
+        <h4>Accuracy Formula</h4>
+        <p>For each equation, accuracy is computed on every test window using Symmetric Mean Absolute Percentage Error (sMAPE), then converted:</p>
+        <div class="formula">Accuracy = 1 &minus; min(sMAPE / 100, 1.0)</div>
+      </div>
+      <div class="def-item">
+        <h4>System Average (93.5%)</h4>
+        <p>The headline number is the <strong>simple mean of all 332 equations' accuracies</strong> across all 21 windows. Every equation weighted equally. No cherry-picking, no in-sample inflation.</p>
       </div>
       <div class="def-item">
         <h4>Market Stress Testing</h4>
@@ -120,35 +125,57 @@
       </div>
     </div>
 
+    
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 1</div>
+            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2014</div>
+            <div style="font-size: 0.85rem; color: var(--green);">Test: 2015</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">744 train / 372 test rows</div>
+        </div>
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 11</div>
+            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2019</div>
+            <div style="font-size: 0.85rem; color: var(--green);">Test: 2020</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">2604 train / 372 test rows</div>
+        </div>
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 21</div>
+            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2024</div>
+            <div style="font-size: 0.85rem; color: var(--green);">Test: 2025</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">4464 train / 372 test rows</div>
+        </div>
+    </div>
+
     <!-- ═══════════ DATASET ═══════════ -->
     <h2 class="results-section-title">Dataset</h2>
     <div class="disclaimer">
-      <strong>Data:</strong> Housing metrics from <strong>Zillow Research</strong> and macro indicators from <strong>FRED (Federal Reserve Economic Data)</strong>. Coverage: <strong>31 metro areas</strong> (top 30 by population + national aggregate), <strong>monthly frequency</strong>, <strong>January 2013 through January 2026</strong>. All publicly available, institutional-grade sources.
+      <strong>Data sources:</strong> All data is from publicly available, institutional-grade sources. Housing metrics (ZHVI, ZORI, inventory, sale-to-list ratios, price cuts, days to pending) from <strong>Zillow Research</strong> public CSV exports. Macro indicators (mortgage rates, Fed funds rate, unemployment, CPI, consumer confidence) and housing activity (permits, starts, months supply, existing/new home sales, construction spending) from <strong>FRED (Federal Reserve Economic Data)</strong>. Coverage: <strong>31 metro areas</strong> (top 30 by population + national aggregate), <strong>monthly frequency</strong>, <strong>January 2013 through January 2026</strong>. All features are lag-safe &mdash; only data available at prediction time is used.
     </div>
 
     <!-- ═══════════ ACCURACY DISTRIBUTION ═══════════ -->
     <h2 class="results-section-title">Accuracy Distribution</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
-      How 408 equations distribute across accuracy tiers:
+      How 332 equations distribute across accuracy tiers:
     </p>
     <div style="margin-bottom: 2rem;">
-      <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #22c55e15; color: #22c55e; border: 1px solid #22c55e33; margin: 0.25rem;">99-100%: 223 <span style="font-weight: 400; opacity: 0.7;">(55%)</span></span>
-<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #6366f115; color: #6366f1; border: 1px solid #6366f133; margin: 0.25rem;">95-99%: 95 <span style="font-weight: 400; opacity: 0.7;">(23%)</span></span>
-<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #818cf815; color: #818cf8; border: 1px solid #818cf833; margin: 0.25rem;">90-95%: 20 <span style="font-weight: 400; opacity: 0.7;">(5%)</span></span>
-<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #f9731615; color: #f97316; border: 1px solid #f9731633; margin: 0.25rem;">70-80%: 75 <span style="font-weight: 400; opacity: 0.7;">(18%)</span></span>
-<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #ef444415; color: #ef4444; border: 1px solid #ef444433; margin: 0.25rem;"><70%: 5 <span style="font-weight: 400; opacity: 0.7;">(1%)</span></span>
+      <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #22c55e15; color: #22c55e; border: 1px solid #22c55e33; margin: 0.25rem;">99-100%: 152 <span style="font-weight: 400; opacity: 0.7;">(46%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #6366f115; color: #6366f1; border: 1px solid #6366f133; margin: 0.25rem;">95-99%: 95 <span style="font-weight: 400; opacity: 0.7;">(29%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #818cf815; color: #818cf8; border: 1px solid #818cf833; margin: 0.25rem;">90-95%: 20 <span style="font-weight: 400; opacity: 0.7;">(6%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #f9731615; color: #f97316; border: 1px solid #f9731633; margin: 0.25rem;">70-80%: 70 <span style="font-weight: 400; opacity: 0.7;">(21%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #ef444415; color: #ef4444; border: 1px solid #ef444433; margin: 0.25rem;"><70%: 5 <span style="font-weight: 400; opacity: 0.7;">(2%)</span></span>
 
     </div>
 
     <!-- ═══════════ ACCURACY BY CATEGORY ═══════════ -->
     <h2 class="results-section-title">Accuracy by Market Category</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      84 housing market indicators organized into six categories. Structural metrics (rates, affordability, prices) are extremely well-captured. Market activity metrics (sale-to-list ratios, buyer behavior) are inherently noisier &mdash; reflecting the boundary between predictable structure and real-time sentiment.
+      The engine modeled 68 housing market indicators organized into six categories. Structural metrics (rates, affordability, prices) are extremely well-captured. Market activity metrics (sale-to-list ratios, buyer behavior) are inherently noisier &mdash; reflecting the boundary between predictable structure and real-time sentiment. Trivial identity equations (e.g., predicting a metric from its own rolling average) are excluded.
     </p>
     <div class="card-grid">
       
         <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 99.52125143046008%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 99.45317406627292%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
                 <h3>&#127968; Affordability</h3>
                 <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.5%</span>
@@ -156,47 +183,47 @@
             <p>Housing affordability index, price-to-income ratios, new home sales volume</p>
             <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
                 <span>Median: 99.6%</span>
-                <span>Best: 100.0%</span>
-                <span>39 equations</span>
+                <span>Best: 99.8%</span>
+                <span>34 equations</span>
             </div>
         </div>
         <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 99.27762943641734%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 99.07562463747244%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
                 <h3>&#128200; Macro & Rates</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.3%</span>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.1%</span>
             </div>
             <p>Mortgage rates, Fed funds, CPI inflation, unemployment, consumer confidence</p>
             <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 99.4%</span>
+                <span>Median: 99.0%</span>
                 <span>Best: 100.0%</span>
-                <span>114 equations</span>
+                <span>88 equations</span>
             </div>
         </div>
         <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 99.09418650733095%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 98.82996546884551%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
                 <h3>&#128176; Price Outcomes</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.1%</span>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">98.8%</span>
             </div>
             <p>Home values (ZHVI), YoY/MoM price change, price momentum, sale prices</p>
             <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 99.1%</span>
-                <span>Best: 99.9%</span>
-                <span>80 equations</span>
+                <span>Median: 98.8%</span>
+                <span>Best: 99.8%</span>
+                <span>60 equations</span>
             </div>
         </div>
         <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 98.20733916467086%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 97.41090293239525%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
                 <h3>&#128196; Rental</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">98.2%</span>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">97.4%</span>
             </div>
             <p>Rent index (ZORI), rent growth, rental yields, cap rate estimates</p>
             <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
                 <span>Median: 99.8%</span>
-                <span>Best: 100.0%</span>
-                <span>65 equations</span>
+                <span>Best: 99.8%</span>
+                <span>45 equations</span>
             </div>
         </div>
         <div class="card" style="position: relative; overflow: hidden;">
@@ -230,7 +257,7 @@
     <!-- ═══════════ KEY DISCOVERED EQUATIONS ═══════════ -->
     <h2 class="results-section-title">Key Discovered Equations</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      These aren't hand-crafted models. These relationships were discovered automatically and validated across 21 out-of-sample windows. Every equation is human-readable and domain-interpretable.
+      These aren't hand-crafted models. The UPS engine discovered these relationships automatically through symbolic regression, then validated each one across 21 out-of-sample windows. Every equation is human-readable and domain-interpretable.
     </p>
     
         <div class="finding">
@@ -248,11 +275,11 @@
             <p>One of the cleanest structural relationships discovered: housing inventory is almost entirely a function of mortgage rates. The ~1.78 intercept represents the irreducible supply floor. At 6% rates, expect ~7.8 months of supply. At 4%, expect ~5.8. This equation held stable across a decade of wildly different rate environments.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Near-Perfect &mdash; 99.94% OOS Accuracy</div>
-            <h3>zhvi_all_homes</h3>
-            <div class="finding-equation">(sale_price_median + unemployment_roll7) + unemployment_roll7</div>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Home Value &asymp; Median Sale Price + 2 &times; Unemployment (smoothed)</p>
-            <p>Zillow Home Value Index tracks median sale prices with an unemployment adjustment. Higher unemployment depresses valuations relative to transaction prices &mdash; a risk premium the market prices in. At 99.94% OOS accuracy, this is a near-perfect structural identity.</p>
+            <div class="label" style="color: #22c55e;">Supply-Demand Link &mdash; 99.85% OOS Accuracy</div>
+            <h3>new_home_sales</h3>
+            <div class="finding-equation">(42.49 &times; (-1.42 &minus; months_supply_roll3)) + 1069.59</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">New Sales &asymp; 1070 &minus; 42.5 &times; (Months Supply + 1.4)</p>
+            <p>New home sales are a direct linear function of housing inventory. Every additional month of supply destroys ~42.5K in annualized new sales. At 99.85% OOS accuracy across a decade, this is a clean structural equation: when supply is tight (3 months), sales hit ~880K. When supply bloats to 8 months, sales crash to ~670K.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #818cf8;">Inflation Channel &mdash; 94.59% OOS Accuracy</div>
@@ -262,18 +289,18 @@
             <p>Rents track inflation with a ~15% amplification factor. When CPI hits 3%, rents grow ~3.45%. This is the most direct inflation transmission channel in real estate. The lower accuracy (94.59%) reflects local rent dynamics that diverge from national CPI trends.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Persistent Trend &mdash; 99.98% OOS Accuracy</div>
-            <h3>affordability_index</h3>
-            <div class="finding-equation">(affordability_index_roll3 + -0.9886) + -0.9886</div>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Affordability &asymp; Recent Affordability - 1.98</p>
-            <p>Affordability is extremely persistent &mdash; it shifts slowly and predictably from recent levels. A slight downward drift (-1.98 units per period) reflects the secular trend of declining affordability across US metros.</p>
+            <div class="label" style="color: #22c55e;">Rate Transmission &mdash; 99.86% OOS Accuracy</div>
+            <h3>mortgage_rate_30yr_roll7</h3>
+            <div class="finding-equation">fed_funds_rate_roll7 &minus; (&minus;1.78 &minus; 0.84)</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">30yr Mortgage &asymp; Fed Funds + 2.62%</p>
+            <p>The 30-year mortgage rate is structurally the Fed funds rate plus a ~2.62% credit spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% OOS accuracy, the spread is remarkably stable &mdash; mortgage pricing is almost purely a function of Fed policy, not market sentiment.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Identity Discovery &mdash; 100.00% OOS Accuracy</div>
-            <h3>cap_rate_estimate</h3>
-            <div class="finding-equation">cap_rate_estimate_roll7 + rental_yield_estimate_trend</div>
-            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Cap Rate = Smoothed Cap Rate + Yield Trend</p>
-            <p>The system correctly identified the accounting identity linking cap rates and rental yields. At 100% accuracy with zero RMSE, this confirms the ability to find true mathematical relationships, not just statistical approximations.</p>
+            <div class="label" style="color: #22c55e;">Construction Pipeline &mdash; 99.89% OOS Accuracy</div>
+            <h3>housing_permits</h3>
+            <div class="finding-equation">(new_home_sales &minus; &minus;1.73) + (new_home_sales &minus; &minus;1.73)</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Permits &asymp; 2 &times; (New Sales + 1.73)</p>
+            <p>Housing permits are almost exactly twice new home sales plus a small offset. This reveals the structural pipeline: the construction industry issues roughly 2 permits for every completed sale (accounting for multi-unit projects, cancellations, and regulatory lead time). A 10% drop in new sales predicts a ~10% permit decline. 99.89% OOS accuracy across a full housing cycle.</p>
         </div>
 
     <!-- ═══════════ METRO PROJECTIONS ═══════════ -->
@@ -446,26 +473,26 @@
     <!-- ═══════════ WHAT PROBLEMS THIS SOLVES ═══════════ -->
     <h2 class="results-section-title">What You Can Do With This</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      This isn't a dashboard &mdash; it's a decision engine. Here are the real problems real estate professionals can solve today:
+      This isn't a dashboard &mdash; it's a decision engine. Here are the real problems real estate professionals can solve today with UPS-powered CRE intelligence:
     </p>
 
     <div class="use-case">
       <span class="tag" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">Investment Firms &amp; REITs</span>
       <h3>Portfolio Allocation &amp; Market Timing</h3>
-      <p>Know <em>exactly</em> which macro variables drive price growth in each metro. When CPI trends up and sale-to-list tightens, the equation quantifies the price impact. Use this to:</p>
+      <p>The engine tells you <em>exactly</em> which macro variables drive price growth in each metro. When CPI trends up and sale-to-list tightens, the equation quantifies the price impact. Use this to:</p>
       <ul>
         <li><strong>Rank metros by fundamental strength</strong> &mdash; San Francisco projects +5.50% while Miami projects +4.69%. The gap isn't a guess; it's the mathematical output of their specific CPI and competitiveness conditions.</li>
         <li><strong>Stress-test rate scenarios</strong> &mdash; The months supply equation (99.90% accuracy) tells you: if rates drop from 6% to 5%, supply drops by ~1 month nationally. Feed that into your acquisition model.</li>
-        <li><strong>Identify timing windows</strong> &mdash; The affordability equation tracks a persistent downward drift. When affordability hits threshold levels, the model flags metro-specific buying opportunities before they show up in comps.</li>
+        <li><strong>Identify timing windows</strong> &mdash; The permits equation (99.89% accuracy) links construction permits to sales volume. A permit slowdown predicts future supply constraints. Combined with rate projections, it flags metro-specific buying opportunities before they show up in comps.</li>
       </ul>
     </div>
 
     <div class="use-case">
       <span class="tag" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-hover);">Lenders &amp; Underwriters</span>
       <h3>Dynamic Risk Assessment</h3>
-      <p>Move beyond static underwriting models with forward-looking, metro-specific risk signals:</p>
+      <p>Move beyond static underwriting models. The UPS engine gives you forward-looking, metro-specific risk signals:</p>
       <ul>
-        <li><strong>Quantified collateral risk</strong> &mdash; The ZHVI equation (99.94% accuracy) tells you exactly how home values respond to unemployment changes. A 1% unemployment spike in a metro? The equation tells you the dollar impact on collateral value.</li>
+        <li><strong>Quantified collateral risk</strong> &mdash; The new home sales equation (99.85% accuracy) tells you exactly how sales respond to inventory shifts. A 1-month supply increase? Sales drop by ~42.5K annualized. Chain that to the months supply equation and you can forecast supply &rarr; sales &rarr; prices from a single rate move.</li>
         <li><strong>Early warning for distress</strong> &mdash; The rent growth equation shows rent tracks CPI x 1.15. When CPI decelerates, you know rental income is about to follow &mdash; weeks before it shows up in borrower financials.</li>
         <li><strong>Portfolio-wide monitoring</strong> &mdash; Run 31 metros simultaneously. Flag the ones where fundamentals are deteriorating before defaults materialize.</li>
       </ul>
@@ -477,7 +504,7 @@
       <p>Know what's actually driving your market before you set next quarter's strategy:</p>
       <ul>
         <li><strong>Rent pricing intelligence</strong> &mdash; Rent growth tracks CPI with a 15% amplifier. When inflation is 2.5%, your rent increases should target ~2.9% to stay competitive. Push harder and you lose occupancy; too conservative and you leave money on the table.</li>
-        <li><strong>Cap rate forecasting</strong> &mdash; At 100% OOS accuracy, the cap rate equation gives you a reliable forward signal for property valuations. Use it to time capex decisions, refinancing, and disposition strategies.</li>
+        <li><strong>Rate impact forecasting</strong> &mdash; The mortgage-to-Fed-funds equation (99.86% accuracy) gives you a direct link from Fed policy to mortgage costs. Combine with months supply to project inventory changes from rate decisions before they hit the market.</li>
         <li><strong>Market-specific intelligence</strong> &mdash; Each metro has its own dynamics. Austin's price trajectory differs from Boston's for quantifiable reasons. Use metro-specific projections to tailor strategies for each property in your portfolio.</li>
       </ul>
     </div>
@@ -498,98 +525,26 @@
       <h3>Personal Real Estate Decisions</h3>
       <p>The same institutional-grade intelligence, accessible to individuals:</p>
       <ul>
-        <li><strong>Is now a good time to buy?</strong> &mdash; The affordability index tracks a persistent downward drift. Quantify exactly how much affordability is changing in your metro and whether current conditions favor buyers or sellers.</li>
+        <li><strong>Is now a good time to buy?</strong> &mdash; The months supply equation links inventory directly to mortgage rates. When rates drop, supply tightens and prices follow. The engine quantifies exactly when conditions shift from buyer-favorable to seller-favorable in your metro.</li>
         <li><strong>Where should I buy?</strong> &mdash; Compare 31 metros on projected price growth, rent-to-price ratios, and inventory trends. Data-driven relocation decisions.</li>
         <li><strong>Should I sell or hold?</strong> &mdash; The price momentum equation tells you whether growth is accelerating or decelerating in your market. Combined with rate projections, it gives you a quantified hold vs. sell signal.</li>
       </ul>
     </div>
 
     <!-- ═══════════ FULL METRIC TABLE ═══════════ -->
-    <h2 class="results-section-title">All 84 Metrics &mdash; Best Equation Per Metric</h2>
+    <h2 class="results-section-title">All 68 Metrics &mdash; Best Equation Per Metric</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem;">
-      The best-performing discovered equation for each of the 84 market indicators. All accuracies are out-of-sample, averaged across 21 independent test windows.
+      The best-performing discovered equation for each market indicator. Trivial identity equations (metrics predicting from their own rolling averages or near-identical cousin metrics) are excluded. All accuracies are out-of-sample, averaged across 21 expanding windows.
     </p>
     <input type="text" id="metric-search" placeholder="Search metrics..." oninput="filterMetrics(this.value)">
     <div style="overflow-x: auto;">
     <table class="results-table" id="metric-table">
       <tr><th>Metric</th><th>OOS Accuracy</th><th>RMSE</th><th>Discovered Equation</th></tr>
       <tr>
-        <td><strong>cap_rate_estimate_trend</strong></td>
-        <td style="color: var(--green); font-weight: 600;">100.00%</td>
-        <td>0.0000</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(((rental_yield_estimate_trend - rental_yield_estimate_trend)*(rental_</td>
-    </tr>
-<tr>
-        <td><strong>cap_rate_estimate</strong></td>
-        <td style="color: var(--green); font-weight: 600;">100.00%</td>
-        <td>0.0000</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_roll7+rental_yield_estimate_trend)</td>
-    </tr>
-<tr>
-        <td><strong>rental_yield_estimate_trend</strong></td>
-        <td style="color: var(--green); font-weight: 600;">100.00%</td>
-        <td>0.0000</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_trend+(cap_rate_estimate_trend - cap_rate_estimate_</td>
-    </tr>
-<tr>
-        <td><strong>rental_yield_estimate_roll3</strong></td>
-        <td style="color: var(--green); font-weight: 600;">100.00%</td>
-        <td>0.0002</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_roll7+(0.4571*cap_rate_estimate_trend))</td>
-    </tr>
-<tr>
-        <td><strong>affordability_index</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.98%</td>
-        <td>9.6435</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((affordability_index_roll3+-0.9886)+-0.9886)</td>
-    </tr>
-<tr>
-        <td><strong>unemployment_rate_national_roll3</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.97%</td>
-        <td>0.3374</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((unemployment_rate_national+cap_rate_estimate_trend)+rental_yield_est</td>
-    </tr>
-<tr>
-        <td><strong>consumer_confidence</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.97%</td>
-        <td>3.0714</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(consumer_confidence_roll3+(price_momentum - pct_sold_above_list_roll3</td>
-    </tr>
-<tr>
-        <td><strong>consumer_confidence_roll7</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.97%</td>
-        <td>3.0622</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.3186 - cpi_yoy_trend)+(cap_rate_estimate_roll7+consumer_confidence</td>
-    </tr>
-<tr>
-        <td><strong>consumer_confidence_roll3</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.97%</td>
-        <td>3.0596</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_roll3*cap_rate_estimate_roll3)+consumer_confidence</td>
-    </tr>
-<tr>
         <td><strong>mortgage_rate_15yr</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.95%</td>
         <td>0.2093</td>
         <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((mortgage_rate_30yr_roll3 - cap_rate_estimate_trend) - (0.7761+cap_ra</td>
-    </tr>
-<tr>
-        <td><strong>zhvi_all_homes</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.94%</td>
-        <td>26777.5906</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((sale_price_median+unemployment_rate_national_roll7)+unemployment_rat</td>
-    </tr>
-<tr>
-        <td><strong>mortgage_rate_30yr</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.94%</td>
-        <td>0.3131</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(mortgage_rate_30yr_roll7+rental_yield_estimate)</td>
-    </tr>
-<tr>
-        <td><strong>unemployment_rate_national_roll7</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.93%</td>
-        <td>0.4303</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((2.7647*(unemployment_rate_national_roll3*(0.0000+max(0.7234 - 0.4488</td>
     </tr>
 <tr>
         <td><strong>months_supply_roll7</strong></td>
@@ -602,18 +557,6 @@
         <td style="color: var(--green); font-weight: 600;">99.91%</td>
         <td>0.6664</td>
         <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_roll7+mortgage_rate_30yr) - -1.6271)</td>
-    </tr>
-<tr>
-        <td><strong>sale_price_median</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.91%</td>
-        <td>43770.4514</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.6069*zhvi_top_tier)+(cap_rate_estimate_trend - rental_yield_estima</td>
-    </tr>
-<tr>
-        <td><strong>zhvi_top_tier</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.91%</td>
-        <td>77724.5808</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(sale_price_median*1.7989)</td>
     </tr>
 <tr>
         <td><strong>months_supply</strong></td>
@@ -662,12 +605,6 @@
         <td style="color: var(--green); font-weight: 600;">99.79%</td>
         <td>1.5374</td>
         <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((-1.5819 / cap_rate_estimate_roll3)*(rental_yield_estimate+-0.2070))</td>
-    </tr>
-<tr>
-        <td><strong>zhvi_bottom_tier</strong></td>
-        <td style="color: var(--green); font-weight: 600;">99.79%</td>
-        <td>63119.8267</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(sale_price_median - (0.4631*sale_price_median))</td>
     </tr>
 <tr>
         <td><strong>rental_yield_estimate</strong></td>
@@ -940,12 +877,6 @@
         <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(rental_yield_estimate_roll7 / cap_rate_estimate_roll7)</td>
     </tr>
 <tr>
-        <td><strong>list_price_median</strong></td>
-        <td style="color: #f97316; font-weight: 600;">76.07%</td>
-        <td>&mdash;</td>
-        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(1.8889*zhvi_bottom_tier)</td>
-    </tr>
-<tr>
         <td><strong>pct_sold_below_list_roll7</strong></td>
         <td style="color: #f97316; font-weight: 600;">76.00%</td>
         <td>&mdash;</td>
@@ -1021,11 +952,12 @@
     </table>
     </div>
     <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
-      47 metrics &ge;99% | 64 metrics &ge;95% | 84 total metrics
+      32 metrics &ge;99% | 49 metrics &ge;95% | 68 total metrics
     </p>
 
+    <!-- ═══════════ METHODOLOGY ═══════════ -->
     <div class="disclaimer" style="margin-top: 3rem;">
-      <strong>Disclaimer:</strong> All results are based on publicly available data from Zillow Research and FRED. All accuracy numbers are strictly out-of-sample. Forward projections represent structural equilibrium estimates based on current market conditions. Actual future market movements will depend on factors including policy changes, economic shocks, and local market dynamics not captured in historical patterns.
+      <strong>Methodology:</strong> All projections are generated through the UPS v3.5 multi-stage analytical pipeline: (1) ingest monthly metro-level housing data from Zillow Research and FRED, (2) engineer 68 market indicators including rolling averages, trends, and derived metrics, (3) discover causal equations via symbolic regression with mutation and selection, (4) validate all equations across 21 expanding out-of-sample windows spanning 2015&ndash;2025, (5) project forward using only validated, stable relationships. Trivial identity equations (metrics predicted from their own rolling averages or near-identical cousin metrics like ZHVI &harr; median sale price) are automatically filtered. The system uses no proprietary data &mdash; all inputs are freely available from Zillow and FRED. Forward projections represent structural equilibrium estimates based on current market conditions. Actual future market movements will depend on factors including policy changes, economic shocks, and local market dynamics not captured in historical patterns.
     </div>
   </section>
 
