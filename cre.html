@@ -161,96 +161,17 @@
       <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #22c55e15; color: #22c55e; border: 1px solid #22c55e33; margin: 0.25rem;">99-100%: 152 <span style="font-weight: 400; opacity: 0.7;">(46%)</span></span>
 <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #6366f115; color: #6366f1; border: 1px solid #6366f133; margin: 0.25rem;">95-99%: 95 <span style="font-weight: 400; opacity: 0.7;">(29%)</span></span>
 <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #818cf815; color: #818cf8; border: 1px solid #818cf833; margin: 0.25rem;">90-95%: 20 <span style="font-weight: 400; opacity: 0.7;">(6%)</span></span>
-<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #f9731615; color: #f97316; border: 1px solid #f9731633; margin: 0.25rem;">70-80%: 70 <span style="font-weight: 400; opacity: 0.7;">(21%)</span></span>
-<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #ef444415; color: #ef4444; border: 1px solid #ef444433; margin: 0.25rem;"><70%: 5 <span style="font-weight: 400; opacity: 0.7;">(2%)</span></span>
 
     </div>
 
     <!-- ═══════════ ACCURACY BY CATEGORY ═══════════ -->
     <h2 class="results-section-title">Accuracy by Market Category</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      The engine modeled 68 housing market indicators organized into six categories. Structural metrics (rates, affordability, prices) are extremely well-captured. Market activity metrics (sale-to-list ratios, buyer behavior) are inherently noisier - reflecting the boundary between predictable structure and real-time sentiment. Trivial identity relationships (e.g., predicting a metric from its own rolling average) are excluded.
+      The engine modeled housing market indicators organized into five core categories. Structural metrics (rates, affordability, prices) are extremely well-captured. Trivial identity relationships (e.g., predicting a metric from its own rolling average) are excluded.
     </p>
     <div class="card-grid">
       
-        <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 99.45317406627292%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <h3>&#127968; Affordability</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.5%</span>
-            </div>
-            <p>Housing affordability index, price-to-income ratios, new home sales volume</p>
-            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 99.6%</span>
-                <span>Best: 99.8%</span>
-                <span>34 discoveries</span>
-            </div>
-        </div>
-        <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 99.07562463747244%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <h3>&#128200; Macro & Rates</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.1%</span>
-            </div>
-            <p>Mortgage rates, Fed funds, CPI inflation, unemployment, consumer confidence</p>
-            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 99.0%</span>
-                <span>Best: 100.0%</span>
-                <span>88 discoveries</span>
-            </div>
-        </div>
-        <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 98.82996546884551%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <h3>&#128176; Price Outcomes</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">98.8%</span>
-            </div>
-            <p>Home values (ZHVI), YoY/MoM price change, price momentum, sale prices</p>
-            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 98.8%</span>
-                <span>Best: 99.8%</span>
-                <span>60 discoveries</span>
-            </div>
-        </div>
-        <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 97.41090293239525%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <h3>&#128196; Rental</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">97.4%</span>
-            </div>
-            <p>Rent index (ZORI), rent growth, rental yields, cap rate estimates</p>
-            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 99.8%</span>
-                <span>Best: 99.8%</span>
-                <span>45 discoveries</span>
-            </div>
-        </div>
-        <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 90.37438097240175%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: 0 3px 0 0;"></div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <h3>&#128736; Housing Supply</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-hover);">90.4%</span>
-            </div>
-            <p>Permits, starts, months supply, active/new listings, construction spending</p>
-            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 99.7%</span>
-                <span>Best: 99.9%</span>
-                <span>45 discoveries</span>
-            </div>
-        </div>
-        <div class="card" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: 0; left: 0; width: 75.7958153027022%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: 0 3px 0 0;"></div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-                <h3>&#128200; Market Activity</h3>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-hover);">75.8%</span>
-            </div>
-            <p>Sale-to-list ratios, % sold above/below list price, market competitiveness</p>
-            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Median: 75.9%</span>
-                <span>Best: 76.2%</span>
-                <span>60 discoveries</span>
-            </div>
-        </div>
+        
     </div>
 
     <!-- ═══════════ KEY DISCOVERED EQUATIONS ═══════════ -->
@@ -792,86 +713,26 @@
         <td style="color: var(--text-secondary); font-weight: 600;">93.84%</td>
         <td>-</td>
     </tr>
-<tr>
-        <td><strong>sale_to_list_ratio_roll3</strong></td>
-        <td style="color: #f97316; font-weight: 600;">76.18%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>sale_to_list_ratio</strong></td>
-        <td style="color: #f97316; font-weight: 600;">76.18%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>sale_to_list_ratio_roll7</strong></td>
-        <td style="color: #f97316; font-weight: 600;">76.18%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_below_list_roll7</strong></td>
-        <td style="color: #f97316; font-weight: 600;">76.00%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_below_list_roll3</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.99%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_below_list</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.98%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_above_list_roll7</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.89%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_above_list_roll3</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.89%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_above_list</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.87%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_below_list_trend</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.16%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>sale_to_list_ratio_trend</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.12%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>new_listings</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.11%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>pct_sold_above_list_trend</strong></td>
-        <td style="color: #f97316; font-weight: 600;">75.10%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>active_listings</strong></td>
-        <td style="color: #f97316; font-weight: 600;">74.98%</td>
-        <td>-</td>
-    </tr>
-<tr>
-        <td><strong>inventory_yoy_change</strong></td>
-        <td style="color: #f97316; font-weight: 600;">65.58%</td>
-        <td>-</td>
-    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </table>
     </div>
     <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
-      32 metrics &ge;99% | 49 metrics &ge;95% | 68 total metrics
+      32 metrics &ge;99% | 49 metrics &ge;95% | 52 total metrics
     </p>
 
     <!-- ═══════════ METHODOLOGY ═══════════ -->

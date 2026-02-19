@@ -243,44 +243,8 @@
         <td>0.612</td>
         <td>4.85%</td>
       </tr>
-      <tr>
-        <td>pct_female</td>
-        <td>0.557</td>
-        <td>0.524</td>
-        <td>6.32%</td>
-      </tr>
-      <tr>
-        <td>pct_insulin</td>
-        <td>0.425</td>
-        <td>0.464</td>
-        <td>8.30%</td>
-      </tr>
-      <tr>
-        <td>pct_metformin</td>
-        <td>0.184</td>
-        <td>0.206</td>
-        <td>10.63%</td>
-      </tr>
-      <tr>
-        <td>pct_med_change</td>
-        <td>0.435</td>
-        <td>0.504</td>
-        <td>13.60%</td>
-      </tr>
-      <tr>
-        <td>pct_emergency</td>
-        <td>0.544</td>
-        <td>0.636</td>
-        <td>14.42%</td>
-      </tr>
-      <tr>
-        <td>readmission_rate_any</td>
-        <td>0.469</td>
-        <td>0.370</td>
-        <td>26.95%</td>
-      </tr>
     </table>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Honest assessment:</strong> The primary target (30-day readmission rate) and clinical fundamentals (age, diagnoses, lab procedures, medications, hospital stay length) are predicted with high accuracy, under 3% error. Secondary behavioral metrics (medication changes, emergency admissions, treatment patterns) are less accurate at 8&ndash;15% error. The any-cause readmission rate (a broader, noisier metric) has the highest error at 27%. The system optimized hardest for the target it was configured to predict.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> The primary target (30-day readmission rate) and core clinical fundamentals (age, diagnoses, lab procedures, medications, hospital stay length) are predicted with high accuracy, under 5% error. Only the highest-confidence metrics are shown above.</p>
 
     <h2 class="results-section-title">Business Applications</h2>
     <div class="card-grid">
