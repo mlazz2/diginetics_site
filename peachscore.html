@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peachscore Accelerator Fellow &mdash; DIGINETICS</title>
+    <meta name="description" content="DIGINETICS has been accepted into the Peachscore Data-Driven Accelerator, the world's largest virtual, equity-free startup accelerator with 1,400+ startups across 100 countries.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .ps-highlight {
+            background: linear-gradient(135deg, rgba(255, 180, 50, 0.08) 0%, rgba(255, 120, 50, 0.05) 100%);
+            border: 1px solid rgba(255, 180, 50, 0.18);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .ps-highlight h3 {
+            color: #ffb432;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+        .ps-highlight p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .ps-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .ps-stat {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .ps-stat .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffb432;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+        .ps-stat .label {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .timeline {
+            position: relative;
+            margin: 2.5rem 0;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ffb432 0%, var(--accent) 100%);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            background: #ffb432;
+            border-radius: 50%;
+            border: 2px solid var(--bg-primary);
+        }
+        .timeline-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .timeline-item .date {
+            font-size: 0.75rem;
+            color: #ffb432;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+        }
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+        .benefit-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .benefit-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .ps-stats { grid-template-columns: 1fr 1fr; }
+            .benefit-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="baseball.html">Baseball</a></li>
+            <li><a href="retail.html">Retail</a></li>
+            <li><a href="healthcare.html">Healthcare</a></li>
+            <li><a href="cre.html">CRE</a></li>
+            <li><a href="founders.html">Founders</a></li>
+            <li><a href="mailto:ceo@diginetics.co">Contact</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="baseball.html">Baseball</a>
+        <a href="retail.html">Retail</a>
+        <a href="healthcare.html">Healthcare</a>
+        <a href="cre.html">CRE</a>
+        <a href="founders.html">Founders</a>
+        <a href="mailto:ceo@diginetics.co">Contact</a>
+    </div>
+
+    <div class="page-header">
+        <div class="section-label" style="color: #ffb432;">Accelerator Program</div>
+        <h1 class="section-title" style="font-size: clamp(1.75rem, 4vw, 2.4rem);">DIGINETICS Accepted into the Peachscore Data-Driven Accelerator</h1>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 720px; line-height: 1.7; margin-top: 1rem;">We have been accepted as a Fellow in the <strong style="color: var(--text-primary);">Peachscore Data-Driven Accelerator</strong> &mdash; the world's largest virtual, equity-free startup accelerator. Here's what that means for DIGINETICS and the companies we work with.</p>
+    </div>
+
+    <section style="padding-top: 0;">
+
+        <!-- WHAT IS PEACHSCORE -->
+        <h2 class="results-section-title">What Is the Peachscore Accelerator?</h2>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+            Peachscore operates the world's largest virtual and equity-free startup accelerator. Founded with backing from organizations including US Federal Government-funded national labs (LANL/LEEP Program), Plug &amp; Play, Dealum, HubSpot for Startups, and Loyola Marymount University, the program accepts startups from any stage and any country into a structured 12-month growth program.
+        </p>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+            Unlike traditional accelerators that take equity, demand relocation, or run short-term sprints, Peachscore is fully virtual, takes zero equity, and provides daily mentorship and structured support over a full year. It is not a bootcamp &mdash; it is a sustained growth program designed to take companies from early traction to investor-ready.
+        </p>
+
+        <div class="ps-stats">
+            <div class="ps-stat">
+                <div class="number">1,400+</div>
+                <div class="label">Startups Enrolled</div>
+            </div>
+            <div class="ps-stat">
+                <div class="number">100</div>
+                <div class="label">Countries</div>
+            </div>
+            <div class="ps-stat">
+                <div class="number">$200M+</div>
+                <div class="label">Total Raised by Portfolio</div>
+            </div>
+            <div class="ps-stat">
+                <div class="number">$700M</div>
+                <div class="label">Estimated Portfolio Value</div>
+            </div>
+            <div class="ps-stat">
+                <div class="number">30,000+</div>
+                <div class="label">Investor Network</div>
+            </div>
+            <div class="ps-stat">
+                <div class="number">12</div>
+                <div class="label">Cohorts Per Year</div>
+            </div>
+        </div>
+
+        <!-- WHAT THIS MEANS FOR DIGINETICS -->
+        <h2 class="results-section-title">What This Means for DIGINETICS</h2>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <h3>Investor Access</h3>
+                <p>Direct access to Peachscore's network of 30,000+ investors and 300+ corporate executives. The program culminates in a Demo Day with up to $500K in funding opportunities, putting DIGINETICS in front of the capital needed to scale.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Daily Mentorship</h3>
+                <p>Two hours of daily group office hours with experienced operators and domain experts. This is not periodic check-ins &mdash; it is daily, structured guidance on go-to-market strategy, product positioning, and fundraising execution.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>AI-Driven Growth Insights</h3>
+                <p>Peachscore uses its own data-driven platform to score and benchmark startups, providing actionable intelligence on where we stand relative to comparable companies and what metrics matter most for our next funding round.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Global Network</h3>
+                <p>Access to a cohort of 60 startups from 16+ countries, plus the broader alumni network of 1,400+ companies. Cross-pollination of ideas, potential partnerships, and shared go-to-market learnings across industries and geographies.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Government &amp; Enterprise Channels</h3>
+                <p>Peachscore's anchor partners include US Federal Government labs and multiple government agencies. For a prediction platform with healthcare, real estate, and financial applications, these are direct channels to high-value enterprise deployments.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Equity-Free</h3>
+                <p>Peachscore takes zero equity. DIGINETICS retains full ownership while accessing the same caliber of resources that equity-taking accelerators like Y Combinator and Techstars provide. Every dollar of future value stays with the founders and investors.</p>
+            </div>
+        </div>
+
+        <!-- WHY DIGINETICS WAS ACCEPTED -->
+        <h2 class="results-section-title">Why DIGINETICS Was Accepted</h2>
+        <div class="ps-highlight">
+            <h3>Published, Verified Results Across 4 Industries</h3>
+            <p>Most early-stage startups apply to accelerators with a pitch deck and a vision. DIGINETICS applied with published, out-of-sample results: 96.2% accuracy across 60 MLB players, 0.18% error on hospital readmission prediction from 101K real patient encounters, 93.5% OOS accuracy on commercial real estate across 31 US metros, and cross-department causal discovery in retail &mdash; all generated by the same platform with zero code changes between domains. The breadth and depth of validated results demonstrated that the technology works across fundamentally different data types and industries.</p>
+        </div>
+        <div class="ps-highlight">
+            <h3>One Platform, Any Domain</h3>
+            <p>Peachscore's program is designed for companies with scalable, repeatable technology. DIGINETICS's core differentiator &mdash; a single prediction engine that works across any industry via configuration change alone &mdash; maps directly to the kind of compounding growth the accelerator is built to amplify. The platform doesn't need to be rebuilt for each new client or vertical.</p>
+        </div>
+
+        <!-- WHAT'S NEXT -->
+        <h2 class="results-section-title">What's Next</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="date">February 2026</div>
+                <h4>Program Kickoff</h4>
+                <p>Begin the 12-month accelerator with structured onboarding, mentorship pairing, and growth benchmarking.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Q1&ndash;Q2 2026</div>
+                <h4>Go-to-Market Refinement</h4>
+                <p>Refine positioning, pricing, and sales strategy with daily mentorship. Target first enterprise pilots in healthcare and commercial real estate.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="date">Q2&ndash;Q3 2026</div>
+                <h4>Investor Outreach</h4>
+                <p>Leverage Peachscore's 30,000+ investor network for pre-seed / seed fundraising. Build relationships ahead of Demo Day.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2026 Demo Day</div>
+                <h4>Pitch for Up to $500K</h4>
+                <p>Present DIGINETICS to Peachscore's investor and corporate partner network at Demo Day, with funding decisions on the spot.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2026&ndash;2027</div>
+                <h4>Scale</h4>
+                <p>Deploy into new verticals (financial services, supply chain, cybersecurity, insurance) using the same platform. Each new industry adds results to the portfolio with only a configuration change.</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; padding: 3rem 0; margin-top: 2rem;">
+            <h2 class="section-title" style="margin-bottom: 1rem;">Interested in what DIGINETICS can do for your industry?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Whether you're looking to partner, invest, or deploy, we'd love to talk.</p>
+            <a href="mailto:ceo@diginetics.co" class="btn-primary" style="font-size: 1rem; padding: 0.85rem 2rem;">Get in Touch</a>
+        </div>
+
+        <div class="disclaimer">
+            <strong>About Peachscore:</strong> The Peachscore Data-Driven Accelerator is operated by Peachscore Inc. and backed by anchor partners including US Federal Government-funded labs (LANL/LEEP Program), Plug &amp; Play, Dealum, HubSpot for Startups, WeAreNoCode, and Loyola Marymount University. The program has enrolled 1,400+ startups from 100 countries with $200M+ raised and an estimated portfolio value of $700M. Learn more at <a href="https://peachscore.com" style="color: var(--accent-hover); text-decoration: none;">peachscore.com</a>.
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 DIGINETICS. All rights reserved.
+    </footer>
+
+</body>
+</html>

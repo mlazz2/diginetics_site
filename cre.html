@@ -1,184 +1,981 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commercial Real Estate | DIGINETICS</title>
-    <meta name="description" content="Commercial real estate valuation drivers, cap rate forecasting, and NOI leading indicators from the DIGINETICS prediction platform.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRE Results &mdash; DIGINETICS</title>
+  <meta name="description" content="Commercial real estate prediction results across 31 US metro areas. Discovered equations, forward projections, and actionable insights.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .metro-row:hover td { color: var(--text-primary) !important; background: rgba(99, 102, 241, 0.05); }
+    .def-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
+    .def-item { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+    .def-item h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.5rem; }
+    .def-item p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    .def-item .formula { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-primary); background: var(--bg-primary); padding: 0.5rem 0.75rem; border-radius: 6px; margin-top: 0.5rem; display: inline-block; }
+    .use-case { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 1.25rem; }
+    .use-case h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .use-case .tag { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+    .use-case p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+    .use-case ul { margin: 0.75rem 0 0 1.25rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+    #metric-search { width: 100%; max-width: 400px; padding: 0.6rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.85rem; font-family: inherit; margin-bottom: 1rem; }
+    #metric-search:focus { outline: none; border-color: var(--accent); }
+    #metric-search::placeholder { color: var(--text-secondary); }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="baseball.html">Baseball</a></li>
-            <li><a href="retail.html">Retail</a></li>
-            <li><a href="healthcare.html">Healthcare</a></li>
-            <li><a href="cre.html" class="active">CRE</a></li>
-            <li><a href="founders.html">Founders</a></li>
-            <li><a href="mailto:ceo@diginetics.co">Contact</a></li>
-        </ul>
-        <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('active')" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
-    <div class="mobile-menu">
-        <a href="index.html">Home</a>
-        <a href="baseball.html">Baseball</a>
-        <a href="retail.html">Retail</a>
-        <a href="healthcare.html">Healthcare</a>
-        <a href="cre.html" class="active">CRE</a>
-        <a href="founders.html">Founders</a>
-        <a href="mailto:ceo@diginetics.co">Contact</a>
+  <nav>
+    <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="baseball.html">Baseball</a></li>
+      <li><a href="retail.html">Retail</a></li>
+      <li><a href="healthcare.html">Healthcare</a></li>
+      <li><a href="cre.html" class="active">CRE</a></li>
+      <li><a href="founders.html">Founders</a></li>
+      <li><a href="mailto:ceo@diginetics.co">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('active')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="baseball.html">Baseball</a>
+    <a href="retail.html">Retail</a>
+    <a href="healthcare.html">Healthcare</a>
+    <a href="cre.html" class="active">CRE</a>
+    <a href="founders.html">Founders</a>
+    <a href="mailto:ceo@diginetics.co">Contact</a>
+  </div>
+
+  <div class="page-header">
+    <div class="section-label">Commercial Real Estate</div>
+    <h1 class="section-title">Metro Housing Market Intelligence</h1>
+    <p class="section-subtitle">31 US metro areas. 68 market indicators. 12 years of monthly data. Every equation discovered by the UPS engine, tested across 21 independent out-of-sample windows spanning 2015&ndash;2025 &mdash; through COVID, the housing boom, rate hikes, and normalization.</p>
+  </div>
+
+  <section style="padding-top: 0;">
+
+    <!-- ═══════════ HEADLINE STATS ═══════════ -->
+    <div class="stats-row">
+      <div class="stat-card" style="border-color: var(--accent)44;">
+        <div class="stat-number" style="color: var(--green); font-size: 2.25rem;">93.5%</div>
+        <div class="stat-label">System Out-of-Sample<br>Accuracy (Avg)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">31</div>
+        <div class="stat-label">Metro Areas<br>Analyzed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">332</div>
+        <div class="stat-label">Equations Discovered<br>&amp; Validated</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">32</div>
+        <div class="stat-label">Metrics with<br>&ge;99% Accuracy</div>
+      </div>
     </div>
 
-    <div class="page-header">
-        <div class="section-label">Commercial Real Estate</div>
-        <h1 class="section-title">Property Valuation &amp; Market Intelligence</h1>
-        <p class="section-subtitle">Discover what actually drives property values, cap rates, and NOI, beyond what traditional comps-based analysis reveals. Early warning signals for market timing.</p>
+    <div class="stats-row" style="margin-top: -1rem;">
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">68</div>
+        <div class="stat-label">Unique Market<br>Indicators</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">21</div>
+        <div class="stat-label">OOS Windows<br>(2015&ndash;2025)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">98.7%</div>
+        <div class="stat-label">Median Equation<br>Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="font-size: 1.5rem;">100%</div>
+        <div class="stat-label">Equation<br>Pass Rate</div>
+      </div>
     </div>
 
-    <section style="padding-top: 0;">
+    <!-- ═══════════ HOW ACCURACY IS MEASURED ═══════════ -->
+    <h2 class="results-section-title">How Accuracy Is Measured</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.5rem;">
+      Every number on this page comes from strictly out-of-sample evaluation. Here is exactly how:
+    </p>
 
-        <div class="coming-soon-box">
-            <h2>Actively Researching &amp; Testing</h2>
-            <p>We're exploring property-level data sources and running early configuration tests. Published accuracy numbers and actionable insights will appear here as validation progresses.</p>
+    <div class="def-grid">
+      <div class="def-item">
+        <h4>Expanding Window Backtest</h4>
+        <p>The engine uses 21 expanding time windows. Each window trains on historical data only, then tests on future data it has never seen. Window 1 trains on 2013&ndash;2014 and tests on 2015. Window 21 trains on 2013&ndash;2024 and tests on 2025. No information leaks forward.</p>
+      </div>
+      <div class="def-item">
+        <h4>Accuracy Formula</h4>
+        <p>For each equation, accuracy is computed on every test window using Symmetric Mean Absolute Percentage Error (sMAPE), then converted:</p>
+        <div class="formula">Accuracy = 1 &minus; min(sMAPE / 100, 1.0)</div>
+      </div>
+      <div class="def-item">
+        <h4>System Average (93.5%)</h4>
+        <p>The headline number is the <strong>simple mean of all 332 equations' accuracies</strong> across all 21 windows. Every equation weighted equally. No cherry-picking, no in-sample inflation.</p>
+      </div>
+      <div class="def-item">
+        <h4>Market Stress Testing</h4>
+        <p>These 21 windows span <strong>COVID-19</strong> (2020), the <strong>housing boom</strong> (2021&ndash;22), <strong>aggressive rate hikes</strong> (2022&ndash;23), and <strong>market normalization</strong> (2024&ndash;25). Accuracy held across all regimes.</p>
+      </div>
+    </div>
+
+    
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 1</div>
+            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2014</div>
+            <div style="font-size: 0.85rem; color: var(--green);">Test: 2015</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">744 train / 372 test rows</div>
         </div>
-
-        <h3 class="results-section-title">Market Opportunity</h3>
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-number">$20.7T</div>
-                <div class="stat-label">US commercial real<br>estate market value</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">$12B+</div>
-                <div class="stat-label">CRE analytics &amp; data<br>services market</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">Weeks</div>
-                <div class="stat-label">Early warning lead time<br>for market shifts</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">Per-Property</div>
-                <div class="stat-label">Unique insights for<br>every asset</div>
-            </div>
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 11</div>
+            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2019</div>
+            <div style="font-size: 0.85rem; color: var(--green);">Test: 2020</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">2604 train / 372 test rows</div>
         </div>
-
-        <h3 class="results-section-title">Potential Applications</h3>
-
-        <div class="card-grid">
-            <div class="card">
-                <h3>Cap Rate Forecasting</h3>
-                <p>Which specific market conditions cause cap rates to compress or expand, with what time delay? Based on proven results in other domains, this capability could deliver specific, quantified answers instead of generic market commentary.</p>
-            </div>
-            <div class="card">
-                <h3>NOI Early Warning Signals</h3>
-                <p>Which metrics change first before NOI moves? The same leading-indicator discovery that found 3-day and 10-day signals in retail could identify analogous timing relationships in property income data.</p>
-            </div>
-            <div class="card">
-                <h3>Per-Property Value Drivers</h3>
-                <p>Just as the platform found different performance drivers for different MLB players, this proven capability could discover different value drivers for different property types and markets automatically.</p>
-            </div>
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 21</div>
+            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2024</div>
+            <div style="font-size: 0.85rem; color: var(--green);">Test: 2025</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">4464 train / 372 test rows</div>
         </div>
+    </div>
 
-    </section>
+    <!-- ═══════════ DATASET ═══════════ -->
+    <h2 class="results-section-title">Dataset</h2>
+    <div class="disclaimer">
+      <strong>Data sources:</strong> All data is from publicly available, institutional-grade sources. Housing metrics (ZHVI, ZORI, inventory, sale-to-list ratios, price cuts, days to pending) from <strong>Zillow Research</strong> public CSV exports. Macro indicators (mortgage rates, Fed funds rate, unemployment, CPI, consumer confidence) and housing activity (permits, starts, months supply, existing/new home sales, construction spending) from <strong>FRED (Federal Reserve Economic Data)</strong>. Coverage: <strong>31 metro areas</strong> (top 30 by population + national aggregate), <strong>monthly frequency</strong>, <strong>January 2013 through January 2026</strong>. All features are lag-safe &mdash; only data available at prediction time is used.
+    </div>
 
-    <section>
-        <div class="section-label">Why This Is Feasible</div>
-        <h2 class="section-title">What we've already proven that could apply directly to CRE.</h2>
-        <p class="section-subtitle">Commercial real estate is a time-series prediction problem with causal relationships between metrics. That's exactly the problem structure our platform has already solved three times.</p>
+    <!-- ═══════════ ACCURACY DISTRIBUTION ═══════════ -->
+    <h2 class="results-section-title">Accuracy Distribution</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+      How 332 equations distribute across accuracy tiers:
+    </p>
+    <div style="margin-bottom: 2rem;">
+      <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #22c55e15; color: #22c55e; border: 1px solid #22c55e33; margin: 0.25rem;">99-100%: 152 <span style="font-weight: 400; opacity: 0.7;">(46%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #6366f115; color: #6366f1; border: 1px solid #6366f133; margin: 0.25rem;">95-99%: 95 <span style="font-weight: 400; opacity: 0.7;">(29%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #818cf815; color: #818cf8; border: 1px solid #818cf833; margin: 0.25rem;">90-95%: 20 <span style="font-weight: 400; opacity: 0.7;">(6%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #f9731615; color: #f97316; border: 1px solid #f9731633; margin: 0.25rem;">70-80%: 70 <span style="font-weight: 400; opacity: 0.7;">(21%)</span></span>
+<span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #ef444415; color: #ef4444; border: 1px solid #ef444433; margin: 0.25rem;"><70%: 5 <span style="font-weight: 400; opacity: 0.7;">(2%)</span></span>
 
-        <div class="card-grid">
-            <div class="card">
-                <h3>Leading Indicator Discovery: Already Proven</h3>
-                <p>In retail, the platform discovered that disposable vape average sale predicts store-wide revenue 3 days in advance, and glass average sale predicts it 10 days out. CRE has analogous leading indicators: vacancy rate changes, lease renewal velocity, and tenant credit shifts all precede NOI movements. This proven capability could apply to finding these timing relationships automatically.</p>
-            </div>
-            <div class="card">
-                <h3>Hidden Dependency Mapping: Already Proven</h3>
-                <p>In retail, cigarette sales turned out to depend on vape traffic, not cigarette demand. In CRE, office valuations may depend on remote-work adoption rates in the tenant base, not office demand metrics. This suggests the platform could discover non-obvious cross-variable dependencies in CRE, where traditional comps miss structural drivers.</p>
-            </div>
-            <div class="card">
-                <h3>Per-Entity Adaptation: Already Proven</h3>
-                <p>The platform produced unique performance drivers for each of 60 MLB players without being told what type of player it was analyzing. A Class A office in Manhattan and a suburban warehouse in Tampa are fundamentally different assets. This proven per-entity adaptation suggests each property could get its own causal model, not a generic sector average.</p>
-            </div>
-            <div class="card">
-                <h3>Regime Transition Detection: Already Proven</h3>
-                <p>The platform detected 73,076 regime transitions across 60 baseball players, identifying tipping points between hot streaks and slumps. CRE markets undergo analogous regime shifts: from buyer's to seller's markets, from cap rate compression to expansion, from occupancy growth to contraction. This suggests the platform could detect these transitions with similar precision.</p>
-            </div>
-            <div class="card">
-                <h3>Compound Interactions: Already Proven</h3>
-                <p>24% of discovered relationships in baseball were multi-factor interactions invisible to single-variable analysis. CRE valuations are notoriously multi-factor: a property's value depends on the interaction between interest rates, local employment, tenant mix, and lease terms simultaneously. Single-variable regression misses these. This proven capability could apply directly to CRE.</p>
-            </div>
-            <div class="card">
-                <h3>Zero Code Changes: Already Proven</h3>
-                <p>The same platform went from baseball to retail to healthcare with only a configuration change. The data structure for CRE is different (property-level time series instead of player-level), but the underlying prediction problem is the same: discover causal relationships, find leading indicators, project forward, explain why. This suggests CRE could be the next natural application.</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <section>
-        <h3 class="results-section-title">Where This Could Apply</h3>
-
-        <div class="card-grid">
-            <div class="card">
-                <h3>Multifamily Rent Prediction</h3>
-                <p>Local employment data, migration patterns, and permit activity could serve as leading indicators for effective rent changes at the property level. The same causal-chain discovery that mapped pitch environment to batting outcomes could map macro indicators to rent outcomes.</p>
+    <!-- ═══════════ ACCURACY BY CATEGORY ═══════════ -->
+    <h2 class="results-section-title">Accuracy by Market Category</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+      The engine modeled 68 housing market indicators organized into six categories. Structural metrics (rates, affordability, prices) are extremely well-captured. Market activity metrics (sale-to-list ratios, buyer behavior) are inherently noisier &mdash; reflecting the boundary between predictable structure and real-time sentiment. Trivial identity equations (e.g., predicting a metric from its own rolling average) are excluded.
+    </p>
+    <div class="card-grid">
+      
+        <div class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 99.45317406627292%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <h3>&#127968; Affordability</h3>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.5%</span>
             </div>
-            <div class="card">
-                <h3>Office Occupancy Regime Shifts</h3>
-                <p>Post-pandemic office markets are experiencing structural regime changes. The platform's regime-detection capability, proven across 73,076 transitions in baseball, could detect when a submarket is transitioning between occupancy regimes and help predict how far the shift will go.</p>
-            </div>
-            <div class="card">
-                <h3>Industrial/Logistics Demand Cycles</h3>
-                <p>E-commerce penetration rates, port throughput, and inventory-to-sales ratios may serve as upstream drivers for industrial property demand. Based on proven results—where retail revenue shifts followed specific category signals by 3-10 days—these relationships could hold with quantifiable time delays in CRE as well.</p>
-            </div>
-            <div class="card">
-                <h3>Cap Rate Sensitivity Analysis</h3>
-                <p>Cap rates are influenced by interest rates, risk premiums, and growth expectations simultaneously. The platform's compound-interaction discovery could identify which combinations of macro factors drive cap rate movements for specific property types, rather than relying on generic interest-rate correlations.</p>
-            </div>
-            <div class="card">
-                <h3>Tenant Credit Risk Cascades</h3>
-                <p>A single tenant default can cascade through a property's financials. Tenant-level financial signals could serve as leading indicators for property-level NOI shifts, analogous to how individual metric shifts in baseball cascade through the performance chain.</p>
-            </div>
-            <div class="card">
-                <h3>Climate &amp; ESG Risk Pricing</h3>
-                <p>Flood risk, energy efficiency scores, and ESG compliance are increasingly priced into CRE valuations. The platform could quantify exactly how much these factors move value for specific property types in specific markets, replacing qualitative ESG narratives with quantified impact.</p>
+            <p>Housing affordability index, price-to-income ratios, new home sales volume</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Median: 99.6%</span>
+                <span>Best: 99.8%</span>
+                <span>34 equations</span>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h3 class="results-section-title">Business Applications</h3>
-        <div class="card-grid">
-            <div class="card">
-                <h3>Investment Firms &amp; REITs</h3>
-                <p>Identify undervalued assets where hidden drivers suggest untapped upside. Quantify the potential impact of market shifts on portfolio value before they materialize. Support data-driven acquisition and disposition decisions.</p>
+        <div class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 99.07562463747244%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <h3>&#128200; Macro & Rates</h3>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">99.1%</span>
             </div>
-            <div class="card">
-                <h3>Property Management</h3>
-                <p>Predict occupancy and revenue trends at the property level. Identify which operational levers could actually move NOI and which may be noise. Prioritize capex where it could have the most measurable impact on value.</p>
-            </div>
-            <div class="card">
-                <h3>Lenders &amp; Underwriters</h3>
-                <p>Quantified risk signals with specific time horizons. Understand which properties in a portfolio are most likely to see value shifts, and when. Move beyond static underwriting to dynamic, forward-looking risk assessment.</p>
-            </div>
-            <div class="card">
-                <h3>Brokers &amp; Advisors</h3>
-                <p>Arm your pitches with quantified market intelligence. Show clients specific, data-backed drivers behind pricing recommendations. Differentiate your advisory practice with insights others may not have.</p>
+            <p>Mortgage rates, Fed funds, CPI inflation, unemployment, consumer confidence</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Median: 99.0%</span>
+                <span>Best: 100.0%</span>
+                <span>88 equations</span>
             </div>
         </div>
-    </section>
+        <div class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 98.82996546884551%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <h3>&#128176; Price Outcomes</h3>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">98.8%</span>
+            </div>
+            <p>Home values (ZHVI), YoY/MoM price change, price momentum, sale prices</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Median: 98.8%</span>
+                <span>Best: 99.8%</span>
+                <span>60 equations</span>
+            </div>
+        </div>
+        <div class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 97.41090293239525%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 0 3px 0 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <h3>&#128196; Rental</h3>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--green);">97.4%</span>
+            </div>
+            <p>Rent index (ZORI), rent growth, rental yields, cap rate estimates</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Median: 99.8%</span>
+                <span>Best: 99.8%</span>
+                <span>45 equations</span>
+            </div>
+        </div>
+        <div class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 90.37438097240175%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: 0 3px 0 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <h3>&#128736; Housing Supply</h3>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-hover);">90.4%</span>
+            </div>
+            <p>Permits, starts, months supply, active/new listings, construction spending</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Median: 99.7%</span>
+                <span>Best: 99.9%</span>
+                <span>45 equations</span>
+            </div>
+        </div>
+        <div class="card" style="position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 75.7958153027022%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: 0 3px 0 0;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <h3>&#128200; Market Activity</h3>
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-hover);">75.8%</span>
+            </div>
+            <p>Sale-to-list ratios, % sold above/below list price, market competitiveness</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Median: 75.9%</span>
+                <span>Best: 76.2%</span>
+                <span>60 equations</span>
+            </div>
+        </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
-    </footer>
+    <!-- ═══════════ KEY DISCOVERED EQUATIONS ═══════════ -->
+    <h2 class="results-section-title">Key Discovered Equations</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+      These aren't hand-crafted models. The UPS engine discovered these relationships automatically through symbolic regression, then validated each one across 21 out-of-sample windows. Every equation is human-readable and domain-interpretable.
+    </p>
+    
+        <div class="finding">
+            <div class="label" style="color: #6366f1;">Primary Target &mdash; 98.90% OOS Accuracy</div>
+            <h3>price_yoy_change</h3>
+            <div class="finding-equation">(cpi_yoy_roll3 &times; sale_to_list_ratio_roll7) &times; (sale_to_list_ratio_roll7 + sale_to_list_ratio_roll7)</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Price Growth &asymp; CPI Inflation &times; Market Competitiveness&sup2;</p>
+            <p>Home price appreciation is fundamentally driven by the interaction of inflation pressure and market competitiveness. When CPI rises and homes sell near or above asking, prices accelerate. This held across COVID, the 2021-22 boom, rate hikes, and the 2024-25 normalization &mdash; 21 independent out-of-sample windows.</p>
+        </div>
+        <div class="finding">
+            <div class="label" style="color: #22c55e;">Strongest Discovery &mdash; 99.90% OOS Accuracy</div>
+            <h3>months_supply</h3>
+            <div class="finding-equation">1.7828 + mortgage_rate_30yr</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Months Supply &asymp; 1.78 + Mortgage Rate</p>
+            <p>One of the cleanest structural relationships discovered: housing inventory is almost entirely a function of mortgage rates. The ~1.78 intercept represents the irreducible supply floor. At 6% rates, expect ~7.8 months of supply. At 4%, expect ~5.8. This equation held stable across a decade of wildly different rate environments.</p>
+        </div>
+        <div class="finding">
+            <div class="label" style="color: #22c55e;">Supply-Demand Link &mdash; 99.85% OOS Accuracy</div>
+            <h3>new_home_sales</h3>
+            <div class="finding-equation">(42.49 &times; (-1.42 &minus; months_supply_roll3)) + 1069.59</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">New Sales &asymp; 1070 &minus; 42.5 &times; (Months Supply + 1.4)</p>
+            <p>New home sales are a direct linear function of housing inventory. Every additional month of supply destroys ~42.5K in annualized new sales. At 99.85% OOS accuracy across a decade, this is a clean structural equation: when supply is tight (3 months), sales hit ~880K. When supply bloats to 8 months, sales crash to ~670K.</p>
+        </div>
+        <div class="finding">
+            <div class="label" style="color: #818cf8;">Inflation Channel &mdash; 94.59% OOS Accuracy</div>
+            <h3>rent_yoy_change</h3>
+            <div class="finding-equation">cpi_yoy_roll3 &times; (0.5772 + 0.5772)</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Rent Growth &asymp; CPI Inflation &times; 1.15</p>
+            <p>Rents track inflation with a ~15% amplification factor. When CPI hits 3%, rents grow ~3.45%. This is the most direct inflation transmission channel in real estate. The lower accuracy (94.59%) reflects local rent dynamics that diverge from national CPI trends.</p>
+        </div>
+        <div class="finding">
+            <div class="label" style="color: #22c55e;">Rate Transmission &mdash; 99.86% OOS Accuracy</div>
+            <h3>mortgage_rate_30yr_roll7</h3>
+            <div class="finding-equation">fed_funds_rate_roll7 &minus; (&minus;1.78 &minus; 0.84)</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">30yr Mortgage &asymp; Fed Funds + 2.62%</p>
+            <p>The 30-year mortgage rate is structurally the Fed funds rate plus a ~2.62% credit spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% OOS accuracy, the spread is remarkably stable &mdash; mortgage pricing is almost purely a function of Fed policy, not market sentiment.</p>
+        </div>
+        <div class="finding">
+            <div class="label" style="color: #22c55e;">Construction Pipeline &mdash; 99.89% OOS Accuracy</div>
+            <h3>housing_permits</h3>
+            <div class="finding-equation">(new_home_sales &minus; &minus;1.73) + (new_home_sales &minus; &minus;1.73)</div>
+            <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem;">Permits &asymp; 2 &times; (New Sales + 1.73)</p>
+            <p>Housing permits are almost exactly twice new home sales plus a small offset. This reveals the structural pipeline: the construction industry issues roughly 2 permits for every completed sale (accounting for multi-unit projects, cancellations, and regulatory lead time). A 10% drop in new sales predicts a ~10% permit decline. 99.89% OOS accuracy across a full housing cycle.</p>
+        </div>
+
+    <!-- ═══════════ METRO PROJECTIONS ═══════════ -->
+    <h2 class="results-section-title">12-Month Forward Projections: Home Price YoY Change</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+      Projected annual home price appreciation for each metro area, based on the validated <code style="background: var(--bg-secondary); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem;">price_yoy_change</code> equation applied to the latest available market conditions. These represent structural equilibrium forecasts &mdash; what price growth "should be" given current fundamentals.
+    </p>
+    <div style="overflow-x: auto;">
+    <table class="results-table">
+      <tr><th>Metro Area</th><th>Projected YoY Change</th><th></th></tr>
+      <tr>
+        <td>San Francisco, CA</td>
+        <td style="color: var(--green);">+5.50%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 92%;"></div></td>
+    </tr>
+<tr>
+        <td>New York, NY</td>
+        <td style="color: var(--green);">+5.31%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 89%;"></div></td>
+    </tr>
+<tr>
+        <td>Boston, MA</td>
+        <td style="color: var(--green);">+5.24%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 87%;"></div></td>
+    </tr>
+<tr>
+        <td>Minneapolis, MN</td>
+        <td style="color: var(--green);">+5.17%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 86%;"></div></td>
+    </tr>
+<tr>
+        <td>Baltimore, MD</td>
+        <td style="color: var(--green);">+5.13%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>St. Louis, MO</td>
+        <td style="color: var(--green);">+5.13%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Chicago, IL</td>
+        <td style="color: var(--green);">+5.12%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Los Angeles, CA</td>
+        <td style="color: var(--green);">+5.12%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Philadelphia, PA</td>
+        <td style="color: var(--green);">+5.11%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Washington, DC</td>
+        <td style="color: var(--green);">+5.10%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Seattle, WA</td>
+        <td style="color: var(--green);">+5.10%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Portland, OR</td>
+        <td style="color: var(--green);">+5.08%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Detroit, MI</td>
+        <td style="color: var(--green);">+5.07%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 85%;"></div></td>
+    </tr>
+<tr>
+        <td>Riverside, CA</td>
+        <td style="color: var(--green);">+5.05%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 84%;"></div></td>
+    </tr>
+<tr>
+        <td>Sacramento, CA</td>
+        <td style="color: var(--green);">+5.05%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 84%;"></div></td>
+    </tr>
+<tr>
+        <td>San Diego, CA</td>
+        <td style="color: var(--green);">+5.03%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 84%;"></div></td>
+    </tr>
+<tr>
+        <td>Cincinnati, OH</td>
+        <td style="color: var(--green);">+5.03%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 84%;"></div></td>
+    </tr>
+<tr>
+        <td>Denver, CO</td>
+        <td style="color: var(--green);">+5.02%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 84%;"></div></td>
+    </tr>
+<tr style="font-weight: 600; background: rgba(99, 102, 241, 0.05);">
+        <td>United States</td>
+        <td style="color: var(--green);">+4.99%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 83%;"></div></td>
+    </tr>
+<tr>
+        <td>Charlotte, NC</td>
+        <td style="color: var(--green);">+4.97%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 83%;"></div></td>
+    </tr>
+<tr>
+        <td>Las Vegas, NV</td>
+        <td style="color: var(--green);">+4.96%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 83%;"></div></td>
+    </tr>
+<tr>
+        <td>Atlanta, GA</td>
+        <td style="color: var(--green);">+4.94%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 82%;"></div></td>
+    </tr>
+<tr>
+        <td>Phoenix, AZ</td>
+        <td style="color: var(--green);">+4.93%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 82%;"></div></td>
+    </tr>
+<tr>
+        <td>Pittsburgh, PA</td>
+        <td style="color: var(--green);">+4.92%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 82%;"></div></td>
+    </tr>
+<tr>
+        <td>Dallas, TX</td>
+        <td style="color: var(--green);">+4.91%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 82%;"></div></td>
+    </tr>
+<tr>
+        <td>Houston, TX</td>
+        <td style="color: var(--green);">+4.86%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 81%;"></div></td>
+    </tr>
+<tr>
+        <td>Orlando, FL</td>
+        <td style="color: var(--green);">+4.85%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 81%;"></div></td>
+    </tr>
+<tr>
+        <td>San Antonio, TX</td>
+        <td style="color: var(--green);">+4.84%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 81%;"></div></td>
+    </tr>
+<tr>
+        <td>Austin, TX</td>
+        <td style="color: var(--green);">+4.84%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 81%;"></div></td>
+    </tr>
+<tr>
+        <td>Tampa, FL</td>
+        <td style="color: var(--green);">+4.81%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 80%;"></div></td>
+    </tr>
+<tr>
+        <td>Miami, FL</td>
+        <td style="color: var(--green);">+4.69%</td>
+        <td style="width: 40%;"><div style="background: linear-gradient(90deg, var(--accent), var(--green)); height: 6px; border-radius: 3px; width: 78%;"></div></td>
+    </tr>
+
+    </table>
+    </div>
+
+    <!-- ═══════════ WHAT PROBLEMS THIS SOLVES ═══════════ -->
+    <h2 class="results-section-title">What You Can Do With This</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+      This isn't a dashboard &mdash; it's a decision engine. Here are the real problems real estate professionals can solve today with UPS-powered CRE intelligence:
+    </p>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">Investment Firms &amp; REITs</span>
+      <h3>Portfolio Allocation &amp; Market Timing</h3>
+      <p>The engine tells you <em>exactly</em> which macro variables drive price growth in each metro. When CPI trends up and sale-to-list tightens, the equation quantifies the price impact. Use this to:</p>
+      <ul>
+        <li><strong>Rank metros by fundamental strength</strong> &mdash; San Francisco projects +5.50% while Miami projects +4.69%. The gap isn't a guess; it's the mathematical output of their specific CPI and competitiveness conditions.</li>
+        <li><strong>Stress-test rate scenarios</strong> &mdash; The months supply equation (99.90% accuracy) tells you: if rates drop from 6% to 5%, supply drops by ~1 month nationally. Feed that into your acquisition model.</li>
+        <li><strong>Identify timing windows</strong> &mdash; The permits equation (99.89% accuracy) links construction permits to sales volume. A permit slowdown predicts future supply constraints. Combined with rate projections, it flags metro-specific buying opportunities before they show up in comps.</li>
+      </ul>
+    </div>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-hover);">Lenders &amp; Underwriters</span>
+      <h3>Dynamic Risk Assessment</h3>
+      <p>Move beyond static underwriting models. The UPS engine gives you forward-looking, metro-specific risk signals:</p>
+      <ul>
+        <li><strong>Quantified collateral risk</strong> &mdash; The new home sales equation (99.85% accuracy) tells you exactly how sales respond to inventory shifts. A 1-month supply increase? Sales drop by ~42.5K annualized. Chain that to the months supply equation and you can forecast supply &rarr; sales &rarr; prices from a single rate move.</li>
+        <li><strong>Early warning for distress</strong> &mdash; The rent growth equation shows rent tracks CPI x 1.15. When CPI decelerates, you know rental income is about to follow &mdash; weeks before it shows up in borrower financials.</li>
+        <li><strong>Portfolio-wide monitoring</strong> &mdash; Run 31 metros simultaneously. Flag the ones where fundamentals are deteriorating before defaults materialize.</li>
+      </ul>
+    </div>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">Property Management</span>
+      <h3>Operational Decision Support</h3>
+      <p>Know what's actually driving your market before you set next quarter's strategy:</p>
+      <ul>
+        <li><strong>Rent pricing intelligence</strong> &mdash; Rent growth tracks CPI with a 15% amplifier. When inflation is 2.5%, your rent increases should target ~2.9% to stay competitive. Push harder and you lose occupancy; too conservative and you leave money on the table.</li>
+        <li><strong>Rate impact forecasting</strong> &mdash; The mortgage-to-Fed-funds equation (99.86% accuracy) gives you a direct link from Fed policy to mortgage costs. Combine with months supply to project inventory changes from rate decisions before they hit the market.</li>
+        <li><strong>Market-specific intelligence</strong> &mdash; Each metro has its own dynamics. Austin's price trajectory differs from Boston's for quantifiable reasons. Use metro-specific projections to tailor strategies for each property in your portfolio.</li>
+      </ul>
+    </div>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Brokers &amp; Advisors</span>
+      <h3>Data-Backed Market Intelligence</h3>
+      <p>Differentiate your advisory practice with insights no one else has:</p>
+      <ul>
+        <li><strong>Quantified pitch decks</strong> &mdash; "Prices in this metro are projected to grow 5.1% based on current CPI and market competitiveness conditions" beats "we think the market is strong."</li>
+        <li><strong>Causal explanations for clients</strong> &mdash; When a client asks "why is this market softening?", show them the equation: months supply = 1.78 + mortgage rate. Rates went up, supply followed. It's math, not opinion.</li>
+        <li><strong>Cross-metro comparison tools</strong> &mdash; Rank 31 metros on any combination of 84 indicators. Show investors exactly where fundamentals are strongest.</li>
+      </ul>
+    </div>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">Homebuyers &amp; Sellers</span>
+      <h3>Personal Real Estate Decisions</h3>
+      <p>The same institutional-grade intelligence, accessible to individuals:</p>
+      <ul>
+        <li><strong>Is now a good time to buy?</strong> &mdash; The months supply equation links inventory directly to mortgage rates. When rates drop, supply tightens and prices follow. The engine quantifies exactly when conditions shift from buyer-favorable to seller-favorable in your metro.</li>
+        <li><strong>Where should I buy?</strong> &mdash; Compare 31 metros on projected price growth, rent-to-price ratios, and inventory trends. Data-driven relocation decisions.</li>
+        <li><strong>Should I sell or hold?</strong> &mdash; The price momentum equation tells you whether growth is accelerating or decelerating in your market. Combined with rate projections, it gives you a quantified hold vs. sell signal.</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════ FULL METRIC TABLE ═══════════ -->
+    <h2 class="results-section-title">All 68 Metrics &mdash; Best Equation Per Metric</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem;">
+      The best-performing discovered equation for each market indicator. Trivial identity equations (metrics predicting from their own rolling averages or near-identical cousin metrics) are excluded. All accuracies are out-of-sample, averaged across 21 expanding windows.
+    </p>
+    <input type="text" id="metric-search" placeholder="Search metrics..." oninput="filterMetrics(this.value)">
+    <div style="overflow-x: auto;">
+    <table class="results-table" id="metric-table">
+      <tr><th>Metric</th><th>OOS Accuracy</th><th>RMSE</th><th>Discovered Equation</th></tr>
+      <tr>
+        <td><strong>mortgage_rate_15yr</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.95%</td>
+        <td>0.2093</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((mortgage_rate_30yr_roll3 - cap_rate_estimate_trend) - (0.7761+cap_ra</td>
+    </tr>
+<tr>
+        <td><strong>months_supply_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.91%</td>
+        <td>0.5976</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_roll7 / cap_rate_estimate_roll7)+(0.4339+mortgage_</td>
+    </tr>
+<tr>
+        <td><strong>months_supply_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.91%</td>
+        <td>0.6664</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_roll7+mortgage_rate_30yr) - -1.6271)</td>
+    </tr>
+<tr>
+        <td><strong>months_supply</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.90%</td>
+        <td>0.7653</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(1.7828+mortgage_rate_30yr)</td>
+    </tr>
+<tr>
+        <td><strong>housing_permits</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.89%</td>
+        <td>184.5587</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((new_home_sales - -1.7279)+(new_home_sales - -1.7279))</td>
+    </tr>
+<tr>
+        <td><strong>mortgage_rate_30yr_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.86%</td>
+        <td>0.6587</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(fed_funds_rate_roll7 - (-1.7834 - 0.8366))</td>
+    </tr>
+<tr>
+        <td><strong>new_home_sales</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.85%</td>
+        <td>111.2566</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((42.4912*(-1.4173 - months_supply_roll3))+1069.5907)</td>
+    </tr>
+<tr>
+        <td><strong>unemployment_rate_national</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.82%</td>
+        <td>1.1052</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(((cap_rate_estimate_trend / cap_rate_estimate_trend) - rental_yield_e</td>
+    </tr>
+<tr>
+        <td><strong>cap_rate_estimate_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.81%</td>
+        <td>0.0128</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((-0.0679 / -0.8772) - (mortgage_rate_30yr / affordability_index))</td>
+    </tr>
+<tr>
+        <td><strong>cap_rate_estimate_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.81%</td>
+        <td>0.0127</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.0642 / 1.0193) / (cpi_yoy_roll7+1.0193))</td>
+    </tr>
+<tr>
+        <td><strong>price_to_income_ratio_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.79%</td>
+        <td>1.5374</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((-1.5819 / cap_rate_estimate_roll3)*(rental_yield_estimate+-0.2070))</td>
+    </tr>
+<tr>
+        <td><strong>rental_yield_estimate</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.79%</td>
+        <td>0.0150</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(0.0575 - sale_to_list_ratio_trend)</td>
+    </tr>
+<tr>
+        <td><strong>price_to_income_ratio</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.78%</td>
+        <td>1.3870</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.3760 / cap_rate_estimate_roll7) - (rental_yield_estimate_roll7+1.8</td>
+    </tr>
+<tr>
+        <td><strong>zori_rent_index</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.78%</td>
+        <td>483.1298</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(housing_permits - (consumer_confidence*(pct_sold_above_list_roll3 - 1</td>
+    </tr>
+<tr>
+        <td><strong>rental_yield_estimate_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.77%</td>
+        <td>0.0163</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cpi_yoy_trend+0.0650)</td>
+    </tr>
+<tr>
+        <td><strong>avg_price_per_sqft</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.77%</td>
+        <td>56.0182</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.9440 / rental_yield_estimate_roll7) / (cap_rate_estimate_roll7+ren</td>
+    </tr>
+<tr>
+        <td><strong>mortgage_rate_15yr_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.75%</td>
+        <td>1.0476</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((sale_to_list_ratio_roll3+1.7734)+(1.5439 - cap_rate_estimate))</td>
+    </tr>
+<tr>
+        <td><strong>mortgage_rate_15yr_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.72%</td>
+        <td>1.1772</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(0.9420+((rental_yield_estimate_trend / rental_yield_estimate_trend)+1</td>
+    </tr>
+<tr>
+        <td><strong>mortgage_rate_30yr_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.70%</td>
+        <td>1.4205</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((1.5590 - rental_yield_estimate_roll7) - (rental_yield_estimate_roll7</td>
+    </tr>
+<tr>
+        <td><strong>construction_spending</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.69%</td>
+        <td>302623.4474</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((consumer_confidence_roll3*new_home_sales)+zhvi_top_tier)</td>
+    </tr>
+<tr>
+        <td><strong>price_to_income_ratio_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.62%</td>
+        <td>2.7009</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((1.9713 - rental_yield_estimate_roll3)+(1.9713 - rental_yield_estimat</td>
+    </tr>
+<tr>
+        <td><strong>affordability_index_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.62%</td>
+        <td>228.9075</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((1.9407 - -1.6506)*(1.9407*consumer_confidence_roll7))</td>
+    </tr>
+<tr>
+        <td><strong>affordability_index_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.57%</td>
+        <td>257.3147</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(new_home_sales - (months_supply / cap_rate_estimate))</td>
+    </tr>
+<tr>
+        <td><strong>price_3yr_change</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.54%</td>
+        <td>0.1326</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((sale_to_list_ratio_roll7 - -0.1927) - sale_to_list_ratio_roll3)</td>
+    </tr>
+<tr>
+        <td><strong>cpi_yoy_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.45%</td>
+        <td>0.0162</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.0136*cap_rate_estimate_roll3) / (rental_yield_estimate_roll7 / 1.9</td>
+    </tr>
+<tr>
+        <td><strong>cpi_yoy</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.45%</td>
+        <td>0.0166</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.6482+(cap_rate_estimate_trend+-1.7631)) - ((cap_rate_estimate_roll</td>
+    </tr>
+<tr>
+        <td><strong>cpi_yoy_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.41%</td>
+        <td>0.0173</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((0.0102+cap_rate_estimate_trend)+(0.0102+0.0102))</td>
+    </tr>
+<tr>
+        <td><strong>price_yoy_change_roll7</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.39%</td>
+        <td>0.0503</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(0.0345 / (cpi_yoy_trend - -0.5680))</td>
+    </tr>
+<tr>
+        <td><strong>price_yoy_change_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.21%</td>
+        <td>0.0540</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(1.7307*(1.1699*cpi_yoy_roll3))</td>
+    </tr>
+<tr>
+        <td><strong>price_to_income_ratio_trend</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.14%</td>
+        <td>0.0966</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_roll3 - rental_yield_estimate_trend) - (rental_yie</td>
+    </tr>
+<tr>
+        <td><strong>fed_funds_rate</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.04%</td>
+        <td>1.7144</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_trend / rental_yield_estimate_trend) - -1.0998</td>
+    </tr>
+<tr>
+        <td><strong>fed_funds_rate_roll3</strong></td>
+        <td style="color: var(--green); font-weight: 600;">99.03%</td>
+        <td>1.6861</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_trend / rental_yield_estimate_trend)+(cap_rate</td>
+    </tr>
+<tr>
+        <td><strong>price_mom_change_roll7</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.98%</td>
+        <td>0.0055</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cpi_yoy_roll7*(0.1884 / 1.8288))</td>
+    </tr>
+<tr>
+        <td><strong>price_yoy_change</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.90%</td>
+        <td>0.0620</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cpi_yoy_roll3*sale_to_list_ratio_roll7)*(sale_to_list_ratio_roll7+sa</td>
+    </tr>
+<tr>
+        <td><strong>cpi_yoy_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.67%</td>
+        <td>0.0062</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(((rental_yield_estimate_trend+rental_yield_estimate_trend)+(rental_yi</td>
+    </tr>
+<tr>
+        <td><strong>unemployment_rate_national_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.65%</td>
+        <td>0.5853</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_roll7 - cap_rate_estimate) - cap_rate_estimate</td>
+    </tr>
+<tr>
+        <td><strong>affordability_index_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.63%</td>
+        <td>21.7491</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((1.6736*(cap_rate_estimate_roll7+-1.8570))*((cap_rate_estimate_trend </td>
+    </tr>
+<tr>
+        <td><strong>price_mom_change_roll3</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.61%</td>
+        <td>0.0066</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(0.3492*(cpi_yoy_trend+sale_to_list_ratio_trend))</td>
+    </tr>
+<tr>
+        <td><strong>price_yoy_change_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.54%</td>
+        <td>0.0180</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cpi_yoy_trend*1.8718) / sale_to_list_ratio_roll3)</td>
+    </tr>
+<tr>
+        <td><strong>price_momentum</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.50%</td>
+        <td>0.0069</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(0.5807 / (sale_to_list_ratio_roll7 / cpi_yoy_trend))</td>
+    </tr>
+<tr>
+        <td><strong>consumer_confidence_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.41%</td>
+        <td>4.7634</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_roll3+-0.9891)+cap_rate_estimate_roll3)</td>
+    </tr>
+<tr>
+        <td><strong>months_supply_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.40%</td>
+        <td>0.6346</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(((rental_yield_estimate_trend*cap_rate_estimate_roll7) / cap_rate_est</td>
+    </tr>
+<tr>
+        <td><strong>mortgage_rate_15yr_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.38%</td>
+        <td>0.3097</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate*0.8389)</td>
+    </tr>
+<tr>
+        <td><strong>price_mom_change</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.37%</td>
+        <td>0.0070</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(-0.2099*(cpi_yoy_trend / -0.9956))</td>
+    </tr>
+<tr>
+        <td><strong>mortgage_rate_30yr_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.36%</td>
+        <td>0.3100</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_roll3 - (cap_rate_estimate - 0.0375))</td>
+    </tr>
+<tr>
+        <td><strong>price_mom_change_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.12%</td>
+        <td>0.0039</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cpi_yoy_trend*cpi_yoy_trend) / (-0.5447+sale_to_list_ratio_roll3))</td>
+    </tr>
+<tr>
+        <td><strong>fed_funds_rate_trend</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.06%</td>
+        <td>0.3288</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(rental_yield_estimate_trend*(rental_yield_estimate_trend - 1.3286))</td>
+    </tr>
+<tr>
+        <td><strong>price_acceleration</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.03%</td>
+        <td>0.0030</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((sale_to_list_ratio_trend / -1.2856)*(sale_to_list_ratio_trend*pct_so</td>
+    </tr>
+<tr>
+        <td><strong>fed_funds_rate_roll7</strong></td>
+        <td style="color: var(--accent-hover); font-weight: 600;">98.00%</td>
+        <td>1.9630</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(rental_yield_estimate_trend+rental_yield_estimate_trend)</td>
+    </tr>
+<tr>
+        <td><strong>rent_yoy_change_roll7</strong></td>
+        <td style="color: var(--text-secondary); font-weight: 600;">94.68%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(1.7511*cpi_yoy_roll3)</td>
+    </tr>
+<tr>
+        <td><strong>rent_yoy_change_roll3</strong></td>
+        <td style="color: var(--text-secondary); font-weight: 600;">94.63%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cpi_yoy_roll3*(0.9679+0.3275))</td>
+    </tr>
+<tr>
+        <td><strong>rent_yoy_change</strong></td>
+        <td style="color: var(--text-secondary); font-weight: 600;">94.59%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cpi_yoy_roll3*(0.5772+0.5772))</td>
+    </tr>
+<tr>
+        <td><strong>rent_yoy_change_trend</strong></td>
+        <td style="color: var(--text-secondary); font-weight: 600;">93.84%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(sale_to_list_ratio_roll7*(sale_to_list_ratio_roll7*cpi_yoy_trend))</td>
+    </tr>
+<tr>
+        <td><strong>sale_to_list_ratio_roll3</strong></td>
+        <td style="color: #f97316; font-weight: 600;">76.18%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_roll7 / cap_rate_estimate_roll7) - (rental_yield_e</td>
+    </tr>
+<tr>
+        <td><strong>sale_to_list_ratio</strong></td>
+        <td style="color: #f97316; font-weight: 600;">76.18%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(((cap_rate_estimate_roll7 / rental_yield_estimate_roll7)+(cap_rate_es</td>
+    </tr>
+<tr>
+        <td><strong>sale_to_list_ratio_roll7</strong></td>
+        <td style="color: #f97316; font-weight: 600;">76.18%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(rental_yield_estimate_roll7 / cap_rate_estimate_roll7)</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_below_list_roll7</strong></td>
+        <td style="color: #f97316; font-weight: 600;">76.00%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_roll7+0.8727) - 0.4718)</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_below_list_roll3</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.99%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_roll3 / 0.1955) - -0.1504)</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_below_list</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.98%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(rental_yield_estimate+0.4046)</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_above_list_roll7</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.89%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_roll7 / ((cap_rate_estimate_roll7+rental_yield_esti</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_above_list_roll3</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.89%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(0.4010 - cap_rate_estimate)</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_above_list</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.87%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_roll7+0.3125)</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_below_list_trend</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.16%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((cap_rate_estimate_trend / cap_rate_estimate_roll7)+(cap_rate_estimat</td>
+    </tr>
+<tr>
+        <td><strong>sale_to_list_ratio_trend</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.12%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_trend+rental_yield_estimate_trend)*(-1.8544 - </td>
+    </tr>
+<tr>
+        <td><strong>new_listings</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.11%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(1.9390 / (cap_rate_estimate_roll7*rental_yield_estimate_roll7))</td>
+    </tr>
+<tr>
+        <td><strong>pct_sold_above_list_trend</strong></td>
+        <td style="color: #f97316; font-weight: 600;">75.10%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">(cap_rate_estimate_trend - ((cap_rate_estimate_trend+cap_rate_estimate</td>
+    </tr>
+<tr>
+        <td><strong>active_listings</strong></td>
+        <td style="color: #f97316; font-weight: 600;">74.98%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((1.8237+1.5236) / (rental_yield_estimate_roll3*cap_rate_estimate_roll</td>
+    </tr>
+<tr>
+        <td><strong>inventory_yoy_change</strong></td>
+        <td style="color: #f97316; font-weight: 600;">65.58%</td>
+        <td>&mdash;</td>
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary);">((rental_yield_estimate_trend / cap_rate_estimate_roll7)+(rental_yield</td>
+    </tr>
+
+    </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
+      32 metrics &ge;99% | 49 metrics &ge;95% | 68 total metrics
+    </p>
+
+    <!-- ═══════════ METHODOLOGY ═══════════ -->
+    <div class="disclaimer" style="margin-top: 3rem;">
+      <strong>Methodology:</strong> All projections are generated through the UPS v3.5 multi-stage analytical pipeline: (1) ingest monthly metro-level housing data from Zillow Research and FRED, (2) engineer 68 market indicators including rolling averages, trends, and derived metrics, (3) discover causal equations via symbolic regression with mutation and selection, (4) validate all equations across 21 expanding out-of-sample windows spanning 2015&ndash;2025, (5) project forward using only validated, stable relationships. Trivial identity equations (metrics predicted from their own rolling averages or near-identical cousin metrics like ZHVI &harr; median sale price) are automatically filtered. The system uses no proprietary data &mdash; all inputs are freely available from Zillow and FRED. Forward projections represent structural equilibrium estimates based on current market conditions. Actual future market movements will depend on factors including policy changes, economic shocks, and local market dynamics not captured in historical patterns.
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 DIGINETICS. All rights reserved.
+  </footer>
+
+  <script>
+    function filterMetrics(query) {
+      const rows = document.querySelectorAll('#metric-table tr');
+      const q = query.toLowerCase();
+      rows.forEach((row, i) => {
+        if (i === 0) return;
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+  </script>
 
 </body>
 </html>

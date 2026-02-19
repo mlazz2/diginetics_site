@@ -51,13 +51,13 @@
     <a href="baseball.html" class="back-link">&larr; Back to Player Results</a>
     <h1 class="section-title">What the System Learned About Baseball</h1>
     <p class="section-subtitle">60-Player Cross-Roster Analysis: Patterns, Biases, and Discoveries</p>
-    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 800px; line-height: 1.7;">After independently analyzing 60 MLB hitters with <strong>zero domain knowledge</strong> about baseball theory, sabermetrics, or scouting, the DIGINETICS platform organically discovered fundamental truths about how hitting performance works. These findings emerged purely from data, validated against out-of-sample results.</p>
+    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 800px; line-height: 1.7;">After independently analyzing 60 MLB hitters with <strong>zero domain knowledge</strong> about baseball theory, sabermetrics, or scouting, DIGINETICS produced findings about hitting performance that align with decades of sabermetric research &mdash; without being given any baseball theory. All findings validated against out-of-sample results.</p>
   </div>
 
   <section>
 
-    <h2 class="results-section-title">The Discovered Causal Model of Hitting</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Across all 60 players, the system converged on a consistent 4-layer causal chain. This was not programmed. It was discovered from data and validated against held-out results:</p>
+    <h2 class="results-section-title">What the System Found</h2>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Across all 60 players, the system identified a consistent performance structure, validated against held-out results:</p>
 
     <div class="causal-chain">
       <strong>Pitch Environment</strong> <span class="arrow">&rarr;</span>
@@ -174,16 +174,16 @@
       <strong>Key insight:</strong> The BB/PA over-prediction (system expected more walks than actually occurred for 63% of players) suggests a league-wide shift toward more aggressive approaches in 2025. Hitters were swinging more and walking less than their career trends predicted. This is consistent with the MLB's observed trend of decreasing walk rates over recent seasons.
     </div>
 
-    <h2 class="results-section-title">Feedback Loops &amp; Regime Transitions</h2>
+    <h2 class="results-section-title">Performance Dynamics</h2>
 
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-number">30,141</div>
-        <div class="stat-label">Feedback Loops<br>Discovered</div>
+        <div class="stat-label">Reinforcing<br>Patterns Found</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">73,076</div>
-        <div class="stat-label">Regime Transitions<br>Detected</div>
+        <div class="stat-label">Performance<br>Shifts Mapped</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">~773</div>
@@ -206,11 +206,11 @@
       </div>
       <div class="card">
         <h3>Slump Spiral</h3>
-        <p>Higher K rate &rarr; degraded swing decisions (expanding zone) &rarr; worse contact quality &rarr; even higher K rate. The system detected this negative feedback loop as the primary mechanism behind extended cold spells.</p>
+        <p>Higher K rate &rarr; degraded swing decisions (expanding zone) &rarr; worse contact quality &rarr; even higher K rate. The system identified this reinforcing pattern as the primary mechanism behind extended cold spells.</p>
       </div>
     </div>
 
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>Regime transitions</strong> are the moments where these loops flip direction: the tipping points between hot streaks and slumps. The system's ability to detect and model these transitions (73,076 across 60 players) is a key differentiator from traditional projection systems that assume smooth, stable performance.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;">Performance shifts &mdash; the tipping points between hot streaks and slumps &mdash; were mapped across all 60 players. Unlike traditional projection systems that assume smooth, stable performance, the system identifies when and how transitions happen.</p>
 
     <h2 class="results-section-title">Single-Factor vs. Compound Relationships</h2>
 
@@ -225,7 +225,7 @@
       </div>
     </div>
 
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>24% of all discovered relationships</strong> involve compound interactions that cannot be captured by single-variable regression. For example, Bobby Witt Jr.'s walk rate is jointly influenced by pitch velocity trends <em>and</em> swing decision patterns: neither alone is sufficient. This validates the platform's approach of discovering pairwise relationships first, then searching for higher-order interactions.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2.5rem;"><strong>24% of all identified relationships</strong> involve multiple interacting factors that single-variable analysis cannot capture. For example, Bobby Witt Jr.'s walk rate is jointly influenced by pitch velocity trends <em>and</em> swing decision patterns: neither alone is sufficient.</p>
 
     <h2 class="results-section-title">What Separates Elite from Developing Projections</h2>
 
@@ -268,16 +268,16 @@
     <table class="results-table">
       <tr><th>Baseball Finding</th><th>Universal Principle</th></tr>
       <tr>
-        <td>Causal hierarchy matters (pitch env &rarr; decisions &rarr; quality &rarr; outcomes)</td>
+        <td>Performance structure matters (pitch env &rarr; decisions &rarr; quality &rarr; outcomes)</td>
         <td>All domains benefit from enforcing discovered causal ordering</td>
       </tr>
       <tr>
-        <td>Feedback loops drive regime transitions</td>
+        <td>Reinforcing patterns drive performance shifts</td>
         <td>Healthcare and CRE deployments should prioritize loop detection</td>
       </tr>
       <tr>
         <td>24% of relationships are multi-factor</td>
-        <td>Compound interaction discovery should be standard for all domains</td>
+        <td>Multi-factor analysis should be standard for all domains</td>
       </tr>
       <tr>
         <td>Time-series length drives accuracy</td>
@@ -318,13 +318,13 @@
       <tr><th>Statistic</th><th>Value</th></tr>
       <tr><td>Dataset</td><td>2015&ndash;2025 MLB Statcast (plate-appearance level)</td></tr>
       <tr><td>Performance Indicators / Player</td><td>72</td></tr>
-      <tr><td>Feedback Loops Discovered</td><td>30,141</td></tr>
-      <tr><td>Regime Transitions Detected</td><td>73,076</td></tr>
+      <tr><td>Reinforcing Patterns Found</td><td>30,141</td></tr>
+      <tr><td>Performance Shifts Mapped</td><td>73,076</td></tr>
       <tr><td>Actuals Verified Against</td><td>Baseball Reference, StatMuse</td></tr>
     </table>
 
     <div class="disclaimer" style="margin-top: 2.5rem;">
-      <strong>Methodology note:</strong> This analysis was generated from all 60 individual player projection reports. All findings are data-driven. No manual curation or cherry-picking was applied. The predictor frequency tables were built by parsing every player's results and categorizing the discovered drivers. The bias analysis uses confirmed 2025 season statistics from Baseball Reference and StatMuse.
+      <strong>Note:</strong> All findings are data-driven. No manual curation or cherry-picking was applied. The bias analysis uses confirmed 2025 season statistics from Baseball Reference and StatMuse.
     </div>
 
     <div style="text-align: center; margin-top: 3rem;">
