@@ -447,243 +447,197 @@
     <input type="text" id="metric-search" placeholder="Search metrics..." oninput="filterMetrics(this.value)">
     <div style="overflow-x: auto;">
     <table class="results-table" id="metric-table">
-      <tr><th>Metric</th><th>OOS Accuracy</th><th>RMSE</th></tr>
+      <tr><th>Metric</th><th>OOS Accuracy</th></tr>
       <tr>
         <td><strong>mortgage_rate_15yr</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.95%</td>
-        <td>0.2093</td>
     </tr>
 <tr>
         <td><strong>months_supply_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.91%</td>
-        <td>0.5976</td>
     </tr>
 <tr>
         <td><strong>months_supply_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.91%</td>
-        <td>0.6664</td>
     </tr>
 <tr>
         <td><strong>months_supply</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.90%</td>
-        <td>0.7653</td>
     </tr>
 
 <tr>
         <td><strong>mortgage_rate_30yr_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.86%</td>
-        <td>0.6587</td>
     </tr>
 
 <tr>
         <td><strong>unemployment_rate_national</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.82%</td>
-        <td>1.1052</td>
     </tr>
 <tr>
         <td><strong>cap_rate_estimate_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.81%</td>
-        <td>0.0128</td>
     </tr>
 <tr>
         <td><strong>cap_rate_estimate_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.81%</td>
-        <td>0.0127</td>
     </tr>
 <tr>
         <td><strong>price_to_income_ratio_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.79%</td>
-        <td>1.5374</td>
     </tr>
 <tr>
         <td><strong>rental_yield_estimate</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.79%</td>
-        <td>0.0150</td>
     </tr>
 <tr>
         <td><strong>price_to_income_ratio</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.78%</td>
-        <td>1.3870</td>
     </tr>
 
 <tr>
         <td><strong>rental_yield_estimate_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.77%</td>
-        <td>0.0163</td>
     </tr>
 
 <tr>
         <td><strong>mortgage_rate_15yr_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.75%</td>
-        <td>1.0476</td>
     </tr>
 <tr>
         <td><strong>mortgage_rate_15yr_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.72%</td>
-        <td>1.1772</td>
     </tr>
 <tr>
         <td><strong>mortgage_rate_30yr_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.70%</td>
-        <td>1.4205</td>
     </tr>
 
 <tr>
         <td><strong>price_to_income_ratio_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.62%</td>
-        <td>2.7009</td>
     </tr>
 
 
 <tr>
         <td><strong>price_3yr_change</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.54%</td>
-        <td>0.1326</td>
     </tr>
 <tr>
         <td><strong>cpi_yoy_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.45%</td>
-        <td>0.0162</td>
     </tr>
 <tr>
         <td><strong>cpi_yoy</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.45%</td>
-        <td>0.0166</td>
     </tr>
 <tr>
         <td><strong>cpi_yoy_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.41%</td>
-        <td>0.0173</td>
     </tr>
 <tr>
         <td><strong>price_yoy_change_roll7</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.39%</td>
-        <td>0.0503</td>
     </tr>
 <tr>
         <td><strong>price_yoy_change_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.21%</td>
-        <td>0.0540</td>
     </tr>
 <tr>
         <td><strong>price_to_income_ratio_trend</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.14%</td>
-        <td>0.0966</td>
     </tr>
 <tr>
         <td><strong>fed_funds_rate</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.04%</td>
-        <td>1.7144</td>
     </tr>
 <tr>
         <td><strong>fed_funds_rate_roll3</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.03%</td>
-        <td>1.6861</td>
     </tr>
 <tr>
         <td><strong>price_mom_change_roll7</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.98%</td>
-        <td>0.0055</td>
     </tr>
 <tr>
         <td><strong>price_yoy_change</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.90%</td>
-        <td>0.0620</td>
     </tr>
 <tr>
         <td><strong>cpi_yoy_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.67%</td>
-        <td>0.0062</td>
     </tr>
 <tr>
         <td><strong>unemployment_rate_national_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.65%</td>
-        <td>0.5853</td>
     </tr>
 <tr>
         <td><strong>affordability_index_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.63%</td>
-        <td>21.7491</td>
     </tr>
 <tr>
         <td><strong>price_mom_change_roll3</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.61%</td>
-        <td>0.0066</td>
     </tr>
 <tr>
         <td><strong>price_yoy_change_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.54%</td>
-        <td>0.0180</td>
     </tr>
 <tr>
         <td><strong>price_momentum</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.50%</td>
-        <td>0.0069</td>
     </tr>
 <tr>
         <td><strong>consumer_confidence_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.41%</td>
-        <td>4.7634</td>
     </tr>
 <tr>
         <td><strong>months_supply_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.40%</td>
-        <td>0.6346</td>
     </tr>
 <tr>
         <td><strong>mortgage_rate_15yr_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.38%</td>
-        <td>0.3097</td>
     </tr>
 <tr>
         <td><strong>price_mom_change</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.37%</td>
-        <td>0.0070</td>
     </tr>
 <tr>
         <td><strong>mortgage_rate_30yr_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.36%</td>
-        <td>0.3100</td>
     </tr>
 <tr>
         <td><strong>price_mom_change_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.12%</td>
-        <td>0.0039</td>
     </tr>
 <tr>
         <td><strong>fed_funds_rate_trend</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.06%</td>
-        <td>0.3288</td>
     </tr>
 <tr>
         <td><strong>price_acceleration</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.03%</td>
-        <td>0.0030</td>
     </tr>
 <tr>
         <td><strong>fed_funds_rate_roll7</strong></td>
         <td style="color: var(--accent-hover); font-weight: 600;">98.00%</td>
-        <td>1.9630</td>
     </tr>
 <tr>
         <td><strong>rent_yoy_change_roll7</strong></td>
         <td style="color: var(--text-secondary); font-weight: 600;">94.68%</td>
-        <td>-</td>
     </tr>
 <tr>
         <td><strong>rent_yoy_change_roll3</strong></td>
         <td style="color: var(--text-secondary); font-weight: 600;">94.63%</td>
-        <td>-</td>
     </tr>
 <tr>
         <td><strong>rent_yoy_change</strong></td>
         <td style="color: var(--text-secondary); font-weight: 600;">94.59%</td>
-        <td>-</td>
     </tr>
 <tr>
         <td><strong>rent_yoy_change_trend</strong></td>
         <td style="color: var(--text-secondary); font-weight: 600;">93.84%</td>
-        <td>-</td>
     </tr>
 
 
