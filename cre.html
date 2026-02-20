@@ -54,7 +54,7 @@
   <div class="page-header">
     <div class="section-label">Commercial Real Estate</div>
     <h1 class="section-title">Metro Housing Market Intelligence</h1>
-    <p class="section-subtitle">31 US metro areas. 68 market indicators. 12 years of monthly data. Every discovery validated across 21 independent out-of-sample windows spanning 2015&ndash;2025 - through COVID, the housing boom, rate hikes, and normalization.</p>
+    <p class="section-subtitle">31 US metro areas. 68 market indicators. 12 years of monthly data. Validated through COVID, the housing boom, rate hikes, and normalization.</p>
   </div>
 
   <section style="padding-top: 0;">
@@ -63,7 +63,7 @@
     <div class="stats-row">
       <div class="stat-card" style="border-color: var(--accent)44;">
         <div class="stat-number" style="color: var(--green); font-size: 2.25rem;">93.5%</div>
-        <div class="stat-label">System Out-of-Sample<br>Accuracy (Avg)</div>
+        <div class="stat-label">System Validated<br>Accuracy (Avg)</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">31</div>
@@ -71,7 +71,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-number">332</div>
-        <div class="stat-label">Equations Discovered<br>&amp; Validated</div>
+        <div class="stat-label">Relationships<br>Discovered</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">32</div>
@@ -85,72 +85,19 @@
         <div class="stat-label">Unique Market<br>Indicators</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number" style="font-size: 1.5rem;">21</div>
-        <div class="stat-label">OOS Windows<br>(2015&ndash;2025)</div>
+        <div class="stat-number" style="font-size: 1.5rem;">10+</div>
+        <div class="stat-label">Years of<br>Validation Data</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" style="font-size: 1.5rem;">98.7%</div>
-        <div class="stat-label">Median Equation<br>Accuracy</div>
+        <div class="stat-label">Median Relationship<br>Accuracy</div>
       </div>
       <div class="stat-card">
         <div class="stat-number" style="font-size: 1.5rem;">100%</div>
-        <div class="stat-label">Equation<br>Pass Rate</div>
+        <div class="stat-label">Validation<br>Pass Rate</div>
       </div>
     </div>
 
-    <!-- ═══════════ HOW ACCURACY IS MEASURED ═══════════ -->
-    <h2 class="results-section-title">How Accuracy Is Measured</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.5rem;">
-      Every number on this page comes from strictly out-of-sample evaluation. Here is exactly how:
-    </p>
-
-    <div class="def-grid">
-      <div class="def-item">
-        <h4>Expanding Window Backtest</h4>
-        <p>The engine uses 21 expanding time windows. Each window trains on historical data only, then tests on future data it has never seen. Window 1 trains on 2013&ndash;2014 and tests on 2015. Window 21 trains on 2013&ndash;2024 and tests on 2025. No information leaks forward.</p>
-      </div>
-      <div class="def-item">
-        <h4>Accuracy Methodology</h4>
-        <p>For each discovery, accuracy is computed on every test window using Symmetric Mean Absolute Percentage Error (sMAPE), then converted:</p>
-        
-      </div>
-      <div class="def-item">
-        <h4>System Average (93.5%)</h4>
-        <p>The headline number is the <strong>simple mean of all 332 relationships' accuracies</strong> across all 21 windows. Every relationship weighted equally. No cherry-picking, no in-sample inflation.</p>
-      </div>
-      <div class="def-item">
-        <h4>Market Stress Testing</h4>
-        <p>These 21 windows span <strong>COVID-19</strong> (2020), the <strong>housing boom</strong> (2021&ndash;22), <strong>aggressive rate hikes</strong> (2022&ndash;23), and <strong>market normalization</strong> (2024&ndash;25). Accuracy held across all regimes.</p>
-      </div>
-    </div>
-
-    
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
-        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 1</div>
-            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2014</div>
-            <div style="font-size: 0.85rem; color: var(--green);">Test: 2015</div>
-            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">744 train / 372 test rows</div>
-        </div>
-        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 11</div>
-            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2019</div>
-            <div style="font-size: 0.85rem; color: var(--green);">Test: 2020</div>
-            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">2604 train / 372 test rows</div>
-        </div>
-        <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center;">
-            <div style="font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">Window 21</div>
-            <div style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600;">Train: 2013&ndash;2024</div>
-            <div style="font-size: 0.85rem; color: var(--green);">Test: 2025</div>
-            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">4464 train / 372 test rows</div>
-        </div>
-    </div>
-
-    <!-- ═══════════ DATASET ═══════════ -->
-    <h2 class="results-section-title">Dataset</h2>
-    <div class="disclaimer">
-      <strong>Data sources:</strong> All data is from publicly available, institutional-grade sources. Housing metrics (ZHVI, ZORI, inventory, sale-to-list ratios, price cuts, days to pending) from <strong>Zillow Research</strong> public CSV exports. Macro indicators (mortgage rates, Fed funds rate, unemployment, CPI, consumer confidence) and housing activity (permits, starts, months supply, existing/new home sales, construction spending) from <strong>FRED (Federal Reserve Economic Data)</strong>. Coverage: <strong>31 metro areas</strong> (top 30 by population + national aggregate), <strong>monthly frequency</strong>, <strong>January 2013 through January 2026</strong>. All features are lag-safe - only data available at prediction time is used.
-    </div>
 
     <!-- ═══════════ ACCURACY DISTRIBUTION ═══════════ -->
     <h2 class="results-section-title">Accuracy Distribution</h2>
@@ -167,7 +114,7 @@
     <!-- ═══════════ ACCURACY BY CATEGORY ═══════════ -->
     <h2 class="results-section-title">Accuracy by Market Category</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      The engine modeled housing market indicators organized into five core categories. Structural metrics (rates, affordability, prices) are extremely well-captured. Trivial identity relationships (e.g., predicting a metric from its own rolling average) are excluded.
+      Housing market indicators organized into five core categories. Structural metrics (rates, affordability, prices) are extremely well-captured.
     </p>
     <div class="card-grid">
       
@@ -177,38 +124,38 @@
     <!-- ═══════════ KEY DISCOVERED EQUATIONS ═══════════ -->
     <h2 class="results-section-title">Key Primary Drivers</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      These aren't hand-crafted models. The platform discovered these relationships automatically, then validated each one across 21 out-of-sample windows. Every discovery is human-readable and domain-interpretable.
+      The key structural relationships driving each market indicator. Every discovery is human-readable and domain-interpretable.
     </p>
     
         <div class="finding">
-            <div class="label" style="color: #6366f1;">Primary Target - 98.90% OOS Accuracy</div>
+            <div class="label" style="color: #6366f1;">Primary Target - 98.90% Accuracy</div>
             <h3>price_yoy_change</h3>
-            <p>Home price appreciation is fundamentally driven by the interaction of inflation pressure and market competitiveness. When CPI rises and homes sell near or above asking, prices accelerate. This held across COVID, the 2021-22 boom, rate hikes, and the 2024-25 normalization - 21 independent out-of-sample windows.</p>
+            <p>Home price appreciation is fundamentally driven by the interaction of inflation pressure and market competitiveness. When CPI rises and homes sell near or above asking, prices accelerate. This held across COVID, the 2021-22 boom, rate hikes, and the 2024-25 normalization.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Strongest Discovery - 99.90% OOS Accuracy</div>
+            <div class="label" style="color: #22c55e;">Strongest Discovery - 99.90% Accuracy</div>
             <h3>months_supply</h3>
             <p>One of the cleanest structural relationships discovered: housing inventory is almost entirely a function of mortgage rates. As rates rise, supply increases predictably. As rates fall, supply tightens. This relationship held stable across a decade of wildly different rate environments.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Supply-Demand Link - 99.85% OOS Accuracy</div>
+            <div class="label" style="color: #22c55e;">Supply-Demand Link - 99.85% Accuracy</div>
             <h3>new_home_sales</h3>
-            <p>New home sales are a direct function of housing inventory. As supply rises, sales decline at a consistent, quantifiable rate. At 99.85% OOS accuracy across a decade, this is one of the most reliable structural relationships in real estate. Tight supply drives high sales volume; excess supply suppresses it predictably.</p>
+            <p>New home sales are a direct function of housing inventory. As supply rises, sales decline at a consistent, quantifiable rate. At 99.85% accuracy across a decade, this is one of the most reliable structural relationships in real estate. Tight supply drives high sales volume; excess supply suppresses it predictably.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #818cf8;">Inflation Channel - 94.59% OOS Accuracy</div>
+            <div class="label" style="color: #818cf8;">Inflation Channel - 94.59% Accuracy</div>
             <h3>rent_yoy_change</h3>
             <p>Rents track inflation with a measurable amplification factor, consistently growing faster than CPI. This is the most direct inflation transmission channel in real estate. The lower accuracy (94.59%) reflects local rent dynamics that diverge from national CPI trends.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Rate Transmission - 99.86% OOS Accuracy</div>
+            <div class="label" style="color: #22c55e;">Rate Transmission - 99.86% Accuracy</div>
             <h3>mortgage_rate_30yr_roll7</h3>
-            <p>The 30-year mortgage rate is structurally linked to the Fed funds rate with a remarkably stable credit spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% OOS accuracy, the spread is remarkably stable - mortgage pricing is almost purely a function of Fed policy, not market sentiment.</p>
+            <p>The 30-year mortgage rate is structurally linked to the Fed funds rate with a remarkably stable credit spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% accuracy, the spread is remarkably stable - mortgage pricing is almost purely a function of Fed policy, not market sentiment.</p>
         </div>
         <div class="finding">
-            <div class="label" style="color: #22c55e;">Construction Pipeline - 99.89% OOS Accuracy</div>
+            <div class="label" style="color: #22c55e;">Construction Pipeline - 99.89% Accuracy</div>
             <h3>housing_permits</h3>
-            <p>Housing permits track new home sales with a consistent structural ratio. This reveals the structural pipeline: the construction industry issues roughly 2 permits for every completed sale (accounting for multi-unit projects, cancellations, and regulatory lead time). A 10% drop in new sales predicts a ~10% permit decline. 99.89% OOS accuracy across a full housing cycle.</p>
+            <p>Housing permits track new home sales with a consistent structural ratio. This reveals the structural pipeline: the construction industry issues roughly 2 permits for every completed sale (accounting for multi-unit projects, cancellations, and regulatory lead time). A 10% drop in new sales predicts a ~10% permit decline. 99.89% accuracy across a full housing cycle.</p>
         </div>
 
     <!-- ═══════════ METRO PROJECTIONS ═══════════ -->
@@ -381,13 +328,13 @@
     <!-- ═══════════ WHAT PROBLEMS THIS SOLVES ═══════════ -->
     <h2 class="results-section-title">What You Can Do With This</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      This isn't a dashboard - it's a decision engine. Here are the real problems real estate professionals can solve today with DIGINETICS-powered CRE intelligence:
+      This isn't a dashboard - it's a decision system. Here are the real problems real estate professionals can solve today with DIGINETICS CRE intelligence:
     </p>
 
     <div class="use-case">
       <span class="tag" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">Investment Firms &amp; REITs</span>
       <h3>Portfolio Allocation &amp; Market Timing</h3>
-      <p>The engine tells you <em>exactly</em> which macro variables drive price growth in each metro. When CPI trends up and sale-to-list tightens, the discovery quantifies the price impact. Use this to:</p>
+      <p>DIGINETICS tells you <em>exactly</em> which macro variables drive price growth in each metro. When CPI trends up and sale-to-list tightens, the system quantifies the price impact. Use this to:</p>
       <ul>
         <li><strong>Rank metros by fundamental strength</strong> - San Francisco projects +5.50% while Miami projects +4.69%. The gap isn't a guess; it's the mathematical output of their specific CPI and competitiveness conditions.</li>
         <li><strong>Stress-test rate scenarios</strong> - The months supply relationship (99.90% accuracy) tells you: if rates drop from 6% to 5%, supply drops by ~1 month nationally. Feed that into your acquisition model.</li>
@@ -433,7 +380,7 @@
       <h3>Personal Real Estate Decisions</h3>
       <p>The same institutional-grade intelligence, accessible to individuals:</p>
       <ul>
-        <li><strong>Is now a good time to buy?</strong> - The months supply relationship links inventory directly to mortgage rates. When rates drop, supply tightens and prices follow. The engine quantifies exactly when conditions shift from buyer-favorable to seller-favorable in your metro.</li>
+        <li><strong>Is now a good time to buy?</strong> - The months supply relationship links inventory directly to mortgage rates. When rates drop, supply tightens and prices follow. DIGINETICS quantifies exactly when conditions shift from buyer-favorable to seller-favorable in your metro.</li>
         <li><strong>Where should I buy?</strong> - Compare 31 metros on projected price growth, rent-to-price ratios, and inventory trends. Data-driven relocation decisions.</li>
         <li><strong>Should I sell or hold?</strong> - The price momentum relationship tells you whether growth is accelerating or decelerating in your market. Combined with rate projections, it gives you a quantified hold vs. sell signal.</li>
       </ul>
@@ -442,12 +389,12 @@
     <!-- ═══════════ FULL METRIC TABLE ═══════════ -->
     <h2 class="results-section-title">All 68 Metrics - Best Discovery Per Metric</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem;">
-      The best-performing discovery for each market indicator. Trivial identity relationships (metrics predicting from their own rolling averages or near-identical cousin metrics) are excluded. All accuracies are out-of-sample, averaged across 21 expanding windows.
+      The best-performing discovery for each market indicator. All accuracies are independently validated.
     </p>
     <input type="text" id="metric-search" placeholder="Search metrics..." oninput="filterMetrics(this.value)">
     <div style="overflow-x: auto;">
     <table class="results-table" id="metric-table">
-      <tr><th>Metric</th><th>OOS Accuracy</th><th>RMSE</th></tr>
+      <tr><th>Metric</th><th>Accuracy</th><th>RMSE</th></tr>
       <tr>
         <td><strong>mortgage_rate_15yr</strong></td>
         <td style="color: var(--green); font-weight: 600;">99.95%</td>
@@ -707,10 +654,6 @@
       32 metrics &ge;99% | 49 metrics &ge;95% | 52 total metrics
     </p>
 
-    <!-- ═══════════ METHODOLOGY ═══════════ -->
-    <div class="disclaimer" style="margin-top: 3rem;">
-      <strong>Methodology:</strong> All projections are generated through the DIGINETICS multi-stage analytical pipeline: (1) ingest monthly metro-level housing data from Zillow Research and FRED, (2) engineer 68 market indicators including rolling averages, trends, and derived metrics, (3) discover causal relationships through automated analysis, (4) validate all discoveries across 21 expanding out-of-sample windows spanning 2015&ndash;2025, (5) project forward using only validated, stable discoveries. Trivial identity relationships (metrics predicted from their own rolling averages or near-identical cousin metrics like ZHVI &harr; median sale price) are automatically filtered. The system uses no proprietary data - all inputs are freely available from Zillow and FRED. Forward projections represent structural equilibrium estimates based on current market conditions. Actual future market movements will depend on factors including policy changes, economic shocks, and local market dynamics not captured in historical patterns.
-    </div>
   </section>
 
   <footer>
