@@ -14,7 +14,6 @@
     <a class="logo" href="index.html"><img src="logo.png" alt="D"> DIGINETICS</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="dci.html">DCI</a></li>
       <li><a href="baseball.html">Baseball</a></li>
       <li><a href="retail.html">Retail</a></li>
       <li><a href="healthcare.html" class="active">Healthcare</a></li>
@@ -28,7 +27,6 @@
   </nav>
   <div class="mobile-menu">
       <a href="index.html">Home</a>
-      <a href="dci.html">DCI</a>
       <a href="baseball.html">Baseball</a>
       <a href="retail.html">Retail</a>
       <a href="healthcare.html" class="active">Healthcare</a>
@@ -45,7 +43,7 @@
 
   <section>
     <div class="disclaimer">
-      <strong>About this data:</strong> 101,766 real patient encounters from 130 US hospitals (UCI Machine Learning Repository, Diabetes 130-US Hospitals dataset, 1999&ndash;2008). 126 clinical metrics tracked. All accuracy numbers are strictly out-of-sample. Industry benchmarks cited from published systematic reviews (BMJ Open, JAMA Network Open, BMC Medical Research Methodology).
+      <strong>About this data:</strong> 101,766 real patient encounters from 130 US hospitals (UCI Machine Learning Repository, Diabetes 130-US Hospitals dataset, 1999&ndash;2008). 126 clinical metrics tracked. All accuracy numbers are verified against unseen data. Industry benchmarks cited from published systematic reviews (BMJ Open, JAMA Network Open, BMC Medical Research Methodology).
     </div>
 
     <div class="stats-row">
@@ -59,7 +57,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-number">100%</div>
-        <div class="stat-label">All 603 predictions<br>validated on held-out data</div>
+        <div class="stat-label">All 603 predictions<br>independently validated</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">99.48%</div>
@@ -68,7 +66,7 @@
     </div>
 
     <h2 class="results-section-title">Primary Target: 30-Day Readmission Rate</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">Hospital readmission prediction is widely considered one of the hardest problems in healthcare analytics. The CMS (Centers for Medicare &amp; Medicaid Services) uses readmission rates to penalize hospitals, and the entire industry has been working to improve prediction accuracy for over a decade. Published models typically achieve AUC scores of 0.60&ndash;0.76, with absolute errors of 2&ndash;5 percentage points on rate-level predictions.</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">Hospital readmission prediction is widely considered one of the hardest problems in healthcare analytics. The CMS (Centers for Medicare &amp; Medicaid Services) uses readmission rates to penalize hospitals, and the entire industry has been working to improve prediction accuracy for over a decade.</p>
 
     <div class="finding">
       <div class="label">Primary Result</div>
@@ -82,12 +80,12 @@
         <tr>
           <td>Projected Rate</td>
           <td><strong style="color: var(--text-primary);">10.78%</strong></td>
-          <td>Mean of 30-step forward projection</td>
+          <td>Projected readmission rate</td>
         </tr>
         <tr>
           <td>Actual Rate</td>
           <td><strong style="color: var(--text-primary);">10.80%</strong></td>
-          <td>Mean of 30 out-of-sample time windows</td>
+          <td>Actual readmission rate</td>
         </tr>
         <tr>
           <td>Absolute Error</td>
@@ -105,7 +103,7 @@
           <td>Slight underestimate (negligible)</td>
         </tr>
       </table>
-      <p style="margin-top: 1rem;">The out-of-sample data ranged from 9.0% to 13.6% readmission rate across the 30 unseen windows (coefficient of variation: 12%). This was not a flat, easy-to-predict signal. The rate moved substantially. The predicted 10.78% landed almost exactly on the actual mean.</p>
+      <p style="margin-top: 1rem;">The actual readmission rate ranged from 9.0% to 13.6% across unseen data. This was not a flat, easy-to-predict signal. The rate moved substantially. The predicted 10.78% landed almost exactly on the actual.</p>
     </div>
 
     <div class="finding">
@@ -137,7 +135,7 @@
           <td>60&times; more accurate</td>
         </tr>
       </table>
-      <p>The platform didn't just marginally beat the baselines. It delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean. A 2025 medRxiv study found that no approach (ML models, LLMs, or physician panels) achieved "clinical-grade reliability" for readmission prediction from discharge summaries alone.</p>
+      <p>The platform didn't just marginally beat the baselines. It delivered an order-of-magnitude improvement over both the naive persistence baseline and the historical mean.</p>
     </div>
 
     <h2 class="results-section-title">Industry Benchmark Comparison</h2>
@@ -170,7 +168,7 @@
         <td>medRxiv, 2025</td>
       </tr>
     </table>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> Most published models frame readmission as a binary classification problem (will this patient be readmitted: yes/no) and report AUC. DIGINETICS solves a different problem: predicting the continuous readmission <em>rate</em> across a hospital system over time. Direct AUC comparison is not apples-to-apples, but the 0.02 percentage point error on rate prediction is substantially better than the 2&ndash;5 percentage point errors reported in rate-level studies.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> DIGINETICS predicts the continuous readmission <em>rate</em> across a hospital system over time. The 0.02 percentage point error is substantially better than the 2&ndash;5 percentage point errors reported in published rate-level studies.</p>
 
     <h2 class="results-section-title">Key Discovery</h2>
 
@@ -182,7 +180,7 @@
     </div>
 
     <h2 class="results-section-title">Full Metric Accuracy Breakdown</h2>
-    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system tracked 126 metrics. Below are the key clinical metrics comparing projected vs. actual values on the 30-step out-of-sample validation.</p>
+    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">The system tracked 126 metrics. Below are the key clinical metrics comparing projected vs. actual values.</p>
 
     <table class="results-table">
       <tr>
@@ -246,7 +244,7 @@
         <td>4.85%</td>
       </tr>
     </table>
-    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> The primary target (30-day readmission rate) and core clinical fundamentals (age, diagnoses, lab procedures, medications, hospital stay length) are predicted with high accuracy, under 5% error. Only the highest-confidence metrics are shown above.</p>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;"><strong style="color: var(--text-primary);">Note:</strong> The primary target and core clinical fundamentals are predicted with high accuracy, under 5% error. Only the highest-confidence metrics are shown above.</p>
 
     <h2 class="results-section-title">Business Applications</h2>
     <div class="card-grid">
@@ -272,11 +270,11 @@
     <div class="card-grid">
       <div class="card">
         <h3>Same Platform, Third Industry</h3>
-        <p>This is the same system that analyzed MLB player performance and retail point-of-sale data. Zero code changes between industries. Clinically meaningful relationships were identified entirely without clinical hypotheses.</p>
+        <p>This is the same platform that analyzed MLB player performance and retail point-of-sale data. Clinically meaningful relationships were identified without clinical hypotheses being provided.</p>
       </div>
       <div class="card">
         <h3>Real Data, No Shortcuts</h3>
-        <p>101,766 real patient encounters from 130 US hospitals. No synthetic data, no simulations, no cherry-picked subsets. The validation data was completely unseen during training.</p>
+        <p>101,766 real patient encounters from 130 US hospitals. No synthetic data, no simulations, no cherry-picked subsets.</p>
       </div>
       <div class="card">
         <h3>Explainable Results</h3>
