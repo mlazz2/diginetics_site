@@ -2,323 +2,120 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-L145GDKXK6');
-    </script>
-
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIGINETICS | Equation Intelligence Infrastructure</title>
-    <meta name="description" content="Diginetics discovers the mathematical equations governing any measurable domain. Validated across 8 industries. 2,050+ equations. One codebase.">
+    <meta name="description" content="Diginetics discovers the mathematical equations governing any measurable domain. Validated across 8 industries with 2,050+ equations from a single codebase.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="D">DIGINETICS</a>
         <ul class="nav-links">
-            <li><a href="#platform">Technology</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#industries">Industries</a></li>
-            <li><a href="founders.html">About</a></li>
-            <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:michael.lazzarotti@diginetics.co" class="nav-cta-btn">Contact</a></li>
         </ul>
-        <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('active')" aria-label="Menu">
+        <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
-    </nav>
-    <div class="mobile-menu">
-        <a href="index.html" class="active">Home</a>
-        <a href="#platform">Technology</a>
-        <a href="#results">Results</a>
-        <a href="#industries">Industries</a>
-        <a href="founders.html">About</a>
-        <a href="#contact">Contact</a>
     </div>
+</nav>
+<div class="mobile-nav">
+    <a href="index.html" class="current">Home</a>
+    <a href="technology.html">Technology</a>
+    <a href="results.html">Results</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
+</div>
 
-    <!-- HERO -->
-    <div class="hero-wrapper">
-        <div class="hero-inner-centered">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Validated Across 8 Domains
-            </div>
-            <h1 class="hero-heading-lg">The Equations Behind<br><span class="gradient">Your Decisions.</span></h1>
-            <p class="hero-sub-centered">Diginetics discovers interpretable mathematical equations from any structured dataset. Not predictions. Not black boxes. Validated equations your team can read, your regulators can audit, and your executives can act on.</p>
-            <div class="hero-cta" style="justify-content: center;">
-                <a href="#contact" class="btn-primary">Request a Demo</a>
-                <a href="#results" class="btn-secondary">See the Results</a>
-            </div>
+<section class="hero">
+    <div class="container">
+        <div class="hero-eyebrow"><span class="dot"></span> Validated Across 8 Domains</div>
+        <h1 class="hero-h1">The Equations Behind<br><span class="grad">Your Decisions.</span></h1>
+        <p class="hero-p">We discover the interpretable mathematical equations governing any structured dataset. Not predictions. Not black boxes. Equations your team can read, your regulators can audit, and your executives can act on.</p>
+        <div class="hero-actions">
+            <a href="mailto:michael.lazzarotti@diginetics.co" class="btn btn-primary">Request a Demo</a>
+            <a href="technology.html" class="btn btn-ghost">How It Works</a>
         </div>
     </div>
+</section>
 
-    <!-- PROOF BAR -->
-    <section class="proof-bar">
-        <div class="proof-grid">
-            <div class="proof-item">
-                <div class="proof-number">2,050+</div>
-                <div class="proof-label">Equations Discovered</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">8</div>
-                <div class="proof-label">Domains Validated</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">220K+</div>
-                <div class="proof-label">Observations Processed</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">93.3%</div>
-                <div class="proof-label">Backtest Pass Rate</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">86K+</div>
-                <div class="proof-label">Causal Links Found</div>
-            </div>
-        </div>
-    </section>
+<div class="container">
+    <div class="stats-bar">
+        <div class="stat"><div class="stat-val">2,050+</div><div class="stat-lbl">Equations Discovered</div></div>
+        <div class="stat"><div class="stat-val">8</div><div class="stat-lbl">Domains Validated</div></div>
+        <div class="stat"><div class="stat-val">220K+</div><div class="stat-lbl">Observations Processed</div></div>
+        <div class="stat"><div class="stat-val">93.3%</div><div class="stat-lbl">Backtest Pass Rate</div></div>
+        <div class="stat"><div class="stat-val">86K+</div><div class="stat-lbl">Causal Links Found</div></div>
+    </div>
+</div>
 
-    <!-- PROBLEM / SOLUTION -->
-    <section id="platform">
-        <div class="section-label">The Problem</div>
-        <h2 class="section-title">Every tool tells you what might happen.<br>None of them tell you why.</h2>
-        <p class="section-subtitle">Traditional ML, AutoML, and LLMs produce black-box predictions with no interpretable equations, no sensitivity analysis, and no way for domain experts to verify the logic. Diginetics fills the gap.</p>
-
-        <div class="platform-grid">
-            <div class="platform-card elijah-card">
-                <div class="platform-icon">E</div>
+<div class="container">
+    <div class="section">
+        <div class="label">The Platform</div>
+        <div class="title">Two engines. One compounding system.</div>
+        <div class="subtitle">Elijah discovers equations from your data. Prometheus discovers universal laws across all domains. Together, they get stronger with every deployment.</div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-icon purple">E</div>
                 <h3>Elijah</h3>
-                <div class="platform-tag">Client Equation Intelligence</div>
-                <p>Each client gets their own Elijah instance. It ingests your data, discovers interpretable mathematical equations, validates them through multi-stage stress testing, and builds an equation library specific to your domain.</p>
-                <ul class="platform-features">
-                    <li>Readable equations, not black-box outputs</li>
-                    <li>Sensitivity analysis across every metric pair</li>
-                    <li>Autonomous discovery — finds what you didn't ask for</li>
-                    <li>Gets stronger every month without manual intervention</li>
-                </ul>
+                <div class="card-tag">Client Equation Intelligence</div>
+                <p>Each client gets their own Elijah instance, configured for their domain and operating on their data. It discovers interpretable equations, validates them through multi-stage stress testing, and builds a proprietary equation library that deepens over time.</p>
             </div>
-            <div class="platform-card prometheus-card">
-                <div class="platform-icon">P</div>
+            <div class="card">
+                <div class="card-icon pink">P</div>
                 <h3>Prometheus</h3>
-                <div class="platform-tag">Universal Law Discovery</div>
-                <p>Our internal engine runs across all domains simultaneously, discovering mathematical laws that hold universally. When Prometheus finds a cross-domain truth, it strengthens every Elijah instance automatically.</p>
-                <ul class="platform-features">
-                    <li>Cross-domain universal equations</li>
-                    <li>68 universal laws already discovered</li>
-                    <li>Every new client domain strengthens the network</li>
-                    <li>Mathematical truth that doesn't decay or require retraining</li>
-                </ul>
+                <div class="card-tag">Universal Law Discovery</div>
+                <p>Our internal engine operates across all domains simultaneously, searching for mathematical laws that hold universally. When Prometheus finds a cross-domain truth, it strengthens every Elijah instance — giving each client equations no single-domain analysis could uncover.</p>
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- THREE STAGES -->
-    <section class="stages-section">
-        <div class="section-label">How It Compounds</div>
-        <h2 class="section-title">Three stages of compounding intelligence.</h2>
-        <p class="section-subtitle">Each stage makes the next more powerful. The longer you use it, the stronger it gets. The more domains connected, the stronger everyone gets.</p>
-
-        <div class="stages-grid">
-            <div class="stage-card">
-                <div class="stage-num">01</div>
-                <h3>Manual Discovery</h3>
-                <p>Point Elijah at a dataset. Receive validated equations, sensitivity analysis, and forward projections. Immediate value from Day 1.</p>
-            </div>
-            <div class="stage-arrow">&rarr;</div>
-            <div class="stage-card">
-                <div class="stage-num">02</div>
-                <h3>Autonomous Discovery</h3>
-                <p>Elijah runs continuously on your data. It identifies gaps in its equation library and fills them — discovering relationships you never asked about.</p>
-            </div>
-            <div class="stage-arrow">&rarr;</div>
-            <div class="stage-card">
-                <div class="stage-num">03</div>
-                <h3>Prometheus-Enhanced</h3>
-                <p>Universal laws discovered across all domains are fed into your Elijah. Equations no analysis of your data alone could have uncovered.</p>
-            </div>
+<div class="container">
+    <div class="section">
+        <div class="label">Where We've Proven It</div>
+        <div class="title">Eight domains. Same codebase. Single execution.</div>
+        <div class="subtitle">Every result was a first-pass output. No domain-specific tuning. No human feedback loop.</div>
+        <div class="grid-4">
+            <div class="result-block"><div class="result-domain">Baseball</div><div class="result-num">60 Players</div><p>Out-of-sample 2025 projections competitive with 20-year incumbent systems.</p></div>
+            <div class="result-block"><div class="result-domain">Healthcare</div><div class="result-num">603 Equations</div><p>Hospital readmission discovery. 99.48% accuracy. 991 feedback loops.</p></div>
+            <div class="result-block"><div class="result-domain">Real Estate</div><div class="result-num">643 Equations</div><p>Residential and commercial across 31 US metros. 100% pass rate.</p></div>
+            <div class="result-block"><div class="result-domain">Retail</div><div class="result-num">481 Equations</div><p>Daily POS revenue. 3-day early warning signals for revenue shifts.</p></div>
+            <div class="result-block"><div class="result-domain">Transportation</div><div class="result-num">140 Equations</div><p>Corridor reliability and congestion across 39 entities. 0% failure rate.</p></div>
+            <div class="result-block"><div class="result-domain">Oil &amp; Gas</div><div class="result-num">52 Equations</div><p>Industry-standard Volve benchmark. Outputs no published system provides.</p></div>
+            <div class="result-block"><div class="result-domain">Water Systems</div><div class="result-num">76 Equations</div><p>Global water stress. 10 countries. Direct policy relevance discovered.</p></div>
+            <div class="result-block"><div class="result-domain">Cross-Domain</div><div class="result-num">68 Universal Laws</div><p>Independently discovered equations confirmed to hold across populations.</p></div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- VALIDATED RESULTS -->
-    <section id="results">
-        <div class="section-label">Proven Results</div>
-        <h2 class="section-title">Single execution. No tuning. Real data.</h2>
-        <p class="section-subtitle">Every result below was a first-pass output from the same unmodified codebase. No domain-specific engineering. No human feedback loop.</p>
+<div class="container">
+    <div class="cta-block">
+        <h2>Bring us data from any domain.<br>We'll show you the equations governing it.</h2>
+        <p>We're onboarding partners across healthcare, real estate, energy, and financial services.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co" class="cta-email">michael.lazzarotti@diginetics.co</a>
+    </div>
+</div>
 
-        <div class="results-grid">
-            <a href="baseball.html" class="result-card">
-                <div class="result-header">
-                    <span class="result-domain">Baseball</span>
-                    <span class="result-arrow">&rarr;</span>
-                </div>
-                <div class="result-stat">60 Players</div>
-                <p>Out-of-sample 2025 season projections. HR/PA RMSE of 0.0201 — competitive with systems refined over 20+ years. 55% graded Elite or Strong.</p>
-            </a>
-            <a href="healthcare.html" class="result-card">
-                <div class="result-header">
-                    <span class="result-domain">Healthcare</span>
-                    <span class="result-arrow">&rarr;</span>
-                </div>
-                <div class="result-stat">603 Equations</div>
-                <p>Hospital readmission discovery. 99.48% backtest accuracy. 991 feedback loops from 376 observations. 0% failure rate. 126 clinical metrics.</p>
-            </a>
-            <a href="cre.html" class="result-card">
-                <div class="result-header">
-                    <span class="result-domain">Real Estate</span>
-                    <span class="result-arrow">&rarr;</span>
-                </div>
-                <div class="result-stat">643 Equations</div>
-                <p>Residential and commercial across 31 US metros. Cap rate R&sup2; = 1.0. 35,974 feedback loops in CRE alone. 100% pass rate across all three runs.</p>
-            </a>
-            <a href="retail.html" class="result-card">
-                <div class="result-header">
-                    <span class="result-domain">Retail</span>
-                    <span class="result-arrow">&rarr;</span>
-                </div>
-                <div class="result-stat">481 Equations</div>
-                <p>Daily POS revenue discovery. 99.39% accuracy. Cross-category dynamics and 3-day early warning signals for revenue shifts from 98 metrics.</p>
-            </a>
-            <div class="result-card result-card-secondary">
-                <div class="result-header">
-                    <span class="result-domain">Transportation</span>
-                </div>
-                <div class="result-stat">140 Equations</div>
-                <p>Corridor reliability and congestion patterns across 39 entities. 0% failure rate. Perfect-fit discoveries on freight-passenger speed dynamics.</p>
-            </div>
-            <div class="result-card result-card-secondary">
-                <div class="result-header">
-                    <span class="result-domain">Oil &amp; Gas</span>
-                </div>
-                <div class="result-stat">52 Equations</div>
-                <p>Industry-standard Volve field benchmark. 60 feedback loops and 343 evolution multipliers. Outputs no published benchmark provides.</p>
-            </div>
-            <div class="result-card result-card-secondary">
-                <div class="result-header">
-                    <span class="result-domain">Water Systems</span>
-                </div>
-                <div class="result-stat">76 Equations</div>
-                <p>Global water stress across 10 countries. Discovered that conflict events and precipitation carry the strongest signal — direct policy relevance.</p>
-            </div>
-            <div class="result-card result-card-secondary">
-                <div class="result-header">
-                    <span class="result-domain">Cross-Domain</span>
-                </div>
-                <div class="result-stat">68 Universal Laws</div>
-                <p>Mathematical relationships independently discovered across separate entities and confirmed to hold structurally. Not averages — identical equations.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- INDUSTRIES -->
-    <section id="industries">
-        <div class="section-label">Who It's For</div>
-        <h2 class="section-title">If you have structured data, Elijah discovers the equations governing it.</h2>
-
-        <div class="industry-grid">
-            <div class="industry-card">
-                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg></div>
-                <h3>Healthcare &amp; Biomedical</h3>
-                <p>Interpretable equations regulators can audit, clinicians can trust. FDA-ready explainability for devices, diagnostics, and clinical research.</p>
-            </div>
-            <div class="industry-card">
-                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4M5 21V10.7M19 21V10.7"/></svg></div>
-                <h3>Real Estate &amp; CRE</h3>
-                <p>Equations governing property values, cap rates, migration patterns, and buyer behavior. Stop building models from scratch every quarter.</p>
-            </div>
-            <div class="industry-card">
-                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-                <h3>Energy &amp; Natural Resources</h3>
-                <p>Production flow equations, pressure dynamics, well performance. Interpretable outputs your reservoir engineers can inspect and challenge.</p>
-            </div>
-            <div class="industry-card">
-                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></div>
-                <h3>Retail &amp; Operations</h3>
-                <p>Cross-category revenue dynamics from daily POS data. Surface shifts in customer behavior days before standard reporting shows them.</p>
-            </div>
-            <div class="industry-card">
-                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10zm0-5h3l3 5h-6"/></svg></div>
-                <h3>Transportation &amp; Infrastructure</h3>
-                <p>Corridor reliability, congestion patterns, freight dynamics. Mathematical relationships discovered automatically from sensor data.</p>
-            </div>
-            <div class="industry-card">
-                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                <h3>Financial Services</h3>
-                <p>Due diligence validation, market sizing equations, and portfolio intelligence. Mathematical ground truth for high-stakes investment decisions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY NOW -->
-    <section class="why-now-section">
-        <div class="why-now-inner">
-            <div class="section-label">Why Now</div>
-            <h2 class="section-title">The market needs explainability.</h2>
-            <div class="why-now-grid">
-                <div class="why-now-item">
-                    <div class="why-now-stat">$613B</div>
-                    <p>AI healthcare market by 2034, growing at 36.8% CAGR. The bottleneck isn't technology — it's trust.</p>
-                </div>
-                <div class="why-now-item">
-                    <div class="why-now-stat">76%</div>
-                    <p>of healthcare leaders say their organizations cannot keep pace with AI adoption requirements.</p>
-                </div>
-                <div class="why-now-item">
-                    <div class="why-now-stat">&lt;1%</div>
-                    <p>of AI-discovered biomarker candidates ever reach clinical validation. The gap is interpretability.</p>
-                </div>
-            </div>
-            <p class="why-now-bottom">Regulators demand explainability. Clinicians demand interpretability. Enterprises demand equations they can verify. Elijah is the missing layer.</p>
-        </div>
-    </section>
-
-    <!-- TEAM -->
-    <section id="team">
-        <div class="section-label">Founders</div>
-        <h2 class="section-title">Built by operators, not researchers.</h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-initials">ML</div>
-                <h3>Michael Lazzarotti</h3>
-                <div class="team-role">CEO &amp; Co-Founder</div>
-                <p>Built the core engine and led validation across all eight domains. Responsible for technical vision, product architecture, and every published result.</p>
-            </div>
-            <div class="team-card">
-                <div class="team-initials">EO</div>
-                <h3>Evan O'Connell</h3>
-                <div class="team-role">CFO, COO &amp; Co-Founder</div>
-                <p>Leads business operations, financial strategy, and go-to-market. Structures commercial partnerships and builds the operational foundation to scale.</p>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 1.5rem;">
-            <a href="founders.html" class="btn-secondary">Learn More About Our Team</a>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="contact" class="cta-section">
-        <div class="cta-inner">
-            <h2>Bring us data from any domain.<br>We'll show you the equations governing it.</h2>
-            <p>We're onboarding partners across healthcare, real estate, energy, and financial services. See what Elijah discovers in your data.</p>
-            <div class="cta-buttons">
-                <a href="mailto:michael.lazzarotti@diginetics.co" class="btn-primary btn-lg">michael.lazzarotti@diginetics.co</a>
-            </div>
-            <span class="cta-tagline">diginetics.co</span>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-inner">
-            <span>&copy; 2026 Diginetics, Inc. All rights reserved.</span>
-            <span class="footer-tagline">The equations behind your decisions.</span>
-        </div>
-    </footer>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2026 Diginetics, Inc. All rights reserved.</span>
+        <em>The equations behind your decisions.</em>
+    </div>
+</footer>
 
 </body>
 </html>

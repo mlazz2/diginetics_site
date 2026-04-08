@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results | DIGINETICS</title>
+    <meta name="description" content="Cross-domain validation results: 2,050+ equations discovered across 8 industries from a single unmodified codebase.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="D">DIGINETICS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="results.html" class="current">Results</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mailto:michael.lazzarotti@diginetics.co" class="nav-cta-btn">Contact</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="technology.html">Technology</a>
+    <a href="results.html" class="current">Results</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
+</div>
+
+<div class="container page-top">
+    <div class="label">Validation Results</div>
+    <h1 class="title">Single execution. No tuning. Real data.</h1>
+    <p class="subtitle">Every result below was produced by the same unmodified codebase in a single first-pass execution. No domain-specific engineering. No human feedback loop between configuration and output.</p>
+</div>
+
+<div class="container">
+    <div class="stats-bar" style="margin-top:0;">
+        <div class="stat"><div class="stat-val">2,050+</div><div class="stat-lbl">Equations Discovered</div></div>
+        <div class="stat"><div class="stat-val">8</div><div class="stat-lbl">Domains Validated</div></div>
+        <div class="stat"><div class="stat-val">220K+</div><div class="stat-lbl">Observations Processed</div></div>
+        <div class="stat"><div class="stat-val">93.3%</div><div class="stat-lbl">Backtest Pass Rate</div></div>
+        <div class="stat"><div class="stat-val">38K+</div><div class="stat-lbl">Feedback Loops</div></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Major League Baseball</div>
+        <div class="title">60-player out-of-sample season projection.</div>
+        <div class="grid-2">
+            <div class="card">
+                <h3>What We Did</h3>
+                <p>Projected 60 MLB hitters for the 2025 season using only pre-season data. Projections were locked before Opening Day — no 2025 data was used in training. Each player received an independent pipeline run with ~3,090 observations across 72 metrics.</p>
+            </div>
+            <div class="card">
+                <h3>What We Found</h3>
+                <p>HR/PA RMSE of 0.0201 — competitive with projection systems (ZiPS, Steamer, Marcels) that have been iteratively refined over 20+ years. 55% of players graded Elite or Strong. 339 equations tested per player on average. Aaron Judge: 54 HR projected vs. 53 actual.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Healthcare</div>
+        <div class="title">Hospital readmission equation discovery.</div>
+        <div class="grid-2">
+            <div class="card">
+                <h3>What We Did</h3>
+                <p>Ran Elijah on diabetes hospital readmission data covering 376 observations across 126 clinical metrics. Zero domain expertise provided. Zero guidance on which metrics matter.</p>
+            </div>
+            <div class="card">
+                <h3>What We Found</h3>
+                <p>603 equations tested, 603 passed. 0% failure rate. 99.48% backtest accuracy. 991 feedback loops discovered. The system independently identified high glucose prevalence adjusted by demographic factors as the dominant readmission driver — a finding that aligns with published clinical literature.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Real Estate</div>
+        <div class="title">Residential and commercial market intelligence.</div>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Buyer Rank</h3>
+                <p>760 observations, 23 metrics. 103/103 equations passed. 99.72% accuracy. R&sup2; = 1.0 on wealth capacity and migration pull proxies.</p>
+            </div>
+            <div class="card">
+                <h3>House Segments</h3>
+                <p>584 observations, 31 metrics. 132/132 equations passed. 99.72% accuracy. R&sup2; = 1.0 on feeder household income and luxury buyer pressure.</p>
+            </div>
+            <div class="card">
+                <h3>CRE Metro Housing</h3>
+                <p>4,867 observations, 31 MSAs, 84 metrics with equations. 408/408 passed. 35,974 feedback loops. 68,337 evolution multipliers.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Additional Domains</div>
+        <div class="title">Same engine. Same results. Different industries.</div>
+        <div class="grid-4">
+            <div class="result-block">
+                <div class="result-domain">Retail</div>
+                <div class="result-num">481 / 486</div>
+                <p>Daily POS data. 98 metrics. 99.39% accuracy. 93 feedback loops. 3-day early warning signals for store-wide revenue shifts.</p>
+            </div>
+            <div class="result-block">
+                <div class="result-domain">Transportation</div>
+                <div class="result-num">140 / 140</div>
+                <p>Two independent runs: ATI corridor reliability (14 entities) and PEMS congestion (25 entities). 0% failure rate on both.</p>
+            </div>
+            <div class="result-block">
+                <div class="result-domain">Oil &amp; Gas</div>
+                <div class="result-num">52 / 52</div>
+                <p>Industry-standard Volve field benchmark. 60 feedback loops, 343 evolution multipliers. Interpretable equations no other benchmark provides.</p>
+            </div>
+            <div class="result-block">
+                <div class="result-domain">Water Systems</div>
+                <div class="result-num">76 / 76</div>
+                <p>Global water stress. 10 countries, 1,800 observations. Discovered conflict events and precipitation as the strongest signal — direct policy relevance.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Prometheus</div>
+        <div class="title">68 universal equations discovered across domains.</div>
+        <div class="grid-2">
+            <div class="card">
+                <h3>What Universal Equations Are</h3>
+                <p>Mathematical relationships independently discovered across separate entities and confirmed to hold structurally. These are not statistical averages — they are structurally identical symbolic equations discovered independently and then validated across the population.</p>
+            </div>
+            <div class="card">
+                <h3>Why They Matter</h3>
+                <p>When universal equations are fed back into individual analyses as seed equations, they dramatically accelerate convergence and improve projection quality — particularly for entities with limited historical data. Every new domain strengthens these laws for everyone.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="cta-block">
+        <h2>Run Elijah on your data.<br>See what it discovers.</h2>
+        <p>The strongest statement we can make is the simplest: bring us data from any domain, and we will show you the equations governing it.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co" class="cta-email">michael.lazzarotti@diginetics.co</a>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2026 Diginetics, Inc. All rights reserved.</span>
+        <em>The equations behind your decisions.</em>
+    </div>
+</footer>
+
+</body>
+</html>
