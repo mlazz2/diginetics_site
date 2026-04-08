@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -12,11 +11,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGINETICS | DDX Research Platform</title>
-    <meta name="description" content="DDX is DIGINETICS' coming-soon research platform for explainable, decision-grade intelligence. Built from real published results across multiple domains.">
+    <title>DIGINETICS | Equation Intelligence Infrastructure</title>
+    <meta name="description" content="Diginetics discovers the mathematical equations governing any measurable domain. Validated across 8 industries. 2,050+ equations. One codebase.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
@@ -25,11 +24,11 @@
     <nav>
         <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
         <ul class="nav-links">
-            <li><a href="ddx.html">DDX</a></li>
-            <li><a href="#results-summary">Results</a></li>
-            <li><a href="#business-applications">Use Cases</a></li>
-            <li><a href="founders.html">Founders</a></li>
-            <li><a href="mailto:ceo@diginetics.co">Contact</a></li>
+            <li><a href="#platform">Technology</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="founders.html">About</a></li>
+            <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
         </ul>
         <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('active')" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -37,224 +36,288 @@
     </nav>
     <div class="mobile-menu">
         <a href="index.html" class="active">Home</a>
-        <a href="ddx.html">DDX</a>
-        <a href="#results-summary">Results</a>
-        <a href="#business-applications">Use Cases</a>
-        <a href="founders.html">Founders</a>
-        <a href="mailto:ceo@diginetics.co">Contact</a>
+        <a href="#platform">Technology</a>
+        <a href="#results">Results</a>
+        <a href="#industries">Industries</a>
+        <a href="founders.html">About</a>
+        <a href="#contact">Contact</a>
     </div>
 
     <!-- HERO -->
     <div class="hero-wrapper">
-        <div class="hero-inner">
-            <div class="hero-brand">
-                <img src="logo.png" alt="DIGINETICS Logo" class="hero-logo-img">
-                <span class="hero-brand-name">diginetics</span>
+        <div class="hero-inner-centered">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Validated Across 8 Domains
             </div>
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="dot"></span>
-                    DDX Research Platform - Coming Soon
-                </div>
-                <h1 class="hero-heading">Intelligence for<br><span class="gradient">What Happens Next.</span></h1>
-                <p style="font-size: 1.1rem; font-weight: 500; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 1rem;">DDX: Decision-Grade Research Intelligence</p>
-                <p class="hero-sub">DDX is DIGINETICS' upcoming research platform. The results below show the quality bar DDX is built to deliver: explainable, high-confidence outputs for high-stakes decisions.</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">Request DDX Access</a>
-                    <a href="ddx.html" class="btn-secondary">View DDX Page</a>
-                </div>
+            <h1 class="hero-heading-lg">The Equations Behind<br><span class="gradient">Your Decisions.</span></h1>
+            <p class="hero-sub-centered">Diginetics discovers interpretable mathematical equations from any structured dataset. Not predictions. Not black boxes. Validated equations your team can read, your regulators can audit, and your executives can act on.</p>
+            <div class="hero-cta" style="justify-content: center;">
+                <a href="#contact" class="btn-primary">Request a Demo</a>
+                <a href="#results" class="btn-secondary">See the Results</a>
             </div>
         </div>
     </div>
 
-    <!-- TRACTION -->
-    <section style="padding-top: 2rem; padding-bottom: 2rem;">
-        <div class="traction-grid">
-            <div class="traction-card">
-                <div class="traction-number">97.0%</div>
-                <div class="traction-label">MLB projection accuracy<br>across 60 players</div>
+    <!-- PROOF BAR -->
+    <section class="proof-bar">
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-number">2,050+</div>
+                <div class="proof-label">Equations Discovered</div>
             </div>
-            <div class="traction-card">
-                <div class="traction-number">3 Days</div>
-                <div class="traction-label">Advance warning on<br>retail revenue shifts</div>
+            <div class="proof-item">
+                <div class="proof-number">8</div>
+                <div class="proof-label">Domains Validated</div>
             </div>
-            <div class="traction-card">
-                <div class="traction-number">0.18%</div>
-                <div class="traction-label">Error on hospital<br>readmission rate</div>
+            <div class="proof-item">
+                <div class="proof-number">220K+</div>
+                <div class="proof-label">Observations Processed</div>
             </div>
-            <div class="traction-card">
-                <div class="traction-number">4</div>
-                <div class="traction-label">Domains validated<br>DDX quality baseline</div>
+            <div class="proof-item">
+                <div class="proof-number">93.3%</div>
+                <div class="proof-label">Backtest Pass Rate</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">86K+</div>
+                <div class="proof-label">Causal Links Found</div>
             </div>
         </div>
     </section>
 
-    <!-- RESULTS -->
-    <section id="results-summary">
+    <!-- PROBLEM / SOLUTION -->
+    <section id="platform">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">Every tool tells you what might happen.<br>None of them tell you why.</h2>
+        <p class="section-subtitle">Traditional ML, AutoML, and LLMs produce black-box predictions with no interpretable equations, no sensitivity analysis, and no way for domain experts to verify the logic. Diginetics fills the gap.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card elijah-card">
+                <div class="platform-icon">E</div>
+                <h3>Elijah</h3>
+                <div class="platform-tag">Client Equation Intelligence</div>
+                <p>Each client gets their own Elijah instance. It ingests your data, discovers interpretable mathematical equations, validates them through multi-stage stress testing, and builds an equation library specific to your domain.</p>
+                <ul class="platform-features">
+                    <li>Readable equations, not black-box outputs</li>
+                    <li>Sensitivity analysis across every metric pair</li>
+                    <li>Autonomous discovery — finds what you didn't ask for</li>
+                    <li>Gets stronger every month without manual intervention</li>
+                </ul>
+            </div>
+            <div class="platform-card prometheus-card">
+                <div class="platform-icon">P</div>
+                <h3>Prometheus</h3>
+                <div class="platform-tag">Universal Law Discovery</div>
+                <p>Our internal engine runs across all domains simultaneously, discovering mathematical laws that hold universally. When Prometheus finds a cross-domain truth, it strengthens every Elijah instance automatically.</p>
+                <ul class="platform-features">
+                    <li>Cross-domain universal equations</li>
+                    <li>68 universal laws already discovered</li>
+                    <li>Every new client domain strengthens the network</li>
+                    <li>Mathematical truth that doesn't decay or require retraining</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- THREE STAGES -->
+    <section class="stages-section">
+        <div class="section-label">How It Compounds</div>
+        <h2 class="section-title">Three stages of compounding intelligence.</h2>
+        <p class="section-subtitle">Each stage makes the next more powerful. The longer you use it, the stronger it gets. The more domains connected, the stronger everyone gets.</p>
+
+        <div class="stages-grid">
+            <div class="stage-card">
+                <div class="stage-num">01</div>
+                <h3>Manual Discovery</h3>
+                <p>Point Elijah at a dataset. Receive validated equations, sensitivity analysis, and forward projections. Immediate value from Day 1.</p>
+            </div>
+            <div class="stage-arrow">&rarr;</div>
+            <div class="stage-card">
+                <div class="stage-num">02</div>
+                <h3>Autonomous Discovery</h3>
+                <p>Elijah runs continuously on your data. It identifies gaps in its equation library and fills them — discovering relationships you never asked about.</p>
+            </div>
+            <div class="stage-arrow">&rarr;</div>
+            <div class="stage-card">
+                <div class="stage-num">03</div>
+                <h3>Prometheus-Enhanced</h3>
+                <p>Universal laws discovered across all domains are fed into your Elijah. Equations no analysis of your data alone could have uncovered.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALIDATED RESULTS -->
+    <section id="results">
         <div class="section-label">Proven Results</div>
-        <h2 class="section-title">Published outcomes that inform the DDX standard.</h2>
-        <p class="section-subtitle">These validated outcomes represent the performance and explainability standard DDX is being launched to deliver for research and enterprise partners.</p>
+        <h2 class="section-title">Single execution. No tuning. Real data.</h2>
+        <p class="section-subtitle">Every result below was a first-pass output from the same unmodified codebase. No domain-specific engineering. No human feedback loop.</p>
 
-        <div class="domain-grid">
-            <a href="baseball.html" class="domain-card">
-                <span class="arrow">&rarr;</span>
-                <div class="icon">&#9918;</div>
-                <h3>Baseball: 97.0% Accuracy</h3>
-                <p>60 MLB hitters projected for the 2025 season. 97% average accuracy across all players, with 8 rated Elite (99%+). Player-specific performance drivers discovered for each individual.</p>
-                <span class="status live">60 Players &bull; Live Results</span>
+        <div class="results-grid">
+            <a href="baseball.html" class="result-card">
+                <div class="result-header">
+                    <span class="result-domain">Baseball</span>
+                    <span class="result-arrow">&rarr;</span>
+                </div>
+                <div class="result-stat">60 Players</div>
+                <p>Out-of-sample 2025 season projections. HR/PA RMSE of 0.0201 — competitive with systems refined over 20+ years. 55% graded Elite or Strong.</p>
             </a>
-            <a href="retail.html" class="domain-card">
-                <span class="arrow">&rarr;</span>
-                <div class="icon">&#128722;</div>
-                <h3>Retail: Cross-Sell &amp; Revenue Drivers</h3>
-                <p>Discovered which product categories secretly drive each other's sales, identified 3-day early warning signals for store-wide revenue shifts, and found that some departments are pure impulse buys driven by foot traffic, not their own demand.</p>
-                <span class="status live">15 Departments &bull; Live Results</span>
+            <a href="healthcare.html" class="result-card">
+                <div class="result-header">
+                    <span class="result-domain">Healthcare</span>
+                    <span class="result-arrow">&rarr;</span>
+                </div>
+                <div class="result-stat">603 Equations</div>
+                <p>Hospital readmission discovery. 99.48% backtest accuracy. 991 feedback loops from 376 observations. 0% failure rate. 126 clinical metrics.</p>
             </a>
-            <a href="healthcare.html" class="domain-card">
-                <span class="arrow">&rarr;</span>
-                <div class="icon">&#127973;</div>
-                <h3>Healthcare: 0.18% Error</h3>
-                <p>101,766 real patient encounters from 130 US hospitals. Predicted 30-day readmission rate within 0.02 percentage points. 20x more accurate than historical averages, 60x better than naive baselines.</p>
-                <span class="status live">101K Patients &bull; Live Results</span>
+            <a href="cre.html" class="result-card">
+                <div class="result-header">
+                    <span class="result-domain">Real Estate</span>
+                    <span class="result-arrow">&rarr;</span>
+                </div>
+                <div class="result-stat">643 Equations</div>
+                <p>Residential and commercial across 31 US metros. Cap rate R&sup2; = 1.0. 35,974 feedback loops in CRE alone. 100% pass rate across all three runs.</p>
             </a>
-            <a href="cre.html" class="domain-card">
-                <span class="arrow">&rarr;</span>
-                <div class="icon">&#127970;</div>
-                <h3>Commercial Real Estate: 93.5% Accuracy</h3>
-                <p>31 US metro areas, 68 market indicators, 12 years of monthly data. Validated through COVID, rate hikes, and market normalization. Key drivers of home prices, mortgage rates, inventory, and rents discovered and quantified.</p>
-                <span class="status live">31 Metros &bull; Live Results</span>
+            <a href="retail.html" class="result-card">
+                <div class="result-header">
+                    <span class="result-domain">Retail</span>
+                    <span class="result-arrow">&rarr;</span>
+                </div>
+                <div class="result-stat">481 Equations</div>
+                <p>Daily POS revenue discovery. 99.39% accuracy. Cross-category dynamics and 3-day early warning signals for revenue shifts from 98 metrics.</p>
             </a>
-            <a href="ddx.html" class="domain-card">
-                <span class="arrow">&rarr;</span>
-                <div class="icon">&#129514;</div>
-                <h3>DDX Research Platform</h3>
-                <p>Coming soon for pilot partners in applied research and high-stakes analytics. Outcome-focused deployments with clear, decision-ready deliverables.</p>
-                <span class="status coming">Coming Soon</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- INSIGHTS -->
-    <section>
-        <div class="section-label">Key Discoveries</div>
-        <h2 class="section-title">The platform finds what no one was looking for.</h2>
-        <p class="section-subtitle">The most valuable output isn't accuracy numbers. It's the specific, quantified insights the platform discovers on its own.</p>
-
-        <div class="insight-grid">
-            <div class="insight-card">
-                <div class="insight-domain">Baseball / Comprehensive Report</div>
-                <h3>System independently discovered the structure of hitting performance</h3>
-                <p>Across 60 players, the platform independently identified the same performance structure that sabermetrics has spent decades building &mdash; without being given any baseball theory. It found it in hours.</p>
+            <div class="result-card result-card-secondary">
+                <div class="result-header">
+                    <span class="result-domain">Transportation</span>
+                </div>
+                <div class="result-stat">140 Equations</div>
+                <p>Corridor reliability and congestion patterns across 39 entities. 0% failure rate. Perfect-fit discoveries on freight-passenger speed dynamics.</p>
             </div>
-            <div class="insight-card">
-                <div class="insight-domain">Baseball / Comprehensive Report</div>
-                <h3>Explains why hot streaks compound and slumps spiral</h3>
-                <p>The system identified the specific performance patterns behind streaks and slumps: when power numbers rise, pitchers adjust, which creates more hittable pitches, which drives even higher power. The slump version works in reverse. Over 73,000 performance shift points were mapped across the roster.</p>
+            <div class="result-card result-card-secondary">
+                <div class="result-header">
+                    <span class="result-domain">Oil &amp; Gas</span>
+                </div>
+                <div class="result-stat">52 Equations</div>
+                <p>Industry-standard Volve field benchmark. 60 feedback loops and 343 evolution multipliers. Outputs no published benchmark provides.</p>
             </div>
-            <div class="insight-card">
-                <div class="insight-domain">Baseball / Comprehensive Report</div>
-                <h3>Bobby Witt Jr.'s walk rate depends on two factors, not one</h3>
-                <p>The platform found that Witt's walk rate is jointly driven by pitch velocity trends and swing decision patterns. Neither alone is sufficient. This kind of multi-factor insight is invisible to traditional stat analysis.</p>
+            <div class="result-card result-card-secondary">
+                <div class="result-header">
+                    <span class="result-domain">Water Systems</span>
+                </div>
+                <div class="result-stat">76 Equations</div>
+                <p>Global water stress across 10 countries. Discovered that conflict events and precipitation carry the strongest signal — direct policy relevance.</p>
             </div>
-            <div class="insight-card">
-                <div class="insight-domain">Baseball / Player Analysis</div>
-                <h3>Luis Arraez: strikeout rate projected to four decimal places with zero error</h3>
-                <p>The system produced a perfect K/PA projection for Arraez, identifying his extreme contact-first approach as the most stable, predictable signal in baseball. Cody Bellinger was projected at 99.0% accuracy. The system adapts to individuals without being told what type of player it's analyzing.</p>
-            </div>
-            <div class="insight-card">
-                <div class="insight-domain">Retail</div>
-                <h3>A single metric predicts store-wide revenue shifts 3 days in advance</h3>
-                <p>When disposable vape average sale rises, the entire store's average sale follows 3 days later. Glass average sale is an even stronger signal at a 10-day lag, 2.2x more powerful. These are specific leading indicators with quantified time delays that no BI dashboard surfaces.</p>
-            </div>
-            <div class="insight-card">
-                <div class="insight-domain">Retail</div>
-                <h3>Cigarette sales don't depend on cigarette demand</h3>
-                <p>Cigarette transactions are driven by the interaction between disposable vape volume and cigarillo traffic. If vape supply drops, cigarette baskets decline even if cigarette inventory is fully stocked. The platform discovers hidden cross-department dependencies that rewrite how you plan inventory and supply chains.</p>
-            </div>
-            <div class="insight-card">
-                <div class="insight-domain">Healthcare</div>
-                <h3>0.02 percentage point error on the problem the entire industry has spent a decade trying to solve</h3>
-                <p>Published readmission models achieve AUC of 0.60-0.76 and rate-level errors of 2-5 percentage points. A 2025 medRxiv study found no approach (ML, LLMs, or physician panels) achieved clinical-grade reliability. The platform predicted the 30-day readmission rate at 10.78% vs. 10.80% actual. 20x more accurate than the historical mean. 60x more accurate than naive persistence.</p>
-            </div>
-            <div class="insight-card">
-                <div class="insight-domain">Healthcare</div>
-                <h3>Independently discovered the primary readmission driver</h3>
-                <p>Given 126 clinical metrics and zero guidance, the platform identified high glucose prevalence adjusted by demographic factors as the dominant driver of 30-day readmission. This aligns with published clinical literature. The system found what took clinical researchers years to establish.</p>
-            </div>
-            <div class="insight-card">
-                <div class="insight-domain">Cross-Domain</div>
-                <h3>Patterns discovered in baseball applied directly to healthcare and retail</h3>
-                <p>Insights from the baseball analysis translated directly into better results in other domains. The same types of performance patterns found in hitting &mdash; cascading effects, hidden dependencies, combined factors &mdash; showed up in retail cross-sell data and healthcare readmission patterns.</p>
+            <div class="result-card result-card-secondary">
+                <div class="result-header">
+                    <span class="result-domain">Cross-Domain</span>
+                </div>
+                <div class="result-stat">68 Universal Laws</div>
+                <p>Mathematical relationships independently discovered across separate entities and confirmed to hold structurally. Not averages — identical equations.</p>
             </div>
         </div>
     </section>
 
-    <!-- BUSINESS -->
-    <section id="business-applications">
-        <div class="section-label">DDX Use Cases</div>
-        <h2 class="section-title">One research platform. High-value pilot outcomes.</h2>
-        <p class="section-subtitle">DDX is positioned for teams that need explainable outputs they can defend, communicate, and act on.</p>
+    <!-- INDUSTRIES -->
+    <section id="industries">
+        <div class="section-label">Who It's For</div>
+        <h2 class="section-title">If you have structured data, Elijah discovers the equations governing it.</h2>
 
-        <div class="card-grid">
-            <div class="card">
-                <h3>Biomedical &amp; Clinical Research</h3>
-                <p>Support high-consequence research decisions with clear, defensible outputs suitable for cross-functional review.</p>
+        <div class="industry-grid">
+            <div class="industry-card">
+                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg></div>
+                <h3>Healthcare &amp; Biomedical</h3>
+                <p>Interpretable equations regulators can audit, clinicians can trust. FDA-ready explainability for devices, diagnostics, and clinical research.</p>
             </div>
-            <div class="card">
-                <h3>Materials &amp; Advanced Engineering</h3>
-                <p>Accelerate R&amp;D cycles and prioritize the highest-value next experiments in complex technical programs.</p>
+            <div class="industry-card">
+                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4M5 21V10.7M19 21V10.7"/></svg></div>
+                <h3>Real Estate &amp; CRE</h3>
+                <p>Equations governing property values, cap rates, migration patterns, and buyer behavior. Stop building models from scratch every quarter.</p>
             </div>
-            <div class="card">
-                <h3>Hydrology &amp; Environmental Systems</h3>
-                <p>Strengthen forecasting and planning decisions in water, resilience, and infrastructure-related research programs.</p>
+            <div class="industry-card">
+                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                <h3>Energy &amp; Natural Resources</h3>
+                <p>Production flow equations, pressure dynamics, well performance. Interpretable outputs your reservoir engineers can inspect and challenge.</p>
             </div>
-            <div class="card">
-                <h3>Mobility, Safety &amp; Public Systems</h3>
-                <p>Improve policy and operations decisions with explainable intelligence for transportation and public-sector teams.</p>
+            <div class="industry-card">
+                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></div>
+                <h3>Retail &amp; Operations</h3>
+                <p>Cross-category revenue dynamics from daily POS data. Surface shifts in customer behavior days before standard reporting shows them.</p>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10zm0-5h3l3 5h-6"/></svg></div>
+                <h3>Transportation &amp; Infrastructure</h3>
+                <p>Corridor reliability, congestion patterns, freight dynamics. Mathematical relationships discovered automatically from sensor data.</p>
+            </div>
+            <div class="industry-card">
+                <div class="industry-icon-wrap"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                <h3>Financial Services</h3>
+                <p>Due diligence validation, market sizing equations, and portfolio intelligence. Mathematical ground truth for high-stakes investment decisions.</p>
             </div>
         </div>
     </section>
 
-    <!-- WHY US -->
-    <section id="why-us">
-        <div class="section-label">DDX Advantage</div>
-        <h2 class="section-title">Built for trust, speed, and pilot execution.</h2>
-        <p class="section-subtitle">Positioned for organizations that cannot rely on opaque outputs in mission-critical decisions.</p>
-
-        <div class="diff-grid">
-            <div class="diff-col them">
-                <h3>Typical Research Tooling</h3>
-                <ul class="diff-list">
-                    <li>Long setup cycles before practical decisions</li>
-                    <li>Heavy translation needed for executive stakeholders</li>
-                    <li>Low confidence in high-consequence workflows</li>
-                    <li>Fragmented outputs across disconnected tools</li>
-                    <li>Slow path from pilot to deployment</li>
-                </ul>
+    <!-- WHY NOW -->
+    <section class="why-now-section">
+        <div class="why-now-inner">
+            <div class="section-label">Why Now</div>
+            <h2 class="section-title">The market needs explainability.</h2>
+            <div class="why-now-grid">
+                <div class="why-now-item">
+                    <div class="why-now-stat">$613B</div>
+                    <p>AI healthcare market by 2034, growing at 36.8% CAGR. The bottleneck isn't technology — it's trust.</p>
+                </div>
+                <div class="why-now-item">
+                    <div class="why-now-stat">76%</div>
+                    <p>of healthcare leaders say their organizations cannot keep pace with AI adoption requirements.</p>
+                </div>
+                <div class="why-now-item">
+                    <div class="why-now-stat">&lt;1%</div>
+                    <p>of AI-discovered biomarker candidates ever reach clinical validation. The gap is interpretability.</p>
+                </div>
             </div>
-            <div class="diff-col us">
-                <h3>DDX Approach</h3>
-                <ul class="diff-list">
-                    <li>Structured, partner-led pilot engagement</li>
-                    <li>Decision-ready outputs for leadership and operators</li>
-                    <li>Explainable intelligence for high-stakes contexts</li>
-                    <li>Fast onboarding for qualified pilot partners</li>
-                    <li>Clear path from pilot to enterprise deployment</li>
-                </ul>
-            </div>
+            <p class="why-now-bottom">Regulators demand explainability. Clinicians demand interpretability. Enterprises demand equations they can verify. Elijah is the missing layer.</p>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <div class="section-label">Get In Touch</div>
-        <h2 class="section-title">Request early access to DDX.</h2>
-        <p class="section-subtitle" style="margin: 1rem auto 2rem;">We are onboarding select pilot partners in research and high-stakes analytics programs.</p>
-        <a href="mailto:ceo@diginetics.co" class="contact-email">ceo@diginetics.co</a>
+    <!-- TEAM -->
+    <section id="team">
+        <div class="section-label">Founders</div>
+        <h2 class="section-title">Built by operators, not researchers.</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-initials">ML</div>
+                <h3>Michael Lazzarotti</h3>
+                <div class="team-role">CEO &amp; Co-Founder</div>
+                <p>Built the core engine and led validation across all eight domains. Responsible for technical vision, product architecture, and every published result.</p>
+            </div>
+            <div class="team-card">
+                <div class="team-initials">EO</div>
+                <h3>Evan O'Connell</h3>
+                <div class="team-role">CFO, COO &amp; Co-Founder</div>
+                <p>Leads business operations, financial strategy, and go-to-market. Structures commercial partnerships and builds the operational foundation to scale.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <a href="founders.html" class="btn-secondary">Learn More About Our Team</a>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+        <div class="cta-inner">
+            <h2>Bring us data from any domain.<br>We'll show you the equations governing it.</h2>
+            <p>We're onboarding partners across healthcare, real estate, energy, and financial services. See what Elijah discovers in your data.</p>
+            <div class="cta-buttons">
+                <a href="mailto:michael.lazzarotti@diginetics.co" class="btn-primary btn-lg">michael.lazzarotti@diginetics.co</a>
+            </div>
+            <span class="cta-tagline">diginetics.co</span>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 DIGINETICS. All rights reserved.</p>
+        <div class="footer-inner">
+            <span>&copy; 2026 Diginetics, Inc. All rights reserved.</span>
+            <span class="footer-tagline">The equations behind your decisions.</span>
+        </div>
     </footer>
 
 </body>
