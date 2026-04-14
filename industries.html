@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        .narrow { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
-
         .industry-block { padding: 56px 0; border-top: 1px solid var(--border); }
         .industry-label {
             font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em;
@@ -23,22 +21,22 @@
         .industry-headline {
             font-size: 0.95rem; font-weight: 500;
             color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;
+            max-width: 520px;
         }
+        .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 
         .insight {
             background: var(--white); border: 1px solid var(--border);
-            border-radius: 10px; padding: 1.75rem 2rem;
-            margin-bottom: 1rem;
+            border-radius: 10px; padding: 1.5rem 1.75rem;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .insight:last-child { margin-bottom: 0; }
-        .insight:hover { border-color: var(--border-hover); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+        .insight:hover { border-color: var(--border-hover); box-shadow: 0 3px 12px rgba(0,0,0,0.04); }
 
         .insight-tag {
             display: inline-block; font-size: 0.58rem; font-weight: 700;
             letter-spacing: 0.1em; text-transform: uppercase;
             padding: 0.15rem 0.5rem; border-radius: 4px;
-            margin-bottom: 0.65rem;
+            margin-bottom: 0.6rem;
         }
         .tag-green { background: #dcfce7; color: #15803d; }
         .tag-blue { background: #dbeafe; color: #1d4ed8; }
@@ -49,17 +47,17 @@
         .tag-slate { background: #f1f5f9; color: #475569; }
 
         .insight h3 {
-            font-size: 1.25rem; font-weight: 700;
-            line-height: 1.25; letter-spacing: -0.02em;
-            color: var(--text); margin-bottom: 0.6rem;
+            font-size: 1.05rem; font-weight: 700;
+            line-height: 1.3; letter-spacing: -0.015em;
+            color: var(--text); margin-bottom: 0.5rem;
         }
         .insight p {
-            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;
+            font-size: 0.84rem; color: var(--text-secondary); line-height: 1.7;
         }
         .insight p em { color: var(--text); font-style: normal; font-weight: 600; }
         .insight-link {
-            display: inline-block; margin-top: 0.75rem;
-            font-size: 0.8rem; font-weight: 600; color: var(--accent);
+            display: inline-block; margin-top: 0.65rem;
+            font-size: 0.78rem; font-weight: 600; color: var(--accent);
         }
         .insight-link:hover { color: var(--accent-hover); text-decoration: underline; }
 
@@ -75,26 +73,26 @@
             background: #ede9fe; border: 1px solid #c4b5fd;
             margin-bottom: 0.75rem;
         }
-        .q-cards { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.75rem; }
         .q-card {
             background: var(--white); border: 1px solid var(--border);
             border-radius: 10px; padding: 1.25rem 1.5rem;
         }
         .q-card h4 {
-            font-size: 0.88rem; font-weight: 700; color: var(--text);
+            font-size: 0.85rem; font-weight: 700; color: var(--text);
             margin-bottom: 0.25rem;
         }
-        .q-card p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.65; }
+        .q-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
         .q-ready {
             font-family: var(--mono); font-size: 0.65rem; font-weight: 600;
             color: #16a34a; margin-bottom: 0.4rem;
         }
 
         @media (max-width: 768px) {
-            .narrow { padding: 0 1.25rem; }
+            .insight-grid { grid-template-columns: 1fr; }
             .insight { padding: 1.25rem 1.5rem; }
-            .insight h3 { font-size: 1.1rem; }
+            .insight h3 { font-size: 1rem; }
             .industry-block { padding: 40px 0; }
+            .g3 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -125,175 +123,188 @@
     <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
 </div>
 
-<div class="narrow page-top">
+<div class="wrap page-top">
     <div class="eyebrow">What the system found</div>
     <h1 class="hdg">Here&rsquo;s what the equations<br>actually revealed.</h1>
-    <p class="desc">Not that they passed validation &mdash; what they told us. Two standout discoveries from each domain.</p>
+    <p class="desc desc-wide">Not that they passed validation &mdash; what they told us. Two standout discoveries from each domain.</p>
 </div>
 
 <!-- ═══════════ BASEBALL ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Baseball &mdash; 60 MLB Players, 2025 Out-of-Sample</div>
     <div class="industry-headline">Projections locked before Opening Day. Checked against the real season.</div>
-    <div class="insight">
-        <span class="insight-tag tag-green">Marquee Projection</span>
-        <h3>Aaron Judge: 54 HR projected, 53 actual.</h3>
-        <p>The system projected the most important power hitter in baseball within one home run &mdash; before a single 2025 game was played. The driver it identified: <em>short-term power surges</em>, not batting average or contact quality. Traditional scouting watches contact. The equations watch momentum.</p>
-        <a href="baseball.html" class="insight-link">See all 60 players &rarr;</a>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-blue">Stability vs. Breakout</span>
-        <h3>Brent Rooker: 188 K&rsquo;s nailed exactly &mdash; HR missed by 20.</h3>
-        <p>Strikeouts projected at 100.0% accuracy (188 vs 188). Home runs projected at 19 when he hit 39. That&rsquo;s not a failure &mdash; it&rsquo;s the system telling you <em>what&rsquo;s stable</em> (swing-and-miss rate) vs. <em>what changed</em> (a real power breakout). That distinction is the insight.</p>
-        <a href="baseball.html" class="insight-link">See all 60 players &rarr;</a>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-green">Marquee Projection</span>
+            <h3>Aaron Judge: 54 HR projected, 53 actual.</h3>
+            <p>Projected the most important power hitter in baseball within one home run &mdash; before a single 2025 game. The driver: <em>short-term power surges</em>, not batting average or contact quality. Traditional scouting watches contact. The equations watch momentum.</p>
+            <a href="baseball.html" class="insight-link">See all 60 players &rarr;</a>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-blue">Stability vs. Breakout</span>
+            <h3>Brent Rooker: 188 K&rsquo;s nailed exactly &mdash; HR missed by 20.</h3>
+            <p>Strikeouts at 100.0% accuracy (188 vs 188). Home runs at 19 when he hit 39. Not a failure &mdash; it tells you <em>what&rsquo;s stable</em> (swing-and-miss) vs. <em>what changed</em> (a real power breakout). That distinction is the insight.</p>
+            <a href="baseball.html" class="insight-link">See all 60 players &rarr;</a>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ HEALTHCARE ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Healthcare &mdash; 101,766 Patient Encounters, 130 US Hospitals</div>
     <div class="industry-headline">The hardest problem in hospital analytics, solved to 0.02 percentage points.</div>
-    <div class="insight">
-        <span class="insight-tag tag-green">Primary Target</span>
-        <h3>30-day readmission: 10.78% projected vs 10.80% actual.</h3>
-        <p>Hospital readmission prediction is so hard the entire CMS penalty system is built around it. Published models (81+ reviewed in BMJ, JAMA) achieve 0.60&ndash;0.76 AUC. Our system predicted the rate within <em>0.02 percentage points</em> &mdash; 20&times; more accurate than the historical average baseline.</p>
-        <a href="healthcare.html" class="insight-link">Full healthcare results &rarr;</a>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-purple">Autonomous Discovery</span>
-        <h3>High glucose prevalence drives readmissions &mdash; discovered, not programmed.</h3>
-        <p>No clinical hypothesis was provided. The system independently found that the 30-day readmission rate is governed by <em>percentage of patients with high glucose</em>, adjusted by demographic factors. This aligns with published literature on hyperglycemia risk &mdash; but the system found it on its own.</p>
-        <a href="healthcare.html" class="insight-link">Full healthcare results &rarr;</a>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-green">Primary Target</span>
+            <h3>30-day readmission: 10.78% projected vs 10.80% actual.</h3>
+            <p>Published models (81+ reviewed in BMJ, JAMA) achieve 0.60&ndash;0.76 AUC. Our system predicted the rate within <em>0.02 percentage points</em> &mdash; 20&times; more accurate than the historical average baseline.</p>
+            <a href="healthcare.html" class="insight-link">Full healthcare results &rarr;</a>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-purple">Autonomous Discovery</span>
+            <h3>High glucose prevalence drives readmissions &mdash; discovered, not programmed.</h3>
+            <p>No clinical hypothesis was provided. The system independently found readmissions are governed by <em>percentage of patients with high glucose</em>, adjusted by demographics. Aligns with published hyperglycemia literature &mdash; found on its own.</p>
+            <a href="healthcare.html" class="insight-link">Full healthcare results &rarr;</a>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ REAL ESTATE ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Real Estate &mdash; 31 Metro Areas, 12 Years of Monthly Data</div>
     <div class="industry-headline">Relationships that held through COVID, the boom, rate hikes, and normalization.</div>
-    <div class="insight">
-        <span class="insight-tag tag-green">99.90% Accuracy</span>
-        <h3>Months of supply is almost entirely driven by mortgage rates.</h3>
-        <p>Housing inventory follows mortgage rates with near-perfect precision. Rates rise, supply rises. Rates fall, supply tightens. This held across <em>zero-rate policy, rapid tightening, and plateau</em> &mdash; a decade of wildly different rate environments. One equation, one driver, and it never broke.</p>
-        <a href="cre.html" class="insight-link">Full CRE results &rarr;</a>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-green">99.89% Accuracy</span>
-        <h3>Housing permits track sales at a precise 2:1 ratio.</h3>
-        <p>Roughly 2 permits for every completed new home sale, stable across a full housing cycle. A 10% drop in new sales predicts a ~10% permit decline. <em>Builders, REITs, and lenders</em> can forecast the construction pipeline months ahead from a single number.</p>
-        <a href="cre.html" class="insight-link">Full CRE results &rarr;</a>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-green">99.90% Accuracy</span>
+            <h3>Months of supply is almost entirely driven by mortgage rates.</h3>
+            <p>Rates rise, supply rises. Rates fall, supply tightens. Held across <em>zero-rate policy, rapid tightening, and plateau</em> &mdash; a decade of wildly different rate environments. One equation, one driver, never broke.</p>
+            <a href="cre.html" class="insight-link">Full CRE results &rarr;</a>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-green">99.89% Accuracy</span>
+            <h3>Housing permits track sales at a precise 2:1 ratio.</h3>
+            <p>~2 permits for every completed new home sale, stable across a full cycle. A 10% drop in sales predicts ~10% permit decline. <em>Builders, REITs, and lenders</em> can forecast the pipeline months ahead from one number.</p>
+            <a href="cre.html" class="insight-link">Full CRE results &rarr;</a>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ ENERGY ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Energy &mdash; Volve Oil Field (Industry Standard Benchmark)</div>
     <div class="industry-headline">What the equations reveal about reservoir behavior.</div>
-    <div class="insight">
-        <span class="insight-tag tag-amber">Counterintuitive</span>
-        <h3>On-stream hours carry the strongest signal &mdash; not flow rate or pressure.</h3>
-        <p>Engineers expect flow rate or tubing pressure to be most predictable. The system found that <em>operational uptime</em> had the strongest validation fit, while flow and pressure metrics showed weak linear explainability. Uptime is more mathematically stable than the fluid dynamics everyone optimizes around.</p>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-amber">Feedback Discovery</span>
-        <h3>60 reverse-feedback loops between production variables.</h3>
-        <p>The system mapped <em>60 feedback loops and 343 evolution multipliers</em> showing how production variables cascade into each other over time. Traditional reservoir models take years to calibrate manually. These dynamics were discovered automatically from 8,245 observations.</p>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-amber">Counterintuitive</span>
+            <h3>On-stream hours carry the strongest signal &mdash; not flow rate or pressure.</h3>
+            <p>Engineers expect flow rate or tubing pressure to dominate. The system found <em>operational uptime</em> had the strongest fit, while flow and pressure showed weak explainability. Uptime is more stable than the fluid dynamics everyone optimizes around.</p>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-amber">Feedback Discovery</span>
+            <h3>60 reverse-feedback loops between production variables.</h3>
+            <p><em>60 feedback loops and 343 evolution multipliers</em> showing how production variables cascade into each other. Traditional reservoir models take years to calibrate manually. Discovered automatically from 8,245 observations.</p>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ WATER ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Water &mdash; Global Freshwater Stress, 10 Countries</div>
     <div class="industry-headline">The strongest signal wasn&rsquo;t water. It was conflict.</div>
-    <div class="insight">
-        <span class="insight-tag tag-rose">Unexpected Signal</span>
-        <h3>Conflict events had the highest predictive signal &mdash; not freshwater or precipitation.</h3>
-        <p>In a dataset built around water stress, the system found <em>conflict events</em> carried a stronger signal than freshwater per capita, water stress percentage, or precipitation. The policy implication: conflict is a leading indicator of water instability, not the other way around.</p>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-slate">Honest Reporting</span>
-        <h3>Headline metrics resisted simple equations &mdash; pipeline still passed 76/76.</h3>
-        <p>Water-stress and freshwater-per-capita resisted simple equation explanation. But the full system still passed <em>all 76 equations at 98.9% accuracy</em>. Some relationships are real but non-linear. The system reports both layers &mdash; where simple equations work and where they don&rsquo;t.</p>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-rose">Unexpected Signal</span>
+            <h3>Conflict events had the highest predictive signal &mdash; not freshwater or precipitation.</h3>
+            <p>In a dataset built around water stress, <em>conflict events</em> carried a stronger signal than freshwater per capita or water stress percentage. Conflict is a leading indicator of water instability, not the other way around.</p>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-slate">Honest Reporting</span>
+            <h3>Headline metrics resisted simple equations &mdash; pipeline still passed 76/76.</h3>
+            <p>Water-stress and freshwater-per-capita resisted equation explanation. But the system still passed <em>all 76 equations at 98.9% accuracy</em>. Reports both layers &mdash; where simple equations work and where they don&rsquo;t.</p>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ RETAIL ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Retail &mdash; 180 Days of Real POS Data, 98 Metrics</div>
     <div class="industry-headline">Hidden revenue connections no BI dashboard would ever surface.</div>
-    <div class="insight">
-        <span class="insight-tag tag-cyan">Early Warning</span>
-        <h3>Disposable vape average sale predicts entire store health &mdash; 3 days early.</h3>
-        <p>When disposable vape average sale rises, the entire store&rsquo;s average sale follows <em>3 days later</em>. One product category predicts the trajectory of the whole business before it shows up in standard reporting. Track one metric daily and you have an early warning system for store-wide revenue.</p>
-        <a href="retail.html" class="insight-link">Full retail results &rarr;</a>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-cyan">Hidden Dependency</span>
-        <h3>Cigarette sales aren&rsquo;t driven by cigarette demand.</h3>
-        <p>Cigarette transactions depend on the interaction between <em>disposable vape volume and cigarillo traffic</em>. If vape supply drops from a shipping delay or regulation, cigarette baskets decline even with full cigarette inventory. A supply disruption in one category cascades into another through a dependency no one knew existed.</p>
-        <a href="retail.html" class="insight-link">Full retail results &rarr;</a>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-cyan">Early Warning</span>
+            <h3>Disposable vape avg sale predicts entire store health &mdash; 3 days early.</h3>
+            <p>When disposable vape average sale rises, the entire store follows <em>3 days later</em>. One category predicts the trajectory of the whole business before it hits standard reporting.</p>
+            <a href="retail.html" class="insight-link">Full retail results &rarr;</a>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-cyan">Hidden Dependency</span>
+            <h3>Cigarette sales aren&rsquo;t driven by cigarette demand.</h3>
+            <p>Cigarette transactions depend on <em>disposable vape volume and cigarillo traffic</em>. Vape supply drops? Cigarette baskets decline even with full inventory. A cascade through a dependency no one knew existed.</p>
+            <a href="retail.html" class="insight-link">Full retail results &rarr;</a>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ TRANSPORTATION ═══════════ -->
-<div class="narrow">
+<div class="wrap">
 <div class="industry-block">
     <div class="industry-label">Transportation &mdash; Two Independent Corridor Studies</div>
     <div class="industry-headline">Freight-passenger dynamics captured with perfect mathematical precision.</div>
-    <div class="insight">
-        <span class="insight-tag tag-blue">Perfect Fit</span>
-        <h3>Freight-passenger speed gap: R&sup2; = 1.0.</h3>
-        <p>The system discovered the <em>exact mathematical relationship</em> between freight and passenger speed gaps on highway corridors &mdash; both AM and PM. Transportation departments spend years calibrating travel demand models to approximate these dynamics. The system found the closed-form equation in a single run.</p>
-    </div>
-    <div class="insight">
-        <span class="insight-tag tag-blue">Independent Replication</span>
-        <h3>Congestion dynamics also hit R&sup2; = 1.0 &mdash; separate dataset.</h3>
-        <p>In a separate PEMS loop-detector dataset (<em>16,800 observations, 25 corridors</em>), the system independently discovered perfect-fit equations for speed range and speed deficit. Two different datasets, two different measurement systems, same result: the governing equations of corridor congestion are discoverable and exact.</p>
+    <div class="insight-grid">
+        <div class="insight">
+            <span class="insight-tag tag-blue">Perfect Fit</span>
+            <h3>Freight-passenger speed gap: R&sup2; = 1.0.</h3>
+            <p>Discovered the <em>exact mathematical relationship</em> between freight and passenger speed gaps &mdash; AM and PM. DOTs spend years calibrating travel demand models. Found the closed-form equation in a single run.</p>
+        </div>
+        <div class="insight">
+            <span class="insight-tag tag-blue">Independent Replication</span>
+            <h3>Congestion dynamics also hit R&sup2; = 1.0 &mdash; separate dataset.</h3>
+            <p>A separate PEMS dataset (<em>16,800 observations, 25 corridors</em>) independently produced perfect-fit equations for speed range and speed deficit. Two datasets, two measurement systems, same result.</p>
+        </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ QUANTUM READINESS ═══════════ -->
 <div class="quantum-section">
-<div class="narrow">
+<div class="wrap">
     <div class="quantum-badge">&#9889; Architecture Advantage</div>
     <h2 class="hdg">Equation-native means quantum-ready.</h2>
-    <p class="desc">Most AI companies will need to rebuild from scratch when quantum computing arrives. We won&rsquo;t. Our system outputs mathematical equations &mdash; the native format quantum computers are designed to accelerate.</p>
-
-    <div class="q-cards">
+    <p class="desc desc-wide">Most AI companies will need to rebuild from scratch when quantum computing arrives. We won&rsquo;t. Our system outputs mathematical equations &mdash; the native format quantum computers are designed to accelerate.</p>
+    <div class="g3" style="margin-top: 1.75rem;">
         <div class="q-card">
             <div class="q-ready">READY NOW</div>
             <h4>Our outputs are already quantum-compatible</h4>
-            <p>Every equation the system discovers is a closed-form mathematical expression. Quantum hardware operates on exactly these structures. No translation layer, no reformatting, no rebuild. The outputs we generate today are inputs quantum systems accept natively.</p>
+            <p>Every equation is a closed-form mathematical expression. Quantum hardware operates on exactly these structures. No translation layer, no reformatting, no rebuild.</p>
         </div>
         <div class="q-card">
             <div class="q-ready">READY NOW</div>
-            <h4>Thousands of feedback loops ready for quantum graph acceleration</h4>
-            <p>60 feedback loops in oil. 35,974 in real estate. 991 in healthcare. When quantum hardware scales, these relationship networks &mdash; which currently take hours to map &mdash; collapse to seconds. Every domain we validate today is pre-loaded for that acceleration.</p>
+            <h4>Thousands of feedback loops ready for quantum acceleration</h4>
+            <p>60 in oil. 35,974 in real estate. 991 in healthcare. When quantum hardware scales, these relationship networks collapse from hours to seconds.</p>
         </div>
         <div class="q-card">
             <div class="q-ready">READY NOW</div>
-            <h4>Black-box AI can&rsquo;t make this transition. Equations can.</h4>
-            <p>Neural networks produce opaque weight matrices. There is no path to port them to quantum systems. Symbolic equations have a direct path. Every competitor using black-box AI will face a full rewrite. We won&rsquo;t.</p>
+            <h4>Black-box AI can&rsquo;t make this transition</h4>
+            <p>Neural networks produce opaque weight matrices with no path to quantum. Symbolic equations have a direct path. Competitors face a full rewrite. We don&rsquo;t.</p>
         </div>
     </div>
 </div>
 </div>
 
 <!-- ═══════════ CTA ═══════════ -->
-<div class="narrow">
+<div class="wrap">
     <div class="cta" style="border-top: none;">
         <h2>Your industry has equations hiding in its data.<br>Elijah finds them.</h2>
         <p>We&rsquo;ll run Elijah on your data and show you what it discovers.</p>
