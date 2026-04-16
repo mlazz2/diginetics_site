@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSN MVP Interactive Prototype</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --panel: #121933;
+            --panel-2: #1a2445;
+            --text: #e8ecff;
+            --muted: #9ca8d6;
+            --accent: #5b8cff;
+            --accent-2: #48d6b5;
+            --warn: #ffb14a;
+            --danger: #ff6b6b;
+            --border: #2b3763;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: radial-gradient(circle at top right, #16224a 0%, var(--bg) 45%);
+            color: var(--text);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(11, 16, 32, 0.8);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            gap: 16px;
+        }
+
+        .brand { font-weight: 700; letter-spacing: 0.04em; }
+        .brand span { color: var(--accent-2); }
+
+        .top-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .pill {
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--muted);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            min-height: calc(100vh - 65px);
+        }
+
+        .sidebar {
+            border-right: 1px solid var(--border);
+            padding: 18px 12px;
+            background: rgba(8, 12, 24, 0.6);
+        }
+
+        .nav-label {
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 14px 10px 8px;
+        }
+
+        .nav-item {
+            width: calc(100% - 12px);
+            text-align: left;
+            padding: 10px 12px;
+            margin: 4px 6px;
+            border-radius: 10px;
+            color: #c7d2ff;
+            font-size: 14px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            background: var(--panel-2);
+            border-color: var(--border);
+            color: #ffffff;
+        }
+
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 8px 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .main {
+            padding: 22px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .section-title h1 { margin: 0; font-size: 28px; }
+        .section-title p { margin: 6px 0 0; color: var(--muted); }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(25, 34, 65, 0.92), rgba(16, 23, 46, 0.92));
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .kpi-label { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+        .kpi-value { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+        .kpi-note { font-size: 12px; color: #bed2ff; }
+
+        .board { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; }
+
+        .decision-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(20, 31, 60, 0.55);
+        }
+
+        .decision-card:last-child { margin-bottom: 0; }
+
+        .decision-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: #d9e2ff;
+            background: #1b2b56;
+            white-space: nowrap;
+        }
+
+        .tag.warn {
+            color: #ffd9a6;
+            background: #3a2a14;
+            border-color: #6d4a1f;
+        }
+
+        .tag.good {
+            color: #bdfbe6;
+            background: #10392e;
+            border-color: #25695a;
+        }
+
+        .decision-body {
+            color: #d7e0ff;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .drivers {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .sim-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .sim-box {
+            border: 1px solid var(--border);
+            background: rgba(13, 22, 45, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .sim-title {
+            margin: 0 0 8px;
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .sim-metric {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .positive { color: var(--accent-2); font-weight: 600; }
+        .negative { color: var(--danger); font-weight: 600; }
+
+        .view { display: none; }
+        .view.active { display: block; }
+
+        .players-wrap {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 12px;
+        }
+
+        .player-list {
+            display: grid;
+            gap: 8px;
+            max-height: 560px;
+            overflow: auto;
+        }
+
+        .player-btn {
+            border: 1px solid var(--border);
+            background: rgba(13, 22, 45, 0.8);
+            color: #dbe3ff;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .player-btn.active {
+            background: #213165;
+            border-color: #4868ce;
+        }
+
+        .player-sub {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .bar-group { margin-top: 12px; }
+        .bar-row { margin-bottom: 10px; }
+
+        .bar-row .label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .bar {
+            height: 10px;
+            border-radius: 999px;
+            background: #0f1630;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .bar > span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, #4f83ff, #4bd3b4);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .control {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px;
+            background: rgba(13, 22, 45, 0.7);
+        }
+
+        .control label {
+            font-size: 12px;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .control input[type="range"] { width: 100%; }
+
+        .run-row {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(13, 22, 45, 0.7);
+            cursor: pointer;
+        }
+
+        .run-row:hover { border-color: #4f83ff; }
+
+        .run-row .meta {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .insight {
+            border-left: 3px solid #4f83ff;
+            padding-left: 10px;
+            color: #d9e2ff;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #0f1630;
+            color: #dbe3ff;
+            margin-bottom: 10px;
+        }
+
+        .roster-table-wrap {
+            max-height: 460px;
+            overflow: auto;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .roster-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .roster-table th,
+        .roster-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #1f2c56;
+            text-align: left;
+        }
+
+        .roster-table th {
+            position: sticky;
+            top: 0;
+            background: #121933;
+            z-index: 2;
+        }
+
+        .chip {
+            font-size: 11px;
+            border-radius: 999px;
+            padding: 3px 8px;
+            border: 1px solid transparent;
+        }
+
+        .chip.elite { color: #bdfbe6; background: #10392e; border-color: #25695a; }
+        .chip.strong { color: #d9e2ff; background: #1b2b56; border-color: #3f5cae; }
+        .chip.good { color: #d8d6ff; background: #2a2851; border-color: #5c55b4; }
+        .chip.moderate { color: #ffd9a6; background: #3a2a14; border-color: #6d4a1f; }
+        .chip.developing { color: #ffd2d2; background: #3f1f2b; border-color: #7b3048; }
+        .chip.fair { color: #ffd9c9; background: #3c2418; border-color: #7a3f26; }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .compare-card {
+            border: 1px solid var(--border);
+            background: rgba(13, 22, 45, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .btn {
+            border: 1px solid var(--border);
+            background: #1d2c59;
+            color: #e8ecff;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            border-color: #4f83ff;
+        }
+
+        .runs-table-wrap {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: auto;
+            max-height: 220px;
+            margin-top: 10px;
+        }
+
+        .runs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .runs-table th,
+        .runs-table td {
+            text-align: left;
+            padding: 7px 8px;
+            border-bottom: 1px solid #1f2c56;
+        }
+
+        .runs-table th {
+            position: sticky;
+            top: 0;
+            background: #121933;
+        }
+
+        @media (max-width: 1150px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .board, .players-wrap, .controls, .compare-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">DIGINETICS <span>DSN</span> // Team Decision Room Prototype</div>
+        <div class="top-actions">
+            <div class="pill">Validation Context: 60 players, full seasons</div>
+            <div class="pill">Published Team Accuracy Snapshot: 97.0%</div>
+            <div class="pill">Mode: Front Office Planning</div>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="nav-label">Workspaces</div>
+            <button class="nav-item active" data-view="decision">Decision Board</button>
+            <button class="nav-item" data-view="players">Player Intelligence</button>
+            <button class="nav-item" data-view="compare">Roster Compare</button>
+            <button class="nav-item" data-view="simulator">Scenario Simulator</button>
+            <button class="nav-item" data-view="trust">Trust and Replay</button>
+
+            <div class="nav-label">Quick Filters</div>
+            <label class="toggle-row">
+                <input type="checkbox" id="highConfidenceOnly">
+                High confidence only
+            </label>
+            <label class="toggle-row">
+                <input type="checkbox" id="riskWatch">
+                Injury risk watch
+            </label>
+        </aside>
+
+        <main class="main">
+            <section class="section-title">
+                <h1 id="viewTitle">Today’s Highest-Leverage Decisions</h1>
+                <p id="viewSub">Clickable concept for how teams can navigate results after running tests on their roster.</p>
+            </section>
+
+            <section class="kpi-grid">
+                <div class="card">
+                    <div class="kpi-label">Projected Win Probability</div>
+                    <div class="kpi-value" id="kpiWin">62.4%</div>
+                    <div class="kpi-note" id="kpiWinNote">+4.2% vs baseline lineup</div>
+                </div>
+                <div class="card">
+                    <div class="kpi-label">Expected Runs</div>
+                    <div class="kpi-value" id="kpiRuns">5.8</div>
+                    <div class="kpi-note" id="kpiRunsNote">P10: 3.4 / P90: 7.6</div>
+                </div>
+                <div class="card">
+                    <div class="kpi-label">Bullpen Risk</div>
+                    <div class="kpi-value" id="kpiRisk">Moderate</div>
+                    <div class="kpi-note" id="kpiRiskNote">2 relievers flagged for load management</div>
+                </div>
+                <div class="card">
+                    <div class="kpi-label">Decision Confidence</div>
+                    <div class="kpi-value" id="kpiConf">0.81</div>
+                    <div class="kpi-note" id="kpiConfNote">Above threshold (0.70)</div>
+                </div>
+            </section>
+
+            <section class="view active" id="view-decision">
+                <div class="board">
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Decision Queue</h3>
+                        <div id="decisionList"></div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Fast Insight</h3>
+                        <div class="insight">Best immediate gain is lineup optimization around top contact-quality bats against high-velo right-handed pitching.</div>
+                        <div class="insight">Current bullpen sequencing projects higher 9th inning volatility. Consider moving high-leverage arm one inning earlier in close games.</div>
+                        <div class="insight">Trade candidate value improves if injury-risk scenario triggers for current left-handed relief group.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="view-players">
+                <div class="players-wrap">
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Players</h3>
+                        <div class="player-list" id="playerList"></div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-top: 0;" id="playerName">Player Profile</h3>
+                        <div id="playerSummary" class="kpi-note"></div>
+                        <div class="bar-group" id="playerBars"></div>
+                        <h4 style="margin-bottom: 6px;">Suggested Actions</h4>
+                        <ul id="playerActions" style="margin-top: 0; color: #d7e0ff; font-size: 13px;"></ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="view-simulator">
+                <div class="board">
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Continuous Test Configuration</h3>
+                        <p class="hint" style="margin-top: 0;">
+                            These controls represent team strategy assumptions for a test run. 50 is baseline.
+                            Values above 50 increase that emphasis; below 50 decrease it.
+                        </p>
+                        <div class="controls">
+                            <div class="control">
+                                <label for="aggression">Lineup Aggression (swing/power intent)</label>
+                                <input id="aggression" type="range" min="0" max="100" value="60">
+                                <div class="kpi-note" id="aggressionValue">60</div>
+                                <div class="hint">Impact basis: increases runs ceiling, can increase volatility.</div>
+                            </div>
+                            <div class="control">
+                                <label for="rest">Rest Emphasis (fatigue protection)</label>
+                                <input id="rest" type="range" min="0" max="100" value="35">
+                                <div class="kpi-note" id="restValue">35</div>
+                                <div class="hint">Impact basis: lowers risk, may reduce immediate offense.</div>
+                            </div>
+                            <div class="control">
+                                <label for="opp">Opponent Strength (test condition)</label>
+                                <input id="opp" type="range" min="0" max="100" value="55">
+                                <div class="kpi-note" id="oppValue">55</div>
+                                <div class="hint">Impact basis: stronger opponent lowers expected output.</div>
+                            </div>
+                            <div class="control">
+                                <label for="focus">Strategic Focus (preset weighting)</label>
+                                <select id="focus" style="width: 100%; background: #0f1630; color: #dbe3ff; border: 1px solid var(--border); border-radius: 8px; padding: 8px;">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="offense">Offense Push</option>
+                                    <option value="pitching">Pitching Containment</option>
+                                </select>
+                                <div class="hint">Adds fixed offsets to represent coaching priority.</div>
+                            </div>
+                        </div>
+                        <div class="btn-row">
+                            <button class="btn" id="runTestBtn">Run test with current config</button>
+                            <button class="btn" id="presetBalanced">Apply baseline preset</button>
+                            <button class="btn" id="presetAggressive">Apply aggressive preset</button>
+                            <button class="btn" id="presetConservative">Apply conservative preset</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Scenario Output</h3>
+                        <div class="sim-row">
+                            <div class="sim-box">
+                                <p class="sim-title">Baseline</p>
+                                <div class="sim-metric"><span>Expected Runs</span><span>5.1</span></div>
+                                <div class="sim-metric"><span>Win Probability</span><span>58.2%</span></div>
+                                <div class="sim-metric"><span>Risk Index</span><span>0.41</span></div>
+                            </div>
+                            <div class="sim-box">
+                                <p class="sim-title">Scenario</p>
+                                <div class="sim-metric"><span>Expected Runs</span><span id="sRuns" class="positive">5.8</span></div>
+                                <div class="sim-metric"><span>Win Probability</span><span id="sWin" class="positive">62.4%</span></div>
+                                <div class="sim-metric"><span>Risk Index</span><span id="sRisk" class="negative">0.46</span></div>
+                            </div>
+                        </div>
+                        <div class="insight" id="scenarioNote" style="margin-top: 12px;">Balanced profile currently favors mild offensive push while keeping bullpen fatigue within tolerance.</div>
+                        <div class="runs-table-wrap">
+                            <table class="runs-table">
+                                <thead>
+                                    <tr>
+                                        <th>Run</th>
+                                        <th>Config</th>
+                                        <th>Win%</th>
+                                        <th>Runs</th>
+                                        <th>Risk</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scenarioRunsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="view-compare">
+                <div class="board">
+                    <div class="card">
+                        <h3 style="margin-top: 0;">60-Player Roster Results (from website)</h3>
+                        <input id="rosterSearch" class="search-input" type="text" placeholder="Search player, team, grade...">
+                        <div class="roster-table-wrap">
+                            <table class="roster-table">
+                                <thead>
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Player</th>
+                                        <th>Team</th>
+                                        <th>Pos</th>
+                                        <th>Grade</th>
+                                        <th>Accuracy</th>
+                                        <th>Avg Error/PA</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rosterRows"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Player Comparison</h3>
+                        <p class="kpi-note" style="margin-top: 0;">Select up to 3 players to compare your results directly.</p>
+                        <div class="compare-grid" id="compareCards"></div>
+                        <div class="insight" id="compareInsight" style="margin-top: 12px;">Pick players from the table to see comparative insights.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="view-trust">
+                <div class="board">
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Recent Test Runs</h3>
+                        <div class="run-row" data-run="1">
+                            Run #24 - Full 60-player season test
+                            <div class="meta">Confidence band: 0.74-0.88 | Drift: Stable | Outcome accuracy snapshot: 97.0%</div>
+                        </div>
+                        <div class="run-row" data-run="2">
+                            Run #23 - Matchup-specific test suite
+                            <div class="meta">Confidence band: 0.69-0.83 | Drift: Mild | Injury sensitivity: elevated</div>
+                        </div>
+                        <div class="run-row" data-run="3">
+                            Run #22 - Bullpen stress profile
+                            <div class="meta">Confidence band: 0.72-0.84 | Drift: Stable | Relief volatility detected</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-top: 0;">Replay Notes</h3>
+                        <ul id="replayNotes" style="margin-top: 0; color: #d7e0ff; font-size: 13px; line-height: 1.5;">
+                            <li>Select a run to inspect what changed and why the system confidence moved.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const rosterData = [
+            {id:"Cody_Bellinger",name:"Cody Bellinger",team:"NYY",pos:"1B/CF",grade:"Elite",accuracy:99.0,error:0.0096},
+            {id:"Nolan_Schanuel",name:"Nolan Schanuel",team:"LAA",pos:"1B",grade:"Elite",accuracy:99.0,error:0.0096},
+            {id:"Vladimir_Guerrero_Jr",name:"Vladimir Guerrero Jr",team:"TOR",pos:"1B",grade:"Elite",accuracy:98.9,error:0.0114},
+            {id:"JJ_Bleday",name:"JJ Bleday",team:"CIN",pos:"CF",grade:"Elite",accuracy:98.8,error:0.0117},
+            {id:"George_Springer",name:"George Springer",team:"TOR",pos:"DH/OF",grade:"Elite",accuracy:98.8,error:0.0118},
+            {id:"Kyle_Schwarber",name:"Kyle Schwarber",team:"PHI",pos:"DH/LF",grade:"Elite",accuracy:98.8,error:0.0120},
+            {id:"Ian_Happ",name:"Ian Happ",team:"CHC",pos:"LF",grade:"Elite",accuracy:98.7,error:0.0126},
+            {id:"Jarren_Duran",name:"Jarren Duran",team:"BOS",pos:"CF",grade:"Elite",accuracy:98.7,error:0.0134},
+            {id:"Gunnar_Henderson",name:"Gunnar Henderson",team:"BAL",pos:"SS/3B",grade:"Strong",accuracy:98.5,error:0.0153},
+            {id:"Marcus_Semien",name:"Marcus Semien",team:"NYM",pos:"2B",grade:"Strong",accuracy:98.3,error:0.0168},
+            {id:"Lane_Thomas",name:"Lane Thomas",team:"KC",pos:"RF",grade:"Strong",accuracy:98.3,error:0.0173},
+            {id:"Andrew_Vaughn",name:"Andrew Vaughn",team:"CWS",pos:"1B/DH",grade:"Strong",accuracy:98.2,error:0.0176},
+            {id:"Bobby_Witt_Jr",name:"Bobby Witt Jr",team:"KC",pos:"SS",grade:"Strong",accuracy:98.2,error:0.0176},
+            {id:"Bryan_De_La_Cruz",name:"Bryan De La Cruz",team:"PIT",pos:"LF",grade:"Strong",accuracy:98.2,error:0.0178},
+            {id:"Eugenio_Suarez",name:"Eugenio Suarez",team:"CIN",pos:"3B",grade:"Strong",accuracy:98.2,error:0.0184},
+            {id:"Zach_Neto",name:"Zach Neto",team:"LAA",pos:"SS",grade:"Strong",accuracy:98.1,error:0.0189},
+            {id:"Aaron_Judge",name:"Aaron Judge",team:"NYY",pos:"RF/DH",grade:"Strong",accuracy:98.1,error:0.0191},
+            {id:"Spencer_Steer",name:"Spencer Steer",team:"CIN",pos:"3B/1B",grade:"Strong",accuracy:98.0,error:0.0197},
+            {id:"Jose_Altuve",name:"Jose Altuve",team:"HOU",pos:"2B",grade:"Strong",accuracy:98.0,error:0.0198},
+            {id:"Jake_Burger",name:"Jake Burger",team:"MIA",pos:"3B/DH",grade:"Strong",accuracy:98.0,error:0.0202},
+            {id:"Nico_Hoerner",name:"Nico Hoerner",team:"CHC",pos:"2B",grade:"Strong",accuracy:98.0,error:0.0205},
+            {id:"Ozzie_Albies",name:"Ozzie Albies",team:"ATL",pos:"2B",grade:"Strong",accuracy:97.9,error:0.0207},
+            {id:"Brent_Rooker",name:"Brent Rooker",team:"OAK",pos:"DH/RF",grade:"Strong",accuracy:97.8,error:0.0217},
+            {id:"Luis_Arraez",name:"Luis Arraez",team:"SD",pos:"1B/2B",grade:"Strong",accuracy:97.8,error:0.0217},
+            {id:"Anthony_Volpe",name:"Anthony Volpe",team:"NYY",pos:"SS",grade:"Strong",accuracy:97.8,error:0.0224},
+            {id:"Ezequiel_Tovar",name:"Ezequiel Tovar",team:"COL",pos:"SS",grade:"Strong",accuracy:97.7,error:0.0226},
+            {id:"Michael_Conforto",name:"Michael Conforto",team:"SF",pos:"RF",grade:"Strong",accuracy:97.6,error:0.0241},
+            {id:"Jackson_Chourio",name:"Jackson Chourio",team:"MIL",pos:"CF",grade:"Strong",accuracy:97.5,error:0.0249},
+            {id:"Jose_Ramirez",name:"Jose Ramirez",team:"CLE",pos:"3B",grade:"Strong",accuracy:97.4,error:0.0263},
+            {id:"CJ_Abrams",name:"CJ Abrams",team:"WSH",pos:"SS",grade:"Strong",accuracy:97.3,error:0.0266},
+            {id:"William_Contreras",name:"William Contreras",team:"MIL",pos:"C/DH",grade:"Strong",accuracy:97.2,error:0.0275},
+            {id:"Austin_Riley",name:"Austin Riley",team:"ATL",pos:"3B",grade:"Strong",accuracy:97.1,error:0.0293},
+            {id:"Carlos_Santana",name:"Carlos Santana",team:"ARI",pos:"1B",grade:"Strong",accuracy:97.1,error:0.0293},
+            {id:"Salvador_Perez",name:"Salvador Perez",team:"KC",pos:"C",grade:"Moderate",accuracy:96.9,error:0.0306},
+            {id:"Elly_De_La_Cruz",name:"Elly De La Cruz",team:"CIN",pos:"SS",grade:"Moderate",accuracy:96.7,error:0.0332},
+            {id:"Riley_Greene",name:"Riley Greene",team:"DET",pos:"CF",grade:"Moderate",accuracy:96.7,error:0.0333},
+            {id:"Colt_Keith",name:"Colt Keith",team:"DET",pos:"2B",grade:"Moderate",accuracy:96.6,error:0.0339},
+            {id:"Rafael_Devers",name:"Rafael Devers",team:"BOS",pos:"3B",grade:"Moderate",accuracy:96.6,error:0.0341},
+            {id:"Gavin_Sheets",name:"Gavin Sheets",team:"CWS",pos:"1B/DH",grade:"Moderate",accuracy:96.4,error:0.0356},
+            {id:"Masyn_Winn",name:"Masyn Winn",team:"STL",pos:"SS",grade:"Moderate",accuracy:96.2,error:0.0382},
+            {id:"Byron_Buxton",name:"Byron Buxton",team:"MIN",pos:"CF",grade:"Moderate",accuracy:95.9,error:0.0408},
+            {id:"Yandy_Diaz",name:"Yandy Diaz",team:"TB",pos:"1B/3B",grade:"Moderate",accuracy:95.3,error:0.0468},
+            {id:"Juan_Soto",name:"Juan Soto",team:"NYM",pos:"RF",grade:"Moderate",accuracy:95.2,error:0.0476},
+            {id:"Trea_Turner",name:"Trea Turner",team:"PHI",pos:"SS",grade:"Moderate",accuracy:95.1,error:0.0494},
+            {id:"Nolan_Arenado",name:"Nolan Arenado",team:"ARI",pos:"3B",grade:"Developing",accuracy:94.4,error:0.0564},
+            {id:"Josh_Naylor",name:"Josh Naylor",team:"SEA",pos:"1B",grade:"Developing",accuracy:94.2,error:0.0580},
+            {id:"Cal_Raleigh",name:"Cal Raleigh",team:"SEA",pos:"C",grade:"Developing",accuracy:93.2,error:0.0684},
+            {id:"Jazz_Chisholm_Jr",name:"Jazz Chisholm Jr",team:"NYY",pos:"3B",grade:"Developing",accuracy:93.1,error:0.0693},
+            {id:"Jose_Siri",name:"Jose Siri",team:"LAA",pos:"CF",grade:"Developing",accuracy:92.1,error:0.0787},
+            {id:"Freddie_Freeman",name:"Freddie Freeman",team:"LAD",pos:"1B",grade:"Good",accuracy:96.9,error:0.0314},
+            {id:"Manny_Machado",name:"Manny Machado",team:"SD",pos:"3B",grade:"Good",accuracy:96.8,error:0.0323},
+            {id:"Julio_Rodriguez",name:"Julio Rodriguez",team:"SEA",pos:"CF",grade:"Good",accuracy:96.6,error:0.0341},
+            {id:"Matt_Chapman",name:"Matt Chapman",team:"SF",pos:"3B",grade:"Good",accuracy:96.6,error:0.0343},
+            {id:"Anthony_Santander",name:"Anthony Santander",team:"TOR",pos:"LF/DH",grade:"Good",accuracy:96.5,error:0.0349},
+            {id:"Yordan_Alvarez",name:"Yordan Alvarez",team:"HOU",pos:"DH/LF",grade:"Good",accuracy:96.5,error:0.0354},
+            {id:"Ketel_Marte",name:"Ketel Marte",team:"ARI",pos:"2B/DH",grade:"Good",accuracy:96.1,error:0.0393},
+            {id:"Oneil_Cruz",name:"Oneil Cruz",team:"PIT",pos:"SS",grade:"Fair",accuracy:95.7,error:0.0427},
+            {id:"Adolis_Garcia",name:"Adolis Garcia",team:"PHI",pos:"RF",grade:"Fair",accuracy:95.5,error:0.0448},
+            {id:"Bryan_Reynolds",name:"Bryan Reynolds",team:"PIT",pos:"CF",grade:"Fair",accuracy:94.9,error:0.0513},
+            {id:"Brendan_Rodgers",name:"Brendan Rodgers",team:"BOS",pos:"2B",grade:"Fair",accuracy:94.1,error:0.0589}
+        ];
+
+        const state = {
+            highConfidenceOnly: false,
+            riskWatch: false,
+            players: rosterData,
+            selectedPlayer: 0,
+            compareSelected: [],
+            rosterQuery: "",
+            scenarioRuns: [],
+            latestScenario: null
+        };
+
+        const baseDecisions = [
+            {
+                title: "Lineup Slot Adjustment: Move R. Soto to #2",
+                confidence: 0.86,
+                body: "Expected +0.36 runs and +3.8% win probability versus current order.",
+                drivers: "Top drivers: hard-hit trend, opposing starter velocity band, left/right split."
+            },
+            {
+                title: "Bullpen Sequence: Use M. Rivera in 8th only if lead <= 2",
+                confidence: 0.72,
+                body: "Preserves high-leverage arm for projected 9th inning pressure window.",
+                drivers: "Top drivers: leverage index, fatigue acceleration, inherited-run risk."
+            },
+            {
+                title: "Trade Watch: Target LHP J. Mercer package",
+                confidence: 0.64,
+                body: "1.7 WAR rest-of-season uplift if bullpen injury scenario materializes.",
+                drivers: "Top drivers: command drift trend, role fit to innings gap."
+            }
+        ];
+
+        function confidenceTag(value) {
+            if (value >= 0.8) return '<span class="tag good">High Confidence</span>';
+            if (value >= 0.7) return '<span class="tag warn">Medium Confidence</span>';
+            return '<span class="tag">Review</span>';
+        }
+
+        function renderDecisions() {
+            const list = document.getElementById("decisionList");
+            const filtered = baseDecisions.filter(item => !state.highConfidenceOnly || item.confidence >= 0.8)
+                .filter(item => !state.riskWatch || item.title.toLowerCase().includes("bullpen") || item.title.toLowerCase().includes("trade"));
+
+            list.innerHTML = filtered.map(item => `
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <span>${item.title}</span>
+                        ${confidenceTag(item.confidence)}
+                    </div>
+                    <div class="decision-body">${item.body}</div>
+                    <div class="drivers">${item.drivers}</div>
+                </div>
+            `).join("") || '<div class="kpi-note">No decisions match active filters.</div>';
+        }
+
+        function renderPlayers() {
+            const list = document.getElementById("playerList");
+            list.innerHTML = state.players.map((player, idx) => `
+                <button class="player-btn ${idx === state.selectedPlayer ? "active" : ""}" data-player="${idx}">
+                    <div>${player.name}</div>
+                    <div class="player-sub">${player.team} ${player.pos} | ${player.grade} | ${player.accuracy.toFixed(1)}%</div>
+                </button>
+            `).join("");
+
+            list.querySelectorAll(".player-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    state.selectedPlayer = Number(btn.dataset.player);
+                    renderPlayers();
+                });
+            });
+
+            const p = state.players[state.selectedPlayer];
+            document.getElementById("playerName").textContent = p.name + " Profile";
+            document.getElementById("playerSummary").textContent = `${p.team} | ${p.pos} | ${p.grade} | Accuracy ${p.accuracy.toFixed(1)}% | Avg error/PA ${p.error.toFixed(4)}.`;
+
+            const rel = p.accuracy / 100;
+            const health = Math.max(0.58, Math.min(0.96, 0.63 + rel * 0.33 - p.error * 2.2));
+            const contact = Math.max(0.55, Math.min(0.98, 0.60 + rel * 0.36 - p.error * 2.8));
+            const power = Math.max(0.5, Math.min(0.99, 0.57 + rel * 0.35 - p.error * 2.1 + (p.pos.includes("DH") ? 0.03 : 0)));
+
+            const bars = [
+                { label: "Projection Reliability", value: rel },
+                { label: "Estimated Readiness", value: health },
+                { label: "Estimated Contact Profile", value: contact },
+                { label: "Estimated Power Profile", value: power }
+            ];
+
+            document.getElementById("playerBars").innerHTML = bars.map(row => `
+                <div class="bar-row">
+                    <div class="label"><span>${row.label}</span><span>${(row.value * 100).toFixed(0)}%</span></div>
+                    <div class="bar"><span style="width:${(row.value * 100).toFixed(0)}%"></span></div>
+                </div>
+            `).join("");
+
+            const actionMap = {
+                Elite: [
+                    "Prioritize this player in high-leverage lineup spots.",
+                    "Use as benchmark profile for role-fit comparisons."
+                ],
+                Strong: [
+                    "Keep in primary role and monitor matchup sensitivity.",
+                    "Use targeted adjustments based on opponent profile."
+                ],
+                Good: [
+                    "Deploy with stable role and monitor in-season trend shifts.",
+                    "Pair with high-stability hitters in key innings."
+                ],
+                Moderate: [
+                    "Track week-to-week volatility before major role expansion.",
+                    "Use scenario testing before aggressive lineup changes."
+                ],
+                Developing: [
+                    "Treat projections as directional; keep higher human oversight.",
+                    "Prioritize focused development plans and role stability."
+                ],
+                Fair: [
+                    "Use conservative expectations and short-horizon planning.",
+                    "Avoid overcommitting in high-variance game states."
+                ]
+            };
+            document.getElementById("playerActions").innerHTML = actionMap[p.grade].map(a => `<li>${a}</li>`).join("");
+        }
+
+        function renderScenarioRuns() {
+            const body = document.getElementById("scenarioRunsBody");
+            if (!state.scenarioRuns.length) {
+                body.innerHTML = "<tr><td colspan='5' class='kpi-note'>No test runs yet. Click 'Run test with current config'.</td></tr>";
+                return;
+            }
+            body.innerHTML = [...state.scenarioRuns].reverse().map(run => `
+                <tr>
+                    <td>#${run.id}</td>
+                    <td>A:${run.aggression} R:${run.rest} O:${run.opp} ${run.focus}</td>
+                    <td>${run.win.toFixed(1)}%</td>
+                    <td>${run.runs.toFixed(1)}</td>
+                    <td>${run.risk.toFixed(2)}</td>
+                </tr>
+            `).join("");
+        }
+
+        function gradeClass(grade) {
+            return grade.toLowerCase();
+        }
+
+        function renderRosterCompare() {
+            const query = state.rosterQuery.toLowerCase().trim();
+            const rows = rosterData.filter(p =>
+                !query ||
+                p.name.toLowerCase().includes(query) ||
+                p.team.toLowerCase().includes(query) ||
+                p.grade.toLowerCase().includes(query) ||
+                p.pos.toLowerCase().includes(query)
+            );
+
+            document.getElementById("rosterRows").innerHTML = rows.map(p => `
+                <tr>
+                    <td><input type="checkbox" class="cmp-check" data-id="${p.id}" ${state.compareSelected.includes(p.id) ? "checked" : ""}></td>
+                    <td>${p.name}</td>
+                    <td>${p.team}</td>
+                    <td>${p.pos}</td>
+                    <td><span class="chip ${gradeClass(p.grade)}">${p.grade}</span></td>
+                    <td>${p.accuracy.toFixed(1)}%</td>
+                    <td>${p.error.toFixed(4)}</td>
+                </tr>
+            `).join("");
+
+            document.querySelectorAll(".cmp-check").forEach(el => {
+                el.addEventListener("change", (e) => {
+                    const id = e.target.dataset.id;
+                    if (e.target.checked) {
+                        if (state.compareSelected.length >= 3) {
+                            e.target.checked = false;
+                            return;
+                        }
+                        state.compareSelected.push(id);
+                    } else {
+                        state.compareSelected = state.compareSelected.filter(x => x !== id);
+                    }
+                    renderRosterCompare();
+                    renderCompareCards();
+                });
+            });
+
+            renderCompareCards();
+        }
+
+        function renderCompareCards() {
+            const selected = state.compareSelected.map(id => rosterData.find(p => p.id === id)).filter(Boolean);
+            const target = document.getElementById("compareCards");
+            const insight = document.getElementById("compareInsight");
+            if (!selected.length) {
+                target.innerHTML = "<div class='kpi-note'>No players selected.</div>";
+                insight.textContent = "Pick players from the table to see comparative insights.";
+                return;
+            }
+
+            target.innerHTML = selected.map(p => `
+                <div class="compare-card">
+                    <div style="font-weight:600;">${p.name}</div>
+                    <div class="kpi-note">${p.team} | ${p.pos}</div>
+                    <div style="margin-top:6px;"><span class="chip ${gradeClass(p.grade)}">${p.grade}</span></div>
+                    <div class="sim-metric" style="margin-top:8px;"><span>Accuracy</span><span class="positive">${p.accuracy.toFixed(1)}%</span></div>
+                    <div class="sim-metric"><span>Avg Error/PA</span><span class="negative">${p.error.toFixed(4)}</span></div>
+                </div>
+            `).join("");
+
+            const bestAcc = [...selected].sort((a, b) => b.accuracy - a.accuracy)[0];
+            const bestErr = [...selected].sort((a, b) => a.error - b.error)[0];
+            insight.textContent = `Best accuracy: ${bestAcc.name} (${bestAcc.accuracy.toFixed(1)}%). Lowest error/PA: ${bestErr.name} (${bestErr.error.toFixed(4)}).`;
+        }
+
+        function updateScenario() {
+            const aggression = Number(document.getElementById("aggression").value);
+            const rest = Number(document.getElementById("rest").value);
+            const opp = Number(document.getElementById("opp").value);
+            const focus = document.getElementById("focus").value;
+
+            document.getElementById("aggressionValue").textContent = aggression;
+            document.getElementById("restValue").textContent = rest;
+            document.getElementById("oppValue").textContent = opp;
+
+            let runs = 5.1 + (aggression - 50) * 0.012 - (opp - 50) * 0.01 - (rest - 50) * 0.004;
+            let win = 58.2 + (aggression - 50) * 0.08 - (opp - 50) * 0.09 + (rest - 50) * 0.01;
+            let risk = 0.41 + (aggression - 50) * 0.0012 - (rest - 50) * 0.001 + (opp - 50) * 0.0009;
+
+            if (focus === "offense") {
+                runs += 0.25;
+                win += 0.8;
+                risk += 0.02;
+            } else if (focus === "pitching") {
+                runs -= 0.2;
+                win -= 0.3;
+                risk -= 0.04;
+            }
+
+            runs = Math.max(3.5, Math.min(7.8, runs));
+            win = Math.max(42, Math.min(75, win));
+            risk = Math.max(0.28, Math.min(0.67, risk));
+
+            document.getElementById("sRuns").textContent = runs.toFixed(1);
+            document.getElementById("sWin").textContent = win.toFixed(1) + "%";
+            document.getElementById("sRisk").textContent = risk.toFixed(2);
+
+            let note = "Balanced profile currently favors mild offensive push while keeping bullpen fatigue in tolerance.";
+            if (risk > 0.5) {
+                note = "Risk is elevated. Consider lowering aggression or increasing rest emphasis to reduce late-game volatility.";
+            } else if (win > 63 && risk < 0.48) {
+                note = "Strong scenario: projected win gain with controlled risk profile. Candidate for manager pre-game plan.";
+            }
+            document.getElementById("scenarioNote").textContent = note;
+
+            document.getElementById("kpiWin").textContent = win.toFixed(1) + "%";
+            document.getElementById("kpiRuns").textContent = runs.toFixed(1);
+            document.getElementById("kpiRisk").textContent = risk > 0.5 ? "High" : risk > 0.42 ? "Moderate" : "Low";
+            document.getElementById("kpiConf").textContent = (0.74 + (1 - Math.abs(risk - 0.43)) * 0.08).toFixed(2);
+
+            state.latestScenario = { aggression, rest, opp, focus, runs, win, risk };
+        }
+
+        function runScenarioTest() {
+            if (!state.latestScenario) return;
+            const runId = state.scenarioRuns.length + 1;
+            state.scenarioRuns.push({ id: runId, ...state.latestScenario });
+            renderScenarioRuns();
+        }
+
+        function applyPreset(aggression, rest, opp, focus) {
+            document.getElementById("aggression").value = aggression;
+            document.getElementById("rest").value = rest;
+            document.getElementById("opp").value = opp;
+            document.getElementById("focus").value = focus;
+            updateScenario();
+        }
+
+        function setupTrustReplay() {
+            const notes = {
+                1: [
+                    "Run #24 showed strongest consistency on top 12 hitters across full-season replay.",
+                    "Bullpen sequence recommendation improved close-game probability by +2.1%.",
+                    "No data quality violations; drift remained stable."
+                ],
+                2: [
+                    "Run #23 highlighted increased uncertainty against high-velo right-handed starters.",
+                    "System confidence dipped in innings 7-9 because of relief variance.",
+                    "Suggested mitigation: tighter role assignment for two relievers."
+                ],
+                3: [
+                    "Run #22 focused on bullpen load stress and found fatigue inflection on day 3 of back-to-backs.",
+                    "Risk watch trigger threshold crossed in 2 of 5 scenarios.",
+                    "Recommended adding one depth reliever in trade window."
+                ]
+            };
+
+            document.querySelectorAll(".run-row").forEach(row => {
+                row.addEventListener("click", () => {
+                    const key = Number(row.dataset.run);
+                    document.getElementById("replayNotes").innerHTML = notes[key].map(x => `<li>${x}</li>`).join("");
+                });
+            });
+        }
+
+        function setView(view) {
+            document.querySelectorAll(".nav-item[data-view]").forEach(btn => {
+                btn.classList.toggle("active", btn.dataset.view === view);
+            });
+            document.querySelectorAll(".view").forEach(v => {
+                v.classList.toggle("active", v.id === "view-" + view);
+            });
+
+            const titles = {
+                decision: ["Today’s Highest-Leverage Decisions", "Prioritized recommendations for game planning and roster action."],
+                players: ["Player Intelligence", "Explore each of your 60 player results with grade, accuracy, and profile guidance."],
+                compare: ["Roster Compare", "Compare players side-by-side using your published team-level results data."],
+                simulator: ["Scenario Simulator", "Adjust assumptions and watch expected outcomes update instantly."],
+                trust: ["Trust and Replay", "Inspect previous runs to understand confidence changes and decision reliability."]
+            };
+            document.getElementById("viewTitle").textContent = titles[view][0];
+            document.getElementById("viewSub").textContent = titles[view][1];
+        }
+
+        document.querySelectorAll(".nav-item[data-view]").forEach(btn => {
+            btn.addEventListener("click", () => setView(btn.dataset.view));
+        });
+
+        document.getElementById("highConfidenceOnly").addEventListener("change", (e) => {
+            state.highConfidenceOnly = e.target.checked;
+            renderDecisions();
+        });
+
+        document.getElementById("riskWatch").addEventListener("change", (e) => {
+            state.riskWatch = e.target.checked;
+            renderDecisions();
+        });
+
+        document.getElementById("rosterSearch").addEventListener("input", (e) => {
+            state.rosterQuery = e.target.value;
+            renderRosterCompare();
+        });
+
+        ["aggression", "rest", "opp", "focus"].forEach(id => {
+            document.getElementById(id).addEventListener("input", updateScenario);
+            document.getElementById(id).addEventListener("change", updateScenario);
+        });
+
+        document.getElementById("runTestBtn").addEventListener("click", runScenarioTest);
+        document.getElementById("presetBalanced").addEventListener("click", () => applyPreset(50, 50, 50, "balanced"));
+        document.getElementById("presetAggressive").addEventListener("click", () => applyPreset(75, 25, 55, "offense"));
+        document.getElementById("presetConservative").addEventListener("click", () => applyPreset(35, 70, 60, "pitching"));
+
+        renderDecisions();
+        renderPlayers();
+        renderRosterCompare();
+        updateScenario();
+        renderScenarioRuns();
+        setupTrustReplay();
+    </script>
+</body>
+</html>
