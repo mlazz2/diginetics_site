@@ -6,14 +6,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diginetics Intelligence Systems | Intelligence for What Happens Next</title>
-    <meta name="description" content="Diginetics Intelligence Systems builds equation intelligence infrastructure. One codebase, 2,050+ validated equations, 8 domains, patent-pending. Currently raising.">
+    <meta name="description" content="Diginetics finds the real math behind your business. Starting with Manifest, our real estate operating system for brokerages, then expanding across every major industry.">
     <meta property="og:title" content="Diginetics Intelligence Systems | Intelligence for What Happens Next">
-    <meta property="og:description" content="Intelligence for what happens next. Patent-pending infrastructure validated across 8 industries.">
+    <meta property="og:description" content="A real estate operating system today. An intelligence layer for every major industry tomorrow.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        .manifest-spotlight {
+            background: linear-gradient(135deg, #0f1226 0%, #1a1f4a 100%);
+            color: #fff;
+            border-radius: var(--r-lg);
+            padding: 3rem 2.5rem;
+            margin-top: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .manifest-spotlight::before {
+            content: ""; position: absolute; top: -40%; right: -10%;
+            width: 480px; height: 480px;
+            background: radial-gradient(circle, rgba(120,140,255,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .manifest-spotlight > * { position: relative; z-index: 1; }
+        .manifest-spotlight .label { color: #c5cdff; }
+        .manifest-spotlight h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin: 0.5rem 0 1rem;
+            font-weight: 700;
+        }
+        .manifest-spotlight h2 .grad {
+            background: linear-gradient(90deg, #a3b1ff, #ffffff);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .manifest-spotlight .lead {
+            font-size: 1.05rem; line-height: 1.7;
+            color: #d8ddff; max-width: 760px;
+            margin-bottom: 1.75rem;
+        }
+        .manifest-value {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+        }
+        .manifest-value-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--r-md);
+            padding: 1rem 1.2rem;
+        }
+        .manifest-value-item h4 {
+            font-size: 0.92rem; font-weight: 700;
+            color: #fff; margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+        .manifest-value-item p {
+            font-size: 0.84rem; line-height: 1.55;
+            color: #c5cdff; margin: 0;
+        }
+        .manifest-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .manifest-actions .btn-primary {
+            background: #fff; color: #1a1f4a; border: none;
+        }
+        .manifest-actions .btn-primary:hover { background: #f4f4ff; color: #0f1226; }
+        .manifest-actions .btn-outline {
+            color: #fff; border: 1px solid rgba(255,255,255,0.4);
+            padding: 0.65rem 1.25rem; border-radius: var(--r-sm);
+            font-weight: 600; text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .manifest-actions .btn-outline:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: #fff;
+        }
+        .beyond-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 0.85rem;
+        }
+        .beyond-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--r-md); padding: 1.1rem 1.2rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .beyond-card:hover { border-color: var(--border-accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+        .beyond-card .domain {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--accent-light); margin-bottom: 0.4rem;
+        }
+        .beyond-card h4 {
+            font-size: 0.95rem; font-weight: 600;
+            color: var(--text); margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+        .beyond-card p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; margin: 0; }
+    </style>
 </head>
 <body>
 
@@ -27,6 +120,7 @@
         <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
         <ul class="nav-links">
             <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="cre.html">Manifest</a></li>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="results.html">Results</a></li>
             <li><a href="industries.html">Industries</a></li>
@@ -40,6 +134,7 @@
 </nav>
 <div class="mobile-nav">
     <a href="index.html" class="current">Home</a>
+    <a href="cre.html">Manifest</a>
     <a href="technology.html">Technology</a>
     <a href="results.html">Results</a>
     <a href="industries.html">Industries</a>
@@ -50,28 +145,69 @@
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
     <div class="container">
-        <div class="hero-eyebrow"><span class="dot"></span> Patent-pending &middot; Validated across 8 domains</div>
+        <div class="hero-eyebrow"><span class="dot"></span> Patent-pending. Validated across 8 industries.</div>
         <h1 class="hero-h1">Intelligence for<br><span class="grad">what happens next.</span></h1>
-        <p class="hero-p"><strong>Diginetics Intelligence Systems discovers the mathematical equations governing any measurable domain.</strong> Not predictions. Not black boxes. Equations your team can read, your regulators can audit, and your executives can act on.</p>
+        <p class="hero-p"><strong>Diginetics finds the real math behind your business.</strong> Not predictions. Not black boxes. Clear, readable formulas that show what is driving your numbers, what changes when conditions shift, and what to do next. We start with real estate, through Manifest, and expand from there.</p>
         <div class="hero-actions">
-            <a href="about.html#invest" class="btn btn-primary btn-lg">For Investors</a>
+            <a href="cre.html" class="btn btn-primary btn-lg">See Manifest for Real Estate</a>
             <a href="technology.html" class="btn btn-ghost btn-lg">How It Works</a>
         </div>
         <div class="hero-meta">
-            <span>2,050+ equations discovered</span>
-            <span>8 domains validated</span>
-            <span>Single codebase, zero domain tuning</span>
+            <span>2,050+ formulas discovered</span>
+            <span>8 industries validated</span>
+            <span>One platform, no custom builds</span>
         </div>
     </div>
 </section>
 
+<!-- ═══════════ MANIFEST SPOTLIGHT ═══════════ -->
+<div class="container">
+    <div class="manifest-spotlight">
+        <div class="label">Our First Use Case: Real Estate</div>
+        <h2>Introducing <span class="grad">Manifest</span>.<br>A Real Estate Operating System, powered by Diginetics Intelligence.</h2>
+        <p class="lead">Manifest gives brokerages one place to see the market, price every listing, coach every agent, and forecast every metro with proof. It is built on the same engine that already passed validation across 8 industries, and it is built for the people who actually run a brokerage.</p>
+
+        <div class="manifest-value">
+            <div class="manifest-value-item">
+                <h4>Price with confidence</h4>
+                <p>Forecast home prices, supply, and rates across 31 metros, backed by 12 years of validation, not gut calls.</p>
+            </div>
+            <div class="manifest-value-item">
+                <h4>See shifts early</h4>
+                <p>Catch market turns months before they hit MLS reports, with the drivers that actually moved them.</p>
+            </div>
+            <div class="manifest-value-item">
+                <h4>Win listings faster</h4>
+                <p>Give every agent data-backed talking points clients can verify, instead of opinions that sound the same.</p>
+            </div>
+            <div class="manifest-value-item">
+                <h4>Coach with data</h4>
+                <p>See which agents, neighborhoods, and price tiers are outperforming, and why, in plain English.</p>
+            </div>
+            <div class="manifest-value-item">
+                <h4>Cut decision time</h4>
+                <p>Replace weeks of analyst work with minutes. Ask a question, get the formula, the projection, and the action.</p>
+            </div>
+            <div class="manifest-value-item">
+                <h4>Plug into your stack</h4>
+                <p>Drop Manifest into your CRM, listing tools, and pitch decks. It is a system, not another dashboard.</p>
+            </div>
+        </div>
+
+        <div class="manifest-actions">
+            <a href="cre.html" class="btn btn-primary btn-lg">Explore Manifest</a>
+            <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="btn-outline">Request a brokerage demo &rarr;</a>
+        </div>
+    </div>
+</div>
+
 <!-- ═══════════ STATS BAR ═══════════ -->
 <div class="container">
     <div class="stats-bar">
-        <div class="stat"><div class="stat-val">2,050+</div><div class="stat-lbl">Equations Discovered</div></div>
-        <div class="stat"><div class="stat-val">8</div><div class="stat-lbl">Domains Validated</div></div>
-        <div class="stat"><div class="stat-val">220K+</div><div class="stat-lbl">Observations Processed</div></div>
-        <div class="stat"><div class="stat-val">93.3%</div><div class="stat-lbl">Backtest Pass Rate</div></div>
+        <div class="stat"><div class="stat-val">2,050+</div><div class="stat-lbl">Formulas Discovered</div></div>
+        <div class="stat"><div class="stat-val">8</div><div class="stat-lbl">Industries Validated</div></div>
+        <div class="stat"><div class="stat-val">220K+</div><div class="stat-lbl">Data Points Processed</div></div>
+        <div class="stat"><div class="stat-val">93.3%</div><div class="stat-lbl">Validation Pass Rate</div></div>
         <div class="stat"><div class="stat-val">86K+</div><div class="stat-lbl">Causal Links Found</div></div>
     </div>
 </div>
@@ -80,8 +216,53 @@
 <div class="container">
     <div class="section">
         <div class="thesis">
-            <div class="thesis-body">Every industry drowns in data but <em>starves for insight</em>. We built one system that discovers the equations governing any domain &mdash; validated across eight of them from a single codebase.</div>
-            <div class="thesis-attr">&mdash; Diginetics Intelligence Systems, founding thesis</div>
+            <div class="thesis-body">Every industry has too much data and not enough <em>actual answers</em>. We built one system that finds the formulas behind any business. Same code, eight industries, no custom builds.</div>
+            <div class="thesis-attr">Diginetics Intelligence Systems, founding thesis</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ BEYOND REAL ESTATE ═══════════ -->
+<div class="container">
+    <div class="section">
+        <div class="label">Beyond Real Estate</div>
+        <div class="title">The same engine, ready for any industry.</div>
+        <p class="subtitle">Real estate is where we lead with Manifest. The platform underneath has already been validated in seven more industries, with the same code, no domain tuning.</p>
+
+        <div class="beyond-grid">
+            <a href="healthcare.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Healthcare</div>
+                <h4>Hospital readmissions</h4>
+                <p>Predicted 30-day readmission within 0.02 points across 101,766 patients.</p>
+            </a>
+            <a href="retail.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Retail</div>
+                <h4>POS revenue drivers</h4>
+                <p>Found 3-day early warnings for store-wide revenue shifts.</p>
+            </a>
+            <a href="baseball.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Sports</div>
+                <h4>MLB projections</h4>
+                <p>60 hitters projected pre-season. Aaron Judge: 54 forecast vs 53 actual.</p>
+            </a>
+            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Energy</div>
+                <h4>Oilfield production</h4>
+                <p>Industry-standard Volve benchmark. 52 of 52 formulas passed.</p>
+            </a>
+            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Transportation</div>
+                <h4>Corridor congestion</h4>
+                <p>Two independent datasets. Perfect-fit formulas in a single run.</p>
+            </a>
+            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Water</div>
+                <h4>Global water stress</h4>
+                <p>10 countries. Conflict events found as the leading signal.</p>
+            </a>
+        </div>
+        <div style="text-align:center;margin-top:2rem;">
+            <a href="industries.html" class="btn btn-ghost">See all industries &rarr;</a>
         </div>
     </div>
 </div>
@@ -91,23 +272,23 @@
     <div class="section">
         <div class="label">Why This Matters</div>
         <div class="title">Three numbers that define the opportunity.</div>
-        <p class="subtitle">Infrastructure-scale technology, proven across uncorrelated verticals, protected by pending patents, and currently the only system producing interpretable equations at this breadth.</p>
+        <p class="subtitle">A real product shipping today (Manifest), proof in seven other industries, and a patent on the engine that powers all of it.</p>
 
         <div class="big-stats">
             <div class="big-stat">
-                <div class="big-stat-lbl">Market Opportunity</div>
-                <div class="big-stat-val">$613<span class="unit">B</span></div>
-                <p>AI-healthcare market alone by 2034 &mdash; 36.8% CAGR. Our addressable market spans healthcare, real estate, energy, retail, and financial services.</p>
+                <div class="big-stat-lbl">Real Estate Software Market</div>
+                <div class="big-stat-val">$22<span class="unit">B</span></div>
+                <p>US real estate tech spend, growing double digits. Manifest is positioned as the brokerage operating system, not another listing tool.</p>
             </div>
             <div class="big-stat">
                 <div class="big-stat-lbl">Validation Breadth</div>
                 <div class="big-stat-val">8<span class="unit">/8</span></div>
-                <p>Domains where a single, unmodified codebase produced validated equations on first-pass execution. No tuning, no re-engineering.</p>
+                <p>Industries where the same code produced validated formulas on the first run. No tuning, no rebuilds.</p>
             </div>
             <div class="big-stat">
                 <div class="big-stat-lbl">Defensibility</div>
                 <div class="big-stat-val">3<span class="unit">+ moats</span></div>
-                <p>Patent-pending autonomous discovery engine, cross-domain network effects, and an equation library that compounds with every deployment.</p>
+                <p>Patent-pending engine, network effects across industries, and a formula library that grows with every client.</p>
             </div>
         </div>
     </div>
@@ -117,32 +298,32 @@
 <div class="container">
     <div class="section">
         <div class="label">The Platform</div>
-        <div class="title">Two engines. One compounding system.</div>
-        <p class="subtitle">Elijah discovers equations from each client's data. Prometheus discovers universal laws across all clients. Every new deployment strengthens the entire network.</p>
+        <div class="title">Two engines. One system that gets stronger over time.</div>
+        <p class="subtitle">Elijah finds the formulas inside each client's data. Prometheus finds the laws that show up across every client. Together, they make every deployment smarter than the last.</p>
 
         <div class="grid-2">
             <div class="card">
                 <div class="card-icon purple">E</div>
                 <h3>Elijah</h3>
-                <div class="card-tag">Client Equation Intelligence</div>
-                <p>Each client gets their own Elijah instance, configured for their domain. It discovers interpretable equations, validates them through multi-stage stress testing, and builds a proprietary equation library that deepens over time.</p>
+                <div class="card-tag">Client-side intelligence</div>
+                <p>Every client gets their own Elijah instance, tuned for their industry. It reads their data, returns clear formulas, stress-tests them, and builds a private library that gets deeper every month.</p>
                 <ul>
-                    <li>Human-readable mathematical equations</li>
-                    <li>Multi-dimensional sensitivity analysis</li>
-                    <li>Self-improving autonomous discovery loop</li>
-                    <li>Calibrated forward projections from real math</li>
+                    <li>Readable formulas anyone can check</li>
+                    <li>What-if analysis on every driver</li>
+                    <li>Runs on its own, no babysitting</li>
+                    <li>Forecasts grounded in real math</li>
                 </ul>
             </div>
             <div class="card">
                 <div class="card-icon pink">P</div>
                 <h3>Prometheus</h3>
-                <div class="card-tag">Universal Law Discovery</div>
-                <p>Our internal engine runs across all client domains simultaneously, hunting for mathematical laws that hold universally. When it finds a cross-domain truth, every Elijah instance gets stronger.</p>
+                <div class="card-tag">Cross-industry intelligence</div>
+                <p>Our internal engine looks at every client at once, hunting for patterns that hold across industries. When it finds one, every Elijah instance gets the upgrade.</p>
                 <ul>
-                    <li>68 universal laws already discovered</li>
-                    <li>Network effects with every new domain</li>
-                    <li>Equations that don't decay or need retraining</li>
-                    <li>Insights no single-domain analysis could uncover</li>
+                    <li>68 universal laws already proven</li>
+                    <li>Network effect with each new industry</li>
+                    <li>Formulas that do not need retraining</li>
+                    <li>Insights one industry alone cannot see</li>
                 </ul>
             </div>
         </div>
@@ -154,38 +335,38 @@
     <div class="section">
         <div class="label">Traction</div>
         <div class="title">Where we are today.</div>
-        <p class="subtitle">We don't lead with projections &mdash; we lead with what's already been built and validated.</p>
+        <p class="subtitle">We do not lead with projections. We lead with what is already built and shipping.</p>
 
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-date">Built</div>
-                <div class="timeline-title">Core engine validated across 8 uncorrelated domains</div>
-                <div class="timeline-body">Baseball, healthcare, real estate (residential + CRE), retail, transportation, oil &amp; gas, water systems. Same codebase, zero domain-specific engineering.</div>
+                <div class="timeline-title">Engine validated across 8 unrelated industries</div>
+                <div class="timeline-body">Real estate, baseball, healthcare, retail, transportation, oil and gas, water, and CRE. Same code. Zero custom work.</div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">Built</div>
-                <div class="timeline-title">AWS infrastructure &mdash; 192-core parallelization</div>
-                <div class="timeline-body">Production-grade cloud deployment. Dedicated client instances, encryption at rest, full artifact reproducibility.</div>
+                <div class="timeline-title">Production cloud, 192-core compute</div>
+                <div class="timeline-body">Dedicated client environments on AWS. Encryption at rest. Every result reproducible.</div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-date">Built</div>
-                <div class="timeline-title">Patent filed on autonomous discovery loop</div>
-                <div class="timeline-body">Provisional patent protecting the residual discovery engine and cross-domain equation validation framework.</div>
+                <div class="timeline-title">Patent filed on the discovery engine</div>
+                <div class="timeline-body">Provisional patent covering the self-driving discovery loop and the cross-industry validation framework.</div>
             </div>
             <div class="timeline-item now">
-                <div class="timeline-date">Now</div>
-                <div class="timeline-title">Live pilot with Harwood Real Estate (Tuscaloosa, AL)</div>
-                <div class="timeline-body">Elijah running on Tuscaloosa real estate market. 96 equations discovered, 28 autonomous cycles complete, live dashboard deployed.</div>
+                <div class="timeline-date">Live Now</div>
+                <div class="timeline-title">Manifest pilot with Harwood Real Estate (Tuscaloosa, AL)</div>
+                <div class="timeline-body">96 formulas discovered, 28 autonomous cycles complete, live dashboard already in the brokerage's hands.</div>
             </div>
             <div class="timeline-item next">
                 <div class="timeline-date">Next</div>
-                <div class="timeline-title">Healthcare vertical &mdash; first paid deployment</div>
-                <div class="timeline-body">Hospital partner onboarding. Readmission and cost-equation discovery. Pilot-to-contract pipeline opens Q2.</div>
+                <div class="timeline-title">First paid healthcare deployment</div>
+                <div class="timeline-body">Hospital partner onboarding. Focus: readmissions and cost drivers. Pilot to contract opens Q2.</div>
             </div>
             <div class="timeline-item next">
                 <div class="timeline-date">Next</div>
-                <div class="timeline-title">Pre-seed raise, expanding to three paying verticals</div>
-                <div class="timeline-body">Healthcare, real estate, and energy lead. Capital deployed into sales, deployment engineering, and patent continuations.</div>
+                <div class="timeline-title">Pre-seed close, three commercial industries live</div>
+                <div class="timeline-body">Real estate, healthcare, and energy as the lead industries. Capital goes to sales, deployment, and patent expansion.</div>
             </div>
         </div>
     </div>
@@ -195,20 +376,20 @@
 <div class="container">
     <div class="section">
         <div class="label">Proof</div>
-        <div class="title">Eight domains. Same codebase. First-pass execution.</div>
-        <p class="subtitle">No domain-specific tuning. No human feedback loop. No re-runs.</p>
+        <div class="title">Eight industries. Same code. First run.</div>
+        <p class="subtitle">No custom tuning. No human in the loop. No do-overs.</p>
         <div class="grid-4">
-            <div class="result-block"><div class="result-domain">Baseball</div><div class="result-num">60 Players</div><p>Out-of-sample 2025 projections competitive with 20-year incumbent systems.</p></div>
-            <div class="result-block"><div class="result-domain">Healthcare</div><div class="result-num">603 / 603</div><p>Hospital readmission discovery. 99.48% accuracy. 991 feedback loops.</p></div>
-            <div class="result-block"><div class="result-domain">Real Estate</div><div class="result-num">643 / 643</div><p>Residential and commercial across 31 US metros. 100% pass rate.</p></div>
-            <div class="result-block"><div class="result-domain">Retail</div><div class="result-num">481 / 486</div><p>Daily POS revenue. 3-day early warning signals.</p></div>
+            <div class="result-block"><div class="result-domain">Real Estate</div><div class="result-num">643 / 643</div><p>Residential and commercial across 31 metros. 100% pass rate.</p></div>
+            <div class="result-block"><div class="result-domain">Healthcare</div><div class="result-num">603 / 603</div><p>Hospital readmissions. 99.48% accuracy. 991 feedback loops.</p></div>
+            <div class="result-block"><div class="result-domain">Baseball</div><div class="result-num">60 Players</div><p>Pre-season 2025 forecasts that held up against the real season.</p></div>
+            <div class="result-block"><div class="result-domain">Retail</div><div class="result-num">481 / 486</div><p>Daily POS data. 3-day early warnings on store revenue shifts.</p></div>
             <div class="result-block"><div class="result-domain">Transportation</div><div class="result-num">140 / 140</div><p>Corridor reliability and congestion across 39 entities.</p></div>
             <div class="result-block"><div class="result-domain">Oil &amp; Gas</div><div class="result-num">52 / 52</div><p>Industry-standard Volve benchmark. 0% failure rate.</p></div>
-            <div class="result-block"><div class="result-domain">Water Systems</div><div class="result-num">76 / 76</div><p>Global water stress. 10 countries. Policy-relevant insights.</p></div>
-            <div class="result-block"><div class="result-domain">Prometheus</div><div class="result-num">68 Laws</div><p>Universal equations confirmed across populations.</p></div>
+            <div class="result-block"><div class="result-domain">Water</div><div class="result-num">76 / 76</div><p>Global water stress. 10 countries. Policy-relevant findings.</p></div>
+            <div class="result-block"><div class="result-domain">Prometheus</div><div class="result-num">68 Laws</div><p>Universal formulas confirmed across populations.</p></div>
         </div>
         <div style="text-align:center;margin-top:2.5rem;">
-            <a href="results.html" class="btn btn-ghost">See full validation results &rarr;</a>
+            <a href="results.html" class="btn btn-ghost">See full results &rarr;</a>
         </div>
     </div>
 </div>
@@ -216,30 +397,30 @@
 <!-- ═══════════ COMPETITIVE MOAT ═══════════ -->
 <div class="container">
     <div class="section">
-        <div class="label">Why This Is Hard to Replicate</div>
+        <div class="label">Why This Is Hard To Copy</div>
         <div class="title">Four moats, not one.</div>
-        <p class="subtitle">Defensibility isn't a single advantage &mdash; it's a stack. Each layer compounds with the next.</p>
+        <p class="subtitle">Defensibility is not a single edge. It is a stack. Each layer compounds with the next.</p>
 
         <div class="moat-grid">
             <div class="moat-card">
                 <span class="moat-tag">01 &middot; IP</span>
                 <h4>Patent-pending discovery engine</h4>
-                <p>Provisional patent on the residual discovery loop and cross-domain equation validation. A competitor cannot legally re-implement our core innovation.</p>
+                <p>The core engine is filed. A competitor cannot legally copy it. The provisional covers the discovery loop and the cross-industry validation framework.</p>
             </div>
             <div class="moat-card">
                 <span class="moat-tag">02 &middot; NETWORK</span>
-                <h4>Prometheus gets stronger with every client</h4>
-                <p>Every new domain strengthens universal law discovery. Every universal law strengthens every existing client. A classic data-network effect applied to symbolic mathematics.</p>
+                <h4>Every new client makes every client smarter</h4>
+                <p>Each new industry strengthens Prometheus. Each new universal law strengthens every Elijah. Classic data network effects, applied to math.</p>
             </div>
             <div class="moat-card">
                 <span class="moat-tag">03 &middot; PRODUCT</span>
-                <h4>Equations don't decay</h4>
-                <p>Unlike ML models that require retraining as the world shifts, validated equations are permanent. The library only grows &mdash; and takes clients with it.</p>
+                <h4>Formulas do not decay</h4>
+                <p>Unlike machine-learning models that have to be retrained as the world shifts, validated formulas are permanent. The library only grows.</p>
             </div>
             <div class="moat-card">
                 <span class="moat-tag">04 &middot; TIME</span>
-                <h4>Eight domains proven, zero competitors doing this</h4>
-                <p>No other system produces interpretable equations at this breadth. A competitor entering one vertical starts from scratch. We're validated across eight.</p>
+                <h4>Eight industries proven, zero competitors at this scope</h4>
+                <p>No one else produces readable formulas across this many industries. A competitor entering one industry starts from zero. We are already validated in eight.</p>
             </div>
         </div>
     </div>
@@ -249,8 +430,8 @@
 <div class="container">
     <div class="section">
         <div class="label">How We Compare</div>
-        <div class="title">We're not competing with LLMs or traditional ML.</div>
-        <p class="subtitle">We're a different category: equation intelligence. Here's what that means next to the alternatives.</p>
+        <div class="title">We are not another ML model or chatbot.</div>
+        <p class="subtitle">We are a different category: readable, audit-ready formulas. Here is how that stacks up.</p>
 
         <div class="compare-wrap">
             <table class="compare">
@@ -258,25 +439,25 @@
                     <tr>
                         <th></th>
                         <th>Traditional ML</th>
-                        <th>LLMs</th>
-                        <th>Statistical Modeling</th>
+                        <th>LLMs (chatbots)</th>
+                        <th>Statistical models</th>
                         <th class="highlight-col">Diginetics</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Outputs human-readable equations</td>
+                        <td>Outputs human-readable formulas</td>
                         <td class="no">No</td>
                         <td class="no">No</td>
-                        <td>Only pre-specified forms</td>
+                        <td>Only pre-set forms</td>
                         <td class="highlight-col yes">Yes</td>
                     </tr>
                     <tr>
-                        <td>Domain-agnostic (same code across industries)</td>
+                        <td>One platform across industries</td>
                         <td class="no">No</td>
                         <td>Partial</td>
                         <td class="no">No</td>
-                        <td class="highlight-col yes">Yes &mdash; 8 validated</td>
+                        <td class="highlight-col yes">Yes (8 validated)</td>
                     </tr>
                     <tr>
                         <td>Auditable by regulators</td>
@@ -286,25 +467,25 @@
                         <td class="highlight-col yes">Yes</td>
                     </tr>
                     <tr>
-                        <td>Discovers unknown relationships</td>
+                        <td>Discovers unknown drivers</td>
                         <td class="no">No</td>
                         <td class="no">No</td>
                         <td class="no">No</td>
-                        <td class="highlight-col yes">Yes &mdash; core capability</td>
+                        <td class="highlight-col yes">Yes (core capability)</td>
                     </tr>
                     <tr>
-                        <td>Equations don't decay over time</td>
-                        <td class="no">Requires retraining</td>
-                        <td class="no">Requires retraining</td>
+                        <td>Stays accurate over time</td>
+                        <td class="no">Needs retraining</td>
+                        <td class="no">Needs retraining</td>
                         <td class="no">Drifts</td>
-                        <td class="highlight-col yes">Yes &mdash; permanent</td>
+                        <td class="highlight-col yes">Yes (permanent)</td>
                     </tr>
                     <tr>
-                        <td>Quantum-ready architecture</td>
+                        <td>Quantum-ready</td>
                         <td class="no">No</td>
                         <td class="no">No</td>
                         <td class="no">No</td>
-                        <td class="highlight-col yes">Yes &mdash; equation-native</td>
+                        <td class="highlight-col yes">Yes</td>
                     </tr>
                 </tbody>
             </table>
@@ -317,20 +498,20 @@
     <div class="section">
         <div class="label">Team</div>
         <div class="title">Built by operators, not researchers.</div>
-        <p class="subtitle">A founding team that owns both the technical build and the operational path to market.</p>
+        <p class="subtitle">A founding team that owns both the engineering and the path to revenue.</p>
 
         <div class="team-grid">
             <div class="team-card">
                 <div class="team-avatar">ML</div>
                 <h3>Michael Lazzarotti</h3>
                 <div class="team-role">CEO &amp; Co-Founder</div>
-                <p>Built the core engine and led validation across all eight domains. Responsible for technical vision, product architecture, and every published result.</p>
+                <p>Built the core engine and led validation across all eight industries. Owns technical vision, product, and every published result.</p>
             </div>
             <div class="team-card">
                 <div class="team-avatar">EO</div>
                 <h3>Evan O'Connell</h3>
                 <div class="team-role">CFO, COO &amp; Co-Founder</div>
-                <p>Leads business operations, financial strategy, and go-to-market execution. Structures partnerships and builds the operational foundation to scale.</p>
+                <p>Runs operations, finance, and go-to-market. Builds the partnerships and the foundation we need to scale.</p>
             </div>
         </div>
     </div>
@@ -341,21 +522,21 @@
     <div class="section">
         <div class="investor-ask" id="invest">
             <div class="label">Currently Raising</div>
-            <h2>We're looking for investors who see where this sits in the stack five years from now.</h2>
-            <p class="lead">The technology is built. The validation is done. Eight domains. 2,050+ equations. Patent filed. A live pilot already deployed. This round funds commercial deployment, the first paying healthcare partner, and continued patent expansion.</p>
+            <h2>For investors who see where this sits five years from now.</h2>
+            <p class="lead">The technology is built. Eight industries validated. 2,050+ formulas. Patent filed. A live real estate pilot is already in a brokerage's hands. This round funds Manifest commercialization, the first paying healthcare deployment, and patent expansion.</p>
 
             <div class="ask-bullets">
                 <div class="ask-bullet">
                     <div class="ask-bullet-val">Pre-Seed</div>
-                    <p>Stage of raise. Open to strategic and institutional investors.</p>
+                    <p>Open to strategic and institutional investors.</p>
                 </div>
                 <div class="ask-bullet">
                     <div class="ask-bullet-val">Patent-Pending</div>
-                    <p>Core discovery loop and autonomous cross-domain validation.</p>
+                    <p>Discovery engine and cross-industry validation framework.</p>
                 </div>
                 <div class="ask-bullet">
-                    <div class="ask-bullet-val">8 Verticals Live</div>
-                    <p>Proof of concept complete. Not a thesis &mdash; an infrastructure.</p>
+                    <div class="ask-bullet-val">8 Industries Live</div>
+                    <p>Proof of concept complete. Infrastructure, not a thesis.</p>
                 </div>
             </div>
 
@@ -372,6 +553,7 @@
         <span>&copy; 2026 Diginetics Intelligence Systems, Inc. All rights reserved.</span>
         <span>
             <em>Intelligence for what happens next.</em>
+            <a href="cre.html">Manifest</a>
             <a href="technology.html">Technology</a>
             <a href="results.html">Results</a>
             <a href="about.html">About</a>

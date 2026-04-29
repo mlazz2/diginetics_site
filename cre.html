@@ -12,11 +12,11 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRE Results - DIGINETICS</title>
-  <meta name="description" content="Commercial real estate prediction results across 31 US metro areas. Forward projections and actionable insights.">
+  <title>Manifest | A Real Estate Operating System by Diginetics</title>
+  <meta name="description" content="Manifest is a real estate operating system for brokerages, powered by Diginetics Intelligence. Forecast 31 metros, price every listing, and coach every agent with proof.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     .metro-row:hover td { color: var(--text-primary) !important; background: rgba(99, 102, 241, 0.05); }
     .def-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
@@ -35,32 +35,42 @@
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="logo"><img src="logo.png" alt="DIGINETICS">DIGINETICS</a>
-    <ul class="nav-links">
-      <li><a href="index.html#platform">Technology</a></li>
-      <li><a href="index.html#results" class="active">Results</a></li>
-      <li><a href="index.html#industries">Industries</a></li>
-      <li><a href="founders.html">About</a></li>
-      <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
-    </ul>
-    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('active')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <div class="mobile-menu">
-    <a href="index.html">Home</a>
-    <a href="index.html#platform">Technology</a>
-    <a href="index.html#results" class="active">Results</a>
-    <a href="index.html#industries">Industries</a>
-    <a href="founders.html">About</a>
-    <a href="index.html#contact">Contact</a>
+  <div class="investor-ribbon">
+    <strong>INVESTOR UPDATE</strong> &middot; Pre-seed round open &middot; Patent-pending technology &middot;
+    <a href="about.html#invest">View the raise &rarr;</a>
   </div>
 
-  <div class="page-header">
-    <div class="section-label">Commercial Real Estate</div>
-    <h1 class="section-title">Metro Housing Market Intelligence</h1>
-    <p class="section-subtitle">31 US metro areas. 68 market indicators. 12 years of monthly data. Validated through COVID, the housing boom, rate hikes, and normalization.</p>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cre.html" class="current">Manifest</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#invest" class="nav-cta-btn">Investors</a></li>
+      </ul>
+      <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="cre.html" class="current">Manifest</a>
+    <a href="technology.html">Technology</a>
+    <a href="results.html">Results</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="about.html#invest">Investors</a>
+  </div>
+
+  <div class="container page-top">
+    <div class="label">Manifest, by Diginetics</div>
+    <h1 class="title">A Real Estate Operating System for brokerages.</h1>
+    <p class="subtitle">Manifest is one place to see the market, price every listing, coach every agent, and forecast every metro with proof. Powered by the Diginetics engine, validated across 31 US metros and 12 years of monthly data, through COVID, the boom, the rate hikes, and the normalization.</p>
   </div>
 
   <section style="padding-top: 0;">
@@ -106,9 +116,9 @@
 
 
     <!-- ═══════════ ACCURACY DISTRIBUTION ═══════════ -->
-    <h2 class="results-section-title">Accuracy Distribution</h2>
+    <h2 class="results-section-title">How accurate the formulas are</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
-      How 332 relationships distribute across accuracy tiers:
+      332 market relationships, sorted by how closely they matched real-world outcomes.
     </p>
     <div style="margin-bottom: 2rem;">
       <span style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: #22c55e15; color: #22c55e; border: 1px solid #22c55e33; margin: 0.25rem;">99-100%: 152 <span style="font-weight: 400; opacity: 0.7;">(46%)</span></span>
@@ -118,9 +128,9 @@
     </div>
 
     <!-- ═══════════ ACCURACY BY CATEGORY ═══════════ -->
-    <h2 class="results-section-title">Accuracy by Market Category</h2>
+    <h2 class="results-section-title">Accuracy by market category</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      Housing market indicators organized into core categories. Rate, affordability, and price metrics are extremely well-captured.
+      Manifest captures rates, affordability, and prices with very high precision. Rents are noisier because local rent markets diverge from national inflation.
     </p>
     <div class="card-grid">
       
@@ -128,9 +138,9 @@
     </div>
 
     <!-- ═══════════ KEY DISCOVERED EQUATIONS ═══════════ -->
-    <h2 class="results-section-title">Key Primary Drivers</h2>
+    <h2 class="results-section-title">What is actually moving the market</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      The key relationships driving each market indicator. Every discovery is clear and actionable.
+      The drivers Manifest found behind every major housing metric. Plain-English findings, all backed by 12 years of validation.
     </p>
     
         <div class="finding">
@@ -156,7 +166,7 @@
         <div class="finding">
             <div class="label" style="color: #22c55e;">Rate Transmission - 99.86% Accuracy</div>
             <h3>mortgage_rate_30yr_roll7</h3>
-            <p>The 30-year mortgage rate follows the Fed funds rate with a remarkably stable spread. This held across zero-rate policy (2020), rapid tightening (2022&ndash;23), and plateau (2024&ndash;25). At 99.86% accuracy, mortgage pricing is driven almost entirely by Fed policy, not market sentiment.</p>
+            <p>The 30-year mortgage rate follows the Fed funds rate with a remarkably stable spread. This held across zero-rate policy (2020), rapid tightening (2022 to 2023), and plateau (2024 to 2025). At 99.86% accuracy, mortgage pricing is driven almost entirely by Fed policy, not market sentiment.</p>
         </div>
         <div class="finding">
             <div class="label" style="color: #22c55e;">Construction Pipeline - 99.89% Accuracy</div>
@@ -165,9 +175,9 @@
         </div>
 
     <!-- ═══════════ METRO PROJECTIONS ═══════════ -->
-    <h2 class="results-section-title">12-Month Forward Projections: Home Price YoY Change</h2>
+    <h2 class="results-section-title">12-month price forecasts by metro</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      Projected annual home price appreciation for each metro area, based on current market conditions and validated against 12 years of historical data.
+      Where home prices are heading over the next year, by metro. Built from the formulas above and validated against 12 years of monthly history.
     </p>
     <div style="overflow-x: auto;">
     <table class="results-table">
@@ -332,70 +342,65 @@
     </div>
 
     <!-- ═══════════ WHAT PROBLEMS THIS SOLVES ═══════════ -->
-    <h2 class="results-section-title">What You Can Do With This</h2>
+    <h2 class="results-section-title">What Manifest does for your brokerage</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-      This isn't a dashboard - it's a decision system. Here are the real problems real estate professionals can solve today with DIGINETICS CRE intelligence:
+      Manifest is not another dashboard. It is the operating system your team works inside. Here is what it changes, by role.
     </p>
 
     <div class="use-case">
-      <span class="tag" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">Investment Firms &amp; REITs</span>
-      <h3>Portfolio Allocation &amp; Market Timing</h3>
-      <p>DIGINETICS tells you <em>exactly</em> which factors drive price growth in each metro. Use this to:</p>
+      <span class="tag" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Brokerage Leadership</span>
+      <h3>Run the brokerage with proof, not opinions</h3>
       <ul>
-        <li><strong>Rank metros by fundamental strength</strong> - San Francisco projects +5.50% while Miami projects +4.69%. The gap isn't a guess; it reflects their specific market conditions.</li>
-        <li><strong>Stress-test rate scenarios</strong> - The months supply relationship (99.90% accuracy) tells you: if rates drop from 6% to 5%, supply drops by ~1 month nationally. Feed that into your acquisition model.</li>
-        <li><strong>Identify timing windows</strong> - The permits relationship (99.89% accuracy) links construction permits to sales volume. A permit slowdown predicts future supply constraints. Combined with rate projections, it flags metro-specific buying opportunities before they show up in comps.</li>
+        <li><strong>Forecast every metro you operate in.</strong> See where prices, supply, and rates are headed over the next 12 months, with the drivers behind each call.</li>
+        <li><strong>Coach with data.</strong> Spot which neighborhoods, price tiers, and product types are outperforming, and why, in plain English.</li>
+        <li><strong>Plan capacity.</strong> Use the permits-to-sales link (99.89% accuracy) to know if your pipeline is about to expand or contract, months before it shows up in MLS reports.</li>
       </ul>
     </div>
 
     <div class="use-case">
-      <span class="tag" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-hover);">Lenders &amp; Underwriters</span>
-      <h3>Dynamic Risk Assessment</h3>
-      <p>Move beyond static underwriting models. The platform gives you forward-looking, metro-specific risk signals:</p>
+      <span class="tag" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">Listing Agents</span>
+      <h3>Win listings and price them right</h3>
       <ul>
-        <li><strong>Quantified collateral risk</strong> - The new home sales discovery (99.85% accuracy) tells you exactly how sales respond to inventory shifts. You can forecast supply &rarr; sales &rarr; prices from a single rate move.</li>
-        <li><strong>Early warning for distress</strong> - Rent growth tracks CPI consistently. When CPI decelerates, you know rental income is about to follow &mdash; weeks before it shows up in borrower financials.</li>
-        <li><strong>Portfolio-wide monitoring</strong> - Run 31 metros simultaneously. Flag the ones where fundamentals are deteriorating before defaults materialize.</li>
+        <li><strong>Pricing with backup.</strong> Show a seller the local price trajectory and the drivers behind it. "Prices in this metro are tracking 5.1% growth because of CPI and competitiveness" beats "the market feels strong."</li>
+        <li><strong>Better listing pitches.</strong> Walk in with metro-level forecasts and one-page talking points the seller can verify.</li>
+        <li><strong>Time your pricing reductions.</strong> Inventory follows rates with 99.90% accuracy. When rates drop, supply tightens. Manifest tells the agent when to hold price and when to move.</li>
+      </ul>
+    </div>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">Buyer Agents &amp; Relocation</span>
+      <h3>Show clients exactly where to buy</h3>
+      <ul>
+        <li><strong>Compare 31 metros side by side.</strong> Forecasted price growth, rent-to-price ratios, and supply trends, all in one view.</li>
+        <li><strong>Answer the timing question.</strong> "Is now a good time to buy here?" gets a real, defensible answer, not a feeling.</li>
+        <li><strong>Hold vs sell guidance.</strong> Pull a personalized read on the client's metro and price tier in seconds.</li>
+      </ul>
+    </div>
+
+    <div class="use-case">
+      <span class="tag" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-hover);">Lenders &amp; Investors</span>
+      <h3>Underwrite and allocate capital with forward signals</h3>
+      <ul>
+        <li><strong>Stress-test rate scenarios.</strong> If rates drop 100 bps, supply tightens by roughly 1 month nationally. Drop that into your acquisition model.</li>
+        <li><strong>Spot distress early.</strong> Rents follow CPI. When CPI decelerates, rental income is about to follow, weeks before it shows up in borrower financials.</li>
+        <li><strong>Rank metros by fundamentals.</strong> San Francisco projects +5.50%, Miami +4.69%. The gap is the math, not a guess.</li>
       </ul>
     </div>
 
     <div class="use-case">
       <span class="tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">Property Management</span>
-      <h3>Operational Decision Support</h3>
-      <p>Know what's actually driving your market before you set next quarter's strategy:</p>
+      <h3>Plan rents, occupancy, and rate exposure</h3>
       <ul>
-        <li><strong>Rent pricing intelligence</strong> - Rent growth tracks CPI consistently. The platform tells you what your rent increases should target to stay competitive based on current inflation. Push harder and you lose occupancy; too conservative and you leave money on the table.</li>
-        <li><strong>Rate impact forecasting</strong> - Mortgage rates follow Fed policy at 99.86% accuracy. Combine with inventory data to project market changes from rate decisions before they hit.</li>
-        <li><strong>Market-specific intelligence</strong> - Each metro has its own dynamics. Austin's price trajectory differs from Boston's for quantifiable reasons. Use metro-specific projections to tailor strategies for each property in your portfolio.</li>
-      </ul>
-    </div>
-
-    <div class="use-case">
-      <span class="tag" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Brokers &amp; Advisors</span>
-      <h3>Data-Backed Market Intelligence</h3>
-      <p>Differentiate your advisory practice with insights no one else has:</p>
-      <ul>
-        <li><strong>Quantified pitch decks</strong> - "Prices in this metro are projected to grow 5.1% based on current CPI and market competitiveness conditions" beats "we think the market is strong."</li>
-        <li><strong>Clear explanations for clients</strong> - When a client asks "why is this market softening?", show them the data: mortgage rates drive supply levels directly. Rates went up, supply followed. It's data, not opinion.</li>
-        <li><strong>Cross-metro comparison tools</strong> - Rank 31 metros on any combination of 84 indicators. Show investors exactly where fundamentals are strongest.</li>
-      </ul>
-    </div>
-
-    <div class="use-case">
-      <span class="tag" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">Homebuyers &amp; Sellers</span>
-      <h3>Personal Real Estate Decisions</h3>
-      <p>The same institutional-grade intelligence, accessible to individuals:</p>
-      <ul>
-        <li><strong>Is now a good time to buy?</strong> - Inventory is directly linked to mortgage rates. When rates drop, supply tightens and prices follow. DIGINETICS tells you exactly when conditions shift from buyer-favorable to seller-favorable in your metro.</li>
-        <li><strong>Where should I buy?</strong> - Compare 31 metros on projected price growth, rent-to-price ratios, and inventory trends. Data-driven relocation decisions.</li>
-        <li><strong>Should I sell or hold?</strong> - Price momentum data tells you whether growth is accelerating or decelerating in your market. Combined with rate projections, it gives you a clear hold vs. sell signal.</li>
+        <li><strong>Rent setting.</strong> Rent growth tracks inflation. Manifest gives you the target your renewals should hit to stay competitive without leaving money on the table.</li>
+        <li><strong>Rate impact.</strong> Mortgage rates follow Fed policy at 99.86% accuracy. Pair that with inventory data to model demand shifts before they hit.</li>
+        <li><strong>Per-property strategy.</strong> Austin and Boston do not move the same way. Use metro-specific forecasts to tailor each property in the portfolio.</li>
       </ul>
     </div>
 
     <!-- ═══════════ FULL METRIC TABLE ═══════════ -->
-    <h2 class="results-section-title">All 68 Metrics - Best Discovery Per Metric</h2>
+    <h2 class="results-section-title">All 68 housing metrics, best result per metric</h2>
     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 0.75rem;">
-      The best-performing discovery for each market indicator. All accuracies are independently validated.
+      The best formula Manifest found for each market metric. Every accuracy number is validated against unseen data.
     </p>
     <input type="text" id="metric-search" placeholder="Search metrics..." oninput="filterMetrics(this.value)">
     <div style="overflow-x: auto;">
@@ -662,8 +667,26 @@
 
   </section>
 
-  <footer>
-    &copy; 2026 DIGINETICS. All rights reserved.
+  <div class="container">
+    <div class="cta-block">
+      <h2>Get Manifest in front of your brokerage.</h2>
+      <p>We will run a metro-level read on your market and walk your team through what it found. Brokerages, lenders, and partners welcome.</p>
+      <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="cta-email">michael.lazzarotti@diginetics.co</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 Diginetics Intelligence Systems, Inc. All rights reserved.</span>
+      <span>
+        <em>Intelligence for what happens next.</em>
+        <a href="cre.html">Manifest</a>
+        <a href="technology.html">Technology</a>
+        <a href="results.html">Results</a>
+        <a href="about.html">About</a>
+        <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
+      </span>
+    </div>
   </footer>
 
   <script>
