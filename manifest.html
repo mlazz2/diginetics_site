@@ -65,11 +65,11 @@
         .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
         .app-shell {
-            background: #0f1226;
-            border: 1px solid rgba(67,56,202,0.26);
-            border-radius: 24px;
-            box-shadow: 0 26px 80px rgba(15,18,38,0.2);
-            padding: 1rem;
+            background: linear-gradient(145deg, #111529 0%, #171b38 100%);
+            border: 1px solid rgba(67,56,202,0.28);
+            border-radius: 22px;
+            box-shadow: 0 22px 65px rgba(15,18,38,0.18);
+            padding: 0.85rem;
             overflow: hidden;
         }
         .app-topbar {
@@ -78,22 +78,22 @@
             justify-content: space-between;
             color: rgba(255,255,255,0.72);
             font-size: 0.75rem;
-            padding: 0.25rem 0.35rem 0.95rem;
+            padding: 0.2rem 0.35rem 0.75rem;
         }
         .browser-dots { display: flex; gap: 0.35rem; }
         .browser-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.28); }
         .app-window {
             display: grid;
-            grid-template-columns: 230px minmax(0, 1fr);
-            min-height: 540px;
+            grid-template-columns: 205px minmax(0, 1fr);
+            min-height: 500px;
             background: #f8fafc;
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
         }
         .app-sidebar {
-            background: #111529;
+            background: #101428;
             color: #fff;
-            padding: 1.35rem 1.15rem;
+            padding: 1.25rem 1rem;
         }
         .app-logo {
             font-weight: 800;
@@ -120,13 +120,13 @@
             background: rgba(255,255,255,0.1);
             color: #fff;
         }
-        .app-main { padding: 1.35rem; }
+        .app-main { padding: 1.25rem; }
         .app-heading {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.95rem;
         }
         .app-heading h2 {
             font-size: 1.18rem;
@@ -152,15 +152,16 @@
         }
         .app-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.08fr 0.92fr;
             gap: 0.85rem;
+            align-items: stretch;
         }
         .app-card {
             background: #fff;
             border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 1rem;
-            box-shadow: 0 1px 3px rgba(15,23,42,0.04);
+            border-radius: 13px;
+            padding: 0.95rem;
+            box-shadow: 0 1px 2px rgba(15,23,42,0.04);
         }
         .app-card.wide { grid-column: 1 / -1; }
         .app-card h3 {
@@ -170,14 +171,18 @@
             letter-spacing: 0.1em;
             margin-bottom: 0.75rem;
         }
-        .rank-list { display: flex; flex-direction: column; gap: 0.65rem; }
+        .rank-list { display: flex; flex-direction: column; gap: 0.55rem; }
         .rank-row {
             display: grid;
-            grid-template-columns: 28px 1fr 54px;
+            grid-template-columns: 28px minmax(0, 1fr) 54px;
             align-items: center;
             gap: 0.65rem;
             color: #334155;
             font-size: 0.78rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 11px;
+            padding: 0.62rem 0.65rem;
         }
         .rank-num {
             width: 24px; height: 24px;
@@ -190,16 +195,48 @@
             font-size: 0.68rem;
             font-weight: 800;
         }
-        .bar { height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+        .rank-copy { min-width: 0; }
+        .rank-copy strong {
+            display: block;
+            color: #111827;
+            font-size: 0.78rem;
+            line-height: 1.2;
+            margin-bottom: 0.28rem;
+        }
+        .rank-copy span {
+            display: block;
+            color: #64748b;
+            font-size: 0.66rem;
+            line-height: 1.2;
+            margin-bottom: 0.42rem;
+        }
+        .bar { height: 7px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
         .bar span { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #4338ca, #7c3aed); }
         .score { font-family: var(--mono); font-size: 0.72rem; color: #475569; text-align: right; }
         .brief {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-left: 3px solid var(--accent);
-            padding-left: 0.75rem;
+            border-radius: 10px;
+            padding: 0.75rem 0.8rem;
             color: #334155;
             font-size: 0.84rem;
             line-height: 1.6;
             margin-bottom: 0.85rem;
+        }
+        .recommendation-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .mini-note {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+            border-radius: 10px;
+            padding: 0.7rem 0.75rem;
+            font-size: 0.76rem;
+            line-height: 1.5;
         }
         .pill-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
         .pill {
@@ -215,7 +252,7 @@
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 11px;
-            padding: 0.75rem;
+            padding: 0.8rem;
         }
         .risk-box strong {
             display: block;
@@ -434,24 +471,55 @@
                             <div class="app-card">
                                 <h3>Feeder ZIP ranking</h3>
                                 <div class="rank-list">
-                                    <div class="rank-row"><div class="rank-num">1</div><div>Dallas 75225</div><div class="score">0.205</div></div>
-                                    <div class="bar"><span style="width:94%"></span></div>
-                                    <div class="rank-row"><div class="rank-num">2</div><div>Atlanta 30327</div><div class="score">0.191</div></div>
-                                    <div class="bar"><span style="width:88%"></span></div>
-                                    <div class="rank-row"><div class="rank-num">3</div><div>Nashville 37215</div><div class="score">0.178</div></div>
-                                    <div class="bar"><span style="width:81%"></span></div>
-                                    <div class="rank-row"><div class="rank-num">8</div><div>Local Tuscaloosa</div><div class="score">0.125</div></div>
-                                    <div class="bar"><span style="width:47%"></span></div>
+                                    <div class="rank-row">
+                                        <div class="rank-num">1</div>
+                                        <div class="rank-copy">
+                                            <strong>Dallas 75225</strong>
+                                            <span>Best luxury fit, wealth-arbitrage message</span>
+                                            <div class="bar"><span style="width:94%"></span></div>
+                                        </div>
+                                        <div class="score">0.205</div>
+                                    </div>
+                                    <div class="rank-row">
+                                        <div class="rank-num">2</div>
+                                        <div class="rank-copy">
+                                            <strong>Atlanta 30327</strong>
+                                            <span>High-income feeder, relocation angle</span>
+                                            <div class="bar"><span style="width:88%"></span></div>
+                                        </div>
+                                        <div class="score">0.191</div>
+                                    </div>
+                                    <div class="rank-row">
+                                        <div class="rank-num">3</div>
+                                        <div class="rank-copy">
+                                            <strong>Nashville 37215</strong>
+                                            <span>Strong fit, lower urgency</span>
+                                            <div class="bar"><span style="width:81%"></span></div>
+                                        </div>
+                                        <div class="score">0.178</div>
+                                    </div>
+                                    <div class="rank-row">
+                                        <div class="rank-num">8</div>
+                                        <div class="rank-copy">
+                                            <strong>Local Tuscaloosa</strong>
+                                            <span>Lowest intent for this property type</span>
+                                            <div class="bar"><span style="width:47%"></span></div>
+                                        </div>
+                                        <div class="score">0.125</div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="app-card">
                                 <h3>Recommended message</h3>
-                                <div class="brief">Dallas sees this as wealth-arbitrage. Birmingham sees affordability pressure. Same listing, opposite psychology. Do not use the same email for both.</div>
-                                <div class="pill-row">
-                                    <span class="pill">Wealth-arbitrage</span>
-                                    <span class="pill">Luxury fit</span>
-                                    <span class="pill">Out-of-market buyer</span>
+                                <div class="recommendation-stack">
+                                    <div class="brief">Lead with wealth-arbitrage for Dallas buyers. Position the listing as a lifestyle upgrade that still feels rational versus their current market.</div>
+                                    <div class="mini-note"><strong>Do not send:</strong> the local affordability message. Same listing, opposite psychology.</div>
+                                    <div class="pill-row">
+                                        <span class="pill">Wealth-arbitrage</span>
+                                        <span class="pill">Luxury fit</span>
+                                        <span class="pill">Out-of-market buyer</span>
+                                    </div>
                                 </div>
                             </div>
 
