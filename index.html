@@ -119,6 +119,38 @@
             letter-spacing: -0.01em;
         }
         .beyond-card p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; margin: 0; }
+        .verticals-strip {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .vertical-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--bg-card);
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .vertical-pill::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .vertical-pill:hover {
+            border-color: var(--border-accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
         .home-mockup {
             background: #0f1226;
             border: 1px solid rgba(67,56,202,0.28);
@@ -212,6 +244,11 @@
         <ul class="nav-links">
             <li><a href="index.html" class="current">Home</a></li>
             <li><a href="manifest.html">Manifest</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#invest">Investors</a></li>
             <li><a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="nav-cta-btn">Request Demo</a></li>
         </ul>
         <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
@@ -222,6 +259,11 @@
 <div class="mobile-nav">
     <a href="index.html" class="current">Home</a>
     <a href="manifest.html">Manifest</a>
+    <a href="technology.html">Technology</a>
+    <a href="results.html">Results</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="about.html#invest">Investors</a>
     <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo">Request Demo</a>
 </div>
 
@@ -389,6 +431,64 @@
 </div>
 
 <div class="container">
+    <div class="section">
+        <div class="label">Horizontal Expansion</div>
+        <div class="title">Manifest is the first product. The same intelligence layer can move across verticals.</div>
+        <p class="subtitle">Real estate is where the product is focused first because the brokerage pain is immediate: targeting, pricing, buyer trust, listing strategy, and agent coaching. The broader Diginetics platform can expand into other markets where decisions depend on hidden drivers inside messy data.</p>
+
+        <div class="beyond-grid">
+            <a href="healthcare.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Healthcare</div>
+                <h4>Readmissions and cost drivers</h4>
+                <p>Help hospitals understand which patient and operational factors drive risk before it becomes expensive.</p>
+            </a>
+            <a href="retail.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Retail</div>
+                <h4>POS and demand signals</h4>
+                <p>Find hidden category relationships, early revenue warnings, and inventory dependencies.</p>
+            </a>
+            <a href="baseball.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Sports</div>
+                <h4>Player performance forecasting</h4>
+                <p>Translate player data into forecasts, development signals, and front-office decision support.</p>
+            </a>
+            <a href="supply-chain.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Supply Chain</div>
+                <h4>Routing and disruption risk</h4>
+                <p>Surface the drivers behind bottlenecks, timing windows, and operational fragility.</p>
+            </a>
+            <a href="financial-services.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Financial Services</div>
+                <h4>Risk and allocation intelligence</h4>
+                <p>Support underwriting, portfolio monitoring, and scenario analysis with explainable signals.</p>
+            </a>
+            <a href="cybersecurity.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Cybersecurity</div>
+                <h4>Threat pattern intelligence</h4>
+                <p>Map recurring signals behind risk escalation, anomaly clusters, and response priority.</p>
+            </a>
+            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Energy</div>
+                <h4>Production and uptime drivers</h4>
+                <p>Find operational patterns that explain output, reliability, and field performance.</p>
+            </a>
+            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
+                <div class="domain">Water and Infrastructure</div>
+                <h4>Stress and resilience signals</h4>
+                <p>Identify leading indicators behind resource stress, instability, and infrastructure risk.</p>
+            </a>
+        </div>
+
+        <div class="verticals-strip">
+            <a href="industries.html" class="vertical-pill">See all verticals</a>
+            <a href="technology.html" class="vertical-pill">How the platform works</a>
+            <a href="results.html" class="vertical-pill">Validation results</a>
+            <a href="about.html#invest" class="vertical-pill">Investor view</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     <div class="cta-block">
         <h2>Bring Manifest into your next listing meeting.</h2>
         <p>We will mock up your market, your listing type, and your brokerage workflow.</p>
@@ -402,6 +502,10 @@
         <span>
             <em>Intelligence for what happens next.</em>
             <a href="manifest.html">Manifest</a>
+            <a href="technology.html">Technology</a>
+            <a href="results.html">Results</a>
+            <a href="industries.html">Industries</a>
+            <a href="about.html">About</a>
             <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
         </span>
     </div>
