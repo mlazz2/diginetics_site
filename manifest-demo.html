@@ -2778,127 +2778,518 @@ counter narrows σ from $11K → $7K</div>
 
 PAGES['insights'] = () => `
 <div class="hero agent-hero">
-  <div class="badge agent">● your insights · cycle 47</div>
+  <div class="badge agent">- live insights - phase 6 universal panels</div>
   <h1>Insights.</h1>
-  <div class="sub">Every finding from this cycle, attributable to a specific equation, with severity and confidence — your tape only</div>
+  <div class="sub">Trained on 5,215 matrix closes + 242 Harwood-team deals (probate-enriched). Per-listing cards apply universal patterns to your specific listings.</div>
 </div>
 <div class="content">
-  <div style="display:flex;gap:8px;margin-bottom:18px;">
+  <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
     <button class="btn btn-primary">All sections</button>
     <button class="btn">Listings</button>
-    <button class="btn">Pipeline</button>
-    <button class="btn">Deals</button>
     <button class="btn">Market</button>
-    <button class="btn">Vendors</button>
-    <button class="btn" style="margin-left:auto;" onclick="toast('Refreshing… cycle 48 queued')">Refresh insights</button>
+    <button class="btn">Buyer mix</button>
+    <button class="btn">Harwood team</button>
+    <button class="btn">Associations</button>
+    <button class="btn">Estate / probate</button>
+    <button class="btn" style="margin-left:auto;" onclick="toast('Refreshing - autonomous run queued')">Refresh insights</button>
   </div>
 
-  <h2 class="section-title">Listings · 5 insights</h2>
-  <div class="panel" style="margin-bottom:22px;">
-    <div class="ic-card">
-      <div class="tag risk">priority · price reduction</div>
-      <div class="ti">Westgate Unit 307 · 71% probability of needing reprice within 7d</div>
-      <div class="body">DOM is 47 days, well above your zip-band median of 22. Pricing model says cut to <strong>$1.49M</strong> lifts P(close 30d) from 0.18 → 0.61. Your premium-tier reduction history shows 4-day median time-to-action when this score crosses 0.65.</div>
-      <div class="eq">P(reduce|DOM_excess, premium_tier) = σ(0.18·DOM_excess − 1.4) = 0.71</div>
-      <div class="meta"><span class="conf">conf 84%</span><span>cycle 47</span><span>elijah_harwood/listings</span></div>
-      <div class="actions"><button class="btn btn-primary">Open price reduction email</button><button class="btn">View comp band</button></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">opportunity · best-buyers match</div>
-      <div class="ti">Best buyers for 6908 Old Greensboro</div>
-      <div class="body">Top Manifest matches: <strong>Patel Family (74%)</strong>, Lisa & Vance Bristow (62%), Brian Rainwater (55%). DDX feeder-market priors point to ZIPs 35405, 35404, 35476 for this price/profile tier.</div>
-      <div class="eq">match_score = 0.55·budget_fit + 0.30·intent + 0.15·notes_fit</div>
-      <div class="meta"><span class="conf">conf 78%</span><span>cycle 47</span><span>elijah_harwood/listings</span></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">opportunity · best-buyers match</div>
-      <div class="ti">Best buyers for Capstone Quarters</div>
-      <div class="body">Top Manifest matches: <strong>Devin Booker (68%)</strong>, Sommer Bullard (61%), Brian Rainwater (54%). Zip 35404 just flipped to HOT — accelerates close window.</div>
-      <div class="meta"><span class="conf">conf 71%</span><span>cycle 47</span></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">info · price position</div>
-      <div class="ti">Price fit for Westgate Unit 307</div>
-      <div class="body">At $1,550,000, this listing sits above the 75th percentile of Harwood tracked deal prices ($684,375). Position as premium inventory; lead with out-of-market buyer fit (Naples relocation, Patti Booth profile).</div>
-      <div class="meta"><span>n=51 multi-family comps</span></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag warn">watch · staging ROI</div>
-      <div class="ti">Enclave 2 · staging refresh recommended</div>
-      <div class="body">Per the prep-ROI equation, $22K media+repair refresh returns +$38K expected sale lift on this premium-tier listing (where repair beats photos). DOM at 31, forecast 28 — moving past the inflection.</div>
-      <div class="eq">premium_lift = 1.9·photos$ + 2.5·repair$
-expected = +$38K on $22K spend</div>
-    </div>
-  </div>
+<h2 class="section-title">Per-listing universal overlay</h2>
+<p style="color:var(--text-muted);margin:0 0 12px 0;font-size:13px;">For each open listing, the model takes its features (sqft, beds, subdivision probate signal, comp pool buyer mix) and overlays them against the universal market patterns + Harwood-team deltas.</p>
 
-  <h2 class="section-title">Pipeline · 7 insights</h2>
-  <div class="panel" style="margin-bottom:22px;">
-    <div class="ic-card">
-      <div class="tag">opportunity · best-listings</div>
-      <div class="ti">Best listings for Patel Family</div>
-      <div class="body">Best current matches: <strong>6908 Old Greensboro (74%)</strong>, 901 Audubon (61%), Capstone Quarters (54%). Score uses budget fit, lead temperature, notes, and listing tier. Patel scored top-quartile for "House + Land" segment.</div>
-      <div class="meta"><span class="conf">conf 74%</span><span>cycle 47</span></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">opportunity</div>
-      <div class="ti">Best listings for Kerth (Naples relocation)</div>
-      <div class="body">Best matches: <strong>901 Audubon Place (79%)</strong>, 4 Forest Gate Drive (closed but use as anchor comp). Out-of-state historic-district cohort closes at P=0.79 within 14 days of first showing.</div>
-    </div>
-    <div class="ic-card">
-      <div class="tag warn">watch · stalling decay</div>
-      <div class="ti">Tamara & Adam Blackburn · 19 days in Pre-Approval</div>
-      <div class="body">Past your stalling-decay threshold (14 days). P(close) drops by ~5% per day of additional stall. Re-engage today; Brady Lawson is your top FHA-friendly lender for "House + Land" buyers like this.</div>
-      <div class="eq">decay = exp(−days/14)·base · 19d → 0.34</div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">opportunity</div>
-      <div class="ti">Investor cohort lift in 35405</div>
-      <div class="body">Maria Naanaa (investment, student rental) sits in your highest-conversion investor segment. Pull 4 student-zone comps + send today; investor cohort lift is +0.07 on conversion in 35405.</div>
-    </div>
-  </div>
-
-  <h2 class="section-title">Market · 4 insights</h2>
-  <div class="panel" style="margin-bottom:22px;">
-    <div class="ic-card">
-      <div class="tag">macro shift</div>
-      <div class="ti">30-yr rate at 6.10% — 96bp drop since Aug</div>
-      <div class="body">Per your historical lag pattern (n=23 rate-drop events), expect median DOM to tighten ~9d within 6 weeks. Sale-to-list lifts +0.7-1.1% in core tier. Start prepping listing pipeline now — Q2 will be your strongest quarter.</div>
-      <div class="eq">ΔDOM_local = 26.4·Δrate_30y + 0.31·zip_supply</div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">structural · ZIP premium</div>
-      <div class="ti">35401 prints 159% $/sqft premium</div>
-      <div class="body">Median $237/sqft in 35401 vs $92/sqft across all other ZIPs. n=38 multi-family closes — robust. Your strongest geographic edge. Concentrate listing acquisition there.</div>
-      <div class="meta"><span class="conf">conf 92%</span></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag">opportunity · vintage arbitrage</div>
-      <div class="ti">2010s multi-family at 5.4× the $/sqft of 1970s</div>
-      <div class="body">$441/sqft median for 2010s-built vs $82/sqft for 1970s-built. Renovation cost lands $80-140/sqft — the spread is real money on value-add acquisitions.</div>
-    </div>
-    <div class="ic-card">
-      <div class="tag warn · cooling segment</div>
-      <div class="ti">Multi-family book down 31% YoY</div>
-      <div class="body">Trailing-12-month MF transaction count is −31.2% vs prior 12. Compare to mixed-use at +12.5% — the rotation is real. Tilt acquisition focus toward mixed-use through Q2.</div>
-    </div>
-  </div>
-
-  <h2 class="section-title">Vendors · 2 insights</h2>
-  <div class="panel">
-    <div class="ic-card">
-      <div class="tag">opportunity · vendor outperformer</div>
-      <div class="ti">Greg Colburn (inspector) outperforms by 75%</div>
-      <div class="body">Across 31 deals, Greg's post-close issue rate is <strong>1.2%</strong> vs portfolio mean 4.7%. He flags ~0.8 more findings per inspection — which actually reduces re-trade time by 1.6 days. Default him on premium-tier deals.</div>
-      <div class="meta"><span class="conf">conf 91%</span><span>n=31 deals</span></div>
-    </div>
-    <div class="ic-card">
-      <div class="tag risk">warning · vendor underperformer</div>
-      <div class="ti">Riverbend Title — 82% on-time vs 98% Magnolia</div>
-      <div class="body">4 of last 6 closes through Riverbend ran 3-7 days late. Consider migrating new files to Magnolia (98.2% on-time) or Heritage (94.1%). Don't queue Riverbend on rate-sensitive contingent closes.</div>
-    </div>
-  </div>
+<h2 class="section-title">1407 8th St, Tuscaloosa AL - $1,550,000</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Comp Pool Shows 18% LLC Buyers, Near-Zero Probate</div>
+  <div class="body">Your 95 comparable sales break down to 18% LLC investors and 19% inheriting buyers, with just 2 in an HOA and 2 near the UA campus. The Enclave 2 has seen zero probate transfers in the past year.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Price as arms-length retail; no probate discount needed and no investor-flip premium justified in this subdivision.</div>
+  <div class="meta"><span class="conf">conf 70%</span><span>elijah_harwood/listings</span></div>
 </div>
-`;
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Premium Listing Draws Five Key Buyer Zip Codes</div>
+  <div class="body">At $1.55M, this property historically attracts buyers from five zip codes (35242, 35406, 28211, 33629, 37215) with median household income around $135k. The comparable pool shows 18% LLCs and 82% individuals, with 19% inherited through probate.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Run targeted pre-marketing to those five zip codes before going wide; tailor messaging to the $135k income profile.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">No Estate Sales in The Enclave 2</div>
+  <div class="body">Zero probate or estate-transfer listings appeared in The Enclave 2 over the past 12 months. All recent sales were driven by normal market activity, not distressed estate liquidation.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Price your listing based on standard comps; no distressed estate inventory is undercutting the market right now.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Newer Listings Sell 25 Days Faster Per Year</div>
+  <div class="body">More recent listings close roughly 25 days quicker for each year closer to now, explaining about 16% of the variation in days-on-market across 95 closings. Newer construction also contributes modestly to faster turnover.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">For older listings tracking toward long DOM, schedule a price cut at the three-week mark to stay competitive.</div>
+  <div class="eq">(((-24.6503*year_num)+(-1.0852*year_built))+52159.6036)</div>
+  <div class="meta"><span class="conf">conf 16%</span><span>elijah_harwood/listings</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Westgate Condos, Tuscaloosa AL - $1,050,000</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Market PPSF Strong; Harwood Rate-Driven DOM</div>
+  <div class="body">Market-wide, price per square foot explains 24% of close price variation across 5,215 deals (each PPSF dollar adds ~$1,567). For Harwood deals specifically, mortgage rate swings explain 78% of days-on-marketâeach 1-point rate increase adds ~421 DOM across 242 transactions.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Price this listing using PPSF baseline; if Harwood team, monitor rate moves closely and adjust DOM expectations by ~420 days per rate point.</div>
+  <div class="meta"><span class="conf">conf 70%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Premium Listing Draws Five Key Buyer Zips</div>
+  <div class="body">At $1.05M, this listing&#x27;s strongest buyer pool comes from five zip codes (35242, 35406, 28211, 33629, 37215) with median household income around $135k. Local comps show 17% LLC investors, 83% individuals, 13% inheriting via probate, and 11 of 265 sales in HOAs.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Reach out first to buyers in those five zips before running broad ads; tailor messaging to $135k household income profiles.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Probate Signal Unavailable in Current Data</div>
+  <div class="body">No probate or estate-sale indicator could be calculated from the available listing records, so we can&#x27;t measure how those circumstances affect pricing or time on market.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Track any new estate sales manually over the next 30 days to build your own sense of pricing patterns.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Bedroom Count Drives Price Per Square Foot</div>
+  <div class="body">Adding one bedroom drops price per square foot by about $108, explaining roughly 47% of the variation across 265 closed listings. Year built also plays a role but bedroom count is the stronger factor.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Show buyers the PPSF range by bedroom count, not just overall median, especially when comparing 2BR vs 3BR listings.</div>
+  <div class="eq">(((-4.2351*year_num)+(-107.8845*beds))+9320.9711)</div>
+  <div class="meta"><span class="conf">conf 47%</span><span>elijah_harwood/listings</span></div>
+</div>
+</div>
+
+<h2 class="section-title">6908 Old Greensboro Rd - $650,000</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Market PPSF drives price; rate spikes hurt DOM</div>
+  <div class="body">Market-wide, each dollar of price per square foot adds ~$1,567 to close price, explaining 24% of variation across 5,215 deals. In Harwood deals specifically, each 1-point mortgage rate increase adds ~421 days on market (explains 78% of variation, 242 deals).</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Price this listing at competitive PPSF for the comp pool; if rates climb another point before close, budget an extra 14 months of carrying costs.</div>
+  <div class="meta"><span class="conf">conf 70%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Target Buyers: Five Zip Codes Drive This Profile</div>
+  <div class="body">For a $650K value/move-up listing, the top feeder zips are 75225, 30327, 33629, 37215, and 77024âmedian household income ~$165K. Comp pool shows 86% individuals, 14% LLCs, 15% inherited properties, 26 of 691 in HOAs, and 25 near the UA campus.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Reach out to leads from those five zips first; price and message for $165K household income buyers before going broad.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Estate sale signal unavailable in current data</div>
+  <div class="body">No probate or estate-sale indicator could be calculated from the closed listings, so we can&#x27;t measure how much those properties typically discount or how quickly they move.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat estate sales case-by-case until more examples appear; don&#x27;t assume a pricing pattern without at least three recent comps.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Bedroom Count Drives Price Per Square Foot</div>
+  <div class="body">Each additional bedroom lowers price per square foot by about $114, explaining roughly 59% of the variation across 400 closed sales.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Show buyers and sellers the PPSF range by bedroom count, not just neighborhood medians, when pricing listings.</div>
+  <div class="eq">((-113.7511*beds)+687.2139)</div>
+  <div class="meta"><span class="conf">conf 59%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Bathroom count drives sale price fundamentals</div>
+  <div class="body">Each additional bathroom lifts close price by roughly $51,000 across 400 recent closings. This single factor explains about 14% of the price variation in your sold inventory.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Start every listing CMA with this bath-count baseline, then layer in condition, location, and market timing adjustments.</div>
+  <div class="eq">((51127.8879*baths_total)+448056.3942)</div>
+  <div class="meta"><span class="conf">conf 14%</span><span>elijah_harwood/listings</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Capstone Quarters, Tuscaloosa AL - $229,900</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">Target Buyers from Five High-Income Feeder ZIPs</div>
+  <div class="body">For this $229,900 value/move-up listing, historical data shows the strongest buyer interest comes from ZIPs 75225, 30327, 33629, 37215, and 77024, where median household income runs around $164,767. Reach these cohorts directly before casting a wider net.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Run geofenced digital ads in those five ZIPs emphasizing value arbitrage and lifestyle upgrade.</div>
+  <div class="meta"><span class="conf">conf 72%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - opportunity</div>
+  <div class="ti">PPSF Drives Price, Harwood Rates Drive DOM</div>
+  <div class="body">Market-wide, every dollar of price per square foot adds ~$1,567 to close price, explaining 24% of variation across 5,215 deals. In our 242 Harwood deals, each mortgage-rate point adds ~421 days on market, explaining 78% of DOM swings.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Price new Harwood listings assuming rate-driven DOM; adjust showing schedules and seller expectations when rates move.</div>
+  <div class="meta"><span class="conf">conf 70%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Probate Signal Unavailable in Current Data</div>
+  <div class="body">No estate or probate listings in the recent closed-sale records, so we can&#x27;t measure their typical pricing pressure or time-on-market impact.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Monitor the MLS for new probate listings over the next 30 days to build a pricing baseline.</div>
+  <div class="meta"><span class="conf">conf 60%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Larger Homes Sell for Less Per Square Foot</div>
+  <div class="body">Each additional square foot drops price per square foot by about eleven cents. This pattern explains ~53% of the variation across 400 recent closes.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Show sellers a PPSF range based on their home&#x27;s size, not just neighborhood median pricing.</div>
+  <div class="eq">((-0.1075*sqft_total)+335.1319)</div>
+  <div class="meta"><span class="conf">conf 53%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Square footage drives sale price at $35/sqft</div>
+  <div class="body">In this market, each square foot adds about $35 to the close price. This relationship explains ~16% of the variation across 400 sold listings.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Start every listing price with $35/sqft, then adjust for condition, location, and current market timing.</div>
+  <div class="eq">((35.0009*sqft_total)+191069.9417)</div>
+  <div class="meta"><span class="conf">conf 16%</span><span>elijah_harwood/listings</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Universal patterns (5,215-deal matrix corpus) - 6 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">buyer_segment - opportunity</div>
+  <div class="ti">Pool Listings Nearly Always Have Gyms</div>
+  <div class="body">Among 5,215 buyer-viewed listings, homes with pools have gyms 92% of the time. This pattern explains ~90% of the variationâessentially a packaging correlation, not a driver.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as a luxury-tier signal: when filtering for pools, expect gym overlap but don&#x27;t position one as causing the other.</div>
+  <div class="eq">((0.9224*has_gym_num)+0.0008)</div>
+  <div class="meta"><span class="conf">conf 90%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - opportunity</div>
+  <div class="ti">Pool and Gym Amenities Track Together</div>
+  <div class="body">Buyers interested in a pool are almost always interested in a gym too (or vice versa). This pattern explains ~90% of the variation across 5,215 client profiles.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Ask pool-seeking buyers about fitness priorities early; bundle gym access into property searches and highlight both amenities.</div>
+  <div class="eq">((0.9803*has_pool_num)+0.0042)</div>
+  <div class="meta"><span class="conf">conf 90%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - opportunity</div>
+  <div class="ti">Gym Amenity Predicts Managed HOA Status</div>
+  <div class="body">Properties with a gym are almost always in managed associationsâthe presence of a gym explains ~90% of the variation in managed HOA status across 5,215 listings.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use gym amenity as a reliable proxy when advising buyers whether a property has professional HOA management.</div>
+  <div class="eq">((0.9945*has_gym_num)+0.0057)</div>
+  <div class="meta"><span class="conf">conf 90%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Bathroom Count Drives Buyer List Price Expectations</div>
+  <div class="body">Each additional bathroom adds roughly $192K to the list price buyers see, explaining ~62% of price variation across 5,215 listings. This is a strong pattern but doesn&#x27;t capture other major factors like square footage or location.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use bathroom count as a quick pricing anchor when qualifying buyers, but verify against comps for bedrooms and square footage.</div>
+  <div class="eq">((191724.8428*baths_total)+(-1.9326+original_list_price))</div>
+  <div class="meta"><span class="conf">conf 62%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Bathroom Count Predicts Bedroom Count for Buyers</div>
+  <div class="body">In buyer segments, bathroom count strongly predicts bedroom count (0.84 baths per bed), explaining ~56% of the variation across 5,215 observations. Newer construction year adds a small positive effect.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">When qualifying buyers on bedroom needs, confirm bathroom expectationsâthey track closely and may reveal unstated priorities.</div>
+  <div class="eq">(((0.0300*year_num)+(0.8409*baths_total))+-59.3797)</div>
+  <div class="meta"><span class="conf">conf 56%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Bedroom Count Drives Bathroom Count for Buyers</div>
+  <div class="body">Homes with more bedrooms have proportionally more bathroomsâeach additional bedroom correlates with roughly 0.67 more baths. This pattern explains about 56% of the variation across 5,215 buyer preferences.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use bedroom count as a reliable proxy when filtering bathroom preferences for buyer clients, but confirm bath needs explicitly in the intake.</div>
+  <div class="eq">(((-0.0061*year_num)+(0.6689*beds))+12.4584)</div>
+  <div class="meta"><span class="conf">conf 56%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Harwood team-only universe (242 deals) - 6 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">harwood_segment - opportunity</div>
+  <div class="ti">Quarter Number Tracks Month of Year</div>
+  <div class="body">Quarter number rises 0.32 per month increment, explaining ~93% of variation across 242 records. This is a calendar identityâquarters are built from monthsânot a market insight.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Disregard this finding; it&#x27;s a tautology with no action value for client guidance or deal strategy.</div>
+  <div class="eq">((0.3225*month_of_year)+0.4084)</div>
+  <div class="meta"><span class="conf">conf 93%</span><span>elijah_harwood/harwood_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">harwood_segment - opportunity</div>
+  <div class="ti">Fed Funds Rate Trends Down Over Time</div>
+  <div class="body">The fed funds rate has fallen roughly 0.80 points per year over the sample period, explaining ~92% of the variation across 242 observations. This is a simple time trend.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use this as historical context only; consult current Fed guidance before advising clients on rate assumptions.</div>
+  <div class="eq">((-0.8015*year_num)+1627.3223)</div>
+  <div class="meta"><span class="conf">conf 92%</span><span>elijah_harwood/harwood_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">harwood_segment - opportunity</div>
+  <div class="ti">Harwood Deals: Mortgage Rates Drive Days on Market</div>
+  <div class="body">In our Harwood segment, each 1-point rise in 30-year mortgage rates adds roughly 421 days on market. This pattern explains ~78% of the variation across 242 deals.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">When rates climb, schedule a price-drop conversation with the seller at week 3 if showings stall.</div>
+  <div class="eq">((421.1060*mortgage_rate_30y)+-2522.7498)</div>
+  <div class="meta"><span class="conf">conf 78%</span><span>elijah_harwood/harwood_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">harwood_segment - opportunity</div>
+  <div class="ti">Harwood 30-Year Rates Track Inversely with Mid-Tier Home Values</div>
+  <div class="body">In the Harwood segment, 30-year mortgage rates move opposite to Tuscaloosa mid-tier home values, explaining about 71% of rate variation across 242 observations. When mid-tier values rise $10,000, rates typically drop roughly 0.1 percentage points.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Cross-check current Tuscaloosa mid-tier pricing before quoting rate expectations to Harwood buyer clients today.</div>
+  <div class="eq">((-0.0001*tusc_zhvi_mid_tier)+38.2080)</div>
+  <div class="meta"><span class="conf">conf 71%</span><span>elijah_harwood/harwood_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">harwood_segment - info</div>
+  <div class="ti">Harwood Inventory Drops When Rates Rise</div>
+  <div class="body">In Harwood, available months of supply falls roughly 1.6 months for every 1% increase in the 30-year mortgage rate. This pattern explains about 48% of inventory swings across 242 observations.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Flag this counter-trend for clients: rising rates typically squeeze inventory here, not expand it as theory suggests.</div>
+  <div class="eq">((-1.5846*mortgage_rate_30y)+14.6197)</div>
+  <div class="meta"><span class="conf">conf 48%</span><span>elijah_harwood/harwood_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">harwood_segment - info</div>
+  <div class="ti">Harwood commission driven by agreed rate</div>
+  <div class="body">In 242 Harwood deals, commission earned tracks almost entirely with the commission percentage agreed upfrontâeach percentage point adds roughly $3,373. This relationship explains about 47% of the variation; the rest comes from deal-specific factors not captured here.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Review the deals with large residuals (earned much more or less than expected) to find negotiation patterns or service upgrades worth replicating.</div>
+  <div class="eq">(((3372.9923*commission_pct)+(-0.0049*is_closed))+0.0339)</div>
+  <div class="meta"><span class="conf">conf 47%</span><span>elijah_harwood/harwood_segment</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Market trends (per-class monthly aggregate) - 5 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">market - info</div>
+  <div class="ti">Higher Sale-to-List Ratios Track with More Closings</div>
+  <div class="body">Markets with higher average sale-to-list ratios show more closingsâeach 1% increase in sale-to-list corresponds to roughly 10 additional sales. This pattern explains about 32% of the variation across 65 market periods, so other factors matter significantly.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background context, not a decision driverâthe fit is modest and other market forces clearly drive the majority of closing volume.</div>
+  <div class="eq">(((38.2829*year_num)+(1024.1551*avg_sale_to_list))+-78390.7884)</div>
+  <div class="meta"><span class="conf">conf 32%</span><span>elijah_harwood/market</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">market - info</div>
+  <div class="ti">More Sales, Slightly Higher Sale-to-List Ratios</div>
+  <div class="body">Markets with more closed sales tend to see marginally higher sale-to-list ratiosâabout 0.03% per additional sale. This pattern explains roughly 28% of the variation across 65 markets, so other factors clearly matter more.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as context, not a pricing signal; focus on recent comps and DOM when advising clients.</div>
+  <div class="eq">((0.0003*sold_count)+0.9248)</div>
+  <div class="meta"><span class="conf">conf 28%</span><span>elijah_harwood/market</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">market - info</div>
+  <div class="ti">Sale-to-List Ratio Correlates With Market Volume</div>
+  <div class="body">Higher average sale-to-list ratios correlate with higher sold volume in our market, explaining ~28% of the variation across 65 observations. This is a weak correlation and likely reflects broader market confidence rather than causation.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background contextâdon&#x27;t use it to forecast volume or advise clients on timing.</div>
+  <div class="eq">((350372570.5709*avg_sale_to_list)+-301761992.1393)</div>
+  <div class="meta"><span class="conf">conf 28%</span><span>elijah_harwood/market</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">market - info</div>
+  <div class="ti">Sale-to-List Ratio Predicts Days on Market</div>
+  <div class="body">Properties selling closer to asking price move faster: each 1% gain in average sale-to-list cuts DOM by ~5 days. This pattern explains about 23% of the variation across 65 monthly snapshots.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as context, not a pricing toolâthe fit is weak and other market forces drive most DOM variation.</div>
+  <div class="eq">(((-12.1701*year_num)+(-509.2515*avg_sale_to_list))+25204.3584)</div>
+  <div class="meta"><span class="conf">conf 24%</span><span>elijah_harwood/market</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">market - info</div>
+  <div class="ti">Year Mostly Just Tracks Calendar Time</div>
+  <div class="body">The year number increases roughly in line with sold volume, but this explains only ~13% of variation across 65 samples. This is essentially a calendar artifactâlater years naturally have more cumulative volume.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background context only; don&#x27;t use it to predict market behavior or advise clients.</div>
+  <div class="eq">((0.0000*(sold_volume+0.0000))+2024.1446)</div>
+  <div class="meta"><span class="conf">conf 13%</span><span>elijah_harwood/market</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Listings (per-zip monthly aggregate) - 5 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Bathroom Count Tracks Bedroom Count</div>
+  <div class="body">Listings with more bedrooms consistently have more bathroomsâeach additional bedroom adds about 0.64 baths on average. This pattern explains ~59% of bathroom variation across 428 listings.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use bedroom count as a rough proxy when estimating bathroom count for comps or new listing prep.</div>
+  <div class="eq">((0.6429*avg_beds)+0.1653)</div>
+  <div class="meta"><span class="conf">conf 59%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Bedroom Count Tracks Bath Count Closely</div>
+  <div class="body">Across 428 listings, average bedrooms rise roughly 0.9 units per additional bath, explaining about 59% of the variation. The pattern is consistent but leaves 41% unexplained.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use this as a rough check on listing specs, but verify bed/bath ratios manually before advising clients on pricing.</div>
+  <div class="eq">((0.9155*avg_baths)+1.2305)</div>
+  <div class="meta"><span class="conf">conf 59%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Median Close Price Tracks Price Per Square Foot</div>
+  <div class="body">Median close price follows average price per square foot, explaining about 53% of the variation across 428 listings. Larger square footage also contributes to the relationship.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use PPSF as your primary comp anchor, but verify with recent closed square footage in the submarket before quoting price ranges.</div>
+  <div class="eq">(avg_price_per_sqft*avg_sqft)</div>
+  <div class="meta"><span class="conf">conf 53%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Listing Square Footage Tracks Median Sale Price</div>
+  <div class="body">Higher median close prices in a segment predict larger average square footage (roughly 3 sq ft per $1,000 increase). This pattern explains about 45% of the variation across 428 listings.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use this as rough context when setting size expectations, but rely on comps for client pricing guidance.</div>
+  <div class="eq">((0.0032*median_close_price)+969.2399)</div>
+  <div class="meta"><span class="conf">conf 46%</span><span>elijah_harwood/listings</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">listings - info</div>
+  <div class="ti">Close Price Explains 40% of PPSF Variation</div>
+  <div class="body">Across 428 listings, average close price explains about 40% of the variation in price per square foot. For every $1,000 increase in close price, PPSF rises roughly $0.20.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use this as context onlyâhalf the PPSF story is elsewhere, so verify comps and neighborhood factors before pricing guidance.</div>
+  <div class="eq">((0.0002*avg_close_price)+99.2557)</div>
+  <div class="meta"><span class="conf">conf 40%</span><span>elijah_harwood/listings</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Deals (per-agent monthly) - 5 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">transactions - opportunity</div>
+  <div class="ti">Total Commission Tracks Closed Count Times Rate</div>
+  <div class="body">Total commission equals closed deals multiplied by average commission per deal, explaining ~91% of the variation across 107 transaction records. This is definitionalâit&#x27;s how commission totals are calculated.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as a structural fact, not a discovery; use it to sanity-check forecast models, not to guide client decisions.</div>
+  <div class="eq">((closed_count*avg_commission)+0.0030)</div>
+  <div class="meta"><span class="conf">conf 90%</span><span>elijah_harwood/transactions</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">transactions - opportunity</div>
+  <div class="ti">Higher Avg Commission Strongly Predicts Fewer Deals</div>
+  <div class="body">Across 107 periods, each $1,000 increase in average commission tracked with roughly 7 fewer closed deals, explaining ~73% of the variation. More closings also correlated with higher deal count, as expected.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Before advising clients on pricing strategy, verify whether this inverse relationship reflects market segment mix or actual pricing friction.</div>
+  <div class="eq">(((0.8282*closed_count)+(-6.6044*avg_commission))+0.7897)</div>
+  <div class="meta"><span class="conf">conf 73%</span><span>elijah_harwood/transactions</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">transactions - opportunity</div>
+  <div class="ti">Closed deals track active deal count</div>
+  <div class="body">Each active deal in the pipeline contributes roughly 0.89 closed transactions on average. This pattern explains ~73% of the variation in monthly closings across 107 samples.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Use current pipeline size to forecast near-term closings, but verify deal quality before setting client expectations.</div>
+  <div class="eq">((0.8949*deal_count)+-0.1377)</div>
+  <div class="meta"><span class="conf">conf 73%</span><span>elijah_harwood/transactions</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">transactions - info</div>
+  <div class="ti">Higher Commission Rates Linked to Fewer Seller Deals</div>
+  <div class="body">Agents with higher average commissions close fewer seller-side transactionsâeach percentage point increase in commission associates with ~22 fewer deals. This pattern explains about 56% of the variation across 107 agents, with total deal volume also playing a role.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Compare your commission structure to peers closing similar volumes; consider whether pricing flexibility could expand your seller pipeline.</div>
+  <div class="eq">(((-22.0052*avg_commission)+(0.6080*deal_count))+-0.1844)</div>
+  <div class="meta"><span class="conf">conf 56%</span><span>elijah_harwood/transactions</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">transactions - info</div>
+  <div class="ti">Average Commission Tracks Total Volume Per Deal</div>
+  <div class="body">Average commission per transaction rises with the total commission collected on each deal, explaining ~54% of the variation across 107 closed transactions. Deal price itself shows negligible direct effect once total commission is considered.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Confirm commission splits and fee structures before using this pattern to forecast individual agent take-home on new deals.</div>
+  <div class="eq">(((0.2841*total_commission)+(-0.0000*avg_deal_price))+0.0053)</div>
+  <div class="meta"><span class="conf">conf 54%</span><span>elijah_harwood/transactions</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Managed associations (HOA / condo) - 5 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">associations - opportunity</div>
+  <div class="ti">Pool Homes Average $323 Lower per Square Foot</div>
+  <div class="body">Properties with pools sell for about $323 less per square foot on average. This pattern explains ~80% of the variation in price per square foot across 114 listings.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Pull comps with and without pools in your target neighborhood to verify this holds locally before pricing guidance.</div>
+  <div class="eq">((-323.1688*has_pool_num)+(has_pool_num+531.9448))</div>
+  <div class="meta"><span class="conf">conf 80%</span><span>elijah_harwood/associations</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">associations - opportunity</div>
+  <div class="ti">Pool Presence Tracks Inversely with Price per Sqft</div>
+  <div class="body">Listings with pools show lower price-per-square-foot on average (â$0.0025 per sqft), explaining ~80% of the variation across 114 properties. This likely reflects larger lot sizes or secondary market positioning.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Flag pool listings for comps analysisâconfirm whether price spread reflects lot size or buyer segment before pricing guidance.</div>
+  <div class="eq">((-0.0025*avg_price_per_sqft)+1.4725)</div>
+  <div class="meta"><span class="conf">conf 80%</span><span>elijah_harwood/associations</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">associations - info</div>
+  <div class="ti">Pool Properties Drive Higher Unit Counts</div>
+  <div class="body">Properties with pools average 165 more units than those without, explaining ~67% of the variation across 114 association listings. This pattern is strong but limited to a narrow sample.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Confirm this holds in your target submarkets before pitching pool communities as higher-density plays to investors.</div>
+  <div class="eq">((164.9766*has_pool_num)+22.9550)</div>
+  <div class="meta"><span class="conf">conf 67%</span><span>elijah_harwood/associations</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">associations - info</div>
+  <div class="ti">Larger Units More Likely Have Security Cameras</div>
+  <div class="body">In associations, each additional 1,000 sqft of average unit size corresponds to roughly 1.4 more buildings with security cameras. This pattern explains ~55% of the variation across 114 associations.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Flag associations with larger units when advising buyers who prioritize security features or sellers marketing camera-equipped buildings.</div>
+  <div class="eq">((0.0014*avg_unit_sqft)+-0.9411)</div>
+  <div class="meta"><span class="conf">conf 55%</span><span>elijah_harwood/associations</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">associations - info</div>
+  <div class="ti">Security Cameras Track Larger Association Units</div>
+  <div class="body">Buildings with security cameras average 408 sqft larger units. This pattern explains ~55% of the variation across 114 associations.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Confirm camera presence when showing buyers who prioritize space; it&#x27;s a reliable signal for larger floor plans.</div>
+  <div class="eq">((407.8344*has_security_cameras_num)+907.7290)</div>
+  <div class="meta"><span class="conf">conf 55%</span><span>elijah_harwood/associations</span></div>
+</div>
+</div>
+
+<h2 class="section-title">Estate / probate (buyer_segment subset) - 4 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Inherited Will Counts Rise Slightly Each Year</div>
+  <div class="body">Buyers inheriting properties tick up by about 3 per year, but this trend explains only ~7% of the variation across 5,215 buyer records. The pattern is weak and likely reflects broader demographic drift rather than a predictive signal.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background context; don&#x27;t use it to forecast individual buyer behavior or segment targeting.</div>
+  <div class="eq">((3.0808*year_num)+-6233.0029)</div>
+  <div class="meta"><span class="conf">conf 7%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Inherited Properties Cluster in Certain Subdivisions</div>
+  <div class="body">In deals where the seller inherited the property, those properties tend to come from subdivisions that have seen roughly 12 inherited-sale transactions in the past year. This pattern explains only ~2% of the variation across 5,215 deals, so it&#x27;s a weak signal.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat as background context only; the fit is too low to guide pricing or marketing decisions for inherited listings.</div>
+  <div class="eq">((0.0053*subdivision_inherited_will_count_12mo)+0.1131)</div>
+  <div class="meta"><span class="conf">conf 2%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Joint Tenancy Slightly Linked to Inherited Closings</div>
+  <div class="body">Buyers who took joint tenancy were marginally more likely to have inherited their property at close, but this pattern explains only ~1% of the variation across 5,215 deals.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat as background context only; this fit is too weak to guide client structuring conversations.</div>
+  <div class="eq">((0.0865*was_inherited_close)+0.0636)</div>
+  <div class="meta"><span class="conf">conf 1%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">buyer_segment - info</div>
+  <div class="ti">Admin Deeds Barely Track Inherited Wills in Subdivisions</div>
+  <div class="body">Subdivisions with more inherited wills show slightly more admin deeds over 12 months (for every 10 inherited wills, about 0.05 more admin deeds), but this explains only ~1% of the variation across 5,215 subdivisions.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background context only; the fit is too weak to guide buyer targeting or subdivision selection decisions.</div>
+  <div class="eq">((0.0047*subdivision_inherited_will_count_12mo)+0.0513)</div>
+  <div class="meta"><span class="conf">conf 1%</span><span>elijah_harwood/buyer_segment</span></div>
+</div>
+</div>
+
+<h2 class="section-title">County recording activity - 3 insights</h2>
+<div class="panel" style="margin-bottom:22px;">
+<div class="ic-card">
+  <div class="tag ">county_activity - info</div>
+  <div class="ti">Satisfaction Surveys Correlate with Seasonal Activity Timing</div>
+  <div class="body">Month-of-year variations explain only ~15% by satisfaction count and yearâa weak signal over 110 county records. This likely reflects seasonal closings bundled with survey timing, not a causal driver.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat as background context only; don&#x27;t adjust client timing or marketing based on this shallow correlation.</div>
+  <div class="eq">(((-1.7941*year_num)+(-4.8607*satisfaction_count))+3638.6813)</div>
+  <div class="meta"><span class="conf">conf 15%</span><span>elijah_harwood/county_activity</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">county_activity - info</div>
+  <div class="ti">County Activity Timing Spans Year-End Period</div>
+  <div class="body">County records show activity concentrated in certain months, with a slight seasonal shift explaining ~14% of the variation across 110 transactions. The pattern is weak and may reflect year-end filing rushes rather than true market trends.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background noise; don&#x27;t use it to time client offers or listings.</div>
+  <div class="eq">((-0.0801*(month_of_year+-0.7970))+2025.3077)</div>
+  <div class="meta"><span class="conf">conf 14%</span><span>elijah_harwood/county_activity</span></div>
+</div>
+<div class="ic-card">
+  <div class="tag ">county_activity - info</div>
+  <div class="ti">County Recording Activity Trends Upward Yearly</div>
+  <div class="body">County recording volume rises by roughly 20 filings per year, with some monthly variation. This pattern explains about 9% of the variation across 110 book-monthsâa weak fit indicating other factors dominate.</div>
+  <div class="body" style="color:var(--text-muted);font-style:italic;margin-top:6px;">Treat this as background context only; do not rely on it for client timing or volume forecasts.</div>
+  <div class="eq">(((20.5199*year_num)+(9.6015*month_of_year))+-41460.9952)</div>
+  <div class="meta"><span class="conf">conf 9%</span><span>elijah_harwood/county_activity</span></div>
+</div>
+</div>
+
+</div>`;
 
 PAGES['compare'] = () => {
   const a = AGENTS[STATE.agent];
