@@ -6,52 +6,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industries | DIGINETICS</title>
-    <meta name="description" content="What the Diginetics engine actually found across seven industries. Plain-English insights, not just accuracy scores.">
+    <meta name="description" content="How Diginetics serves each industry. The real pain points, the operational decisions that hurt, and how Elijah helps the people on the ground.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        .insight {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--r-lg); padding: 1.75rem 2rem;
+        .industry-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .insight:hover { border-color: var(--border-accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
-        .insight-tag {
-            display: inline-block; font-size: 0.58rem; font-weight: 700;
+        .industry-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-md); }
+        .industry-tag {
+            display: inline-block;
+            font-size: 0.62rem; font-weight: 800;
             letter-spacing: 0.1em; text-transform: uppercase;
-            padding: 0.15rem 0.5rem; border-radius: 4px;
+            padding: 0.28rem 0.6rem;
+            border-radius: 999px;
+            margin-bottom: 0.9rem;
+        }
+        .tag-real-estate { background: #ede9fe; color: #6d28d9; }
+        .tag-healthcare { background: #dcfce7; color: #15803d; }
+        .tag-retail { background: #cffafe; color: #0e7490; }
+        .tag-sports { background: #fef3c7; color: #92400e; }
+        .tag-supply { background: #ffe4e6; color: #be123c; }
+        .tag-finance { background: #dbeafe; color: #1d4ed8; }
+        .tag-cyber { background: #fee2e2; color: #b91c1c; }
+        .tag-energy { background: #ffedd5; color: #c2410c; }
+        .tag-water { background: #e0f2fe; color: #0369a1; }
+        .industry-card h3 {
+            font-size: 1.25rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
             margin-bottom: 0.6rem;
         }
-        .tag-green { background: #dcfce7; color: #15803d; }
-        .tag-blue { background: #dbeafe; color: #1d4ed8; }
-        .tag-purple { background: #ede9fe; color: #6d28d9; }
-        .tag-amber { background: #fef3c7; color: #92400e; }
-        .tag-rose { background: #ffe4e6; color: #be123c; }
-        .tag-cyan { background: #cffafe; color: #0e7490; }
-        .tag-slate { background: #f1f5f9; color: #475569; }
+        .industry-card .lead {
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+        .pain-list, .help-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .pain-list li, .help-list li {
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        .pain-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: #ef4444;
+            opacity: 0.7;
+        }
+        .help-list li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            top: 0.05rem;
+            color: var(--green);
+            font-weight: 800;
+            font-size: 0.85rem;
+        }
+        .section-block {
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin: 0.8rem 0 0.5rem;
+        }
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+        .feature-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+        .feature-row .industry-card { padding: 2.4rem; }
+        .feature-side {
+            background: linear-gradient(135deg, #0f1226 0%, #1a1f4a 100%);
+            color: #fff;
+            border-radius: var(--r-lg);
+            padding: 2rem;
+            box-shadow: 0 16px 40px rgba(15,18,38,0.18);
+        }
+        .feature-side h4 {
+            color: #c5cdff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .feature-side h2 {
+            font-size: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.85rem;
+        }
+        .feature-side p {
+            color: rgba(255,255,255,0.78);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .feature-side .pill {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 999px;
+            padding: 0.32rem 0.65rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
 
-        .insight h3 {
-            font-size: 1.05rem; font-weight: 700;
-            line-height: 1.3; letter-spacing: -0.015em;
-            color: var(--text); margin-bottom: 0.5rem;
+        @media (max-width: 900px) {
+            .industry-grid { grid-template-columns: 1fr; }
+            .feature-row { grid-template-columns: 1fr; }
         }
-        .insight p { font-size: 0.84rem; color: var(--text-dim); line-height: 1.7; }
-        .insight p em { color: var(--text); font-style: normal; font-weight: 600; }
-        .insight-link {
-            display: inline-block; margin-top: 0.65rem;
-            font-size: 0.78rem; font-weight: 600; color: var(--accent-light);
-        }
-        .insight-link:hover { color: var(--text); text-decoration: underline; }
     </style>
 </head>
 <body>
 
 <div class="investor-ribbon">
-    <strong>INVESTOR UPDATE</strong> &middot; Pre-seed round open &middot; Patent-pending technology &middot;
-    <a href="about.html#invest">View the raise &rarr;</a>
+    <strong>DIGINETICS</strong> &middot; Intelligence for what happens next &middot;
+    <a href="manifest.html">See Manifest, our first product &rarr;</a>
 </div>
 
 <nav class="site-nav">
@@ -59,9 +163,8 @@
         <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="cre.html">Manifest</a></li>
-            <li><a href="technology.html">Technology</a></li>
-            <li><a href="results.html">Results</a></li>
+            <li><a href="elijah.html">Elijah</a></li>
+            <li><a href="manifest.html">Manifest</a></li>
             <li><a href="industries.html" class="current">Industries</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="about.html#invest">Investors</a></li>
@@ -74,9 +177,8 @@
 </nav>
 <div class="mobile-nav">
     <a href="index.html">Home</a>
-    <a href="cre.html">Manifest</a>
-    <a href="technology.html">Technology</a>
-    <a href="results.html">Results</a>
+    <a href="elijah.html">Elijah</a>
+    <a href="manifest.html">Manifest</a>
     <a href="industries.html" class="current">Industries</a>
     <a href="about.html">About</a>
     <a href="about.html#invest">Investors</a>
@@ -84,175 +186,254 @@
 </div>
 
 <div class="container page-top">
-    <div class="label">What the system found</div>
-    <div class="title">Real findings from real industries.</div>
-    <div class="subtitle">Not just that the formulas passed validation, but what they actually said. Two standout findings from each industry, in plain English.</div>
+    <div class="label">How Elijah Serves Each Industry</div>
+    <div class="title">The real pain points. The decisions that hurt. The work Elijah is built to do.</div>
+    <div class="subtitle">Every industry on this page has the same problem in a different costume: too much data, not enough actual answers, and no time to wait for an analyst. Elijah is the layer that turns the noise into a recommendation a person can defend in the room.</div>
 </div>
 
-<!-- ═══════════ REAL ESTATE / MANIFEST ═══════════ -->
+<!-- ═══════════ FEATURED: REAL ESTATE / MANIFEST ═══════════ -->
 <div class="container">
     <div class="section">
-        <div class="label">Real Estate, powered by Manifest. 31 metros, 12 years of monthly data.</div>
-        <div class="title">Drivers that held through COVID, the boom, rate hikes, and normalization.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-green">99.90% accuracy</span>
-                <h3>Housing supply is almost entirely driven by mortgage rates.</h3>
-                <p>Rates rise, supply rises. Rates fall, supply tightens. Held across <em>zero-rate policy, rapid tightening, and plateau</em>, a decade of wildly different rate environments. One driver, never broke.</p>
-                <a href="cre.html" class="insight-link">See Manifest &rarr;</a>
+        <div class="feature-row">
+            <div class="industry-card">
+                <span class="industry-tag tag-real-estate">Real Estate &middot; Live Today as Manifest</span>
+                <h3>Brokerages, agents, and lenders in a market they cannot read with comps alone.</h3>
+                <p class="lead">71% of US agents have zero active listings. Marketing budgets are split evenly across databases that should not be treated equally. Sellers want a price defense. Buyers want a clear answer in the first ten minutes. Comp sheets do not get any of that done.</p>
+
+                <div class="section-block">Pain points we see</div>
+                <ul class="pain-list">
+                    <li>Pricing decisions made on instinct, then defended after the fact when days on market pile up.</li>
+                    <li>Marketing spend wasted on the local audience when the real buyer is three feeder markets away.</li>
+                    <li>Buyer agents under pressure to prove value in the first meeting under post-settlement rules.</li>
+                    <li>Brokerage owners with no clear view of which agents are targeting correctly versus blasting.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Ranks feeder ZIPs and buyer cohorts for each listing so spend goes where intent actually is.</li>
+                    <li>Surfaces pricing floors and demand signals so agents walk into seller meetings with proof.</li>
+                    <li>Produces a one-page buyer brief: 12-month price read, rate window, max-bid impact.</li>
+                    <li>Gives broker owners a per-agent and per-office view of targeting quality and price-cut risk.</li>
+                </ul>
             </div>
-            <div class="insight">
-                <span class="insight-tag tag-green">99.89% accuracy</span>
-                <h3>Housing permits track sales at a steady 2:1 ratio.</h3>
-                <p>About 2 permits for every completed new home sale, stable across a full cycle. A 10% drop in sales means roughly a 10% permit decline. <em>Builders, REITs, and lenders</em> can read the pipeline months ahead from a single number.</p>
-                <a href="cre.html" class="insight-link">See Manifest &rarr;</a>
+            <div class="feature-side">
+                <h4>The Product</h4>
+                <h2>Elijah ships to brokerages as Manifest.</h2>
+                <p>Manifest is the brokerage-facing interface for Elijah's recommendations. Every pricing call, every buyer brief, every campaign rank, every coaching trigger comes from Elijah underneath. Manifest is where the agent sees it and acts.</p>
+                <span class="pill">Listing Launch</span>
+                <span class="pill">Buyer Brief</span>
+                <span class="pill">CRM Targeting</span>
+                <span class="pill">Price Defense</span>
+                <span class="pill">Agent Coach</span>
+                <p style="margin-top: 1rem;"><a href="manifest.html" style="color:#fff;font-weight:700;">Open the Manifest mockup &rarr;</a></p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ═══════════ BASEBALL ═══════════ -->
+<!-- ═══════════ THE OTHER INDUSTRIES ═══════════ -->
 <div class="container">
     <div class="section">
-        <div class="label">Baseball. 60 MLB players. 2025 season, locked pre-season.</div>
-        <div class="title">Forecasts set before Opening Day. Checked against the real season.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-green">Marquee call</span>
-                <h3>Aaron Judge: 54 HR forecast vs 53 actual.</h3>
-                <p>Got the most important power hitter in baseball within one home run, before a single 2025 game. The driver: <em>short-term power surges</em>, not batting average or contact quality. Scouting watches contact. The formulas watch momentum.</p>
-                <a href="baseball.html" class="insight-link">See all 60 players &rarr;</a>
-            </div>
-            <div class="insight">
-                <span class="insight-tag tag-blue">Stable vs. breakout</span>
-                <h3>Brent Rooker: strikeouts dead-on, home runs missed by 20.</h3>
-                <p>Strikeouts: 188 forecast, 188 actual (100% match). Home runs: forecast 19 when he hit 39. Not a failure: it tells you <em>what is stable</em> (swing-and-miss) versus <em>what changed</em> (a real power breakout). That distinction is the insight.</p>
-                <a href="baseball.html" class="insight-link">See all 60 players &rarr;</a>
-            </div>
-        </div>
-    </div>
-</div>
+        <div class="label">Where Elijah Goes Next</div>
+        <div class="title">The same engine, applied to the next set of operational decisions.</div>
+        <p class="subtitle">Real estate is use case one because the brokerage pain is acute and the data is rich. The same Elijah engine is built to serve every industry below. Each card is the operator-level view: what hurts, and what Elijah is positioned to do about it.</p>
 
-<!-- ═══════════ HEALTHCARE ═══════════ -->
-<div class="container">
-    <div class="section">
-        <div class="label">Healthcare. 101,766 patient encounters across 130 US hospitals.</div>
-        <div class="title">The hardest problem in hospital analytics, hit to 0.02 percentage points.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-green">Primary target</span>
-                <h3>30-day readmission rate: 10.78% projected vs 10.80% actual.</h3>
-                <p>Published models (over 81 reviewed in BMJ and JAMA) hit 0.60 to 0.76 AUC. Our system landed within <em>0.02 percentage points</em>, roughly 20 times more accurate than the historical-average baseline.</p>
-                <a href="healthcare.html" class="insight-link">Full healthcare results &rarr;</a>
-            </div>
-            <div class="insight">
-                <span class="insight-tag tag-purple">Self-driving discovery</span>
-                <h3>High glucose prevalence drives readmissions, found on its own.</h3>
-                <p>No clinical hypothesis was given. The system independently found that readmissions are governed by <em>the share of patients with high glucose</em>, adjusted for demographics. Lines up with published hyperglycemia literature, found from scratch.</p>
-                <a href="healthcare.html" class="insight-link">Full healthcare results &rarr;</a>
-            </div>
-        </div>
-    </div>
-</div>
+        <div class="industry-grid">
 
-<!-- ═══════════ ENERGY ═══════════ -->
-<div class="container">
-    <div class="section">
-        <div class="label">Energy. Volve oilfield, the industry-standard benchmark.</div>
-        <div class="title">What the formulas reveal about how a reservoir actually behaves.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-amber">Counterintuitive</span>
-                <h3>Operational uptime carries the strongest signal, not flow rate or pressure.</h3>
-                <p>Engineers expect flow rate or tubing pressure to dominate. The system found <em>uptime</em> had the strongest fit, while flow and pressure showed weak explainability. Uptime is more stable than the fluid dynamics everyone optimizes around.</p>
-            </div>
-            <div class="insight">
-                <span class="insight-tag tag-amber">Feedback loops</span>
-                <h3>60 reverse-feedback loops between production variables.</h3>
-                <p><em>60 feedback loops and 343 evolution multipliers</em> showing how production variables feed back into each other. Traditional reservoir models take years to calibrate. This was discovered automatically from 8,245 observations.</p>
-            </div>
-        </div>
-    </div>
-</div>
+            <!-- Healthcare -->
+            <div class="industry-card">
+                <span class="industry-tag tag-healthcare">Healthcare</span>
+                <h3>Hospitals and health systems carrying readmission and cost risk no model explains.</h3>
+                <p class="lead">CMS penalties keep rising. AUC scores in published readmission models stall in the 0.60 to 0.76 range. Frontline clinicians do not get usable answers. Administrators get black-box scores they cannot defend to a board.</p>
 
-<!-- ═══════════ WATER ═══════════ -->
-<div class="container">
-    <div class="section">
-        <div class="label">Water. Global freshwater stress, 10 countries.</div>
-        <div class="title">The strongest signal was not water. It was conflict.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-rose">Unexpected signal</span>
-                <h3>Conflict events had the highest predictive signal, not freshwater or rainfall.</h3>
-                <p>In a dataset built around water stress, <em>conflict events</em> carried a stronger signal than freshwater per capita or water-stress percentage. Conflict is a leading indicator of water instability, not the other way around.</p>
-            </div>
-            <div class="insight">
-                <span class="insight-tag tag-slate">Honest reporting</span>
-                <h3>Headline metrics resisted simple formulas. The pipeline still passed 76 of 76.</h3>
-                <p>Water-stress and freshwater-per-capita resisted formula-style explanation. The system still passed <em>all 76 formulas at 98.9% accuracy</em>. We report both: where simple formulas work and where they do not.</p>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>Readmission models that rank patients but cannot explain why.</li>
+                    <li>Cost drivers buried under thousands of clinical and operational metrics.</li>
+                    <li>Compliance and audit pressure that opaque ML cannot satisfy.</li>
+                    <li>Limited clinical bandwidth to investigate every flagged case.</li>
+                </ul>
 
-<!-- ═══════════ RETAIL ═══════════ -->
-<div class="container">
-    <div class="section">
-        <div class="label">Retail. 180 days of real POS data, 98 metrics.</div>
-        <div class="title">Hidden revenue links no BI dashboard would ever surface.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-cyan">Early warning</span>
-                <h3>Disposable vape average sale predicts whole-store health, 3 days early.</h3>
-                <p>When disposable vape average sale rises, the entire store follows <em>3 days later</em>. One category predicts the trajectory of the whole business before it shows up in standard reports.</p>
-                <a href="retail.html" class="insight-link">Full retail results &rarr;</a>
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Surfaces the actual clinical and demographic drivers behind readmission risk in plain math.</li>
+                    <li>Hands administrators a defensible explanation, not a score, for board and regulator review.</li>
+                    <li>Identifies cost-driver formulas Elijah found on a hospital dataset with no clinical hypothesis given.</li>
+                    <li>Continues running on its own to flag emerging cost and risk drivers month over month.</li>
+                </ul>
             </div>
-            <div class="insight">
-                <span class="insight-tag tag-cyan">Hidden dependency</span>
-                <h3>Cigarette sales are not driven by cigarette demand.</h3>
-                <p>Cigarette transactions depend on <em>disposable vape volume and cigarillo traffic</em>. If vape supply drops, cigarette baskets decline even with full inventory. A cascade through a dependency nobody knew existed.</p>
-                <a href="retail.html" class="insight-link">Full retail results &rarr;</a>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- ═══════════ TRANSPORTATION ═══════════ -->
-<div class="container">
-    <div class="section">
-        <div class="label">Transportation. Two independent corridor studies.</div>
-        <div class="title">Freight-passenger dynamics captured exactly.</div>
-        <div class="grid-2">
-            <div class="insight">
-                <span class="insight-tag tag-blue">Perfect fit</span>
-                <h3>Freight-passenger speed gap: perfect mathematical fit.</h3>
-                <p>Found the <em>exact relationship</em> between freight and passenger speed gaps, AM and PM. DOTs spend years calibrating travel-demand models. We found the closed-form formula in a single run.</p>
-            </div>
-            <div class="insight">
-                <span class="insight-tag tag-blue">Independent replication</span>
-                <h3>Congestion dynamics also hit a perfect fit, on a separate dataset.</h3>
-                <p>A separate PEMS dataset (<em>16,800 observations across 25 corridors</em>) independently produced perfect-fit formulas for speed range and speed deficit. Two datasets, two measurement systems, same result.</p>
-            </div>
-        </div>
-    </div>
-</div>
+            <!-- Retail -->
+            <div class="industry-card">
+                <span class="industry-tag tag-retail">Retail</span>
+                <h3>Multi-location retailers reading lagging dashboards while the basket is already shifting.</h3>
+                <p class="lead">POS systems generate enormous data and almost no insight. Cross-category dependencies are invisible. Operators find out about a problem once revenue has already softened.</p>
 
-<!-- ═══════════ QUANTUM TEASER ═══════════ -->
-<div class="container">
-    <div class="section" style="text-align: center;">
-        <div class="label">Architecture Advantage</div>
-        <div class="title">Every formula we discover today is quantum-ready tomorrow.</div>
-        <div class="subtitle" style="margin-left: auto; margin-right: auto;">Our outputs are closed-form formulas, the native format quantum computers are designed to accelerate. When quantum arrives, we do not rebuild. We accelerate.</div>
-        <a href="quantum.html" class="btn btn-primary" style="margin-top: 0.5rem;">See our quantum readiness &rarr;</a>
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>BI dashboards that show what happened, not what is about to happen.</li>
+                    <li>Inventory and supply decisions made without knowing the real category dependencies.</li>
+                    <li>Promotions launched against wrong categories and wrong dayparts.</li>
+                    <li>No early warning before whole-store revenue weakens.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Finds leading indicator categories that move days before total revenue follows.</li>
+                    <li>Surfaces hidden cross-category dependencies operators do not know exist.</li>
+                    <li>Generates store-by-store readings that managers can actually act on this week.</li>
+                    <li>Keeps learning as the basket shifts seasonally so the early warnings stay current.</li>
+                </ul>
+            </div>
+
+            <!-- Sports -->
+            <div class="industry-card">
+                <span class="industry-tag tag-sports">Sports</span>
+                <h3>Front offices, coaches, and analytics groups managing multi-million-dollar decisions on incomplete signals.</h3>
+                <p class="lead">Player evaluation is dominated by surface stats and traditional projection systems refined over decades. The drivers behind real performance shifts are often hidden inside short-term momentum and matchup signals nobody is watching.</p>
+
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>Projection systems that miss real breakouts and overrate stable but stagnant veterans.</li>
+                    <li>Evaluation that focuses on contact quality while real changes show up in momentum.</li>
+                    <li>Player-development time wasted on the wrong drivers for that specific player.</li>
+                    <li>Front-office capital decisions tied to forecasts they cannot fully defend.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Per-player formulas, not generic system curves, with what is stable and what is changing called out.</li>
+                    <li>Surfaces the specific drivers behind a player's projection so coaches know what to work on.</li>
+                    <li>Locks pre-season forecasts that hold up against the actual season, not after-the-fact narratives.</li>
+                    <li>Used the same way: front office, coaching, scouting, and player representation.</li>
+                </ul>
+            </div>
+
+            <!-- Supply Chain -->
+            <div class="industry-card">
+                <span class="industry-tag tag-supply">Supply Chain</span>
+                <h3>Operations teams flying blind between bottlenecks, exceptions, and "the system says so."</h3>
+                <p class="lead">Supply chain decisions are made under time pressure with data that arrives late and signals that are too noisy to trust. Most analytics describe the past. The disruption is already in motion before anyone reacts.</p>
+
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>No early warning on routing failures or capacity constraints until they hit the customer.</li>
+                    <li>Forecasting tools that do not survive disruption events.</li>
+                    <li>Decision-makers without a defensible reason behind any specific recommendation.</li>
+                    <li>Fragmented data across vendors, transit modes, and warehousing.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Surfaces the real drivers behind reliability and timing across corridors and lanes.</li>
+                    <li>Builds formulas that explain when and why a route or vendor stops behaving.</li>
+                    <li>Generates scenario reads operators can use under disruption, not just under steady state.</li>
+                    <li>Keeps refining as data flows in so disruption signals stay current.</li>
+                </ul>
+            </div>
+
+            <!-- Financial Services -->
+            <div class="industry-card">
+                <span class="industry-tag tag-finance">Financial Services</span>
+                <h3>Underwriters, allocators, and risk teams forced to defend opaque model outputs.</h3>
+                <p class="lead">Static underwriting models miss the forward signals. Black-box risk scores cannot be defended in a regulated review. Allocators are asked to act on dashboards they cannot fully explain.</p>
+
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>Underwriting that cannot show its work when risk scores are challenged.</li>
+                    <li>Portfolio monitoring tools that flag issues after losses already hit the books.</li>
+                    <li>Stress testing that lives in spreadsheets and breaks the moment regimes shift.</li>
+                    <li>Compliance and audit pressure that traditional ML cannot meet.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Produces formulas that link risk drivers to outcomes in language an auditor can read.</li>
+                    <li>Builds forward-looking signals that move before defaults or distress hit.</li>
+                    <li>Runs scenarios on rate, cycle, and macro shifts grounded in validated math.</li>
+                    <li>Stores every formula and run as a verifiable record for regulator review.</li>
+                </ul>
+            </div>
+
+            <!-- Cybersecurity -->
+            <div class="industry-card">
+                <span class="industry-tag tag-cyber">Cybersecurity</span>
+                <h3>Security teams drowning in alerts and unable to explain why they prioritized one over another.</h3>
+                <p class="lead">SOC analysts are buried in noise. Alert fatigue is real. Boards want a defensible view of why incidents are escalating, not a heatmap. Regulators want explanations, not anomaly scores.</p>
+
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>Alert volumes that exceed any team's capacity to triage carefully.</li>
+                    <li>No clean way to explain why a given alert was prioritized or deprioritized.</li>
+                    <li>Threat patterns that recur quarterly but are treated as new each time.</li>
+                    <li>Communication gaps between security operations and executive leadership.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Identifies the real drivers behind alert escalation across recurring incident clusters.</li>
+                    <li>Produces readable formulas analysts and executives can both understand.</li>
+                    <li>Runs continuously to catch shifts in attack pattern signatures over time.</li>
+                    <li>Stores every signal and decision as an auditable trail for compliance work.</li>
+                </ul>
+            </div>
+
+            <!-- Energy -->
+            <div class="industry-card">
+                <span class="industry-tag tag-energy">Energy</span>
+                <h3>Operators optimizing the wrong levers because their models say the obvious things matter most.</h3>
+                <p class="lead">Reservoir engineers spend years calibrating models that focus on flow rate and pressure. Real performance often hinges on operational uptime, scheduling, and feedback loops nobody is modeling. Capital decisions ride on it.</p>
+
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>Reservoir and field models that take years to calibrate manually.</li>
+                    <li>Operational decisions optimized around variables that are not actually the strongest drivers.</li>
+                    <li>Production losses traced to root causes only in hindsight.</li>
+                    <li>Capital allocation across fields based on smoothed historical curves.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Surfaces the actual strongest drivers of output, even when they are counter-intuitive.</li>
+                    <li>Discovers feedback loops between production variables in a single run, not years of calibration.</li>
+                    <li>Validated against industry-standard datasets used by reservoir engineering teams.</li>
+                    <li>Produces formulas operators can plug into existing planning workflows.</li>
+                </ul>
+            </div>
+
+            <!-- Water and Infrastructure -->
+            <div class="industry-card">
+                <span class="industry-tag tag-water">Water and Infrastructure</span>
+                <h3>Public sector and utility planners forced to make resource decisions on partial signals.</h3>
+                <p class="lead">Water stress, infrastructure resilience, and resource allocation involve drivers that span economics, geography, climate, and conflict. Most modeling stays inside its silo. Decisions cost decades.</p>
+
+                <div class="section-block">Pain points</div>
+                <ul class="pain-list">
+                    <li>Resource models siloed inside one domain when the real drivers are cross-domain.</li>
+                    <li>Headline metrics like water stress that resist clean explanation.</li>
+                    <li>Policy decisions exposed when underlying assumptions are challenged.</li>
+                    <li>Long lead times before infrastructure choices show their consequences.</li>
+                </ul>
+
+                <div class="section-block">How Elijah helps</div>
+                <ul class="help-list">
+                    <li>Surfaces leading signals across domains, even unexpected ones, before stress shows up downstream.</li>
+                    <li>Honestly reports where simple formulas work and where they do not, instead of overfitting.</li>
+                    <li>Gives planners formulas that can be reviewed publicly and defended in policy contexts.</li>
+                    <li>Runs across countries and regions on the same engine, making comparisons defensible.</li>
+                </ul>
+            </div>
+
+        </div>
     </div>
 </div>
 
 <!-- ═══════════ CTA ═══════════ -->
 <div class="container">
     <div class="cta-block">
-        <h2>Your industry has formulas hiding in its data.<br>We find them.</h2>
-        <p>Bring us your data. We will run the engine and show you what it discovers.</p>
-        <a href="mailto:michael.lazzarotti@diginetics.co" class="cta-email">michael.lazzarotti@diginetics.co</a>
+        <h2>Bring Elijah into your industry.</h2>
+        <p>Send a dataset, a pain point, or a decision your team keeps having to defend. We will show you the formulas Elijah surfaces.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Industry%20Inquiry" class="cta-email">michael.lazzarotti@diginetics.co</a>
     </div>
 </div>
 
@@ -261,9 +442,9 @@
         <span>&copy; 2026 Diginetics Intelligence Systems, Inc. All rights reserved.</span>
         <span>
             <em>Intelligence for what happens next.</em>
-            <a href="cre.html">Manifest</a>
-            <a href="technology.html">Technology</a>
-            <a href="results.html">Results</a>
+            <a href="elijah.html">Elijah</a>
+            <a href="manifest.html">Manifest</a>
+            <a href="about.html">About</a>
             <a href="about.html#invest">Investors</a>
         </span>
     </div>

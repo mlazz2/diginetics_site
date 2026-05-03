@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elijah | The Engine Behind Diginetics</title>
+    <meta name="description" content="Elijah is the discovery engine behind Diginetics. It reads your data, finds the formulas, and gets smarter every time you use it.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        .elijah-hero {
+            padding: 138px 0 70px;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(67,56,202,0.16), transparent 32%),
+                radial-gradient(circle at 80% 14%, rgba(124,58,237,0.12), transparent 30%),
+                linear-gradient(180deg, #fafafa 0%, #f4f5fb 100%);
+        }
+        .elijah-kicker {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            color: var(--accent); background: var(--accent-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 999px;
+            padding: 0.38rem 0.7rem;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .elijah-kicker::before {
+            content: ""; width: 7px; height: 7px; border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px rgba(5,150,105,0.45);
+        }
+        .elijah-title {
+            font-size: clamp(2.3rem, 4.6vw, 3.9rem);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+            max-width: 880px;
+        }
+        .elijah-title .grad {
+            background: linear-gradient(135deg, var(--accent), #7c3aed, var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .elijah-copy {
+            max-width: 720px;
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.78;
+            margin-bottom: 2rem;
+        }
+        .elijah-copy strong { color: var(--text); }
+        .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+        .smarter-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .smarter-card {
+            background: #111529;
+            color: #fff;
+            border-radius: var(--r-lg);
+            padding: 1.4rem 1.3rem;
+        }
+        .smarter-card strong {
+            display: block;
+            font-family: var(--mono);
+            font-size: 1.4rem;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.02em;
+        }
+        .smarter-card span {
+            color: rgba(255,255,255,0.72);
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .step-card .num {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.7rem;
+        }
+        .step-card h3 {
+            font-size: 1.05rem;
+            line-height: 1.25;
+            margin-bottom: 0.55rem;
+        }
+        .step-card p {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .proof-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .proof-tag {
+            display: inline-block;
+            font-size: 0.62rem; font-weight: 800;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            background: #dcfce7;
+            color: #15803d;
+            margin-bottom: 0.85rem;
+        }
+        .proof-card h3 {
+            font-size: 1.1rem;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.015em;
+        }
+        .proof-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .proof-card p em {
+            color: var(--text); font-style: normal; font-weight: 600;
+        }
+
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .what-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.6rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .what-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .what-card p { color: var(--text-dim); font-size: 0.86rem; line-height: 1.65; }
+
+        @media (max-width: 900px) {
+            .smarter-strip,
+            .step-grid,
+            .proof-grid,
+            .what-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="investor-ribbon">
+    <strong>DIGINETICS</strong> &middot; Intelligence for what happens next &middot;
+    <a href="manifest.html">See Manifest, our first product &rarr;</a>
+</div>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="elijah.html" class="current">Elijah</a></li>
+            <li><a href="manifest.html">Manifest</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#invest">Investors</a></li>
+            <li><a href="manifest-demo.html" class="nav-demo-link">Live Demo</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="elijah.html" class="current">Elijah</a>
+    <a href="manifest.html">Manifest</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="about.html#invest">Investors</a>
+    <a href="manifest-demo.html" class="mobile-demo-link">Live Demo</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="elijah-hero">
+    <div class="container">
+        <div class="elijah-kicker">The Engine Behind Diginetics</div>
+        <h1 class="elijah-title">Meet <span class="grad">Elijah</span>. The discovery engine that reads your data and tells you what is actually driving it.</h1>
+        <p class="elijah-copy"><strong>Elijah is what makes Manifest, and everything else we build, work.</strong> You hand it the messy data your business already has. It hands back clear, readable formulas that explain what is moving your numbers, what changes when conditions shift, and what to do next. No black boxes. No domain experts required. No tuning. Same engine across every industry we have run.</p>
+        <div class="hero-actions">
+            <a href="manifest.html" class="btn btn-primary btn-lg">See Elijah Powering Manifest</a>
+            <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Demo" class="btn btn-ghost btn-lg">Run Elijah on Your Data</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ WHAT ELIJAH DOES ═══════════ -->
+<div class="container">
+    <div class="section">
+        <div class="label">What Elijah Does</div>
+        <div class="title">It does not predict. It explains.</div>
+        <p class="subtitle">Most tools spit out a number and ask you to trust it. Elijah hands you the formula behind the number. Anyone on your team can read it, challenge it, and act on it.</p>
+
+        <div class="what-grid">
+            <div class="what-card">
+                <h3>Reads your data</h3>
+                <p>Whatever you have. Spreadsheets, pipelines, exports, time-series. No special preparation. Elijah figures out what to do with it.</p>
+            </div>
+            <div class="what-card">
+                <h3>Finds the drivers</h3>
+                <p>It surfaces the actual factors moving your numbers, even ones nobody was looking for. The drivers are written as readable formulas, not invisible weights.</p>
+            </div>
+            <div class="what-card">
+                <h3>Stress-tests them</h3>
+                <p>Each formula is checked against unseen data. Negative results are reported. Failed formulas are counted. We do not ship what we cannot defend.</p>
+            </div>
+            <div class="what-card">
+                <h3>Forecasts what is next</h3>
+                <p>Once the formulas hold, Elijah uses them to project what is coming. The forecast is grounded in math you can verify, not vibes.</p>
+            </div>
+            <div class="what-card">
+                <h3>Runs scenarios</h3>
+                <p>Change a driver, see the downstream effect. What if rates drop. What if supply tightens. Elijah is built to answer those questions in seconds.</p>
+            </div>
+            <div class="what-card">
+                <h3>Stores everything</h3>
+                <p>Every formula, every test, every forecast is saved as a verifiable record. Your team, your auditors, and your clients can trace any answer back to its source.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ AUTONOMOUS DISCOVERY ═══════════ -->
+<div class="container">
+    <div class="section">
+        <div class="label">Autonomous Discovery</div>
+        <div class="title">It runs on its own. And it gets smarter every time you use it.</div>
+        <p class="subtitle">Elijah is not a tool you point at one question and forget. Once it is running on your data, it keeps looking. It finds gaps in its own knowledge, fills them, and grows a private library of validated formulas that compound month over month.</p>
+
+        <div class="step-grid">
+            <div class="step-card">
+                <div class="num">01 &middot; ASK</div>
+                <h3>Manual discovery</h3>
+                <p>Point Elijah at a dataset or a specific question. In a single run, you get back validated formulas, scenario analysis, and forecasts. Real value from day one, no months of setup.</p>
+            </div>
+            <div class="step-card">
+                <div class="num">02 &middot; SELF-DRIVING</div>
+                <h3>Autonomous discovery</h3>
+                <p>Elijah keeps running on its own. It identifies gaps in its own library, then goes finds the missing relationships and validates them, without anyone asking. You wake up to insights you did not know to ask for.</p>
+            </div>
+            <div class="step-card">
+                <div class="num">03 &middot; COMPOUNDING</div>
+                <h3>Gets smarter every month</h3>
+                <p>Every validated formula joins your private library. Next month's questions draw from a deeper base. The library only grows. The longer you use Elijah, the sharper it gets.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ PROOF ═══════════ -->
+<div class="container">
+    <div class="section">
+        <div class="label">What Elijah Has Already Found</div>
+        <div class="title">Real findings from real industries.</div>
+        <p class="subtitle">Same engine, no custom tuning, run on real data. Below are the kind of insights Elijah surfaced on its first pass through these industries. Each one is a readable formula, not a black-box prediction.</p>
+
+        <div class="proof-grid">
+            <div class="proof-card">
+                <span class="proof-tag">Real Estate</span>
+                <h3>Housing supply tracks mortgage rates with nearly perfect accuracy.</h3>
+                <p>Elijah found that <em>months of supply</em> moves almost entirely with the 30-year mortgage rate. Rates rise, supply rises. Held through zero-rate policy, rapid tightening, and plateau. One driver, never broke. The kind of formula a brokerage can plan capacity around for the next 12 months.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Real Estate</span>
+                <h3>Housing permits track new sales at a steady 2 to 1 ratio.</h3>
+                <p>Two permits for every completed new home sale, stable across a full housing cycle. A 10% drop in sales means roughly a 10% permit decline. Builders, REITs, and lenders can read the pipeline months ahead from a single number Elijah surfaced.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Healthcare</span>
+                <h3>30-day readmissions, hit within 0.02 percentage points.</h3>
+                <p>Elijah was given diabetes hospital data with no clinical hypothesis. It independently named the share of patients with high glucose, adjusted for demographics, as the dominant driver. Projected the readmission rate within <em>0.02 percentage points</em> of actual, when published models reach 2 to 5 points.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Sports</span>
+                <h3>Aaron Judge: 54 home runs forecast vs 53 actual, locked pre-season.</h3>
+                <p>Elijah ran on pre-2025 player data and locked the forecast before Opening Day. The driver it surfaced was <em>short-term power surges</em>, not contact quality. Scouting watches contact. Elijah watches momentum, and got the most important power hitter in baseball within one home run.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Retail</span>
+                <h3>One product category predicts the whole store, three days early.</h3>
+                <p>Elijah found that disposable vape average sale moves <em>three days before</em> the rest of the store follows. One category becomes the early warning system for the entire business, well before standard reports flag anything.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Energy</span>
+                <h3>Operational uptime, not flow rate, drives reservoir output.</h3>
+                <p>Engineers expected flow rate or pressure to dominate. Elijah found <em>uptime</em> had the strongest fit on the industry-standard Volve dataset. A counter-intuitive answer that points operators toward a more controllable lever.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Transportation</span>
+                <h3>Freight and passenger speed gap, captured exactly.</h3>
+                <p>Elijah produced a closed-form formula for the freight-passenger speed gap, AM and PM, then independently replicated it on a separate corridor dataset. DOTs spend years calibrating travel-demand models. Elijah did it in a single run.</p>
+            </div>
+            <div class="proof-card">
+                <span class="proof-tag">Water and Resources</span>
+                <h3>Conflict events predict water stress better than water itself.</h3>
+                <p>In a dataset built around water stress, Elijah surfaced <em>conflict events</em> as the strongest leading signal, ahead of freshwater per capita or rainfall. The kind of cross-domain finding that traditional analysis would never go looking for.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ WHY THIS MATTERS ═══════════ -->
+<div class="container">
+    <div class="section">
+        <div class="label">Why This Matters</div>
+        <div class="title">Elijah is the layer your team can actually trust.</div>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Readable, not opaque</h3>
+                <p>Every output is a formula a domain expert can inspect, challenge, and explain to a client or a regulator. No "the model said so" answers.</p>
+            </div>
+            <div class="card">
+                <h3>One platform across industries</h3>
+                <p>Same engine in real estate, healthcare, sports, retail, transportation, energy, water, and more. No custom build per industry, no rebuild when you expand.</p>
+            </div>
+            <div class="card">
+                <h3>Compounding intelligence</h3>
+                <p>The library only grows. Each validated formula stays. Your private library is something every competitor would have to start from zero to match.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ CTA ═══════════ -->
+<div class="container">
+    <div class="cta-block">
+        <h2>Run Elijah on your data.</h2>
+        <p>Send a dataset or a question, and we will show you the formulas Elijah surfaces. The first run is on us.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Demo" class="cta-email">michael.lazzarotti@diginetics.co</a>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2026 Diginetics Intelligence Systems, Inc. All rights reserved.</span>
+        <span>
+            <em>Intelligence for what happens next.</em>
+            <a href="elijah.html">Elijah</a>
+            <a href="manifest.html">Manifest</a>
+            <a href="industries.html">Industries</a>
+            <a href="about.html">About</a>
+            <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>
