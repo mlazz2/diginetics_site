@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialist AI | Custom Agents by Diginetics</title>
+    <meta name="description" content="Diginetics builds custom specialist AI agents for high-stakes operations: grounded in your data, orchestrated in production, and built to explain every recommendation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        .sa-hero {
+            padding: 138px 0 70px;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(67,56,202,0.16), transparent 32%),
+                radial-gradient(circle at 80% 14%, rgba(124,58,237,0.12), transparent 30%),
+                linear-gradient(180deg, #fafafa 0%, #f4f5fb 100%);
+        }
+        .sa-kicker {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            color: var(--accent); background: var(--accent-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 999px;
+            padding: 0.38rem 0.7rem;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .sa-kicker::before {
+            content: ""; width: 7px; height: 7px; border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px rgba(5,150,105,0.45);
+        }
+        .sa-title {
+            font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+            max-width: 900px;
+        }
+        .sa-title .grad {
+            background: linear-gradient(135deg, var(--accent), #7c3aed, var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .sa-copy {
+            max-width: 740px;
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.78;
+            margin-bottom: 2rem;
+        }
+        .sa-copy strong { color: var(--text); }
+        .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .compare-card {
+            border-radius: var(--r-lg);
+            padding: 1.75rem;
+            border: 1px solid var(--border);
+        }
+        .compare-card.general {
+            background: #f8fafc;
+        }
+        .compare-card.specialist {
+            background: linear-gradient(135deg, #0f1226 0%, #1a1f4a 100%);
+            color: #fff;
+            border-color: rgba(67,56,202,0.35);
+        }
+        .compare-label {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .compare-card.general .compare-label { color: #64748b; }
+        .compare-card.specialist .compare-label { color: #c5cdff; }
+        .compare-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+        .compare-card.general h3 { color: var(--text); }
+        .compare-card.specialist h3 { color: #fff; }
+        .compare-card ul {
+            margin: 0;
+            padding-left: 1.1rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .compare-card.general li { color: var(--text-dim); }
+        .compare-card.specialist li { color: #d8ddff; }
+
+        .build-steps {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .build-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .build-step .num {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.6rem;
+        }
+        .build-step h3 {
+            font-size: 1rem;
+            margin-bottom: 0.45rem;
+            line-height: 1.25;
+        }
+        .build-step p {
+            color: var(--text-dim);
+            font-size: 0.86rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.6rem;
+        }
+        .pillar-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .pillar-card p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.7; margin: 0; }
+
+        .stack-band {
+            background: #111529;
+            color: #fff;
+            border-radius: var(--r-xl);
+            padding: 2.5rem;
+            margin-top: 0.5rem;
+        }
+        .stack-band .label { color: #c5cdff; }
+        .stack-band h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            margin: 0.5rem 0 1rem;
+            letter-spacing: -0.02em;
+        }
+        .stack-band p {
+            color: #d8ddff;
+            max-width: 720px;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .stack-layers {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+        .stack-layer {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--r);
+            padding: 1.1rem 1.2rem;
+        }
+        .stack-layer strong {
+            display: block;
+            font-size: 0.92rem;
+            margin-bottom: 0.35rem;
+        }
+        .stack-layer span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.55;
+        }
+
+        @media (max-width: 900px) {
+            .compare-grid,
+            .build-steps,
+            .pillar-grid,
+            .stack-layers {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="investor-ribbon">
+    <strong>DIGINETICS</strong> &middot; Intelligence for what happens next &middot;
+    <a href="manifest.html">See Manifest, our first specialist &rarr;</a>
+</div>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="specialist-agents.html" class="current">Specialist AI</a></li>
+            <li><a href="elijah.html">Elijah</a></li>
+            <li><a href="manifest.html">Manifest</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#invest">Investors</a></li>
+            <li><a href="manifest-demo.html" class="nav-demo-link">Live Demo</a></li>
+            <li><a href="mailto:michael.lazzarotti@diginetics.co?subject=Specialist%20AI%20Conversation" class="nav-cta-btn">Talk to Us</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="specialist-agents.html" class="current">Specialist AI</a>
+    <a href="elijah.html">Elijah</a>
+    <a href="manifest.html">Manifest</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="about.html#invest">Investors</a>
+    <a href="manifest-demo.html" class="mobile-demo-link">Live Demo</a>
+    <a href="mailto:michael.lazzarotti@diginetics.co?subject=Specialist%20AI%20Conversation">Talk to Us</a>
+</div>
+
+<section class="sa-hero">
+    <div class="container">
+        <div class="sa-kicker">Why We Exist</div>
+        <h1 class="sa-title">We build <span class="grad">specialist AI</span>,<br>not generalist chat.</h1>
+        <p class="sa-copy"><strong>Intelligence for what happens next</strong> means giving each client an AI that knows their world, runs in production on their data, and answers in language their team can defend. General-purpose assistants are built for the internet. Diginetics builds specialists for operations where a wrong number costs money, trust, or lives.</p>
+        <div class="hero-actions">
+            <a href="manifest.html" class="btn btn-primary btn-lg">Meet Our First Specialist</a>
+            <a href="elijah.html" class="btn btn-ghost btn-lg">How Elijah Powers Them</a>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="section">
+        <div class="label">The Gap</div>
+        <div class="title">Generalists predict language. Specialists earn decisions.</div>
+        <p class="subtitle">ChatGPT, Claude, and Copilot are extraordinary generalists. They are the wrong default when a brokerage, hospital, or operator needs answers tied to their own history, their own constraints, and their own accountability.</p>
+
+        <div class="compare-grid">
+            <div class="compare-card general">
+                <div class="compare-label">Generalist AI</div>
+                <h3>Trained on the internet</h3>
+                <ul>
+                    <li>Sound confident even when context is missing</li>
+                    <li>Optimize for plausible language, not verifiable outcomes</li>
+                    <li>Cannot show why a number changed when your market shifts</li>
+                    <li>One assistant for every industry, every client, every question</li>
+                </ul>
+            </div>
+            <div class="compare-card specialist">
+                <div class="compare-label">Diginetics Specialist</div>
+                <h3>Built for your operation</h3>
+                <ul>
+                    <li>Runs on your data, in your environment, under your controls</li>
+                    <li>Grounded in relationships discovered and stress-tested on your world</li>
+                    <li>Explains recommendations in plain language your team can challenge</li>
+                    <li>One specialist per domain: real estate today, more industries next</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Why We Built This Way</div>
+        <div class="title">High-stakes work needs an AI that belongs to the business, not the model vendor.</div>
+        <p class="subtitle">We started from a simple observation: leaders do not lack AI access. They lack AI they can stand behind in a client meeting, a board review, or a regulatory conversation.</p>
+
+        <div class="pillar-grid">
+            <div class="pillar-card">
+                <h3>Your data, not the public web</h3>
+                <p>Each specialist is anchored in the client's operational data: listings, patients, stores, fields, or whatever defines that business. The agent learns the client's world, not the average of the internet.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>Mechanistic, not probabilistic</h3>
+                <p>We do not ask clients to trust a black box score. Recommendations trace to readable relationships in their data: what moved, what changed, and what to do next. Answers are built to be inspected, not just accepted.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>Production, not a pilot chatbot</h3>
+                <p>Specialists are deployed as managed systems: orchestrated workflows, isolated client environments, audit trails, and guardrails. This is infrastructure for ongoing operations, not a one-off demo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">How We Build a Specialist</div>
+        <div class="title">Four steps. No magic. No exposure of your IP to a public model.</div>
+        <p class="subtitle">We share the concept, not the blueprint. What follows is how we think about delivery. It is not a description of proprietary methods or internal architecture.</p>
+
+        <div class="build-steps">
+            <div class="build-step">
+                <div class="num">01</div>
+                <h3>Learn the domain</h3>
+                <p>We work with the client to define the decisions that matter: pricing, targeting, risk, capacity, compliance, or whatever drives their P&amp;L. The specialist is scoped to real work, not open-ended chat.</p>
+            </div>
+            <div class="build-step">
+                <div class="num">02</div>
+                <h3>Connect their world</h3>
+                <p>Client data flows into a dedicated environment. The specialist builds a private library of validated insight on that data. It compounds over time as new questions get answered and new relationships get confirmed.</p>
+            </div>
+            <div class="build-step">
+                <div class="num">03</div>
+                <h3>Deploy the specialist</h3>
+                <p>We ship a product experience tuned to that industry: workflows, briefs, and actions people already use. Manifest is our real estate specialist. The next vertical gets its own face on the same foundation.</p>
+            </div>
+            <div class="build-step">
+                <div class="num">04</div>
+                <h3>Run and improve</h3>
+                <p>Supporting agents monitor health, tune performance, and keep the system inside guardrails. Humans stay in control. The specialist gets sharper every month it runs on live client data.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section" style="padding-top: 0;">
+        <div class="stack-band">
+            <div class="label">What Sits Underneath (Concept Only)</div>
+            <h2>Three layers. One experience for the client.</h2>
+            <p>Clients interact with a specialist product. Behind it, Diginetics separates what the user sees from what makes that specialist trustworthy. We do not publish internal design, code paths, or discovery methods on this site.</p>
+            <div class="stack-layers">
+                <div class="stack-layer">
+                    <strong>The specialist product</strong>
+                    <span>Manifest for brokerages today. Industry-specific interfaces, briefs, and recommendations shaped for how that business actually operates.</span>
+                </div>
+                <div class="stack-layer">
+                    <strong>Elijah</strong>
+                    <span>The intelligence core that reads client data, finds what is driving outcomes, stress-tests it, and keeps a growing private library the specialist draws from.</span>
+                </div>
+                <div class="stack-layer">
+                    <strong>Production orchestration</strong>
+                    <span>Always-on agents and scheduled workflows that keep each client environment healthy, current, and within policy. The system runs whether or not someone is logged in.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">First Specialist Shipping</div>
+        <div class="title">Manifest is real estate's specialist.</div>
+        <p class="subtitle">Brokerages do not need another CRM. They need an intelligence layer that tells agents which buyers to target, how to defend price, and what market read to bring into the room. Manifest is that specialist, live with partners today.</p>
+        <div class="hero-actions">
+            <a href="manifest.html" class="btn btn-primary btn-lg">Explore Manifest</a>
+            <a href="industries.html" class="btn btn-ghost btn-lg">More Industries Coming</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="cta-block">
+        <h2>Build a specialist for your operation.</h2>
+        <p>Tell us your industry and the decisions you cannot afford to get wrong. We will show you what a Diginetics specialist looks like on your data.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Specialist%20AI%20Conversation" class="cta-email">michael.lazzarotti@diginetics.co</a>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2026 Diginetics Intelligence Systems, Inc. All rights reserved.</span>
+        <span>
+            <em>Intelligence for what happens next.</em>
+            <a href="specialist-agents.html">Specialist AI</a>
+            <a href="elijah.html">Elijah</a>
+            <a href="manifest.html">Manifest</a>
+            <a href="industries.html">Industries</a>
+            <a href="about.html">About</a>
+            <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>
