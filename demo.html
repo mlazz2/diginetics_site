@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Demo | Diginetics</title>
+  <meta name="description" content="Live walkthrough: client data through AWS orchestration, DDX discovery, Elijah brief, auditable operator answer. Capstone CRE example.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .demo-hero {
+      padding: 118px 0 48px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(67,56,202,0.12), transparent 35%),
+        radial-gradient(circle at 85% 10%, rgba(219,39,119,0.08), transparent 30%),
+        linear-gradient(180deg, #fafafa 0%, #f4f5fb 100%);
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 980px) { .demo-grid { grid-template-columns: 1fr; } }
+
+    .arch-card, .run-card, .out-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .arch-card { padding: 1.25rem 1.35rem; margin-bottom: 1rem; }
+    .arch-card h3 { font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .arch-step {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.65rem 0; border-bottom: 1px solid var(--border);
+    }
+    .arch-step:last-child { border-bottom: none; }
+    .arch-num {
+      width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0;
+      background: var(--accent-glow); border: 1px solid var(--border-accent);
+      color: var(--accent); font-size: 0.72rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .arch-step b { display: block; font-size: 0.82rem; margin-bottom: 0.15rem; }
+    .arch-step span { font-size: 0.78rem; color: var(--text-dim); line-height: 1.45; }
+    .aws-tag {
+      display: inline-block; font-family: var(--mono); font-size: 0.68rem;
+      color: var(--accent); background: var(--accent-glow);
+      border: 1px solid var(--border-accent); border-radius: 999px;
+      padding: 0.15rem 0.45rem; margin-top: 0.25rem;
+    }
+
+    .run-card { padding: 1.35rem; }
+    .run-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .run-head h2 { font-size: 1.15rem; letter-spacing: -0.02em; }
+    .tenant-pill {
+      font-family: var(--mono); font-size: 0.72rem;
+      background: #0b0c1b; color: #c7d2fe; border-radius: 999px;
+      padding: 0.35rem 0.65rem;
+    }
+    .run-btn {
+      border: none; cursor: pointer; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      color: #fff; font-weight: 700; font-size: 0.85rem;
+      padding: 0.65rem 1.1rem; box-shadow: var(--shadow-md);
+      transition: transform .15s, opacity .15s;
+    }
+    .run-btn:hover { transform: translateY(-1px); }
+    .run-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    .log {
+      background: #0b0c1b; border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.85rem; min-height: 280px; max-height: 340px; overflow-y: auto;
+      font-family: var(--mono); font-size: 0.72rem; line-height: 1.55;
+    }
+    .log-line { margin-bottom: 0.35rem; opacity: 0; animation: fadeIn .35s forwards; }
+    .log-line .ts { color: #64748b; margin-right: 0.45rem; }
+    .log-line .svc { color: #818cf8; margin-right: 0.35rem; }
+    .log-line .ok { color: #34d399; }
+    .log-line .info { color: #cbd5e1; }
+    .log-line .warn { color: #fbbf24; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .progress { height: 6px; background: #e5e7eb; border-radius: 999px; overflow: hidden; margin: 0.85rem 0 0.35rem; }
+    .progress > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), #7c3aed); transition: width .45s ease; }
+
+    .out-card { padding: 1.35rem; margin-top: 1rem; }
+    .out-card.hidden { display: none; }
+    .out-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.85rem; }
+    @media (max-width: 760px) { .out-grid { grid-template-columns: 1fr; } }
+    .eq-box {
+      font-family: var(--mono); font-size: 0.78rem; line-height: 1.55;
+      background: rgba(5,150,105,0.08); border: 1px solid rgba(5,150,105,0.25);
+      color: #065f46; border-radius: var(--r); padding: 0.75rem 0.85rem; margin-top: 0.5rem;
+    }
+    .brief {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 0.85rem; font-size: 0.88rem; line-height: 1.6; color: var(--text-dim);
+    }
+    .brief strong { color: var(--text); }
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.65rem; margin-top: 1rem; }
+    @media (max-width: 760px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+    .kpi {
+      text-align: center; background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 0.75rem 0.5rem;
+    }
+    .kpi .n { font-family: var(--mono); font-size: 1.15rem; font-weight: 800; color: var(--accent); }
+    .kpi .l { font-size: 0.68rem; color: var(--text-soft); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .example-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;
+    }
+    .example-chip {
+      font-size: 0.72rem; border-radius: 999px; padding: 0.28rem 0.55rem;
+      border: 1px solid var(--border); background: var(--bg-raised); color: var(--text-dim);
+    }
+    .example-chip.active { border-color: var(--border-accent); background: var(--accent-glow); color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="specialist-agents.html">Specialist AI</a></li>
+        <li><a href="elijah.html">Elijah</a></li>
+        <li><a href="manifest.html">Manifest</a></li>
+        <li><a href="demo.html" class="current">Product Demo</a></li>
+        <li><a href="about.html#invest">Investors</a></li>
+      </ul>
+      <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="specialist-agents.html">Specialist AI</a>
+    <a href="elijah.html">Elijah</a>
+    <a href="manifest.html">Manifest</a>
+    <a href="demo.html" class="current">Product Demo</a>
+    <a href="about.html#invest">Investors</a>
+  </div>
+
+  <section class="demo-hero">
+    <div class="container">
+      <div class="label">Product Demo</div>
+      <h1 class="title" style="max-width: 780px;">From client data to auditable decisions. Watch the AWS orchestration run.</h1>
+      <p class="subtitle" style="max-width: 760px;">This demo follows the same production path we use today: tenant data in S3, DDX discovery on AWS Batch, Elijah orchestration, and a plain-language answer an operator can defend. Example: Capstone Communities commercial real estate portfolio.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0; padding-bottom: 4rem;">
+    <div class="container demo-grid">
+
+      <div>
+        <div class="arch-card">
+          <h3>Production orchestration (what runs in AWS today)</h3>
+          <div class="arch-step">
+            <div class="arch-num">1</div>
+            <div>
+              <b>Client data lands in S3</b>
+              <span>Portfolio CSV and parquet tables sync to the tenant prefix in diginetics-dev-data.</span>
+              <div class="aws-tag">S3 · tenants/capstone/</div>
+            </div>
+          </div>
+          <div class="arch-step">
+            <div class="arch-num">2</div>
+            <div>
+              <b>Admin API syncs tenant workspace</b>
+              <span>Lambda pulls raw and prepared data into an isolated tenant workspace before discovery.</span>
+              <div class="aws-tag">Lambda · ensure_tenant_data_synced</div>
+            </div>
+          </div>
+          <div class="arch-step">
+            <div class="arch-num">3</div>
+            <div>
+              <b>Elijah cycle prepares and targets metrics</b>
+              <span>Batch job runs ETL, agent loop, and selects the next metric to discover.</span>
+              <div class="aws-tag">Batch · diginetics-dev-demo-elijah</div>
+            </div>
+          </div>
+          <div class="arch-step">
+            <div class="arch-num">4</div>
+            <div>
+              <b>DDX discovery run executes</b>
+              <span>Config and observations upload to S3. Batch or Step Functions runs the full DDX pipeline out of sample.</span>
+              <div class="aws-tag">Batch · start_discovery_run</div>
+            </div>
+          </div>
+          <div class="arch-step">
+            <div class="arch-num">5</div>
+            <div>
+              <b>Elijah delivers the operator answer</b>
+              <span>Validated equation, sensitivity context, and a brief the portfolio team can use in decisions.</span>
+              <div class="aws-tag">Elijah · private validated library</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <h3>Example in this demo</h3>
+          <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6;">
+            <strong style="color: var(--text);">Capstone Communities</strong> portfolio work on US commercial real estate. DDX pointed at 31 metros and 12 years of monthly data with no hypothesis given. It surfaced a governing equation for months of housing supply that held through COVID, the 2021 boom, 2022 rate hikes, and 2024 normalization.
+          </p>
+          <div class="example-bar">
+            <span class="example-chip active">Capstone CRE</span>
+            <span class="example-chip">31 US metros</span>
+            <span class="example-chip">2013 to 2026 monthly</span>
+            <span class="example-chip">99.90% OOS</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="run-card">
+          <div class="run-head">
+            <div>
+              <h2>Run orchestration demo</h2>
+              <div class="tenant-pill">tenant: capstone · job queue: diginetics-dev-jq</div>
+            </div>
+            <button class="run-btn" id="runBtn" type="button">Run Demo</button>
+          </div>
+          <div class="progress"><span id="progressBar"></span></div>
+          <div class="log" id="log" aria-live="polite"></div>
+        </div>
+
+        <div class="out-card hidden" id="output">
+          <div class="label" style="margin-bottom: 0.35rem;">Output</div>
+          <h3 style="font-size: 1.05rem;">Auditable result delivered to the operator</h3>
+          <div class="out-grid">
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);">DDX equation</div>
+              <div class="eq-box" id="eqBox"></div>
+            </div>
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);">Elijah brief</div>
+              <div class="brief" id="briefBox"></div>
+            </div>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi"><div class="n">99.90%</div><div class="l">OOS accuracy</div></div>
+            <div class="kpi"><div class="n">21</div><div class="l">Backtest windows</div></div>
+            <div class="kpi"><div class="n">31</div><div class="l">Metros validated</div></div>
+            <div class="kpi"><div class="n">0</div><div class="l">Hypotheses given</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="background: var(--bg-deep); color: #fff; padding: 3rem 0;">
+    <div class="container" style="text-align: center;">
+      <p style="color: #c7d2fe; font-size: 0.95rem; max-width: 640px; margin: 0 auto 1.25rem;">
+        Same engine. Different table. See the full Manifest product experience or validation results across other industries.
+      </p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <a href="manifest-demo.html" class="btn btn-primary">Manifest Live Demo</a>
+        <a href="cre.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.25);">CRE Results</a>
+        <a href="baseball.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.25);">Baseball Validation</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const STEPS = [
+      { svc: 'S3', msg: 'Sync tenant raw data: s3://diginetics-dev-data/tenants/capstone/data/raw/', cls: 'info' },
+      { svc: 'Lambda', msg: 'ensure_tenant_data_synced() → 847 objects, 42 CSV tables', cls: 'ok' },
+      { svc: 'Batch', msg: 'trigger_elijah_cycle() → job demo-elijah-a3f9c812 submitted', cls: 'ok' },
+      { svc: 'Elijah', msg: 'Agents: DataScout → Strategist → Targeter → ConfigTuner', cls: 'info' },
+      { svc: 'Elijah', msg: 'Target metric selected: months_of_housing_supply', cls: 'ok' },
+      { svc: 'Lambda', msg: 'generate_config(data_mode=temporal, outcome=months_supply)', cls: 'info' },
+      { svc: 'S3', msg: 'Upload observations + config to tenant prefix', cls: 'info' },
+      { svc: 'Batch', msg: 'start_discovery_run(config=capstone_metro_v2.5, mode=batch)', cls: 'ok' },
+      { svc: 'DDX', msg: 'Pipeline: ingest → features → stage1 → backtest1 → stage2 → final_backtest', cls: 'info' },
+      { svc: 'DDX', msg: 'Strong metric accepted: months_supply = 1.78 + mortgage_rate_30y', cls: 'ok' },
+      { svc: 'S3', msg: 'Artifacts written: sr_equations.json, final_test_report.json', cls: 'ok' },
+      { svc: 'Elijah', msg: 'get_elijah_state() → loop_state=complete, library updated', cls: 'ok' },
+      { svc: 'Elijah', msg: 'Operator brief generated for Capstone portfolio team', cls: 'ok' },
+    ];
+
+    const EQ = `months_of_housing_supply = 1.78 + mortgage_rate_30y
+
+OOS accuracy: 99.90%
+Backtest windows: 21
+Metros: 31 US + aggregate`;
+
+    const BRIEF = `<strong>What drives supply across the portfolio:</strong> Months of housing supply is almost entirely a function of the 30-year mortgage rate, with a structural floor of 1.78 months. At 6% rates, expect ~7.8 months supply. At 4%, expect ~5.8 months. This held through COVID, the 2021 boom, 2022 rate hikes, and 2024 normalization. <strong>Action:</strong> Underwrite acquisition timing and disposition risk against the rate path, not lagging inventory headlines alone.`;
+
+    const logEl = document.getElementById('log');
+    const progressBar = document.getElementById('progressBar');
+    const runBtn = document.getElementById('runBtn');
+    const output = document.getElementById('output');
+    const eqBox = document.getElementById('eqBox');
+    const briefBox = document.getElementById('briefBox');
+
+    function ts() {
+      const d = new Date();
+      return d.toTimeString().slice(0, 8);
+    }
+
+    function addLine(step) {
+      const line = document.createElement('div');
+      line.className = 'log-line';
+      line.innerHTML = `<span class="ts">${ts()}</span><span class="svc">[${step.svc}]</span><span class="${step.cls}">${step.msg}</span>`;
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    async function runDemo() {
+      runBtn.disabled = true;
+      logEl.innerHTML = '';
+      output.classList.add('hidden');
+      progressBar.style.width = '0%';
+
+      for (let i = 0; i < STEPS.length; i++) {
+        await new Promise(r => setTimeout(r, 520));
+        addLine(STEPS[i]);
+        progressBar.style.width = `${Math.round(((i + 1) / STEPS.length) * 100)}%`;
+      }
+
+      eqBox.textContent = EQ;
+      briefBox.innerHTML = BRIEF;
+      output.classList.remove('hidden');
+      runBtn.disabled = false;
+      runBtn.textContent = 'Run Again';
+    }
+
+    runBtn.addEventListener('click', runDemo);
+  </script>
+</body>
+</html>
