@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L145GDKXK6"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Demo | Diginetics</title>
+  <meta name="description" content="Ask a question. Elijah searches your data, builds config, runs DDX, analyzes residuals, iterates, and returns an auditable answer.">
+  <link rel="canonical" href="https://diginetics.co/demo/">
+  <meta property="og:url" content="https://diginetics.co/demo/">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .demo-wrap { padding: 108px 0 4rem; background: linear-gradient(180deg, #fafafa 0%, #f0f2fa 100%); min-height: 100vh; }
+    .demo-shell { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .hero-copy { margin-bottom: 1.5rem; }
+    .hero-copy h1 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); letter-spacing: -0.03em; margin: 0.35rem 0 0.6rem; }
+    .hero-copy p { color: var(--text-dim); max-width: 680px; line-height: 1.65; font-size: 0.95rem; }
+
+    .app {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .app-top {
+      padding: 1.1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #fff, #fafbff);
+    }
+    .tenant-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+    .tenant-badge {
+      font-family: var(--mono); font-size: 0.7rem;
+      background: #0b0c1b; color: #c7d2fe; border-radius: 999px; padding: 0.35rem 0.65rem;
+    }
+    .status-dot { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; color: var(--text-dim); }
+    .status-dot i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px rgba(5,150,105,0.5); }
+
+    .q-box { display: flex; gap: 0.65rem; }
+    .q-input {
+      flex: 1; border: 1px solid var(--border); border-radius: var(--r);
+      padding: 0.75rem 0.9rem; font: inherit; font-size: 0.92rem;
+      background: #fff; color: var(--text);
+    }
+    .q-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .q-btn {
+      border: none; border-radius: var(--r); cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0 1.15rem;
+      white-space: nowrap;
+    }
+    .q-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .app-body { display: grid; grid-template-columns: 220px 1fr; min-height: 520px; }
+    @media (max-width: 820px) { .app-body { grid-template-columns: 1fr; } }
+
+    .pipeline {
+      border-right: 1px solid var(--border);
+      padding: 1rem 0.85rem;
+      background: #f8f9fd;
+    }
+    @media (max-width: 820px) {
+      .pipeline { border-right: none; border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; gap: 0.5rem; padding: 0.75rem; }
+      .pipe-step { min-width: 140px; margin-bottom: 0 !important; }
+    }
+    .pipe-step {
+      display: flex; gap: 0.55rem; align-items: flex-start;
+      padding: 0.55rem 0.45rem; border-radius: var(--r);
+      margin-bottom: 0.35rem; opacity: 0.45; transition: all .25s;
+    }
+    .pipe-step.active { opacity: 1; background: #fff; border: 1px solid var(--border-accent); box-shadow: var(--shadow-sm); }
+    .pipe-step.done { opacity: 0.85; }
+    .pipe-num {
+      width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+      background: var(--accent-glow); color: var(--accent);
+      font-size: 0.68rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pipe-step.done .pipe-num { background: rgba(5,150,105,0.12); color: var(--green); }
+    .pipe-step b { display: block; font-size: 0.75rem; line-height: 1.25; }
+    .pipe-step span { font-size: 0.68rem; color: var(--text-soft); line-height: 1.35; }
+
+    .main { padding: 1rem 1.15rem 1.15rem; display: flex; flex-direction: column; gap: 0.85rem; }
+
+    .feed {
+      background: #0b0c1b; border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.85rem; flex: 1; min-height: 220px; max-height: 280px; overflow-y: auto;
+      font-family: var(--mono); font-size: 0.71rem; line-height: 1.55;
+    }
+    .feed-line { margin-bottom: 0.3rem; opacity: 0; animation: fadeUp .3s forwards; }
+    .feed-line .agent { color: #818cf8; margin-right: 0.35rem; }
+    .feed-line .ok { color: #34d399; }
+    .feed-line .warn { color: #fbbf24; }
+    .feed-line .info { color: #cbd5e1; }
+    @keyframes fadeUp { to { opacity: 1; } }
+
+    .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 700px) { .panels { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 0.75rem 0.85rem; min-height: 130px;
+    }
+    .panel.hidden { display: none; }
+    .panel-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .panel h4 { font-size: 0.82rem; margin-bottom: 0.35rem; }
+    .panel p, .panel li { font-size: 0.78rem; color: var(--text-dim); line-height: 1.45; }
+    .mono-block {
+      font-family: var(--mono); font-size: 0.7rem; line-height: 1.5;
+      background: rgba(5,150,105,0.07); border: 1px solid rgba(5,150,105,0.22);
+      color: #065f46; border-radius: 6px; padding: 0.55rem 0.65rem; margin-top: 0.35rem;
+      white-space: pre-wrap;
+    }
+
+    .residual-wrap { margin-top: 0.15rem; }
+    .res-bar-row { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.3rem; }
+    .res-label { width: 52px; font-size: 0.65rem; color: var(--text-soft); font-family: var(--mono); }
+    .res-track { flex: 1; height: 10px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
+    .res-fill { height: 100%; border-radius: 999px; width: 0; transition: width .6s ease; }
+    .res-fill.bad { background: #f59e0b; }
+    .res-fill.good { background: var(--green); }
+    .res-val { width: 38px; font-size: 0.65rem; font-family: var(--mono); color: var(--text-dim); text-align: right; }
+
+    .answer {
+      border: 1px solid var(--border-accent);
+      background: linear-gradient(135deg, rgba(67,56,202,0.04), rgba(219,39,119,0.03));
+      border-radius: var(--r-lg); padding: 1rem 1.1rem;
+    }
+    .answer.hidden { display: none; }
+    .answer h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .answer-body { font-size: 0.88rem; line-height: 1.6; color: var(--text-dim); }
+    .answer-body strong { color: var(--text); }
+    .answer-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.65rem; }
+    .meta-chip {
+      font-size: 0.68rem; font-family: var(--mono);
+      background: #fff; border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.2rem 0.5rem; color: var(--text-dim);
+    }
+
+    .loop-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: rgba(245,158,11,0.12); color: #b45309;
+      border: 1px solid rgba(245,158,11,0.3); border-radius: 999px;
+      padding: 0.15rem 0.45rem; margin-left: 0.35rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../elijah.html">Elijah</a></li>
+        <li><a href="../manifest.html">Manifest</a></li>
+        <li><a href="/demo/" class="current">Product Demo</a></li>
+        <li><a href="../about.html#invest">Investors</a></li>
+      </ul>
+      <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="../elijah.html">Elijah</a>
+    <a href="../manifest.html">Manifest</a>
+    <a href="/demo/" class="current">Product Demo</a>
+    <a href="../about.html#invest">Investors</a>
+  </div>
+
+  <div class="demo-wrap">
+    <div class="demo-shell">
+      <div class="hero-copy">
+        <div class="label">Product Demo</div>
+        <h1>Ask a question. Elijah finds the data, runs discovery, iterates, and answers.</h1>
+        <p>Elijah is connected to the client's isolated database. It searches for the right tables, builds config and parquet, orchestrates DDX, analyzes residuals, and loops until the answer is validated. No chatbot. No guesswork.</p>
+      </div>
+
+      <div class="app">
+        <div class="app-top">
+          <div class="tenant-row">
+            <span class="tenant-badge">tenant: capstone · database: client CRE portfolio</span>
+            <span class="status-dot"><i></i> Elijah connected</span>
+          </div>
+          <div class="q-box">
+            <input class="q-input" id="question" type="text" value="What drives months of housing supply across our portfolio metros?">
+            <button class="q-btn" id="askBtn" type="button">Ask Elijah</button>
+          </div>
+        </div>
+
+        <div class="app-body">
+          <div class="pipeline" id="pipeline">
+            <div class="pipe-step" data-step="0"><div class="pipe-num">1</div><div><b>Question</b><span>Operator asks in plain language</span></div></div>
+            <div class="pipe-step" data-step="1"><div class="pipe-num">2</div><div><b>Data search</b><span>Elijah scans client database</span></div></div>
+            <div class="pipe-step" data-step="2"><div class="pipe-num">3</div><div><b>Build config</b><span>YAML + parquet prepared</span></div></div>
+            <div class="pipe-step" data-step="3"><div class="pipe-num">4</div><div><b>Run DDX</b><span>Discovery pipeline executes</span></div></div>
+            <div class="pipe-step" data-step="4"><div class="pipe-num">5</div><div><b>Residual analysis</b><span>What the model missed</span></div></div>
+            <div class="pipe-step" data-step="5"><div class="pipe-num">6</div><div><b>Iterate</b><span>Agents tune and re-run</span></div></div>
+            <div class="pipe-step" data-step="6"><div class="pipe-num">7</div><div><b>Answer</b><span>Validated brief returned</span></div></div>
+          </div>
+
+          <div class="main">
+            <div class="feed" id="feed" aria-live="polite"></div>
+
+            <div class="panels">
+              <div class="panel hidden" id="configPanel">
+                <div class="panel-label">Config + parquet built</div>
+                <h4>capstone_metro_v2.5.yaml</h4>
+                <div class="mono-block" id="configBlock"></div>
+              </div>
+              <div class="panel hidden" id="residualPanel">
+                <div class="panel-label">Residual analysis</div>
+                <h4 id="resTitle">Out-of-sample error by window</h4>
+                <div class="residual-wrap" id="residualBars"></div>
+              </div>
+            </div>
+
+            <div class="answer hidden" id="answer">
+              <div class="panel-label">Elijah answer</div>
+              <h3 id="answerTitle"></h3>
+              <div class="answer-body" id="answerBody"></div>
+              <div class="mono-block" id="answerEq" style="margin-top:0.65rem;"></div>
+              <div class="answer-meta" id="answerMeta"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:1.25rem;font-size:0.82rem;color:var(--text-soft);">
+        Example uses Capstone CRE portfolio data (31 metros, 2013 to 2026). Same flow runs on any client tenant.
+        <a href="../manifest-demo.html" style="color:var(--accent);font-weight:600;">See Manifest product demo →</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const PIPE = document.querySelectorAll('.pipe-step');
+    const feed = document.getElementById('feed');
+    const askBtn = document.getElementById('askBtn');
+    const questionEl = document.getElementById('question');
+    const configPanel = document.getElementById('configPanel');
+    const configBlock = document.getElementById('configBlock');
+    const residualPanel = document.getElementById('residualPanel');
+    const residualBars = document.getElementById('residualBars');
+    const resTitle = document.getElementById('resTitle');
+    const answer = document.getElementById('answer');
+    const answerTitle = document.getElementById('answerTitle');
+    const answerBody = document.getElementById('answerBody');
+    const answerEq = document.getElementById('answerEq');
+    const answerMeta = document.getElementById('answerMeta');
+
+    const CONFIG = `domain: commercial_real_estate
+outcome: months_of_housing_supply
+data_mode: temporal
+observations: col_metro_monthly.parquet
+entities: 31 US metros + aggregate
+window: train=84mo, test=12mo, step=6mo`;
+
+    const RESIDUALS_RUN1 = [
+      { w: '2018-19', v: 4.2 },
+      { w: '2020-21', v: 6.8 },
+      { w: '2022-23', v: 8.1 },
+      { w: '2024-25', v: 3.9 },
+    ];
+    const RESIDUALS_RUN2 = [
+      { w: '2018-19', v: 0.4 },
+      { w: '2020-21', v: 0.6 },
+      { w: '2022-23', v: 0.8 },
+      { w: '2024-25', v: 0.3 },
+    ];
+
+    const STEPS = [
+      { pipe: 0, agent: 'Operator', cls: 'info', msg: q => `Question received: "${q}"` },
+      { pipe: 1, agent: 'Elijah', cls: 'info', msg: () => 'Connected to client database (isolated tenant: capstone)' },
+      { pipe: 1, agent: 'DataScout', cls: 'info', msg: () => 'Searching raw tables: metro_inventory, mortgage_rates, permits, price_index...' },
+      { pipe: 1, agent: 'DataScout', cls: 'ok', msg: () => 'Match found: col_metro_monthly.parquet (31 metros, 156 months, 98 metrics)' },
+      { pipe: 2, agent: 'Targeter', cls: 'ok', msg: () => 'Outcome mapped: months_of_housing_supply' },
+      { pipe: 2, agent: 'ConfigTuner', cls: 'info', msg: () => 'Building YAML config (temporal mode, expanding windows)...' },
+      { pipe: 2, agent: 'ConfigTuner', cls: 'ok', msg: () => 'Prepared parquet uploaded: data/prepared/col_metro_monthly.parquet' },
+      { pipe: 3, agent: 'Elijah', cls: 'info', msg: () => 'Orchestrating DDX run #1 on AWS Batch...' },
+      { pipe: 3, agent: 'DDX', cls: 'info', msg: () => 'Pipeline: ingest → features → stage1 → backtest1 → stage2 → final_backtest' },
+      { pipe: 3, agent: 'DDX', cls: 'warn', msg: () => 'Run #1 partial: R²=0.91. Candidate: months_supply ~ mortgage_rate_30y (spot rate)' },
+      { pipe: 4, agent: 'Diagnostician', cls: 'warn', msg: () => 'Residuals elevated in 2022-23 rate-shock windows (+8.1pp avg error)' },
+      { pipe: 4, agent: 'Diagnostician', cls: 'info', msg: () => 'Blind spot: spot rate misses rolling mortgage dynamics during rapid tightening' },
+      { pipe: 5, agent: 'Strategist', cls: 'info', msg: () => 'Decision: continue loop. Switch focus to rolling mortgage features.' },
+      { pipe: 5, agent: 'DataScout', cls: 'info', msg: () => 'Adding feature: mortgage_rate_30y_roll7, fed_funds_rate_roll7' },
+      { pipe: 5, agent: 'ConfigTuner', cls: 'ok', msg: () => 'Config updated. Parquet regenerated with rolling features.' },
+      { pipe: 5, agent: 'Elijah', cls: 'info', msg: () => 'Orchestrating DDX run #2...' },
+      { pipe: 3, agent: 'DDX', cls: 'ok', msg: () => 'Run #2 accepted: months_supply = 1.78 + mortgage_rate_30y (99.90% OOS)' },
+      { pipe: 4, agent: 'Diagnostician', cls: 'ok', msg: () => 'Residuals flat across all 21 windows. No regime blind spots detected.' },
+      { pipe: 6, agent: 'Elijah', cls: 'ok', msg: () => 'Validated equation stored in private library. Generating operator brief...' },
+      { pipe: 6, agent: 'Elijah', cls: 'ok', msg: () => 'Answer ready.' },
+    ];
+
+    function setPipe(n) {
+      PIPE.forEach((el, i) => {
+        el.classList.remove('active', 'done');
+        if (i < n) el.classList.add('done');
+        if (i === n) el.classList.add('active');
+      });
+    }
+
+    function log(agent, cls, msg) {
+      const line = document.createElement('div');
+      line.className = 'feed-line';
+      line.innerHTML = `<span class="agent">[${agent}]</span><span class="${cls}">${msg}</span>`;
+      feed.appendChild(line);
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    function renderResiduals(data, title) {
+      resTitle.textContent = title;
+      residualBars.innerHTML = '';
+      const max = Math.max(...data.map(d => d.v), 1);
+      data.forEach(d => {
+        const pct = Math.min(100, (d.v / max) * 100);
+        const good = d.v < 1.5;
+        const row = document.createElement('div');
+        row.className = 'res-bar-row';
+        row.innerHTML = `
+          <div class="res-label">${d.w}</div>
+          <div class="res-track"><div class="res-fill ${good ? 'good' : 'bad'}" style="width:${pct}%"></div></div>
+          <div class="res-val">${d.v.toFixed(1)}</div>`;
+        residualBars.appendChild(row);
+      });
+    }
+
+    function reset() {
+      feed.innerHTML = '';
+      configPanel.classList.add('hidden');
+      residualPanel.classList.add('hidden');
+      answer.classList.add('hidden');
+      setPipe(0);
+    }
+
+    async function runDemo() {
+      const q = questionEl.value.trim() || 'What drives months of housing supply across our portfolio metros?';
+      askBtn.disabled = true;
+      reset();
+      let shownConfig = false;
+      let shownRes1 = false;
+      let shownRes2 = false;
+
+      for (let i = 0; i < STEPS.length; i++) {
+        const step = STEPS[i];
+        setPipe(step.pipe);
+        await new Promise(r => setTimeout(r, 480));
+        log(step.agent, step.cls, step.msg(q));
+
+        if (step.pipe >= 2 && !shownConfig) {
+          shownConfig = true;
+          configBlock.textContent = CONFIG;
+          configPanel.classList.remove('hidden');
+        }
+        if (step.msg(q).includes('2022-23 rate-shock') && !shownRes1) {
+          shownRes1 = true;
+          residualPanel.classList.remove('hidden');
+          renderResiduals(RESIDUALS_RUN1, 'Run #1 residuals (elevated in rate-shock windows)');
+        }
+        if (step.msg(q).includes('Residuals flat') && !shownRes2) {
+          shownRes2 = true;
+          renderResiduals(RESIDUALS_RUN2, 'Run #2 residuals (within tolerance)');
+        }
+      }
+
+      answerTitle.textContent = 'Months of housing supply is driven by mortgage rates, with a structural floor of 1.78 months.';
+      answerBody.innerHTML = `<strong>What we found:</strong> Across 31 US metros and 12 years of monthly data, months of housing supply is almost entirely a function of the 30-year mortgage rate. At 6% rates, expect ~7.8 months supply. At 4%, expect ~5.8 months. This held through COVID, the 2021 boom, 2022 rate hikes, and 2024 normalization.<br><br><strong>What to do:</strong> Underwrite acquisition timing and disposition risk against the rate path, not lagging inventory headlines alone.`;
+      answerEq.textContent = `months_of_housing_supply = 1.78 + mortgage_rate_30y\nOOS accuracy: 99.90% · 21 backtest windows · 0 hypotheses given`;
+      answerMeta.innerHTML = `
+        <span class="meta-chip">2 DDX runs</span>
+        <span class="meta-chip">1 iteration</span>
+        <span class="meta-chip">residuals: pass</span>
+        <span class="meta-chip">stored in library</span>`;
+      answer.classList.remove('hidden');
+      askBtn.disabled = false;
+      askBtn.textContent = 'Ask Again';
+    }
+
+    askBtn.addEventListener('click', runDemo);
+  </script>
+</body>
+</html>
