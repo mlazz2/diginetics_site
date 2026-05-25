@@ -5,254 +5,73 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diginetics | Specialist AI for What Happens Next</title>
-    <meta name="description" content="Diginetics builds production specialist AI that does not guess. Intelligence for what happens next: answers from validated client data, not hallucinated chat. Manifest for real estate.">
-    <meta property="og:title" content="Diginetics | Specialist AI for What Happens Next">
-    <meta property="og:description" content="Custom specialist AI agents grounded in your data. Manifest is our first product for brokerages.">
+    <title>Diginetics | Intelligence Grounded in Physical Reality</title>
+    <meta name="description" content="Diginetics builds specialist AI from relationships discovered in the built and physical world. Not statistical averaging. Mechanistic intelligence for operations that cannot guess.">
+    <meta property="og:title" content="Diginetics | Intelligence Grounded in Physical Reality">
+    <meta property="og:description" content="A new form of AI built on how systems actually behave. Specialist agents for brokerages, hospitals, and operators.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        .hero {
-            min-height: 72vh;
-            padding-top: 118px;
-            padding-bottom: 72px;
-        }
-        .hero-h1 {
-            max-width: 920px;
-            margin-bottom: 1.25rem;
-        }
-        .hero-p {
-            max-width: 720px;
-            margin-bottom: 2rem;
-        }
+        .hero-institutional { padding-bottom: 0; }
         .manifest-spotlight {
-            background: linear-gradient(135deg, #0f1226 0%, #1a1f4a 100%);
-            color: #fff;
-            border-radius: var(--r-lg);
-            padding: 3rem 2.5rem;
-            margin-top: 0;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-navy); color: #fff;
+            border-radius: var(--r-xl); padding: 3rem 2.5rem;
+            position: relative; overflow: hidden;
         }
         .manifest-spotlight::before {
             content: ""; position: absolute; top: -40%; right: -10%;
             width: 480px; height: 480px;
-            background: radial-gradient(circle, rgba(120,140,255,0.18) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(154,123,47,0.14) 0%, transparent 70%);
             pointer-events: none;
         }
         .manifest-spotlight > * { position: relative; z-index: 1; }
-        .manifest-spotlight .label { color: #c5cdff; }
+        .manifest-spotlight .label { color: rgba(255,255,255,0.5); }
         .manifest-spotlight h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin: 0.5rem 0 1rem;
-            font-weight: 700;
+            font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.35rem);
+            line-height: 1.18; margin: 0.5rem 0 1rem; font-weight: 600;
         }
-        .manifest-spotlight h2 .grad {
-            background: linear-gradient(90deg, #a3b1ff, #ffffff);
-            -webkit-background-clip: text; background-clip: text; color: transparent;
-        }
-        .manifest-spotlight .lead {
-            font-size: 1.05rem; line-height: 1.7;
-            color: #d8ddff; max-width: 760px;
-            margin-bottom: 1.75rem;
-        }
-        .manifest-value {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.75rem;
-        }
+        .manifest-spotlight .lead { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.76); max-width: 720px; margin-bottom: 1.75rem; }
+        .manifest-value { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-bottom: 1.75rem; }
         .manifest-value-item {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: var(--r);
-            padding: 1rem 1.2rem;
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--r); padding: 1rem 1.15rem;
         }
-        .manifest-value-item h4 {
-            font-size: 0.92rem; font-weight: 700;
-            color: #fff; margin-bottom: 0.35rem;
-            letter-spacing: -0.01em;
-        }
-        .manifest-value-item p {
-            font-size: 0.84rem; line-height: 1.55;
-            color: #c5cdff; margin: 0;
-        }
+        .manifest-value-item h4 { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+        .manifest-value-item p { font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.65); margin: 0; }
         .manifest-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-        .manifest-actions .btn-primary {
-            background: #fff; color: #1a1f4a; border: none;
-        }
-        .manifest-actions .btn-primary:hover { background: #f4f4ff; color: #0f1226; }
+        .manifest-actions .btn-primary { background: #fff; color: var(--accent-deep); border: none; }
+        .manifest-actions .btn-primary:hover { background: #f4f4f4; }
         .manifest-actions .btn-outline {
-            color: #fff; border: 1px solid rgba(255,255,255,0.4);
+            color: #fff; border: 1px solid rgba(255,255,255,0.35);
             padding: 0.65rem 1.25rem; border-radius: var(--r);
             font-weight: 600; text-decoration: none;
-            transition: background 0.2s, border-color 0.2s;
         }
-        .manifest-actions .btn-outline:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: #fff;
-        }
-        .beyond-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 0.85rem;
-        }
-        .beyond-card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--r); padding: 1.1rem 1.2rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .beyond-card:hover { border-color: var(--border-accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
-        .beyond-card .domain {
-            font-size: 0.7rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.08em;
-            color: var(--accent-light); margin-bottom: 0.4rem;
-        }
-        .beyond-card h4 {
-            font-size: 0.95rem; font-weight: 600;
-            color: var(--text); margin-bottom: 0.35rem;
-            letter-spacing: -0.01em;
-        }
-        .beyond-card p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; margin: 0; }
-        .verticals-strip {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        .vertical-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.55rem 0.8rem;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: var(--bg-card);
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 600;
-            transition: border-color 0.2s, color 0.2s, background 0.2s;
-        }
-        .vertical-pill::before {
-            content: "";
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-        .vertical-pill:hover {
-            border-color: var(--border-accent);
-            color: var(--accent);
-            background: var(--accent-glow);
-        }
-        .home-mockup {
-            background: #0f1226;
-            border: 1px solid rgba(67,56,202,0.28);
-            border-radius: var(--r-xl);
-            padding: 1.2rem;
-            box-shadow: 0 24px 70px rgba(15,18,38,0.18);
-            overflow: hidden;
-        }
-        .mockup-bar {
-            display: flex; align-items: center; justify-content: space-between;
-            color: rgba(255,255,255,0.76); font-size: 0.78rem;
-            padding: 0.35rem 0.4rem 1rem;
-        }
-        .mockup-dots { display: flex; gap: 0.35rem; }
-        .mockup-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.28); }
-        .mockup-screen {
-            background: #f8fafc;
-            border-radius: var(--r-lg);
-            display: grid;
-            grid-template-columns: 230px 1fr;
-            min-height: 430px;
-            overflow: hidden;
-        }
-        .mockup-sidebar {
-            background: #101428; color: #fff; padding: 1.25rem;
-        }
-        .mockup-logo { font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.4rem; }
-        .mockup-nav-item {
-            font-size: 0.78rem; color: rgba(255,255,255,0.72);
-            padding: 0.65rem 0.75rem; border-radius: 8px; margin-bottom: 0.25rem;
-        }
-        .mockup-nav-item.active { background: rgba(255,255,255,0.1); color: #fff; }
-        .mockup-main { padding: 1.35rem; }
-        .mockup-head {
-            display: flex; justify-content: space-between; gap: 1rem;
-            align-items: flex-start; margin-bottom: 1rem;
-        }
-        .mockup-head h3 {
-            font-size: 1.08rem; line-height: 1.25; margin-bottom: 0.25rem;
-            color: #111827;
-        }
-        .mockup-head p { font-size: 0.78rem; color: #64748b; margin: 0; }
-        .mockup-badge {
-            background: #dcfce7; color: #15803d; border-radius: 999px;
-            padding: 0.35rem 0.65rem; font-size: 0.68rem; font-weight: 700;
-            white-space: nowrap;
-        }
-        .mockup-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 0.85rem;
-        }
-        .mock-card {
-            background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
-            padding: 1rem; box-shadow: 0 1px 3px rgba(15,23,42,0.04);
-        }
-        .mock-card h4 {
-            font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em;
-            color: #64748b; margin-bottom: 0.65rem;
-        }
-        .mock-rank { display: flex; flex-direction: column; gap: 0.6rem; }
-        .rank-row { display: grid; grid-template-columns: 1fr 130px; gap: 0.65rem; align-items: center; font-size: 0.78rem; color: #334155; }
-        .rank-bar { height: 8px; background: #e0e7ff; border-radius: 999px; overflow: hidden; }
-        .rank-bar span { display: block; height: 100%; background: linear-gradient(90deg, #4338ca, #7c3aed); border-radius: 999px; }
-        .brief-line {
-            border-left: 3px solid #4338ca; padding-left: 0.75rem;
-            font-size: 0.82rem; color: #334155; line-height: 1.55; margin-bottom: 0.8rem;
-        }
-        .metric-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-        .metric-pill {
-            background: #eef2ff; color: #3730a3; border-radius: 999px;
-            padding: 0.32rem 0.55rem; font-size: 0.7rem; font-weight: 700;
-        }
-        @media (max-width: 820px) {
-            .mockup-screen { grid-template-columns: 1fr; }
-            .mockup-sidebar { display: none; }
-            .mockup-grid { grid-template-columns: 1fr; }
-        }
+        .manifest-actions .btn-outline:hover { background: rgba(255,255,255,0.06); border-color: #fff; }
     </style>
 </head>
 <body>
 
-<div class="investor-ribbon">
-    <strong>DIGINETICS</strong> &middot; Intelligence for what happens next &middot;
-    <a href="specialist-agents.html">Why specialist AI &rarr;</a>
-    &middot;
-    <a href="manifest.html">Manifest for brokerages &rarr;</a>
+<div class="top-ribbon">
+    <strong>Diginetics</strong> &middot; Intelligence grounded in how systems actually behave &middot;
+    <a href="investors.html">Investors</a> &middot;
+    <a href="manifest-demo.html">Live demo</a>
 </div>
 
 <nav class="site-nav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo"><img src="logo.png" alt="D"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
+        <a href="index.html" class="nav-logo"><img src="logo.png" alt="Diginetics"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
         <ul class="nav-links">
-            <li><a href="index.html" class="current">Home</a></li>
-            <li><a href="specialist-agents.html">Specialist AI</a></li>
-            <li><a href="elijah.html">Elijah</a></li>
+            <li><a href="specialist-agents.html">Platform</a></li>
             <li><a href="manifest.html">Manifest</a></li>
             <li><a href="industries.html">Industries</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="about.html#invest">Investors</a></li>
+            <li><a href="validation.html">Validation</a></li>
+            <li><a href="company.html">Company</a></li>
+            <li><a href="investors.html">Investors</a></li>
             <li><a href="manifest-demo.html" class="nav-demo-link">Live Demo</a></li>
-            <li><a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="nav-cta-btn">Request Demo</a></li>
+            <li><a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry" class="nav-cta-btn">Contact</a></li>
         </ul>
         <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -261,206 +80,169 @@
 </nav>
 <div class="mobile-nav">
     <a href="index.html" class="current">Home</a>
-    <a href="specialist-agents.html">Specialist AI</a>
-    <a href="elijah.html">Elijah</a>
+    <a href="specialist-agents.html">Platform</a>
     <a href="manifest.html">Manifest</a>
     <a href="industries.html">Industries</a>
-    <a href="about.html">About</a>
-    <a href="about.html#invest">Investors</a>
+    <a href="validation.html">Validation</a>
+    <a href="company.html">Company</a>
+    <a href="investors.html">Investors</a>
     <a href="manifest-demo.html" class="mobile-demo-link">Live Demo</a>
-    <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo">Request Demo</a>
+    <a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry">Contact</a>
 </div>
 
-<!-- ═══════════ HERO ═══════════ -->
-<section class="hero">
+<section class="hero hero-institutional">
     <div class="container">
         <div class="hero-eyebrow"><span class="dot"></span> Diginetics Intelligence Systems</div>
         <h1 class="hero-h1">Intelligence for<br><span class="grad">what happens next.</span></h1>
-        <p class="hero-p"><strong>We build a new form of AI for production operations.</strong> Not chatbots that guess the next sentence. Specialist agents that answer only from relationships validated on your data. No invented comps, rates, or policies. Every recommendation traces to something your team can verify. <strong>Manifest</strong> is our first specialist, live for brokerages.</p>
+        <p class="hero-p">The built world does not run on averages. Rates move supply. Uptime moves output. Patient physiology moves risk. Diginetics builds a new category of AI from those relationships: readable, validated, and grounded in how physical and operational systems actually behave. Not language models that smooth uncertainty into plausible text. Mechanistic intelligence your team can inspect, challenge, and stand behind.</p>
         <div class="hero-actions">
-            <a href="specialist-agents.html" class="btn btn-primary btn-lg">Why Specialist AI</a>
-            <a href="manifest.html" class="btn btn-ghost btn-lg">Meet Manifest</a>
+            <a href="specialist-agents.html" class="btn btn-primary btn-lg">The Platform</a>
+            <a href="investors.html" class="btn btn-ghost btn-lg">For Investors</a>
+        </div>
+
+        <div class="proof-strip">
+            <div class="proof-cell">
+                <div class="proof-val">13</div>
+                <div class="proof-lbl">Industries validated from one codebase</div>
+            </div>
+            <div class="proof-cell">
+                <div class="proof-val">25,000+</div>
+                <div class="proof-lbl">Governing relationships discovered and stress-tested</div>
+            </div>
+            <div class="proof-cell">
+                <div class="proof-val">Live</div>
+                <div class="proof-lbl">Specialist deployments in production operations</div>
+            </div>
+            <div class="proof-cell">
+                <div class="proof-val">Patent</div>
+                <div class="proof-lbl">Filed on discovery and cross-domain validation</div>
+            </div>
+        </div>
+
+        <div class="audience-split">
+            <a href="manifest.html" class="audience-card">
+                <div class="aud-tag">For Operators</div>
+                <h3>Deploy a specialist on your operation</h3>
+                <p>Manifest is our real estate specialist: pricing, buyer targeting, agent coaching, and market intelligence built on relationships validated in your market, not generic comps.</p>
+                <span class="aud-link">Explore Manifest &rarr;</span>
+            </a>
+            <a href="investors.html" class="audience-card">
+                <div class="aud-tag">For Investors</div>
+                <h3>Category, proof, and deployment motion</h3>
+                <p>Mechanistic AI infrastructure validated across thirteen industries. Production deployments underway. A compounding library of governing relationships that grows with every client environment.</p>
+                <span class="aud-link">View investor overview &rarr;</span>
+            </a>
         </div>
     </div>
 </section>
 
-<!-- ═══════════ SPECIALIST AI ═══════════ -->
 <div class="container">
-    <div class="section" style="padding-bottom: 1.25rem;">
-        <div class="label">What We Build</div>
-        <div class="title">Specialist AI agents, not generalist chat.</div>
-        <p class="subtitle">Diginetics gives each client an AI that knows their industry, runs on their data, and explains its recommendations in language they can defend. <strong>Elijah</strong> is the intelligence core behind every specialist. <strong>Manifest</strong> is the first specialist we ship: real estate, packaged for brokerages. <a href="specialist-agents.html">See why and how we build them &rarr;</a></p>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Does not hallucinate operations</h3>
-                <p>Chatbots invent plausible facts. Specialists only ship answers tied to validated insight in the client's private library. If it was not tested on your data, it does not reach your team.</p>
+    <div class="section">
+        <div class="label">The Premise</div>
+        <div class="title">Most AI learns patterns. We learn what governs outcomes.</div>
+        <p class="subtitle">Statistical models excel at finding correlation in large datasets. They struggle when the question is causal, auditable, and tied to the physical world: why supply moved, why output dropped, why a patient cohort readmits. Diginetics starts from the premise that operational reality has structure. Our platform discovers those structures in client data, validates them before anything ships, and deploys them through specialist agents that reason from governing relationships, not from what sounded likely in training data.</p>
+
+        <div class="philosophy-cols">
+            <div class="philosophy-col legacy">
+                <div class="ph-tag">Statistical AI</div>
+                <h3>Optimizes for plausible output</h3>
+                <p>Language models and black-box predictors learn distributions. When facts are missing, they still produce fluent answers.</p>
+                <ul>
+                    <li>Averages across unrelated contexts</li>
+                    <li>Cannot show the relationship behind a number</li>
+                    <li>Retrains when the world shifts</li>
+                    <li>Hard to defend in a regulated meeting</li>
+                </ul>
             </div>
+            <div class="philosophy-col ours">
+                <div class="ph-tag">Diginetics</div>
+                <h3>Optimizes for governing relationships</h3>
+                <p>We discover readable relationships in a client's own data, stress-test them on unseen periods, and compound them into a private library the specialist draws from every day.</p>
+                <ul>
+                    <li>Answers trace to validated relationships in the client's environment</li>
+                    <li>Experts can read, challenge, and sign their name to the logic</li>
+                    <li>Validated relationships persist; the library only grows</li>
+                    <li>Built for operations where guessing is not an option</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section" style="padding-top: 0;">
+        <div class="concept-panel">
+            <div class="label">Understanding the Built World</div>
+            <h2>Reality has structure. Intelligence should reflect it.</h2>
+            <p class="concept-lead">Every industry Diginetics serves is, at bottom, a physical or operational system: housing markets constrained by rates and permits, reservoirs constrained by uptime, hospitals constrained by physiology, supply chains constrained by timing and capacity. These systems do not change behavior because a model averaged last quarter's noise. They change because specific variables move in specific ways. Diginetics builds AI that respects that fact. We read the messy data your operation already produces, surface the relationships that actually drive outcomes, and deploy specialists that apply those relationships in plain language your team can defend.</p>
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <h4>Physical causality, not correlation theater</h4>
+                    <p>We look for relationships that hold under stress: rate cycles, field outages, seasonal demand, cohort shifts. If it does not survive testing on data the system has not seen, it does not ship.</p>
+                </div>
+                <div class="concept-item">
+                    <h4>One engine, many domains</h4>
+                    <p>The same discovery and validation architecture runs across thirteen unrelated industries without rebuilding per vertical. That is evidence the approach captures something general about how systems behave, not a single dataset got lucky.</p>
+                </div>
+                <div class="concept-item">
+                    <h4>Compounding intelligence</h4>
+                    <p>Every validated relationship joins a client's private library. The specialist gets sharper over time because the underlying physics of the operation becomes explicit, inspectable, and permanent.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">What We Ship</div>
+        <div class="title">Specialist AI for production operations</div>
+        <p class="subtitle"><strong>Elijah</strong> is the intelligence core: discovery, validation, and a compounding library behind every specialist. <strong>Manifest</strong> is the first product, built for brokerages. The same platform extends wherever decisions depend on hidden drivers inside operational data.</p>
+        <div class="grid-3">
             <div class="card">
                 <h3>Mechanistic, not probabilistic</h3>
-                <p>General AI predicts language. Diginetics applies relationships that survived stress-testing on your world. Read them, challenge them, show them in a meeting.</p>
+                <p>Recommendations trace to relationships your team can open and verify. Not invisible weights. Not invented operational facts pulled from public training data.</p>
             </div>
             <div class="card">
-                <h3>Production, not a demo</h3>
-                <p>Isolated environments, orchestrated workflows, audit trails, and guardrails. This is specialist AI running as infrastructure, not a wrapper on a public model.</p>
+                <h3>Production infrastructure</h3>
+                <p>Isolated client environments, always-on orchestration, audit trails, and guardrails. AI as operational infrastructure, not a chat window on a public model.</p>
+            </div>
+            <div class="card">
+                <h3>Accountability by design</h3>
+                <p>If a relationship was not validated in the client's library, it does not reach the user interface. Failed discovery is discarded and counted, not hidden.</p>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- ═══════════ INTRODUCING MANIFEST ═══════════ -->
-<div class="container">
-    <div class="section" style="padding-bottom: 1.25rem; padding-top: 0;">
-        <div class="label">First Specialist</div>
-        <div class="title">Manifest: the real estate specialist.</div>
-        <p class="subtitle"><strong>Manifest</strong> is Elijah applied to brokerages: pricing, market intelligence, agent coaching, and client trust in one product. Every recommendation is generated from relationships discovered and stress-tested on real estate data. It is the specialist agents open before a listing meeting, not another CRM.</p>
-    </div>
-</div>
-
-<!-- ═══════════ MANIFEST SPOTLIGHT ═══════════ -->
-<div class="container">
-    <div class="manifest-spotlight">
-        <div class="label">What Manifest Brings To A Brokerage</div>
-        <h2>One system for pricing, market intelligence, agent coaching, and client trust.</h2>
-        <p class="lead">Manifest gives brokerage leaders and agents a clear read on the market, the listing, the client, and the next best move. Elijah turns market data into recommendations people can understand, defend, and act on.</p>
-
-        <div class="manifest-value">
-            <div class="manifest-value-item">
-                <h4>Price with confidence</h4>
-                <p>Forecast home prices, supply, and rates across 31 metros, backed by 12 years of validation, not gut calls.</p>
-            </div>
-            <div class="manifest-value-item">
-                <h4>See shifts early</h4>
-                <p>Catch market turns months before they hit MLS reports, with the drivers that actually moved them.</p>
-            </div>
-            <div class="manifest-value-item">
-                <h4>Win listings faster</h4>
-                <p>Give every agent data-backed talking points clients can verify, instead of opinions that sound the same.</p>
-            </div>
-            <div class="manifest-value-item">
-                <h4>Coach with data</h4>
-                <p>See which agents, neighborhoods, and price tiers are outperforming, and why, in plain English.</p>
-            </div>
-            <div class="manifest-value-item">
-                <h4>Cut decision time</h4>
-                <p>Replace weeks of analyst work with minutes. Ask a question, get the formula, the projection, and the action.</p>
-            </div>
-            <div class="manifest-value-item">
-                <h4>Plug into your stack</h4>
-                <p>Drop Manifest into your CRM, listing tools, and pitch decks. It is a system, not another dashboard.</p>
-            </div>
-        </div>
-
-        <div class="manifest-actions">
-            <a href="manifest.html" class="btn btn-primary btn-lg">Explore Manifest</a>
-            <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="btn-outline">Request a brokerage demo &rarr;</a>
-        </div>
+        <p style="margin-top:1.5rem;font-size:0.88rem;"><a href="specialist-agents.html">How we build specialists &rarr;</a> &nbsp;·&nbsp; <a href="elijah.html">Meet Elijah &rarr;</a> &nbsp;·&nbsp; <a href="validation.html">Validation footprint &rarr;</a></p>
     </div>
 </div>
 
 <div class="container">
-    <div class="section">
-        <div class="label">The Real Problem</div>
-        <div class="title">Agents do not need another CRM. They need the targeting layer underneath it.</div>
-        <p class="subtitle">Most tools help agents move faster. Manifest helps them move correctly: which ZIP to target, which buyer segment to pitch, what price to defend, and what market read to bring into the first meeting.</p>
-
-        <div class="grid-3">
-            <div class="card">
-                <h3>Target the right buyer</h3>
-                <p>Manifest ranks feeder ZIPs and buyer cohorts for each listing, so marketing spend goes to the people most likely to act.</p>
-            </div>
-            <div class="card">
-                <h3>Pitch the right angle</h3>
-                <p>A Dallas buyer and a Birmingham buyer can see the same listing completely differently. Manifest tells the agent which story fits each segment.</p>
-            </div>
-            <div class="card">
-                <h3>Defend the price</h3>
-                <p>Agents walk into seller meetings with the price floor, rate pressure, supply read, and recommended action, not a generic comp sheet.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">Product Mockup</div>
-        <div class="title">A working layer agents would actually open before a meeting.</div>
-        <p class="subtitle">The mockup below turns the campaign ideas into the product: listing launch, buyer brief, CRM targeting, price defense, and brokerage coaching.</p>
-
-        <div class="home-mockup">
-            <div class="mockup-bar">
-                <div class="mockup-dots"><span></span><span></span><span></span></div>
-                <div>Manifest Command Center</div>
-            </div>
-            <div class="mockup-screen">
-                <div class="mockup-sidebar">
-                    <div class="mockup-logo">Manifest</div>
-                    <div class="mockup-nav-item active">Listing Launch</div>
-                    <div class="mockup-nav-item">Buyer Brief</div>
-                    <div class="mockup-nav-item">CRM Targeting</div>
-                    <div class="mockup-nav-item">Agent Coach</div>
-                    <div class="mockup-nav-item">Broker View</div>
+    <div class="section" style="padding-top: 0;">
+        <div class="manifest-spotlight">
+            <div class="label">First Specialist · Real Estate</div>
+            <h2>Manifest: intelligence brokerages can defend in the room.</h2>
+            <p class="lead">Manifest applies the platform to brokerage operations: which buyers to target, how to defend price, what market read to bring into the first meeting, and how to coach agents from relationships validated on real market data, not generic comps.</p>
+            <div class="manifest-value">
+                <div class="manifest-value-item">
+                    <h4>Price and supply reads</h4>
+                    <p>Forecasts grounded in the drivers that moved your market through prior cycles, not gut feel or stale MLS summaries.</p>
                 </div>
-                <div class="mockup-main">
-                    <div class="mockup-head">
-                        <div>
-                            <h3>$1.25M Lakefront Listing, Tuscaloosa</h3>
-                            <p>Launch plan before the MLS photo goes live.</p>
-                        </div>
-                        <div class="mockup-badge">Ready to pitch</div>
-                    </div>
-                    <div class="mockup-grid">
-                        <div class="mock-card">
-                            <h4>Feeder ZIP ranking</h4>
-                            <div class="mock-rank">
-                                <div class="rank-row"><div>Dallas 75225</div><div class="rank-bar"><span style="width:92%"></span></div></div>
-                                <div class="rank-row"><div>Atlanta 30327</div><div class="rank-bar"><span style="width:84%"></span></div></div>
-                                <div class="rank-row"><div>Nashville 37215</div><div class="rank-bar"><span style="width:79%"></span></div></div>
-                                <div class="rank-row"><div>Local Tuscaloosa</div><div class="rank-bar"><span style="width:43%"></span></div></div>
-                            </div>
-                        </div>
-                        <div class="mock-card">
-                            <h4>Recommended pitch</h4>
-                            <div class="brief-line">Lead with wealth-arbitrage for Dallas. Do not run the local affordability message against this cohort.</div>
-                            <div class="metric-pills">
-                                <span class="metric-pill">Luxury fit</span>
-                                <span class="metric-pill">Out-of-market buyer</span>
-                                <span class="metric-pill">No price cut yet</span>
-                            </div>
-                        </div>
-                        <div class="mock-card">
-                            <h4>Seller talking point</h4>
-                            <div class="brief-line">Price is 4 to 6% above current engagement range. Hold price for 14 days if the top three feeder cohorts are activated first.</div>
-                        </div>
-                        <div class="mock-card">
-                            <h4>Buyer meeting brief</h4>
-                            <div class="brief-line">Rates imply a 25 to 50 bp opportunity window if the Fed cuts once. Show the buyer what that does to max bid before the first tour.</div>
-                        </div>
-                    </div>
+                <div class="manifest-value-item">
+                    <h4>Buyer targeting</h4>
+                    <p>Rank feeder ZIPs and cohorts for each listing so marketing spend follows the segments most likely to act.</p>
+                </div>
+                <div class="manifest-value-item">
+                    <h4>Agent coaching</h4>
+                    <p>See which agents, neighborhoods, and price tiers are outperforming, and why, in language team leaders can use Monday morning.</p>
+                </div>
+                <div class="manifest-value-item">
+                    <h4>Live deployment</h4>
+                    <p>Running with brokerages today. A specialist agents open before a listing meeting, not another CRM dashboard.</p>
                 </div>
             </div>
-        </div>
-        <div style="text-align:center;margin-top:2rem;">
-            <a href="manifest.html" class="btn btn-primary btn-lg">Open the full Manifest mockup</a>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">Brokerage Value</div>
-        <div class="title">Where the value shows up.</div>
-        <div class="grid-3">
-            <div class="card">
-                <h3>More listings won</h3>
-                <p>Give agents a credible market read before the seller asks for it. Price, demand, rate pressure, and buyer cohorts in one brief.</p>
-            </div>
-            <div class="card">
-                <h3>Less marketing waste</h3>
-                <p>Stop blasting every contact and every local channel. Rank the ZIPs, segments, and messages that fit the listing.</p>
-            </div>
-            <div class="card">
-                <h3>Better agent coaching</h3>
-                <p>Team leaders can see who is targeting correctly, who is cutting too early, and which agents need a better buyer-meeting script.</p>
+            <div class="manifest-actions">
+                <a href="manifest.html" class="btn btn-primary btn-lg">Explore Manifest</a>
+                <a href="manifest-demo.html" class="btn-outline">Open live demo &rarr;</a>
             </div>
         </div>
     </div>
@@ -468,83 +250,59 @@
 
 <div class="container">
     <div class="section">
-        <div class="label">Horizontal Expansion</div>
-        <div class="title">Manifest is the first specialist. The same model ships into every vertical.</div>
-        <p class="subtitle">Real estate is where the first specialist is live because the brokerage pain is immediate: targeting, pricing, buyer trust, listing strategy, and agent coaching. The same specialist pattern extends into healthcare, retail, energy, and every industry where decisions depend on hidden drivers inside messy data.</p>
-
-        <div class="beyond-grid">
-            <a href="healthcare.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Healthcare</div>
-                <h4>Readmissions and cost drivers</h4>
-                <p>Help hospitals understand which patient and operational factors drive risk before it becomes expensive.</p>
-            </a>
-            <a href="retail.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Retail</div>
-                <h4>POS and demand signals</h4>
-                <p>Find hidden category relationships, early revenue warnings, and inventory dependencies.</p>
-            </a>
-            <a href="baseball.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Sports</div>
-                <h4>Player performance forecasting</h4>
-                <p>Translate player data into forecasts, development signals, and front-office decision support.</p>
-            </a>
-            <a href="supply-chain.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Supply Chain</div>
-                <h4>Routing and disruption risk</h4>
-                <p>Surface the drivers behind bottlenecks, timing windows, and operational fragility.</p>
-            </a>
-            <a href="financial-services.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Financial Services</div>
-                <h4>Risk and allocation intelligence</h4>
-                <p>Support underwriting, portfolio monitoring, and scenario analysis with explainable signals.</p>
-            </a>
-            <a href="cybersecurity.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Cybersecurity</div>
-                <h4>Threat pattern intelligence</h4>
-                <p>Map recurring signals behind risk escalation, anomaly clusters, and response priority.</p>
-            </a>
-            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Energy</div>
-                <h4>Production and uptime drivers</h4>
-                <p>Find operational patterns that explain output, reliability, and field performance.</p>
-            </a>
-            <a href="industries.html" class="beyond-card" style="text-decoration:none;">
-                <div class="domain">Water and Infrastructure</div>
-                <h4>Stress and resilience signals</h4>
-                <p>Identify leading indicators behind resource stress, instability, and infrastructure risk.</p>
-            </a>
+        <div class="label">Validation Footprint</div>
+        <div class="title">Thirteen industries. One codebase.</div>
+        <p class="subtitle">The platform has been exercised across domains that share nothing on the surface except this: outcomes depend on governing relationships buried in operational data. We publish concepts and business applications on this site, not benchmark claims. Detailed validation is available in diligence conversations.</p>
+        <div class="domain-grid">
+            <div class="domain-tile"><div class="d-tag">Real Estate</div><h4>Residential and commercial markets</h4><p>Supply, pricing, migration, and cap-rate dynamics across metros and asset classes.</p></div>
+            <div class="domain-tile"><div class="d-tag">Healthcare</div><h4>Hospital operations and clinical risk</h4><p>Readmission drivers, cost structure, and operational factors in large patient populations.</p></div>
+            <div class="domain-tile"><div class="d-tag">Energy</div><h4>Production and field performance</h4><p>Reservoir output, uptime, and operational levers in upstream environments.</p></div>
+            <div class="domain-tile"><div class="d-tag">Retail</div><h4>POS and category dynamics</h4><p>Cross-category dependencies and early demand signals across store networks.</p></div>
+            <div class="domain-tile"><div class="d-tag">Sports</div><h4>Player and team performance</h4><p>Forecasting and development signals from performance data, not narrative scouting.</p></div>
+            <div class="domain-tile"><div class="d-tag">Transportation</div><h4>Corridor and freight dynamics</h4><p>Speed gaps, demand patterns, and operational timing in public infrastructure data.</p></div>
+            <div class="domain-tile"><div class="d-tag">Water</div><h4>Resource stress and resilience</h4><p>Leading indicators behind instability in national and regional water systems.</p></div>
+            <div class="domain-tile"><div class="d-tag">Cybersecurity</div><h4>Threat and forensics patterns</h4><p>Recurring signals behind escalation, anomaly clusters, and response priority.</p></div>
+            <div class="domain-tile"><div class="d-tag">Legal Ops</div><h4>Discovery and document intelligence</h4><p>Operational patterns in large-scale legal and compliance workflows.</p></div>
+            <div class="domain-tile"><div class="d-tag">Financial Services</div><h4>Risk and portfolio signals</h4><p>Explainable drivers for underwriting, monitoring, and scenario analysis.</p></div>
+            <div class="domain-tile"><div class="d-tag">Insurance</div><h4>Exposure and loss drivers</h4><p>Relationships behind claims patterns, pricing, and portfolio concentration.</p></div>
+            <div class="domain-tile"><div class="d-tag">Defense</div><h4>Operational and readiness systems</h4><p>Drivers behind performance, logistics, and mission-critical outcomes.</p></div>
+            <div class="domain-tile"><div class="d-tag">Public Safety</div><h4>Incident and resource patterns</h4><p>Leading signals in operational data that precede escalation or strain.</p></div>
         </div>
+        <p style="margin-top:1.5rem;text-align:center;"><a href="validation.html" class="btn btn-ghost">Full validation overview &rarr;</a> &nbsp; <a href="industries.html" class="btn btn-ghost">Industry applications &rarr;</a></p>
+    </div>
+</div>
 
-        <div class="verticals-strip">
-            <a href="specialist-agents.html" class="vertical-pill">Why specialist AI</a>
-            <a href="industries.html" class="vertical-pill">See all industries</a>
-            <a href="elijah.html" class="vertical-pill">How Elijah works</a>
-            <a href="manifest.html" class="vertical-pill">Manifest mockup</a>
-            <a href="about.html#invest" class="vertical-pill">Investor view</a>
-        </div>
+<div class="container">
+    <div class="trust-bar">
+        <span class="trust-item">Isolated client environments</span>
+        <span class="trust-item">Encryption at rest</span>
+        <span class="trust-item">Audit-ready outputs</span>
+        <span class="trust-item">Patent filed</span>
+        <span class="trust-item">Production deployments live</span>
     </div>
 </div>
 
 <div class="container">
     <div class="cta-block">
-        <h2>Bring Manifest into your next listing meeting.</h2>
-        <p>We will mock up your market, your listing type, and your brokerage workflow.</p>
-        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="cta-email">michael.lazzarotti@diginetics.co</a>
+        <h2>See how mechanistic intelligence works on your operation.</h2>
+        <p>Operators: request a Manifest walkthrough. Investors: request the overview deck.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry" class="cta-email">michael.lazzarotti@diginetics.co</a>
     </div>
 </div>
 
 <footer class="site-footer">
     <div class="footer-inner">
-        <span>&copy; 2026 Diginetics Intelligence Systems, Inc. All rights reserved.</span>
-        <span>
-            <em>Intelligence for what happens next.</em>
-            <a href="specialist-agents.html">Specialist AI</a>
-            <a href="elijah.html">Elijah</a>
-            <a href="manifest.html">Manifest</a>
-            <a href="industries.html">Industries</a>
-            <a href="about.html">About</a>
-            <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
-        </span>
+        <div>
+            <span>&copy; 2026 Diginetics Intelligence Systems, Inc.</span>
+            <div class="footer-legal">
+                <a href="security.html">Security</a>
+                <a href="security.html#privacy">Privacy</a>
+                <a href="company.html">Company</a>
+                <a href="investors.html">Investors</a>
+                <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
+            </div>
+        </div>
+        <span><em>Intelligence for what happens next.</em></span>
     </div>
 </footer>
 
