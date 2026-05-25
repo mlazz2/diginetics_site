@@ -6,12 +6,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investors | Diginetics Intelligence Systems</title>
-    <meta name="description" content="Diginetics investor overview: mechanistic AI validated across 13 industries, 25,000+ governing relationships, production deployments, patent filed. Pre-seed open.">
+    <meta name="description" content="Diginetics investor overview: mechanistic AI, YOYO go-to-market, thirteen industries validated, pre-seed open.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        .inv-hero {
+            padding-bottom: 0;
+        }
+        .inv-hero .subtitle { max-width: 680px; }
+        .yoyo-flow {
+            display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+            gap: 0.75rem; align-items: stretch;
+            margin: 2rem 0 1.5rem;
+        }
+        .yoyo-step {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--r-lg); padding: 1.5rem;
+        }
+        .yoyo-step.down { border-top: 3px solid var(--accent); }
+        .yoyo-step.across { border-top: 3px solid var(--gold); }
+        .yoyo-step.up { border-top: 3px solid var(--green); }
+        .yoyo-k {
+            font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 0.35rem;
+        }
+        .yoyo-step.across .yoyo-k { color: var(--gold); }
+        .yoyo-step.up .yoyo-k { color: var(--green); }
+        .yoyo-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem; }
+        .yoyo-step p { font-size: 0.86rem; color: var(--text-dim); line-height: 1.6; margin: 0; }
+        .yoyo-arrow {
+            display: flex; align-items: center; color: var(--text-soft);
+            font-size: 1.25rem; padding: 0 0.15rem;
+        }
+        .yoyo-why {
+            background: var(--bg-navy); color: #fff;
+            border-radius: var(--r-xl); padding: 2.5rem;
+        }
+        .yoyo-why .label { color: rgba(255,255,255,0.5); }
+        .yoyo-why h2 {
+            font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
+            margin-bottom: 0.85rem; line-height: 1.25;
+        }
+        .yoyo-why p {
+            font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.75);
+            max-width: 640px; margin: 0;
+        }
+        .wave-table {
+            width: 100%; border-collapse: collapse; font-size: 0.88rem;
+            margin-top: 1.25rem;
+        }
+        .wave-table th, .wave-table td {
+            padding: 0.85rem 1rem; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .wave-table th {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--text-soft);
+            background: var(--bg-card);
+        }
+        .wave-table td:first-child {
+            font-family: var(--mono); font-weight: 700; color: var(--accent);
+            width: 4rem;
+        }
+        @media (max-width: 768px) {
+            .yoyo-flow { grid-template-columns: 1fr; }
+            .yoyo-arrow { display: none; }
+        }
+    </style>
 </head>
 <body>
 
@@ -50,78 +115,110 @@
     <a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry">Contact</a>
 </div>
 
-<div class="container page-top">
+<div class="container page-top inv-hero">
     <div class="label">Investors</div>
-    <h1 class="title">Mechanistic AI infrastructure.<br>Built, validated, deploying.</h1>
-    <p class="subtitle">Diginetics is building the intelligence layer for operations that cannot guess. We discover governing relationships in client data, validate them before anything ships, and deploy them through specialist agents. The platform is validated across thirteen industries from one codebase, with more than twenty-five thousand relationships stress-tested, a patent filed, and production motion underway. This site describes the category and architecture. Detailed benchmarks and diligence materials are shared directly.</p>
+    <h1 class="title">Mechanistic AI.<br>Hub-led distribution.</h1>
+    <p class="subtitle">Diginetics builds specialist intelligence from governing relationships validated on client data. The engine runs across thirteen industries from one codebase. Manifest is live with brokerages. Enterprise anchor motion is underway. We go to market through the YOYO Plan: land deep on one operator, expand through the vendors that serve every peer.</p>
 </div>
 
 <div class="container">
     <div class="big-stats">
         <div class="big-stat">
-            <div class="big-stat-lbl">Validation breadth</div>
+            <div class="big-stat-lbl">Engine</div>
             <div class="big-stat-val">13</div>
-            <p>Unrelated industries exercised on the same discovery and validation engine, without per-vertical rebuilds.</p>
+            <p>Industries validated, one codebase, 25,000+ relationships stress-tested.</p>
         </div>
         <div class="big-stat">
-            <div class="big-stat-lbl">Relationship library</div>
-            <div class="big-stat-val">25,000+</div>
-            <p>Governing relationships discovered and stress-tested across public and operational datasets.</p>
-        </div>
-        <div class="big-stat">
-            <div class="big-stat-lbl">Deployment status</div>
+            <div class="big-stat-lbl">Product</div>
             <div class="big-stat-val">Live</div>
-            <p>Specialist products running in client environments with isolated tenants, orchestration, and audit trails.</p>
+            <p>Manifest with brokerages. Isolated tenants, orchestration, audit trails.</p>
+        </div>
+        <div class="big-stat">
+            <div class="big-stat-lbl">Round</div>
+            <div class="big-stat-val">Pre-seed</div>
+            <p>Patent filed. Selective partners. Deck and diligence on request.</p>
         </div>
     </div>
 </div>
 
 <div class="container">
     <div class="section" style="padding-top: 0;">
-        <div class="label">Category Thesis</div>
-        <div class="title-sans">The next form of AI does not predict tokens.<br>It reasons through how systems behave.</div>
-        <p class="subtitle">Large language models optimize for fluent language. That is the wrong default when a hospital, brokerage, or operator must defend a number in a board review or regulatory conversation. Diginetics builds specialist intelligence from relationships that survived testing on the client's own data: readable, auditable, and grounded in physical and operational reality. Every anchor deployment adds validated logic to a corpus that compounds.</p>
-        <div class="thesis">
-            <div class="thesis-body">We are not selling another dashboard or chat wrapper. We are building the category of <em>production specialist AI</em>: always-on systems in isolated environments where operational answers cannot float free of validated client data.</div>
-            <div class="thesis-attr">Diginetics Intelligence Systems, Inc.</div>
+        <div class="label">Category</div>
+        <div class="title-sans">Specialist AI grounded in how systems behave.</div>
+        <p class="subtitle max-720">Generalist models optimize for fluent language. Operators need answers they can open, challenge, and defend. We discover readable relationships in a client's data, validate them before anything ships, and deploy them through specialists that run as production infrastructure. Every anchor adds validated logic to a corpus that compounds inside the client's environment.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">Go-To-Market</div>
+        <div class="title">The YOYO Plan</div>
+        <p class="subtitle max-720">Most enterprise GTM is horizontal (500 cold logos) or land-and-expand inside one account only. YOYO combines depth on one operator with lift through the shared vendors and integrators that serve the rest of the industry. The yoyo string is the hub, not a generic channel reseller.</p>
+
+        <div class="yoyo-flow">
+            <div class="yoyo-step down">
+                <div class="yoyo-k">Down</div>
+                <h3>Land the anchor</h3>
+                <p>Go deep on one flagship operator. Map their stack. Build auditable decision logic on their data in an isolated tenant.</p>
+            </div>
+            <div class="yoyo-arrow">&rarr;</div>
+            <div class="yoyo-step across">
+                <div class="yoyo-k">Across</div>
+                <h3>Map the hubs</h3>
+                <p>Find the field services firms, integrators, and platforms that serve many operators in the same industry. Same decision type, repeated graph.</p>
+            </div>
+            <div class="yoyo-arrow">&rarr;</div>
+            <div class="yoyo-step up">
+                <div class="yoyo-k">Up</div>
+                <h3>Expand to peers</h3>
+                <p>Sell to sibling operators through those hubs. Proof already built. Decision templates transfer. Client data never commingles.</p>
+            </div>
         </div>
+
+        <div class="yoyo-why">
+            <div class="label">Why YOYO fits this company</div>
+            <h2>Explainable logic travels. Black-box scores do not.</h2>
+            <p>We deploy readable relationships, not opaque predictions. A hub can co-sell the same decision layer to every operator it touches because regulators and partners can inspect the mechanism. That is why YOYO is the GTM architecture for mechanistic AI, not a sales tactic pasted on top of chat.</p>
+        </div>
+
+        <table class="wave-table">
+            <thead>
+                <tr><th>Wave</th><th>Focus</th><th>Timing</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Land anchor, wedge use case, first production contract</td><td>0 to 12 months</td></tr>
+                <tr><td>2</td><td>Map stack, land hub nodes, co-sell with anchor proof</td><td>6 to 24 months</td></tr>
+                <tr><td>3</td><td>Peer anchors and cross-industry hubs</td><td>12 to 36 months</td></tr>
+            </tbody>
+        </table>
+        <p style="margin-top: 1rem; font-size: 0.84rem; color: var(--text-soft);">Waves overlap by design. Wave 2 planning starts at Wave 1 kickoff. Reference implementations span energy, legal operations, cybersecurity, commercial real estate, and brokerages through Manifest.</p>
     </div>
 </div>
 
 <div class="container">
     <div class="section">
         <div class="label">Traction</div>
-        <div class="title">Built. Validated. Deploying.</div>
+        <div class="title-sans">Built and in motion.</div>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-date">Built</div>
-                <div class="timeline-title">Discovery and validation engine across thirteen industries</div>
-                <div class="timeline-body">Real estate, healthcare, energy, retail, sports, transportation, water, cybersecurity, legal operations, financial services, insurance, defense, and public safety. Same codebase. More than twenty-five thousand governing relationships validated.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">Built</div>
-                <div class="timeline-title">Production cloud infrastructure</div>
-                <div class="timeline-body">Dedicated client environments on AWS. Encryption at rest. Reproducible results. Enterprise-grade isolation from day one.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">Built</div>
-                <div class="timeline-title">Provisional patent filed</div>
-                <div class="timeline-body">Covers the self-driving discovery loop and cross-industry validation framework at the core of the platform.</div>
+                <div class="timeline-title">Discovery engine across thirteen industries</div>
+                <div class="timeline-body">Same codebase. Provisional patent filed. Production AWS infrastructure with isolated client environments.</div>
             </div>
             <div class="timeline-item now">
                 <div class="timeline-date">Live</div>
-                <div class="timeline-title">Manifest specialist with brokerages</div>
-                <div class="timeline-body">Real estate intelligence for pricing, targeting, and agent coaching. Live dashboards in brokerage operations.</div>
+                <div class="timeline-title">Manifest with brokerages</div>
+                <div class="timeline-body">Real estate specialist for pricing, targeting, and agent coaching. Production dashboards in operation.</div>
             </div>
             <div class="timeline-item now">
                 <div class="timeline-date">Live</div>
-                <div class="timeline-title">Enterprise anchor motion across verticals</div>
-                <div class="timeline-body">Active pilots and deployments in energy, legal operations, cybersecurity, and commercial real estate. Details available in diligence.</div>
+                <div class="timeline-title">Enterprise anchor motion</div>
+                <div class="timeline-body">Active pilots and deployments across energy, legal operations, cybersecurity, and commercial real estate. Status shared in diligence.</div>
             </div>
             <div class="timeline-item next">
                 <div class="timeline-date">Next</div>
-                <div class="timeline-title">Commercial expansion in lead verticals</div>
-                <div class="timeline-body">Capital funds Manifest commercialization, first paid healthcare deployment, sales and deployment engineering, and patent expansion.</div>
+                <div class="timeline-title">Commercial scale in lead verticals</div>
+                <div class="timeline-body">This round funds Manifest commercialization, first paid healthcare deployment, sales and deployment engineering, and patent expansion.</div>
             </div>
         </div>
     </div>
@@ -129,83 +226,24 @@
 
 <div class="container">
     <div class="section">
-        <div class="label">Defensibility</div>
-        <div class="title">Why this compounds.</div>
-        <div class="moat-grid">
-            <div class="moat-card">
-                <div class="moat-tag">01</div>
-                <h4>Patent-pending discovery architecture</h4>
-                <p>The self-driving discovery loop and cross-domain validation framework are filed. The core approach is protected.</p>
+        <div class="label">Moat</div>
+        <div class="title-sans">Why it compounds.</div>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Cross-industry engine</h3>
+                <p>Thirteen industries from one codebase. A competitor entering one vertical starts from zero on the rest.</p>
             </div>
-            <div class="moat-card">
-                <div class="moat-tag">02</div>
-                <h4>Cross-industry proof from one codebase</h4>
-                <p>Thirteen industries validated without rebuilding per vertical. A competitor entering one domain starts from zero on the rest.</p>
+            <div class="card">
+                <h3>Compounding libraries</h3>
+                <p>Validated relationships persist in each client's environment. The library only grows. Retention is structural.</p>
             </div>
-            <div class="moat-card">
-                <div class="moat-tag">03</div>
-                <h4>Compounding client libraries</h4>
-                <p>Every validated relationship persists in the client's private environment. Retention is structural: the library only grows.</p>
+            <div class="card">
+                <h3>Patent filed</h3>
+                <p>Self-driving discovery loop and cross-industry validation framework at the core of the platform.</p>
             </div>
-            <div class="moat-card">
-                <div class="moat-tag">04</div>
-                <h4>Interpretability as product</h4>
-                <p>Readable relationships are the deliverable. Regulators, auditors, and domain experts can inspect and challenge the logic.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">Why Now</div>
-        <div class="title-sans">Explainability is the bottleneck, not capability.</div>
-        <div class="market-grid">
-            <div class="market-stat">
-                <div class="market-val">$613B</div>
-                <p>Projected AI healthcare market by 2034. The constraint is trust and audit, not raw model performance.</p>
-            </div>
-            <div class="market-stat">
-                <div class="market-val">76%</div>
-                <p>Of healthcare leaders say their organizations cannot keep pace with AI adoption. Interpretability is the gap.</p>
-            </div>
-            <div class="market-stat">
-                <div class="market-val">Every</div>
-                <p>High-stakes vertical faces the same question: can you sign your name to the answer? That is what we sell.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">Use of Capital</div>
-        <div class="title-sans">Where this round goes.</div>
-        <div class="roadmap-grid">
-            <div class="roadmap-col done">
-                <h3>What is built</h3>
-                <ul>
-                    <li>Engine validated across 13 industries</li>
-                    <li>25,000+ governing relationships stress-tested</li>
-                    <li>Production AWS infrastructure</li>
-                    <li>Self-driving discovery pipeline</li>
-                    <li>What-if and forward-projection framework</li>
-                    <li>Provisional patent filed</li>
-                    <li>Manifest live with brokerages</li>
-                    <li>Enterprise anchor pilots underway</li>
-                </ul>
-            </div>
-            <div class="roadmap-col next">
-                <h3>What is next</h3>
-                <ul>
-                    <li>Manifest commercialization</li>
-                    <li>First paid healthcare deployment</li>
-                    <li>Sales and deployment engineering</li>
-                    <li>Cross-industry intelligence at scale</li>
-                    <li>Continuous autonomous discovery</li>
-                    <li>Patent continuations and trademarks</li>
-                    <li>Financial services and defense expansion</li>
-                </ul>
+            <div class="card">
+                <h3>Hub-led distribution</h3>
+                <p>YOYO turns one anchor proof into industry-wide reach through shared vendors, not cold outbound.</p>
             </div>
         </div>
     </div>
@@ -215,22 +253,8 @@
     <div class="section">
         <div class="investor-ask" id="invest">
             <div class="label">The Raise</div>
-            <h2>Pre-seed open. Selective partners who see the category.</h2>
-            <p class="lead">The engine works. Thirteen industries validated. Production deployments in motion. We want investors who understand that mechanistic AI is a durable category, not a feature on top of chat. Request the deck for detailed validation, anchor motion, and round terms.</p>
-            <div class="ask-bullets">
-                <div class="ask-bullet">
-                    <div class="ask-bullet-val">Pre-Seed</div>
-                    <p>Open to strategic and institutional investors.</p>
-                </div>
-                <div class="ask-bullet">
-                    <div class="ask-bullet-val">Patent Filed</div>
-                    <p>Discovery engine and cross-industry validation framework.</p>
-                </div>
-                <div class="ask-bullet">
-                    <div class="ask-bullet-val">13 Industries</div>
-                    <p>Infrastructure validated. Not a single-domain thesis.</p>
-                </div>
-            </div>
+            <h2>Pre-seed open.</h2>
+            <p class="lead">We are looking for partners who see mechanistic AI and hub-led GTM as a durable category, not a feature cycle. Request the deck for validation detail, anchor status, YOYO sequencing, and round terms.</p>
             <div class="investor-actions">
                 <a href="mailto:michael.lazzarotti@diginetics.co?subject=Investment%20Inquiry%20-%20Diginetics" class="btn btn-primary btn-lg">Request Investor Deck</a>
                 <a href="validation.html" class="btn-outline">Validation overview &rarr;</a>
@@ -241,9 +265,8 @@
 
 <div class="container">
     <div class="cta-block">
-        <h2>Direct line to the founders.</h2>
-        <p>Questions, diligence, or a conversation about where this fits five years out.</p>
-        <a href="mailto:michael.lazzarotti@diginetics.co" class="cta-email">michael.lazzarotti@diginetics.co</a>
+        <h2>michael.lazzarotti@diginetics.co</h2>
+        <p>Questions, diligence, or a walkthrough of the YOYO Plan and deck.</p>
     </div>
 </div>
 
