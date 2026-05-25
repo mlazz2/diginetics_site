@@ -947,6 +947,9 @@ body {
     .compare { font-size: 0.78rem; }
     .compare th, .compare td { padding: 0.7rem 0.8rem; }
 }
+@media (max-width: 640px) {
+    .team-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 480px) {
     .hero-h1 { font-size: 1.85rem; }
     .stats-bar { grid-template-columns: 1fr; }
