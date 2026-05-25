@@ -535,7 +535,7 @@ body {
 .market-stat p { font-size: 0.86rem; color: var(--text-dim); line-height: 1.65; }
 
 /* ── TEAM ── */
-.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 680px; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 100%; }
 .team-card {
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: var(--r-lg); padding: 1.85rem; text-align: center;
@@ -888,6 +888,7 @@ body {
     .proof-strip { grid-template-columns: repeat(2, 1fr); }
     .concept-grid { grid-template-columns: 1fr; }
     .domain-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }
