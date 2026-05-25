@@ -536,10 +536,15 @@ body {
 
 /* ── TEAM ── */
 .team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
     gap: 1.25rem;
     width: 100%;
+}
+.team-grid .team-card {
+    flex: 1 1 0;
+    min-width: 0;
 }
 .team-card {
     background: var(--bg-card); border: 1px solid var(--border);
@@ -947,10 +952,8 @@ body {
     .compare { font-size: 0.78rem; }
     .compare th, .compare td { padding: 0.7rem 0.8rem; }
 }
-@media (max-width: 640px) {
-    .team-grid { grid-template-columns: 1fr; }
-}
 @media (max-width: 480px) {
     .hero-h1 { font-size: 1.85rem; }
     .stats-bar { grid-template-columns: 1fr; }
+    .team-grid { flex-direction: column; }
 }
