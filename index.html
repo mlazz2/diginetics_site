@@ -5,10 +5,10 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diginetics | Intelligence Grounded in Physical Reality</title>
-    <meta name="description" content="Diginetics builds specialist AI from relationships discovered in the built and physical world. Not statistical averaging. Mechanistic intelligence for operations that cannot guess.">
-    <meta property="og:title" content="Diginetics | Intelligence Grounded in Physical Reality">
-    <meta property="og:description" content="A new form of AI built on how systems actually behave. Specialist agents for brokerages, hospitals, and operators.">
+    <title>Diginetics | The Decision Layer for Industrial Operations</title>
+    <meta name="description" content="Diginetics sits on top of the systems you already run and tells operators why outcomes changed, which lever to pull, and how different moves forecast different results.">
+    <meta property="og:title" content="Diginetics | The Decision Layer for Industrial Operations">
+    <meta property="og:description" content="Why it changed. Which lever to pull. What happens if you move it. Mechanistic intelligence on your operational data.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -16,48 +16,113 @@
     <link rel="icon" type="image/png" href="logo.png">
     <style>
         .hero-institutional { padding-bottom: 0; }
-        .manifest-spotlight {
-            background: var(--bg-navy); color: #fff;
-            border-radius: var(--r-xl); padding: 3rem 2.5rem;
-            position: relative; overflow: hidden;
+        .hero-h1 { max-width: 820px; }
+        .value-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2.5rem;
         }
-        .manifest-spotlight::before {
-            content: ""; position: absolute; top: -40%; right: -10%;
-            width: 480px; height: 480px;
-            background: radial-gradient(circle, rgba(154,123,47,0.14) 0%, transparent 70%);
-            pointer-events: none;
+        .value-cell {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.35rem 1.25rem;
+            border-top: 3px solid var(--accent);
         }
-        .manifest-spotlight > * { position: relative; z-index: 1; }
-        .manifest-spotlight .label { color: rgba(255,255,255,0.5); }
-        .manifest-spotlight h2 {
-            font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.35rem);
-            line-height: 1.18; margin: 0.5rem 0 1rem; font-weight: 600;
+        .value-cell h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+            letter-spacing: -0.02em;
         }
-        .manifest-spotlight .lead { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.76); max-width: 720px; margin-bottom: 1.75rem; }
-        .manifest-value { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-bottom: 1.75rem; }
-        .manifest-value-item {
-            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: var(--r); padding: 1rem 1.15rem;
+        .value-cell p {
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin: 0;
         }
-        .manifest-value-item h4 { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
-        .manifest-value-item p { font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.65); margin: 0; }
-        .manifest-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-        .manifest-actions .btn-primary { background: #fff; color: var(--accent-deep); border: none; }
-        .manifest-actions .btn-primary:hover { background: #f4f4f4; }
-        .manifest-actions .btn-outline {
-            color: #fff; border: 1px solid rgba(255,255,255,0.35);
-            padding: 0.65rem 1.25rem; border-radius: var(--r);
-            font-weight: 600; text-decoration: none;
+        .stack-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-        .manifest-actions .btn-outline:hover { background: rgba(255,255,255,0.06); border-color: #fff; }
+        .stack-layer {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stack-layer.highlight {
+            background: linear-gradient(135deg, #0f1226 0%, #1a1f4a 100%);
+            color: #fff;
+            border-color: rgba(67,56,202,0.35);
+        }
+        .stack-layer .stack-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 0.5rem;
+        }
+        .stack-layer.highlight .stack-label { color: #c5cdff; }
+        .stack-layer h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+        .stack-layer p { font-size: 0.84rem; color: var(--text-dim); line-height: 1.55; margin: 0; }
+        .stack-layer.highlight p { color: rgba(255,255,255,0.72); }
+        .industries-teaser {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.5rem 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .industries-teaser:hover {
+            border-color: var(--border-accent);
+            box-shadow: var(--shadow-md);
+        }
+        .industries-teaser h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0.35rem 0 0.4rem;
+            letter-spacing: -0.02em;
+        }
+        .industries-teaser p {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin: 0;
+            max-width: 520px;
+        }
+        .industries-teaser .teaser-link {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+        @media (max-width: 900px) {
+            .value-row, .stack-diagram { grid-template-columns: 1fr 1fr; }
+            .industries-teaser { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 600px) {
+            .value-row, .stack-diagram { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
 <div class="top-ribbon">
-    <strong>Diginetics</strong> &middot; Intelligence grounded in how systems actually behave &middot;
-    <a href="investors.html">Investors</a> &middot;
-    <a href="manifest-demo.html">Live demo</a>
+    <strong>Diginetics</strong> &middot; The decision layer for operators &middot;
+    <a href="investors.html">Investors</a>
 </div>
 
 <nav class="site-nav">
@@ -92,76 +157,60 @@
 
 <section class="hero hero-institutional">
     <div class="container">
-        <div class="hero-eyebrow"><span class="dot"></span> Diginetics Intelligence Systems</div>
-        <h1 class="hero-h1">Intelligence for<br><span class="grad">what happens next.</span></h1>
-        <p class="hero-p">The built world does not run on averages. Rates move supply. Uptime moves output. Patient physiology moves risk. Diginetics builds a new category of AI from those relationships: readable, validated, and grounded in how physical and operational systems actually behave. Not language models that smooth uncertainty into plausible text. Mechanistic intelligence your team can inspect, challenge, and stand behind.</p>
+        <div class="hero-eyebrow"><span class="dot"></span> Decision intelligence for operators</div>
+        <h1 class="hero-h1">The decision layer on top of<br><span class="grad">the systems you already run.</span></h1>
+        <p class="hero-p">Your team already has dashboards, SCADA, CRMs, and data lakes. They show what moved. They do not explain <strong>why</strong> it moved, <strong>which lever</strong> to pull, or <strong>what happens</strong> if you pull it. Diginetics sits on top of or inside those systems and answers in language operators can defend.</p>
         <div class="hero-actions">
             <a href="elijah.html" class="btn btn-primary btn-lg">Meet Elijah</a>
-            <a href="investors.html" class="btn btn-ghost btn-lg">For Investors</a>
+            <a href="mailto:michael.lazzarotti@diginetics.co?subject=Operator%20Walkthrough" class="btn btn-ghost btn-lg">Request a walkthrough</a>
         </div>
 
-        <div class="proof-strip">
-            <div class="proof-cell">
-                <div class="proof-val">13</div>
-                <div class="proof-lbl">Industries validated from one codebase</div>
+        <div class="value-row">
+            <div class="value-cell">
+                <h3>Why it changed</h3>
+                <p>When output drops, readmission spikes, or a market turns, get the governing relationships behind the move, not a black-box score.</p>
             </div>
-            <div class="proof-cell">
-                <div class="proof-val">25,000+</div>
-                <div class="proof-lbl">Governing relationships discovered and stress-tested</div>
+            <div class="value-cell">
+                <h3>Which lever to pull</h3>
+                <p>See which operational drivers actually move your numbers so the team acts on cause, not correlation.</p>
             </div>
-            <div class="proof-cell">
-                <div class="proof-val">Live</div>
-                <div class="proof-lbl">Specialist deployments in production operations</div>
+            <div class="value-cell">
+                <h3>When regimes break</h3>
+                <p>Know when the relationships that used to hold no longer do, before the forecast silently goes wrong.</p>
             </div>
-            <div class="proof-cell">
-                <div class="proof-val">Patent</div>
-                <div class="proof-lbl">Filed on discovery and cross-domain validation</div>
+            <div class="value-cell">
+                <h3>What happens next</h3>
+                <p>Change a driver and forecast downstream outcomes in seconds. Scenario planning grounded in your data.</p>
             </div>
-        </div>
-
-        <div class="audience-split">
-            <a href="elijah.html" class="audience-card">
-                <div class="aud-tag">For Operators</div>
-                <h3>Deploy Elijah on your operation</h3>
-                <p>Elijah is the product: discovery, validation, and deployment on your data. Manifest is what it looks like in real estate. Every industry gets its own face on the same engine.</p>
-                <span class="aud-link">Meet Elijah &rarr;</span>
-            </a>
-            <a href="investors.html" class="audience-card">
-                <div class="aud-tag">For Investors</div>
-                <h3>Category, proof, and deployment motion</h3>
-                <p>Mechanistic AI infrastructure validated across thirteen industries. Production deployments underway. A compounding library of governing relationships that grows with every client environment.</p>
-                <span class="aud-link">View investor overview &rarr;</span>
-            </a>
         </div>
     </div>
 </section>
 
 <div class="container">
     <div class="section">
-        <div class="label">The Premise</div>
-        <div class="title">Most AI learns patterns. We learn what governs outcomes.</div>
-        <p class="subtitle">Statistical models excel at finding correlation in large datasets. They struggle when the question is causal, auditable, and tied to the physical world: why supply moved, why output dropped, why a patient cohort readmits. Diginetics starts from the premise that operational reality has structure. Our platform discovers those structures in client data, validates them before anything ships, and deploys them through specialist agents that reason from governing relationships, not from what sounded likely in training data.</p>
+        <div class="label">The Gap</div>
+        <div class="title">Black-box AI tells you what might happen.<br>We tell you why, and what to do.</div>
 
         <div class="philosophy-cols">
             <div class="philosophy-col legacy">
-                <div class="ph-tag">Statistical AI</div>
-                <h3>Optimizes for plausible output</h3>
-                <p>Language models and black-box predictors learn distributions. When facts are missing, they still produce fluent answers.</p>
+                <div class="ph-tag">What you have today</div>
+                <h3>Dashboards and predictive models</h3>
+                <p>They aggregate signals and flag anomalies. When someone asks why, the answer is often another chart or a model nobody can open.</p>
                 <ul>
-                    <li>Averages across unrelated contexts</li>
-                    <li>Cannot show the relationship behind a number</li>
+                    <li>Shows that output moved, not what drove it</li>
+                    <li>Forecasts without traceable logic</li>
                     <li>Retrains when the world shifts</li>
-                    <li>Hard to defend in a regulated meeting</li>
+                    <li>Hard to defend in a morning ops meeting</li>
                 </ul>
             </div>
             <div class="philosophy-col ours">
                 <div class="ph-tag">Diginetics</div>
-                <h3>Optimizes for governing relationships</h3>
-                <p>We discover readable relationships in a client's own data, stress-test them on unseen periods, and compound them into a private library the specialist draws from every day.</p>
+                <h3>Mechanistic decision intelligence</h3>
+                <p>We discover governing relationships in your operational data, validate them before anything ships, and deploy them as a layer your team can read and challenge.</p>
                 <ul>
-                    <li>Answers trace to validated relationships in the client's environment</li>
-                    <li>Experts can read, challenge, and sign their name to the logic</li>
-                    <li>Validated relationships persist; the library only grows</li>
+                    <li>Every answer traces to validated logic in your environment</li>
+                    <li>Scenarios show how changing one driver moves outcomes</li>
+                    <li>Relationships persist and compound over time</li>
                     <li>Built for operations where guessing is not an option</li>
                 </ul>
             </div>
@@ -171,121 +220,77 @@
 
 <div class="container">
     <div class="section" style="padding-top: 0;">
-        <div class="concept-panel">
-            <div class="label">Understanding the Built World</div>
-            <h2>Reality has structure. Intelligence should reflect it.</h2>
-            <p class="concept-lead">Every industry Diginetics serves is, at bottom, a physical or operational system: housing markets constrained by rates and permits, reservoirs constrained by uptime, hospitals constrained by physiology, supply chains constrained by timing and capacity. These systems do not change behavior because a model averaged last quarter's noise. They change because specific variables move in specific ways. Diginetics builds AI that respects that fact. We read the messy data your operation already produces, surface the relationships that actually drive outcomes, and deploy specialists that apply those relationships in plain language your team can defend.</p>
-            <div class="concept-grid">
-                <div class="concept-item">
-                    <h4>Physical causality, not correlation theater</h4>
-                    <p>We look for relationships that hold under stress: rate cycles, field outages, seasonal demand, cohort shifts. If it does not survive testing on data the system has not seen, it does not ship.</p>
-                </div>
-                <div class="concept-item">
-                    <h4>One engine, many domains</h4>
-                    <p>The same discovery and validation architecture runs across thirteen unrelated industries without rebuilding per vertical. That is evidence the approach captures something general about how systems behave, not a single dataset got lucky.</p>
-                </div>
-                <div class="concept-item">
-                    <h4>Compounding intelligence</h4>
-                    <p>Every validated relationship joins a client's private library. The specialist gets sharper over time because the underlying physics of the operation becomes explicit, inspectable, and permanent.</p>
-                </div>
+        <div class="label">How It Fits</div>
+        <div class="title-sans">On top of Nexus, PI, CRM, or your stack.</div>
+        <p class="subtitle max-720">Elijah is the product. It reads the data your operation already produces, builds a validated library of governing relationships, and surfaces decisions through an interface built for your industry. No rip-and-replace. A decision layer that makes existing systems explain themselves.</p>
+        <div class="stack-diagram">
+            <div class="stack-layer">
+                <div class="stack-label">Your systems</div>
+                <h3>SCADA, ERP, CRM, data lake</h3>
+                <p>The sources of truth you already run. We connect to what you have.</p>
+            </div>
+            <div class="stack-layer highlight">
+                <div class="stack-label">Diginetics / Elijah</div>
+                <h3>Decision layer</h3>
+                <p>Why outcomes changed. Which lever to pull. Forecasts you can trace and challenge.</p>
+            </div>
+            <div class="stack-layer">
+                <div class="stack-label">Your team</div>
+                <h3>Operators and leaders</h3>
+                <p>Plain-language briefs for the meeting, not another dashboard to interpret.</p>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">What We Ship</div>
-        <div class="title">Elijah: production intelligence for operations</div>
-        <p class="subtitle"><strong>Elijah is what Diginetics ships.</strong> It discovers governing relationships in your data, validates them, and deploys them through an experience built for your industry. <strong>Manifest</strong> is the built example for brokerages. The same product extends wherever decisions depend on hidden drivers inside operational data.</p>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Mechanistic, not probabilistic</h3>
-                <p>Recommendations trace to relationships your team can open and verify. Not invisible weights. Not invented operational facts pulled from public training data.</p>
-            </div>
-            <div class="card">
-                <h3>Production infrastructure</h3>
-                <p>Isolated client environments, always-on orchestration, audit trails, and guardrails. AI as operational infrastructure, not a chat window on a public model.</p>
-            </div>
-            <div class="card">
-                <h3>Accountability by design</h3>
-                <p>If a relationship was not validated in the client's library, it does not reach the user interface. Failed discovery is discarded and counted, not hidden.</p>
-            </div>
-        </div>
-        <p style="margin-top:1.5rem;font-size:0.88rem;"><a href="specialist-agents.html">How we build specialists &rarr;</a> &nbsp;·&nbsp; <a href="elijah.html">Meet Elijah &rarr;</a> &nbsp;·&nbsp; <a href="validation.html">Validation footprint &rarr;</a></p>
+        <p style="margin-top:1.5rem;font-size:0.88rem;"><a href="elijah.html">How Elijah works &rarr;</a> &nbsp;·&nbsp; <a href="specialist-agents.html">Platform overview &rarr;</a></p>
     </div>
 </div>
 
 <div class="container">
     <div class="section" style="padding-top: 0;">
-        <div class="manifest-spotlight">
-            <div class="label">Built Example · Real Estate</div>
-            <h2>Manifest is what Elijah looks like in a brokerage.</h2>
-            <p class="lead">Every industry gets its own interface on the same engine. Manifest is Elijah applied to brokerage operations: buyer targeting, price defense, market reads, and agent coaching from relationships validated on real market data, not generic comps.</p>
-            <div class="manifest-value">
-                <div class="manifest-value-item">
-                    <h4>Price and supply reads</h4>
-                    <p>Forecasts grounded in the drivers that moved your market through prior cycles, not gut feel or stale MLS summaries.</p>
-                </div>
-                <div class="manifest-value-item">
-                    <h4>Buyer targeting</h4>
-                    <p>Rank feeder ZIPs and cohorts for each listing so marketing spend follows the segments most likely to act.</p>
-                </div>
-                <div class="manifest-value-item">
-                    <h4>Agent coaching</h4>
-                    <p>See which agents, neighborhoods, and price tiers are outperforming, and why, in language team leaders can use Monday morning.</p>
-                </div>
-                <div class="manifest-value-item">
-                    <h4>Live deployment</h4>
-                    <p>Running with brokerages today. A specialist agents open before a listing meeting, not another CRM dashboard.</p>
-                </div>
+        <a href="industries.html" class="industries-teaser">
+            <div>
+                <div class="label">Validated across domains</div>
+                <h3>13 industries. One codebase.</h3>
+                <p>Energy, healthcare, real estate, retail, and nine more. Same discovery and validation engine, industry-specific deployment. See where Elijah applies and the operational pain it targets.</p>
             </div>
-            <div class="manifest-actions">
-                <a href="elijah.html#manifest" class="btn btn-primary btn-lg">See Elijah in real estate</a>
-                <a href="manifest-demo.html" class="btn-outline">Open live demo &rarr;</a>
-            </div>
-        </div>
+            <span class="teaser-link">Explore industries &rarr;</span>
+        </a>
     </div>
 </div>
 
 <div class="container">
-    <div class="section">
-        <div class="label">Validation Footprint</div>
-        <div class="title">Thirteen industries. One codebase.</div>
-        <p class="subtitle">The platform has been exercised across domains that share nothing on the surface except this: outcomes depend on governing relationships buried in operational data. We publish concepts and business applications on this site, not benchmark claims. Detailed validation is available in diligence conversations.</p>
-        <div class="domain-grid">
-            <div class="domain-tile"><div class="d-tag">Real Estate</div><h4>Residential and commercial markets</h4><p>Supply, pricing, migration, and cap-rate dynamics across metros and asset classes.</p></div>
-            <div class="domain-tile"><div class="d-tag">Healthcare</div><h4>Hospital operations and clinical risk</h4><p>Readmission drivers, cost structure, and operational factors in large patient populations.</p></div>
-            <div class="domain-tile"><div class="d-tag">Energy</div><h4>Production and field performance</h4><p>Reservoir output, uptime, and operational levers in upstream environments.</p></div>
-            <div class="domain-tile"><div class="d-tag">Retail</div><h4>POS and category dynamics</h4><p>Cross-category dependencies and early demand signals across store networks.</p></div>
-            <div class="domain-tile"><div class="d-tag">Sports</div><h4>Player and team performance</h4><p>Forecasting and development signals from performance data, not narrative scouting.</p></div>
-            <div class="domain-tile"><div class="d-tag">Transportation</div><h4>Corridor and freight dynamics</h4><p>Speed gaps, demand patterns, and operational timing in public infrastructure data.</p></div>
-            <div class="domain-tile"><div class="d-tag">Water</div><h4>Resource stress and resilience</h4><p>Leading indicators behind instability in national and regional water systems.</p></div>
-            <div class="domain-tile"><div class="d-tag">Cybersecurity</div><h4>Threat and forensics patterns</h4><p>Recurring signals behind escalation, anomaly clusters, and response priority.</p></div>
-            <div class="domain-tile"><div class="d-tag">Legal Ops</div><h4>Discovery and document intelligence</h4><p>Operational patterns in large-scale legal and compliance workflows.</p></div>
-            <div class="domain-tile"><div class="d-tag">Financial Services</div><h4>Risk and portfolio signals</h4><p>Explainable drivers for underwriting, monitoring, and scenario analysis.</p></div>
-            <div class="domain-tile"><div class="d-tag">Insurance</div><h4>Exposure and loss drivers</h4><p>Relationships behind claims patterns, pricing, and portfolio concentration.</p></div>
-            <div class="domain-tile"><div class="d-tag">Defense</div><h4>Operational and readiness systems</h4><p>Drivers behind performance, logistics, and mission-critical outcomes.</p></div>
-            <div class="domain-tile"><div class="d-tag">Public Safety</div><h4>Incident and resource patterns</h4><p>Leading signals in operational data that precede escalation or strain.</p></div>
+    <div class="proof-strip">
+        <div class="proof-cell">
+            <div class="proof-val">13</div>
+            <div class="proof-lbl">Industries validated from one codebase</div>
         </div>
-        <p style="margin-top:1.5rem;text-align:center;"><a href="validation.html" class="btn btn-ghost">Full validation overview &rarr;</a> &nbsp; <a href="industries.html" class="btn btn-ghost">Industry applications &rarr;</a></p>
+        <div class="proof-cell">
+            <div class="proof-val">25,000+</div>
+            <div class="proof-lbl">Governing relationships stress-tested</div>
+        </div>
+        <div class="proof-cell">
+            <div class="proof-val">Live</div>
+            <div class="proof-lbl">Production deployments in the field</div>
+        </div>
+        <div class="proof-cell">
+            <div class="proof-val">Patent</div>
+            <div class="proof-lbl">Filed on discovery and cross-domain validation</div>
+        </div>
     </div>
 </div>
 
 <div class="container">
     <div class="trust-bar">
         <span class="trust-item">Isolated client environments</span>
-        <span class="trust-item">Encryption at rest</span>
         <span class="trust-item">Audit-ready outputs</span>
-        <span class="trust-item">Patent filed</span>
+        <span class="trust-item">Logic your team can challenge</span>
         <span class="trust-item">Production deployments live</span>
     </div>
 </div>
 
 <div class="container">
     <div class="cta-block">
-        <h2>See how mechanistic intelligence works on your operation.</h2>
-        <p>Operators: request an Elijah walkthrough. Investors: request the overview deck.</p>
+        <h2>See the decision layer on your operation.</h2>
+        <p>Walk through why your numbers move, which levers matter, and how scenarios forecast different outcomes.</p>
         <a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry" class="cta-email">michael.lazzarotti@diginetics.co</a>
     </div>
 </div>
@@ -302,7 +307,7 @@
                 <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
             </div>
         </div>
-        <span><em>Intelligence for what happens next.</em></span>
+        <span><em>Why it changed. What to do next.</em></span>
     </div>
 </footer>
 
