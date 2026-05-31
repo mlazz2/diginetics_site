@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investors | Diginetics Intelligence Systems</title>
-    <meta name="description" content="Diginetics investor overview: mechanistic AI, YOYO go-to-market, thirteen industries validated, pre-seed open.">
+    <meta name="description" content="Diginetics investor overview: mechanistic AI decision layer, documented operator need, thirteen industries validated, pre-seed open.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -17,43 +17,33 @@
             padding-bottom: 0;
         }
         .inv-hero .subtitle { max-width: 680px; }
-        .yoyo-flow {
-            display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
-            gap: 0.75rem; align-items: stretch;
-            margin: 2rem 0 1.5rem;
+        .need-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 1rem; margin: 2rem 0 1.5rem;
         }
-        .yoyo-step {
+        .need-card {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--r-lg); padding: 1.5rem;
+            border-top: 3px solid var(--accent);
         }
-        .yoyo-step.down { border-top: 3px solid var(--accent); }
-        .yoyo-step.across { border-top: 3px solid var(--gold); }
-        .yoyo-step.up { border-top: 3px solid var(--green); }
-        .yoyo-k {
-            font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 0.35rem;
+        .need-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
+        .need-card p { font-size: 0.86rem; color: var(--text-dim); line-height: 1.65; margin: 0 0 0.75rem; }
+        .need-source {
+            font-size: 0.72rem; color: var(--text-soft); line-height: 1.5;
+            border-top: 1px solid var(--border); padding-top: 0.65rem;
         }
-        .yoyo-step.across .yoyo-k { color: var(--gold); }
-        .yoyo-step.up .yoyo-k { color: var(--green); }
-        .yoyo-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem; }
-        .yoyo-step p { font-size: 0.86rem; color: var(--text-dim); line-height: 1.6; margin: 0; }
-        .yoyo-arrow {
-            display: flex; align-items: center; color: var(--text-soft);
-            font-size: 1.25rem; padding: 0 0.15rem;
-        }
-        .yoyo-why {
+        .need-panel {
             background: var(--bg-navy); color: #fff;
             border-radius: var(--r-xl); padding: 2.5rem;
         }
-        .yoyo-why .label { color: rgba(255,255,255,0.5); }
-        .yoyo-why h2 {
+        .need-panel .label { color: rgba(255,255,255,0.5); }
+        .need-panel h2 {
             font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
             margin-bottom: 0.85rem; line-height: 1.25;
         }
-        .yoyo-why p {
+        .need-panel p {
             font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.75);
-            max-width: 640px; margin: 0;
+            max-width: 720px; margin: 0;
         }
         .wave-table {
             width: 100%; border-collapse: collapse; font-size: 0.88rem;
@@ -73,8 +63,7 @@
             width: 4rem;
         }
         @media (max-width: 768px) {
-            .yoyo-flow { grid-template-columns: 1fr; }
-            .yoyo-arrow { display: none; }
+            .need-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -117,8 +106,8 @@
 
 <div class="container page-top inv-hero">
     <div class="label">Investors</div>
-    <h1 class="title">Mechanistic AI.<br>Hub-led distribution.</h1>
-    <p class="subtitle">Diginetics builds specialist intelligence from governing relationships validated on client data. The engine runs across thirteen industries from one codebase. Manifest is live with brokerages. Enterprise anchor motion is underway. We go to market through the YOYO Plan: land deep on one operator, expand through the vendors that serve every peer.</p>
+    <h1 class="title">Mechanistic AI.<br>Documented market need.</h1>
+    <p class="subtitle">Diginetics builds the decision layer operators already need: explain why outcomes changed, which lever to pull, and how scenarios forecast different results. Thirteen industries validated from one codebase. Manifest is live with brokerages. Enterprise anchor motion is underway. The gap is documented across industrial ops, not invented by us.</p>
 </div>
 
 <div class="container">
@@ -151,47 +140,49 @@
 
 <div class="container">
     <div class="section">
-        <div class="label">Go-To-Market</div>
-        <div class="title">The YOYO Plan</div>
-        <p class="subtitle max-720">Most enterprise GTM is horizontal (500 cold logos) or land-and-expand inside one account only. YOYO combines depth on one operator with lift through the shared vendors and integrators that serve the rest of the industry. The yoyo string is the hub, not a generic channel reseller.</p>
+        <div class="label">Market Need</div>
+        <div class="title">The gap is documented. The category is open.</div>
+        <p class="subtitle max-720">Operators already run SCADA, historians, ERPs, and data lakes. They still cannot answer why output moved, which driver to act on, or what happens if they change a lever. Industry research and operator surveys describe the same missing layer we built.</p>
 
-        <div class="yoyo-flow">
-            <div class="yoyo-step down">
-                <div class="yoyo-k">Down</div>
-                <h3>Land the anchor</h3>
-                <p>Go deep on one flagship operator. Map their stack. Build auditable decision logic on their data in an isolated tenant.</p>
+        <div class="need-grid">
+            <div class="need-card">
+                <h3>Dashboards show movement, not mechanism</h3>
+                <p>Industrial teams get alerts and KPI shifts daily. Root cause still requires engineers to manually trace signals across siloed systems. The pain is operational, not a lack of data volume.</p>
+                <div class="need-source">Documented in McKinsey industrial analytics work and operator digital-maturity surveys: most value stalls between visibility and actionable cause.</div>
             </div>
-            <div class="yoyo-arrow">&rarr;</div>
-            <div class="yoyo-step across">
-                <div class="yoyo-k">Across</div>
-                <h3>Map the hubs</h3>
-                <p>Find the field services firms, integrators, and platforms that serve many operators in the same industry. Same decision type, repeated graph.</p>
+            <div class="need-card">
+                <h3>AI pilots rarely reach accountable production</h3>
+                <p>Predictive models flag anomalies but cannot defend a recommendation in a morning ops meeting. Teams revert to tribal knowledge when the model cannot show its logic.</p>
+                <div class="need-source">McKinsey and BCG report a large share of industrial AI initiatives remain in pilot because trust, integration, and explainability lag behind model accuracy.</div>
             </div>
-            <div class="yoyo-arrow">&rarr;</div>
-            <div class="yoyo-step up">
-                <div class="yoyo-k">Up</div>
-                <h3>Expand to peers</h3>
-                <p>Sell to sibling operators through those hubs. Proof already built. Decision templates transfer. Client data never commingles.</p>
+            <div class="need-card">
+                <h3>Black-box AI fails regulated accountability</h3>
+                <p>High-stakes environments require auditable reasoning: energy production, hospital operations, insurance underwriting, public safety. Opaque scores do not survive governance review.</p>
+                <div class="need-source">Gartner cites lack of trust and explainability as top barriers to AI adoption in operational settings. EU AI Act and sector guidance push toward traceable decision systems.</div>
+            </div>
+            <div class="need-card">
+                <h3>Forecasts without levers are not decisions</h3>
+                <p>Teams need scenario planning: if uptime drops, if rates move, if supply tightens, what happens next. Point predictions do not answer which intervention changes the outcome.</p>
+                <div class="need-source">Gartner's Decision Intelligence category exists because organizations need systems that connect data, logic, and action, not another chart layer.</div>
             </div>
         </div>
 
-        <div class="yoyo-why">
-            <div class="label">Why YOYO fits this company</div>
-            <h2>Explainable logic travels. Black-box scores do not.</h2>
-            <p>We deploy readable relationships, not opaque predictions. A hub can co-sell the same decision layer to every operator it touches because regulators and partners can inspect the mechanism. That is why YOYO is the GTM architecture for mechanistic AI, not a sales tactic pasted on top of chat.</p>
+        <div class="need-panel">
+            <div class="label">What operators are asking for</div>
+            <h2>A decision layer on top of systems they already run.</h2>
+            <p>Not another dashboard. Not a chat wrapper on a public model. A layer that reads operational data, surfaces governing relationships, validates them before anything ships, and tells the team why, which lever to pull, and what happens if they move it. That is the documented need. Elijah is the product built to fill it.</p>
         </div>
 
         <table class="wave-table">
             <thead>
-                <tr><th>Wave</th><th>Focus</th><th>Timing</th></tr>
+                <tr><th>Today</th><th>Gap</th><th>Diginetics</th></tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td>Land anchor, wedge use case, first production contract</td><td>0 to 12 months</td></tr>
-                <tr><td>2</td><td>Map stack, land hub nodes, co-sell with anchor proof</td><td>6 to 24 months</td></tr>
-                <tr><td>3</td><td>Peer anchors and cross-industry hubs</td><td>12 to 36 months</td></tr>
+                <tr><td>1</td><td>SCADA, PI, CRM, data lake show that a metric moved</td><td>Elijah explains why it moved in readable logic</td></tr>
+                <tr><td>2</td><td>Black-box ML flags risk without traceable cause</td><td>Validated relationships your team can open and challenge</td></tr>
+                <tr><td>3</td><td>Forecasts with no lever to pull</td><td>Scenario forecasts tied to operational drivers</td></tr>
             </tbody>
         </table>
-        <p style="margin-top: 1rem; font-size: 0.84rem; color: var(--text-soft);">Waves overlap by design. Wave 2 planning starts at Wave 1 kickoff. Reference implementations span energy, legal operations, cybersecurity, commercial real estate, and brokerages through Manifest.</p>
     </div>
 </div>
 
@@ -242,8 +233,8 @@
                 <p>Self-driving discovery loop and cross-industry validation framework at the core of the platform.</p>
             </div>
             <div class="card">
-                <h3>Hub-led distribution</h3>
-                <p>YOYO turns one anchor proof into industry-wide reach through shared vendors, not cold outbound.</p>
+                <h3>Category timing</h3>
+                <p>Decision intelligence and explainable operational AI are documented buyer priorities. The layer does not exist inside incumbents' dashboard stacks.</p>
             </div>
         </div>
     </div>
@@ -254,7 +245,7 @@
         <div class="investor-ask" id="invest">
             <div class="label">The Raise</div>
             <h2>Pre-seed open.</h2>
-            <p class="lead">We are looking for partners who see mechanistic AI and hub-led GTM as a durable category, not a feature cycle. Request the deck for validation detail, anchor status, YOYO sequencing, and round terms.</p>
+            <p class="lead">We are looking for partners who see mechanistic AI and the decision-layer category as durable, not a feature cycle. Request the deck for validation detail, anchor status, market evidence, and round terms.</p>
             <div class="investor-actions">
                 <a href="mailto:michael.lazzarotti@diginetics.co?subject=Investment%20Inquiry%20-%20Diginetics" class="btn btn-primary btn-lg">Request Investor Deck</a>
                 <a href="validation.html" class="btn-outline">Validation overview &rarr;</a>
@@ -266,7 +257,7 @@
 <div class="container">
     <div class="cta-block">
         <h2>michael.lazzarotti@diginetics.co</h2>
-        <p>Questions, diligence, or a walkthrough of the YOYO Plan and deck.</p>
+        <p>Questions, diligence, or a walkthrough of the market need and deck.</p>
     </div>
 </div>
 
