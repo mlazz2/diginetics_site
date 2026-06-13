@@ -5,8 +5,8 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elijah | Decision Layer by Diginetics</title>
-    <meta name="description" content="Elijah is the decision layer on your operational data. Explains why outcomes changed, which lever to pull, and forecasts what happens when drivers move.">
+    <title>Product | Elijah Underwriting Intelligence</title>
+    <meta name="description" content="Listing Underwrite Cards, CRE Deal Underwrite Cards, Active Listing Monitor, document parsing, and weekly market briefs. Full deliverables for Elijah Underwriting Intelligence.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -43,113 +43,125 @@
             max-width: 720px; color: var(--text-dim);
             font-size: 1.05rem; line-height: 1.78; margin-bottom: 2rem;
         }
-        .product-layers {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
-            margin-top: 2rem;
+        .deliverable-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+            margin-top: 1.5rem;
         }
-        .layer-card {
+        .deliverable-card {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: var(--r-lg); padding: 1.5rem;
-            border-top: 3px solid var(--accent);
         }
-        .layer-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
-        .layer-card p { font-size: 0.86rem; color: var(--text-dim); line-height: 1.65; margin: 0; }
-        .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        .step-card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--r-lg); padding: 1.75rem;
+        .deliverable-card h3 {
+            font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;
         }
-        .step-card .num {
-            font-family: var(--mono); font-size: 0.78rem; font-weight: 800;
-            color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.7rem;
+        .deliverable-card p {
+            font-size: 0.86rem; color: var(--text-dim); line-height: 1.65; margin: 0 0 0.75rem;
         }
-        .step-card h3 { font-size: 1.05rem; margin-bottom: 0.55rem; }
-        .step-card p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.7; margin: 0; }
-        .manifest-section {
+        .deliverable-card ul {
+            list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
+        }
+        .deliverable-card li {
+            font-size: 0.82rem; color: var(--text-dim); line-height: 1.55;
+            padding-left: 1.2rem; position: relative;
+        }
+        .deliverable-card li::before {
+            content: "\2713"; position: absolute; left: 0;
+            color: var(--green); font-weight: 800;
+        }
+        .phase-header {
+            display: flex; align-items: center; gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .phase-tag {
+            font-family: var(--mono); font-size: 0.68rem; font-weight: 800;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--accent); background: var(--accent-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 999px; padding: 0.3rem 0.65rem;
+        }
+        .data-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            margin-top: 1.5rem;
+        }
+        .data-table {
+            width: 100%; border-collapse: collapse;
+            font-size: 0.86rem;
+        }
+        .data-table th {
+            text-align: left; padding: 0.85rem 1rem;
+            background: var(--bg-secondary);
+            font-size: 0.68rem; font-weight: 800;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-soft);
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+            line-height: 1.55;
+            vertical-align: top;
+        }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table td:first-child { font-weight: 600; color: var(--text); }
+        .card-preview {
             background: var(--bg-navy); color: #fff;
-            border-radius: var(--r-xl); padding: 3rem 2.5rem;
-            scroll-margin-top: 100px;
+            border-radius: var(--r-xl); padding: 2rem;
         }
-        .manifest-section .label { color: rgba(255,255,255,0.5); }
-        .manifest-section h2 {
-            font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 600; line-height: 1.2; margin-bottom: 0.85rem;
+        .card-preview .label { color: rgba(255,255,255,0.5); }
+        .card-preview h2 {
+            font-family: var(--serif);
+            font-size: 1.5rem; font-weight: 600;
+            margin-bottom: 1rem;
         }
-        .manifest-section .lead {
-            color: rgba(255,255,255,0.76); font-size: 1rem; line-height: 1.75;
-            max-width: 720px; margin-bottom: 2rem;
+        .preview-row {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+            margin-bottom: 1rem;
         }
-        .app-shell {
-            background: #0f2744; border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px; padding: 0.85rem; overflow: hidden;
+        .preview-stat {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--r); padding: 0.85rem;
         }
-        .app-topbar {
-            display: flex; align-items: center; justify-content: space-between;
-            color: rgba(255,255,255,0.6); font-size: 0.75rem;
-            padding: 0.2rem 0.35rem 0.75rem;
+        .preview-stat .lbl {
+            font-size: 0.62rem; font-weight: 800;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(255,255,255,0.5); margin-bottom: 0.35rem;
         }
-        .browser-dots { display: flex; gap: 0.35rem; }
-        .browser-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.25); }
-        .app-window {
-            display: grid; grid-template-columns: 200px minmax(0, 1fr);
-            min-height: 420px; background: #f8fafc; border-radius: 12px; overflow: hidden;
+        .preview-stat .val {
+            font-size: 1.1rem; font-weight: 700;
         }
-        .app-sidebar { background: #101428; color: #fff; padding: 1.15rem 1rem; }
-        .app-logo { font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem; }
-        .app-logo span { color: #c9a84c; }
-        .side-item {
-            padding: 0.55rem 0.65rem; border-radius: 8px;
-            color: rgba(255,255,255,0.65); font-size: 0.76rem; margin-bottom: 0.15rem;
+        .preview-stat .val.green { color: #6ee7b7; }
+        .preview-stat .val.amber { color: #fcd34d; }
+        .preview-verdict {
+            border-left: 3px solid var(--gold-light);
+            padding-left: 0.85rem;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.6;
         }
-        .side-item.active { background: rgba(255,255,255,0.1); color: #fff; }
-        .app-main { padding: 1.15rem; }
-        .app-heading h2 { font-size: 1.05rem; color: #0f172a; margin-bottom: 0.2rem; }
-        .app-heading p { font-size: 0.76rem; color: #64748b; margin: 0 0 0.85rem; }
-        .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .app-card {
-            background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 0.85rem;
+        .doc-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
         }
-        .app-card.wide { grid-column: 1 / -1; }
-        .app-card h3 {
-            font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em;
-            color: #64748b; margin-bottom: 0.6rem;
+        .doc-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--r-lg); padding: 1.35rem;
         }
-        .rank-row {
-            display: grid; grid-template-columns: 1fr 100px; gap: 0.5rem;
-            align-items: center; font-size: 0.74rem; color: #334155; margin-bottom: 0.45rem;
+        .doc-card h3 { font-size: 0.95rem; margin-bottom: 0.45rem; }
+        .doc-card p {
+            font-size: 0.84rem; color: var(--text-dim); line-height: 1.6; margin: 0;
         }
-        .rank-bar { height: 6px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
-        .rank-bar span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
-        .brief-line {
-            border-left: 3px solid var(--accent); padding-left: 0.7rem;
-            font-size: 0.8rem; color: #334155; line-height: 1.55;
-        }
-        .industry-examples {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;
-        }
-        .industry-ex {
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: var(--r); padding: 1.15rem;
-        }
-        .industry-ex .ex-tag {
-            font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #c9a84c; margin-bottom: 0.4rem;
-        }
-        .industry-ex h4 { font-size: 0.92rem; margin-bottom: 0.35rem; }
-        .industry-ex p { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.55; margin: 0; }
         @media (max-width: 900px) {
-            .product-layers, .step-grid, .industry-examples { grid-template-columns: 1fr; }
-            .app-window { grid-template-columns: 1fr; }
-            .app-sidebar { display: none; }
-            .app-grid { grid-template-columns: 1fr; }
+            .deliverable-grid, .doc-grid, .preview-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <div class="top-ribbon">
-    <strong>Diginetics</strong> &middot; The decision layer for operators &middot;
-    <a href="manifest-demo.html">Live demo</a> &middot;
+    <strong>Diginetics</strong> &middot; Elijah Underwriting Intelligence &middot;
     <a href="investors.html">Investors</a>
 </div>
 
@@ -157,14 +169,11 @@
     <div class="nav-inner">
         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Diginetics"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
         <ul class="nav-links">
-            <li><a href="specialist-agents.html">Platform</a></li>
-            <li><a href="elijah.html" class="current">Elijah</a></li>
-            <li><a href="industries.html">Industries</a></li>
-            <li><a href="validation.html">Validation</a></li>
+            <li><a href="elijah.html" class="current">Product</a></li>
+            <li><a href="industries.html">Customers</a></li>
             <li><a href="company.html">Company</a></li>
             <li><a href="investors.html">Investors</a></li>
-            <li><a href="manifest-demo.html" class="nav-demo-link">Live Demo</a></li>
-            <li><a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry" class="nav-cta-btn">Contact</a></li>
+            <li><a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Underwriting%20Intelligence" class="nav-cta-btn">Contact</a></li>
         </ul>
         <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -173,186 +182,237 @@
 </nav>
 <div class="mobile-nav">
     <a href="index.html">Home</a>
-    <a href="specialist-agents.html">Platform</a>
-    <a href="elijah.html" class="current">Elijah</a>
-    <a href="industries.html">Industries</a>
-    <a href="validation.html">Validation</a>
+    <a href="elijah.html" class="current">Product</a>
+    <a href="industries.html">Customers</a>
     <a href="company.html">Company</a>
     <a href="investors.html">Investors</a>
-    <a href="manifest-demo.html" class="mobile-demo-link">Live Demo</a>
-    <a href="mailto:michael.lazzarotti@diginetics.co?subject=Diginetics%20Inquiry">Contact</a>
+    <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Underwriting%20Intelligence">Contact</a>
 </div>
 
 <section class="elijah-hero">
     <div class="container">
         <div class="elijah-kicker">The Product</div>
-        <h1 class="elijah-title">Elijah is the <span class="grad">decision layer</span><br>on your operation.</h1>
-        <p class="elijah-copy">Elijah sits on top of or inside the systems you already run. It reads your operational data, discovers the relationships that govern your outcomes, and tells your team <strong>why</strong> things changed, <strong>which lever</strong> to pull, and <strong>what happens</strong> if you move it. Every answer traces to validated logic in your environment. Not a chat wrapper. Not another dashboard.</p>
+        <h1 class="elijah-title">Elijah Underwriting Intelligence.<br><span class="grad">What you get.</span></h1>
+        <p class="elijah-copy">Every deliverable is built for a specific decision: sign the listing, cut the price, re-target buyers, pass on a deal, or brief the IC. Cards ship as printable PDFs and secure web links. Your team acts on them in the workflow they already run.</p>
         <div class="hero-actions">
-            <a href="industries.html" class="btn btn-primary btn-lg">See industry applications</a>
-            <a href="manifest-demo.html" class="btn btn-ghost btn-lg">Open live demo</a>
-        </div>
-        <div class="product-layers">
-            <div class="layer-card">
-                <h3>Why it changed</h3>
-                <p>When output drops or a metric moves, surface the governing relationships behind the shift. Readable logic, not a black-box score.</p>
-            </div>
-            <div class="layer-card">
-                <h3>Which lever to pull</h3>
-                <p>See which operational drivers actually move your numbers. Act on cause, not correlation theater.</p>
-            </div>
-            <div class="layer-card">
-                <h3>What happens next</h3>
-                <p>Change a driver and forecast downstream outcomes in seconds. Scenarios grounded in validated relationships.</p>
-            </div>
+            <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Sample%20Card" class="btn btn-primary btn-lg">Request a sample card</a>
+            <a href="industries.html" class="btn btn-ghost btn-lg">Who it's for</a>
         </div>
     </div>
 </section>
 
 <div class="container">
     <div class="section">
-        <div class="label">What Elijah Does</div>
-        <div class="title">Why, which lever, and what happens next.</div>
-        <p class="subtitle">Generalist AI optimizes for plausible language. Elijah optimizes for relationships that survive testing on your data. Operational answers cannot ship unless they exist in your validated library.</p>
-        <div class="grid-3">
-            <div class="card"><h3>Reads your data</h3><p>Spreadsheets, pipelines, exports, time-series. Whatever your operation already produces. No special preparation required.</p></div>
-            <div class="card"><h3>Finds the drivers</h3><p>Surfaces what actually moves your numbers. Readable relationships, not invisible weights buried in a model.</p></div>
-            <div class="card"><h3>Stress-tests them</h3><p>Each relationship checked on withheld data. Failed work is counted and discarded, not hidden.</p></div>
-            <div class="card"><h3>Forecasts what is next</h3><p>Projections grounded in validated logic you can open and challenge, not vibes from training data.</p></div>
-            <div class="card"><h3>Runs scenarios</h3><p>Change a driver, see downstream effect. What if rates move. What if supply tightens. Seconds, not weeks.</p></div>
-            <div class="card"><h3>Compounds over time</h3><p>Every validated relationship persists. The system identifies gaps in its own library and fills them autonomously.</p></div>
+        <div class="label">Before the Agreement</div>
+        <div class="title">Underwrite before you commit.</div>
+        <p class="subtitle max-720">Walk into every listing appointment or deal review with a defensible call. Elijah produces a card per property with pricing posture, risk flags, and a clear verdict.</p>
+
+        <div class="deliverable-grid">
+            <div class="deliverable-card">
+                <h3>Listing Underwrite Card</h3>
+                <p>For every residential listing appointment. PDF plus web link.</p>
+                <ul>
+                    <li>Pricing band validated on your market comps</li>
+                    <li>DOM forecast at the ask vs recommended price</li>
+                    <li>Price-cut risk before you sign</li>
+                    <li>Buyer-origin feeder ZIPs ranked by tier</li>
+                    <li>Broker verdict: Take, Take at price, or Pass</li>
+                </ul>
+            </div>
+            <div class="deliverable-card">
+                <h3>Property enrichment</h3>
+                <p>Parsed records attached to every card automatically.</p>
+                <ul>
+                    <li>MLS comp pool cleaned for arms-length sales</li>
+                    <li>County deed and ownership timeline</li>
+                    <li>Probate and estate flags</li>
+                    <li>Subdivision investor vs retail mix</li>
+                    <li>Seller motivation context from estate filings</li>
+                </ul>
+            </div>
+            <div class="deliverable-card">
+                <h3>Buyer-origin marketing panel</h3>
+                <p>By tier: luxury lakefront, campus corridor, entry SFR, and custom segments.</p>
+                <ul>
+                    <li>Feeder ZIP rankings for each listing tier</li>
+                    <li>Channel recommendations per cohort</li>
+                    <li>Seasonality windows (e.g. SEC, UA, migration cycles)</li>
+                    <li>Spend guidance tied to what actually closes your tier</li>
+                </ul>
+            </div>
+            <div class="deliverable-card">
+                <h3>CRE Deal Underwrite Card</h3>
+                <p>For commercial listings and acquisitions. Up to two active deals per quarter included.</p>
+                <ul>
+                    <li>Assumption audit on rent, vacancy, cap rate, exit</li>
+                    <li>Market band cross-check vs borrower or sponsor model</li>
+                    <li>PASS, WARN, or PARTIAL posture for IC or credit committee</li>
+                    <li>2 to 4 page exhibit export for the deal file</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="container">
     <div class="section" style="padding-top: 0;">
-        <div class="label">How It Runs</div>
-        <div class="title-sans">Ask once. Then it runs on its own.</div>
-        <div class="step-grid">
-            <div class="step-card">
-                <div class="num">01 · ASK</div>
-                <h3>Point at a question</h3>
-                <p>Connect your data or ask a specific operational question. First run returns validated relationships, scenarios, and forecasts. Value from day one.</p>
+        <div class="card-preview">
+            <div class="label">Example Output</div>
+            <h2>Listing Underwrite Card snapshot</h2>
+            <div class="preview-row">
+                <div class="preview-stat">
+                    <div class="lbl">Pricing band</div>
+                    <div class="val">$485K to $515K</div>
+                </div>
+                <div class="preview-stat">
+                    <div class="lbl">DOM at current ask</div>
+                    <div class="val amber">78 days</div>
+                </div>
+                <div class="preview-stat">
+                    <div class="lbl">Broker verdict</div>
+                    <div class="val green">Take at $499K</div>
+                </div>
             </div>
-            <div class="step-card">
-                <div class="num">02 · SELF-DRIVING</div>
-                <h3>Keeps discovering</h3>
-                <p>Elijah identifies gaps in its own library and fills them without being asked. You wake up to insight you did not know to request.</p>
+            <div class="preview-verdict">Top feeder ZIPs: Dallas 75225, Atlanta 30327, Nashville 37215. Lead with wealth-arbitrage messaging for out-of-state buyers. Estate flag on subdivision: 3 inherited sales in 18 months. Price-cut risk moderate if ask holds above $525K.</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <div class="label">After Go-Live</div>
+        <div class="title-sans">Active listing intelligence until close.</div>
+        <p class="subtitle max-720">Once a listing is live, the same market intelligence keeps working. Pricing guidance, DOM tracking, and re-marketing triggers through close.</p>
+
+        <div class="deliverable-grid">
+            <div class="deliverable-card">
+                <h3>Live pricing guidance</h3>
+                <p>Current list price vs validated band. Recommended list price or cut size if the ask has drifted optimistic.</p>
             </div>
-            <div class="step-card">
-                <div class="num">03 · COMPOUND</div>
-                <h3>Gets sharper every month</h3>
-                <p>The library only grows. Next month's questions draw from a deeper base. Retention is structural because the intelligence is yours.</p>
+            <div class="deliverable-card">
+                <h3>DOM tracker</h3>
+                <p>Actual days on market vs forecast at current price. Projected DOM if you hold vs if you cut.</p>
             </div>
+            <div class="deliverable-card">
+                <h3>Price-cut playbook</h3>
+                <p>When to cut and suggested amount, based on price-cut history for your zip and tier.</p>
+            </div>
+            <div class="deliverable-card">
+                <h3>Active Listing Monitor</h3>
+                <p>Weekly email plus portal. One-page status per listing with green, yellow, or red posture.</p>
+            </div>
+            <div class="deliverable-card">
+                <h3>Re-marketing triggers</h3>
+                <p>Refreshed buyer-origin targets when DOM crosses thresholds or season shifts.</p>
+            </div>
+            <div class="deliverable-card">
+                <h3>Regime alerts</h3>
+                <p>Macro shifts (rates, inventory) translated to what they mean for your active listings by zip.</p>
+            </div>
+            <div class="deliverable-card">
+                <h3>Portfolio view</h3>
+                <p>Broker or IC queue: which active listings need a pricing conversation this week.</p>
+            </div>
+            <div class="deliverable-card">
+                <h3>Weekly market briefs</h3>
+                <p>West Alabama or your metro regime brief. Supply, rent, and rate relationships in plain language.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section" id="documents">
+        <div class="label">Document Parsing</div>
+        <div class="title">Parsed records behind every card.</div>
+        <p class="subtitle max-720">Elijah ingests structured feeds and uploaded documents, extracts the fields that matter for underwriting, and attaches them to each property or deal. No manual comp scrubbing.</p>
+
+        <div class="doc-grid">
+            <div class="doc-card">
+                <h3>MLS / Trestle feeds</h3>
+                <p>Active, pending, and closed listings: price, DOM, cuts, property type, zip, subdivision. Powers comp pools, pricing bands, DOM forecasts, and absorption benchmarks.</p>
+            </div>
+            <div class="doc-card">
+                <h3>County records</h3>
+                <p>Deed type, ownership timeline, assessed value, arms-length filtering. Clean comps, title and distress context, investor vs retail mix in subdivision.</p>
+            </div>
+            <div class="doc-card">
+                <h3>Probate and estate records</h3>
+                <p>Estate filings, admin deeds, inherited-sale signals by property and subdivision. Estate vs retail pricing posture and seller motivation context.</p>
+            </div>
+            <div class="doc-card">
+                <h3>Market indices</h3>
+                <p>Zip-level home values, rent indices, migration and wealth proxies for out-of-state feeder markets. Buyer-origin ranking and cross-check when MLS comps are thin.</p>
+            </div>
+            <div class="doc-card">
+                <h3>Rent rolls and operating statements</h3>
+                <p>Uploaded PDFs and spreadsheets parsed into structured assumptions. Rent growth, vacancy, expense ratios extracted for CRE deal audits.</p>
+            </div>
+            <div class="doc-card">
+                <h3>Appraisals and deal memos</h3>
+                <p>Key assumptions pulled from appraisal excerpts and IC memos. Cross-checked against validated market bands before the vote.</p>
+            </div>
+        </div>
+
+        <div class="data-table-wrap">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data source</th>
+                        <th>What we pull</th>
+                        <th>What it powers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MLS / Trestle</td>
+                        <td>Active, pending, closed listings across your market</td>
+                        <td>Comp pools, pricing bands, DOM laws, absorption, brokerage vs market benchmarks</td>
+                    </tr>
+                    <tr>
+                        <td>County records</td>
+                        <td>Deed type, ownership timeline, assessed value</td>
+                        <td>Clean comps, title context, investor vs retail mix</td>
+                    </tr>
+                    <tr>
+                        <td>Probate / estate</td>
+                        <td>Estate filings, admin deeds, inherited-sale signals</td>
+                        <td>Seller motivation, estate pricing posture, off-market pipeline hints</td>
+                    </tr>
+                    <tr>
+                        <td>Market indices</td>
+                        <td>Zip values, rent indices, migration proxies</td>
+                        <td>Buyer-origin ranking, luxury tier floors, thin-comp cross-check</td>
+                    </tr>
+                    <tr>
+                        <td>Your uploads</td>
+                        <td>Rent rolls, T-12s, appraisals, deal memos</td>
+                        <td>CRE assumption audit, IC exhibits, lender collateral review</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
 <div class="container">
     <div class="section" style="padding-top: 0;">
-        <div class="manifest-section" id="manifest">
-            <div class="label">Built Example · Real Estate</div>
-            <h2>Manifest is what Elijah looks like in a brokerage.</h2>
-            <p class="lead">Every industry gets its own face on the same engine. Manifest is Elijah applied to real estate: the workflows, briefs, and interfaces brokerages already use, powered by relationships validated on their market data. CRMs help agents move faster. Manifest helps them move correctly.</p>
-
-            <div class="app-shell">
-                <div class="app-topbar">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <div>Manifest · Elijah for brokerages</div>
-                </div>
-                <div class="app-window">
-                    <aside class="app-sidebar">
-                        <div class="app-logo">Manifest <span>by Elijah</span></div>
-                        <div class="side-item active">Listing Launch</div>
-                        <div class="side-item">Buyer Brief</div>
-                        <div class="side-item">CRM Targeting</div>
-                        <div class="side-item">Price Defense</div>
-                        <div class="side-item">Agent Coach</div>
-                    </aside>
-                    <main class="app-main">
-                        <div class="app-heading">
-                            <h2>$1.25M Lakefront Listing, Tuscaloosa</h2>
-                            <p>Launch plan before the listing goes live.</p>
-                        </div>
-                        <div class="app-grid">
-                            <div class="app-card">
-                                <h3>Feeder ZIP ranking</h3>
-                                <div class="rank-row"><div>Dallas 75225</div><div class="rank-bar"><span style="width:92%"></span></div></div>
-                                <div class="rank-row"><div>Atlanta 30327</div><div class="rank-bar"><span style="width:84%"></span></div></div>
-                                <div class="rank-row"><div>Nashville 37215</div><div class="rank-bar"><span style="width:79%"></span></div></div>
-                                <div class="rank-row"><div>Local Tuscaloosa</div><div class="rank-bar"><span style="width:43%"></span></div></div>
-                            </div>
-                            <div class="app-card">
-                                <h3>Recommended pitch</h3>
-                                <div class="brief-line">Lead with wealth-arbitrage for Dallas buyers. Do not run the local affordability message against this cohort.</div>
-                            </div>
-                            <div class="app-card wide">
-                                <h3>Seller defense brief</h3>
-                                <div class="brief-line">Price is 4 to 6% above current engagement range. Hold for 14 days if the top three feeder cohorts are activated first.</div>
-                            </div>
-                        </div>
-                    </main>
-                </div>
-            </div>
-
-            <div class="industry-examples">
-                <div class="industry-ex">
-                    <div class="ex-tag">Listing agents</div>
-                    <h4>Before the pitch</h4>
-                    <p>Which buyer cohorts fit, what price range the market will engage, where feeder demand actually lives.</p>
-                </div>
-                <div class="industry-ex">
-                    <div class="ex-tag">Buyer agents</div>
-                    <h4>Before the tour</h4>
-                    <p>Rate scenarios, max-bid impact, and a market read the client can verify in the first ten minutes.</p>
-                </div>
-                <div class="industry-ex">
-                    <div class="ex-tag">Broker owners</div>
-                    <h4>Before coaching</h4>
-                    <p>Who is targeting correctly, who is cutting too early, and where marketing spend is wasted by geography.</p>
-                </div>
-            </div>
-
-            <div class="hero-actions" style="margin-top: 2rem;">
-                <a href="manifest-demo.html" class="btn btn-primary btn-lg">Open live Manifest demo</a>
-                <a href="mailto:michael.lazzarotti@diginetics.co?subject=Manifest%20Brokerage%20Demo" class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.35);">Request brokerage walkthrough</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">Same Engine, Other Industries</div>
-        <div class="title-sans">Manifest is one face. Elijah is the product.</div>
-        <p class="subtitle">The discovery and validation engine is identical across thirteen industries. What changes is the interface: the workflows, briefs, and decisions that industry already makes every day.</p>
+        <div class="label">How It Fits</div>
+        <div class="title-sans">Sits on top of the stack you already run.</div>
+        <p class="subtitle max-720">Agents keep working in Matrix or your MLS today. CRE teams keep Argus and Yardi. Lenders keep their credit systems. Elijah adds the underwriting layer: cards, briefs, and portfolio queues that attach to the listing or deal record.</p>
         <div class="grid-3">
-            <div class="card"><h3>Healthcare</h3><p>Readmission drivers, cost structure, operational risk. Hospital-facing briefs clinicians can inspect and defend.</p></div>
-            <div class="card"><h3>Energy</h3><p>Production levers, uptime drivers, field performance. Operator-facing logic tied to SCADA and production data.</p></div>
-            <div class="card"><h3>Every vertical</h3><p>Same codebase. New industry experience on top. <a href="industries.html">See all industries &rarr;</a></p></div>
+            <div class="card"><h3>No CRM migration</h3><p>Phase 1 does not replace your CRM or require historical data migration. Your team keeps their current workflow.</p></div>
+            <div class="card"><h3>PDF + secure portal</h3><p>Every card ships as a printable PDF and a secure web link. Weekly monitor emails keep brokers current without logging in.</p></div>
+            <div class="card"><h3>~30 days to live</h3><p>Typical deployment on your market data feeds and document sources. Founding brokerage terms available.</p></div>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-        <div class="label">Why It Matters</div>
-        <div class="title">Answers your team can sign their name to.</div>
-        <div class="grid-3">
-            <div class="card"><h3>Readable, not opaque</h3><p>Every output traces to logic a domain expert can open, challenge, and explain in a meeting or audit.</p></div>
-            <div class="card"><h3>Your data, not the web</h3><p>Operational answers draw from your validated library only. No invented stats from public training data.</p></div>
-            <div class="card"><h3>Production infrastructure</h3><p>Isolated environments, orchestration, guardrails, and audit trails. AI that runs as operations, not a pilot chatbot.</p></div>
-        </div>
-        <p style="margin-top:1.25rem;font-size:0.88rem;"><a href="specialist-agents.html">Why we build this way &rarr;</a> &nbsp;·&nbsp; <a href="validation.html">Validation footprint &rarr;</a></p>
     </div>
 </div>
 
 <div class="container">
     <div class="cta-block">
-        <h2>Run Elijah on your operation.</h2>
-        <p>Send a dataset or describe your industry. We will show you what governing relationships Elijah surfaces and what the deployed experience could look like.</p>
-        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Demo" class="cta-email">michael.lazzarotti@diginetics.co</a>
+        <h2>Request a sample Underwrite Card.</h2>
+        <p>Send a property or deal you are working. We will show you what Elijah produces on your market.</p>
+        <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Sample%20Card" class="cta-email">michael.lazzarotti@diginetics.co</a>
     </div>
 </div>
 
@@ -368,7 +428,7 @@
                 <a href="mailto:michael.lazzarotti@diginetics.co">Contact</a>
             </div>
         </div>
-        <span><em>Intelligence for what happens next.</em></span>
+        <span><em>Elijah Underwriting Intelligence</em></span>
     </div>
 </footer>
 
