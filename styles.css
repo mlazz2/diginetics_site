@@ -675,6 +675,97 @@ body {
     letter-spacing: 0.01em;
 }
 .cta-email:hover { color: var(--accent-deep); }
+.cta-actions {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    justify-content: center; align-items: center;
+}
+
+/* ── SITE FORMS ── */
+.form-page-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+}
+.site-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+.form-row { margin-bottom: 1.1rem; }
+.form-row label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 0.4rem;
+}
+.site-form input[type="text"],
+.site-form input[type="email"],
+.site-form input[type="tel"],
+.site-form select,
+.site-form textarea {
+    width: 100%;
+    font-family: var(--font);
+    font-size: 0.92rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r);
+    padding: 0.7rem 0.85rem;
+    transition: border-color 0.15s;
+}
+.site-form textarea { min-height: 120px; resize: vertical; line-height: 1.55; }
+.site-form input:focus,
+.site-form select:focus,
+.site-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+.site-form .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.form-status {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-top: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--r);
+    display: none;
+}
+.form-status.is-visible { display: block; }
+.form-status--pending {
+    display: block;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid var(--border-accent);
+}
+.form-status--success {
+    display: block;
+    background: #ecfdf5;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+.form-status--error {
+    display: block;
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+.form-alt-link {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+}
+    .form-alt-link a { color: var(--accent); font-weight: 600; }
+@media (max-width: 600px) {
+    .site-form .form-grid { grid-template-columns: 1fr; }
+}
 
 /* ── COMPARE TABLE ── */
 .compare-wrap {
