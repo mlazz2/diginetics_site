@@ -5,10 +5,10 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elijah Underwriting Intelligence | Diginetics</title>
-    <meta name="description" content="Listing and deal intelligence for brokerages, CRE developers, lenders, acquirers, and insurers. Underwrite before you commit. Guide pricing and DOM after go-live. Document parsing included.">
-    <meta property="og:title" content="Elijah Underwriting Intelligence | Diginetics">
-    <meta property="og:description" content="Full-cycle underwriting intelligence: Take or Pass before sign, pricing and DOM guidance after go-live, enriched from MLS, county, and estate records.">
+    <title>Diginetics | Product: Elijah</title>
+    <meta name="description" content="Elijah is Diginetics' intelligence system for property underwriting. Market discovery on your data, plus Underwriting Intelligence: listing cards, deal audits, document parsing, and active listing guidance.">
+    <meta property="og:title" content="Diginetics | Product: Elijah">
+    <meta property="og:description" content="Elijah learns how your market works from your data, then delivers underwriting cards and guidance your team can defend.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -185,9 +185,59 @@
             margin: 0;
         }
         .not-box strong { color: var(--text); }
+        .elijah-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .stack-layer-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.5rem;
+        }
+        .stack-layer-card.foundation {
+            border-top: 3px solid var(--text-soft);
+        }
+        .stack-layer-card.core {
+            border-top: 3px solid var(--accent);
+            background: linear-gradient(180deg, #fff 0%, #f8f7f4 100%);
+        }
+        .stack-layer-card.product {
+            border-top: 3px solid var(--green);
+        }
+        .stack-layer-card .layer-label {
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 0.5rem;
+        }
+        .stack-layer-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .stack-layer-card p {
+            font-size: 0.86rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+            margin: 0;
+        }
+        .stack-flow-note {
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.75;
+            max-width: 820px;
+        }
         @media (max-width: 900px) {
             .value-row, .workflow-grid { grid-template-columns: 1fr 1fr; }
-            .customer-grid { grid-template-columns: 1fr; }
+            .customer-grid, .elijah-stack { grid-template-columns: 1fr; }
             .doc-parse-panel { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
@@ -206,7 +256,7 @@
     <div class="nav-inner">
         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Diginetics"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
         <ul class="nav-links">
-            <li><a href="elijah.html">Product</a></li>
+            <li><a href="elijah.html">Product: Elijah</a></li>
             <li><a href="industries.html">Customers</a></li>
             <li><a href="company.html">Company</a></li>
             <li><a href="investors.html">Investors</a></li>
@@ -219,7 +269,7 @@
 </nav>
 <div class="mobile-nav">
     <a href="index.html" class="current">Home</a>
-    <a href="elijah.html">Product</a>
+    <a href="elijah.html">Product: Elijah</a>
     <a href="industries.html">Customers</a>
     <a href="company.html">Company</a>
     <a href="investors.html">Investors</a>
@@ -228,9 +278,9 @@
 
 <section class="hero hero-institutional">
     <div class="container">
-        <div class="product-badge">Elijah Underwriting Intelligence</div>
+        <div class="product-badge">Product: Elijah</div>
         <h1 class="hero-h1">Underwrite the deal before you commit.<br><span class="grad">Guide the listing until close.</span></h1>
-        <p class="hero-p">Elijah is listing and deal intelligence for brokerages, CRE developers, lenders, acquisition firms, and insurers. It does not replace your CRM or require a data migration. Agents keep working in the systems they use today. Elijah adds a defensible underwriting layer: <strong>Take, Pass, or price band</strong> before sign, then <strong>pricing, DOM, and buyer-targeting guidance</strong> after go-live, built from your market data and parsed property records.</p>
+        <p class="hero-p"><strong>Elijah</strong> is Diginetics' intelligence system for property decisions. It learns how your market actually works from your MLS feeds, county records, and deal documents, then delivers underwriting outputs your team can read and defend. On top of Elijah, we built <strong>Underwriting Intelligence</strong>: listing cards, deal audits, document parsing, and active-listing guidance for brokerages, CRE developers, lenders, acquisition firms, and insurers. No CRM replacement. No data migration. Your team keeps working in the systems they use today.</p>
         <div class="hero-actions">
             <a href="elijah.html" class="btn btn-primary btn-lg">See what you get</a>
             <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Walkthrough" class="btn btn-ghost btn-lg">Request a walkthrough</a>
@@ -256,6 +306,32 @@
         </div>
     </div>
 </section>
+
+<div class="container">
+    <div class="section" style="padding-top: 0;">
+        <div class="label">What is Elijah?</div>
+        <div class="title-sans">An intelligence system with underwriting built on top.</div>
+        <p class="subtitle max-720">Elijah is not a dashboard, CRM, or chatbot. It is always-on intelligence: connect your data, learn what governs your market, stress-test every finding, and ship decisions your team can defend.</p>
+        <div class="elijah-stack">
+            <div class="stack-layer-card foundation">
+                <div class="layer-label">Your data</div>
+                <h3>MLS, county records, estate filings, deal docs</h3>
+                <p>Listing history, deeds, probate signals, rent rolls, appraisals, and memos. Elijah ingests and parses what your operation already produces or can license.</p>
+            </div>
+            <div class="stack-layer-card core">
+                <div class="layer-label">Elijah · market discovery</div>
+                <h3>Finds how your market actually works</h3>
+                <p>From that data, Elijah discovers the relationships that drive price, days on market, absorption, and buyer origin. Every pattern is checked on fresh data before it ships. If it does not hold, it is discarded. The library compounds as your market shifts.</p>
+            </div>
+            <div class="stack-layer-card product">
+                <div class="layer-label">Underwriting Intelligence</div>
+                <h3>Cards and briefs for property decisions</h3>
+                <p>The application we built on Elijah for real estate: Underwrite Cards, Active Listing Monitor, document enrichment, weekly regime briefs, and portfolio queues. Take or Pass before sign. Pricing and DOM guidance after go-live.</p>
+            </div>
+        </div>
+        <p class="stack-flow-note">You interact with <strong>Underwriting Intelligence</strong> (the cards, portal, and emails). <strong>Elijah</strong> is what powers it: continuous market discovery on your data so every card traces to logic tested on your market, not a generic model or a guess.</p>
+    </div>
+</div>
 
 <div class="container">
     <div class="section">

@@ -5,8 +5,8 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L145GDKXK6');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product | Elijah Underwriting Intelligence</title>
-    <meta name="description" content="Listing Underwrite Cards, CRE Deal Underwrite Cards, Active Listing Monitor, document parsing, and weekly market briefs. Full deliverables for Elijah Underwriting Intelligence.">
+    <title>Product: Elijah | Diginetics</title>
+    <meta name="description" content="Elijah is Diginetics' intelligence system: market discovery on your data, plus Underwriting Intelligence for listing cards, deal audits, document parsing, and active listing guidance.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -153,8 +153,48 @@
         .doc-card p {
             font-size: 0.84rem; color: var(--text-dim); line-height: 1.6; margin: 0;
         }
+        .elijah-explainer {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: 2rem;
+            margin-top: 0.5rem;
+        }
+        .elijah-explainer h2 {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .elijah-explainer p {
+            font-size: 0.92rem;
+            color: var(--text-dim);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+        .elijah-explainer p:last-child { margin-bottom: 0; }
+        .explainer-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .explainer-box {
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.25rem;
+        }
+        .explainer-box h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.45rem;
+        }
+        .explainer-box p {
+            font-size: 0.86rem;
+            margin-bottom: 0;
+        }
         @media (max-width: 900px) {
-            .deliverable-grid, .doc-grid, .preview-row { grid-template-columns: 1fr; }
+            .deliverable-grid, .doc-grid, .preview-row, .explainer-cols { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -169,7 +209,7 @@
     <div class="nav-inner">
         <a href="index.html" class="nav-logo"><img src="logo.png" alt="Diginetics"><span class="logo-text">Diginetics <span class="logo-sub">Intelligence Systems</span></span></a>
         <ul class="nav-links">
-            <li><a href="elijah.html" class="current">Product</a></li>
+            <li><a href="elijah.html" class="current">Product: Elijah</a></li>
             <li><a href="industries.html">Customers</a></li>
             <li><a href="company.html">Company</a></li>
             <li><a href="investors.html">Investors</a></li>
@@ -182,7 +222,7 @@
 </nav>
 <div class="mobile-nav">
     <a href="index.html">Home</a>
-    <a href="elijah.html" class="current">Product</a>
+    <a href="elijah.html" class="current">Product: Elijah</a>
     <a href="industries.html">Customers</a>
     <a href="company.html">Company</a>
     <a href="investors.html">Investors</a>
@@ -191,9 +231,9 @@
 
 <section class="elijah-hero">
     <div class="container">
-        <div class="elijah-kicker">The Product</div>
-        <h1 class="elijah-title">Elijah Underwriting Intelligence.<br><span class="grad">What you get.</span></h1>
-        <p class="elijah-copy">Every deliverable is built for a specific decision: sign the listing, cut the price, re-target buyers, pass on a deal, or brief the IC. Cards ship as printable PDFs and secure web links. Your team acts on them in the workflow they already run.</p>
+        <div class="elijah-kicker">Product: Elijah</div>
+        <h1 class="elijah-title">What Elijah is,<br><span class="grad">and what you get from it.</span></h1>
+        <p class="elijah-copy"><strong>Elijah</strong> is Diginetics' always-on intelligence system. It connects to your market data and property records, discovers how your market actually behaves, stress-tests every finding on fresh data, and keeps updating as conditions shift. <strong>Underwriting Intelligence</strong> is the application we built on Elijah for property firms: the cards, monitors, briefs, and document parsing below. You buy the underwriting outputs. Elijah is what makes them defensible.</p>
         <div class="hero-actions">
             <a href="mailto:michael.lazzarotti@diginetics.co?subject=Elijah%20Sample%20Card" class="btn btn-primary btn-lg">Request a sample card</a>
             <a href="industries.html" class="btn btn-ghost btn-lg">Who it's for</a>
@@ -202,7 +242,36 @@
 </section>
 
 <div class="container">
+    <div class="section" style="padding-top: 0;">
+        <div class="label">The Stack</div>
+        <div class="elijah-explainer">
+            <h2>Two layers: Elijah, then Underwriting Intelligence on top.</h2>
+            <p>Most tools show you charts or generate text. Elijah does something different. It learns the operating rules of your market from historical listing, sales, and property-record data, then checks whether those rules still hold on data the system has not seen yet. Only patterns that survive that check can appear on a client card.</p>
+            <div class="explainer-cols">
+                <div class="explainer-box">
+                    <h3>Elijah (the intelligence system)</h3>
+                    <p>Continuous market discovery on your feeds and uploads. What drives price in your zip and tier. How days on market respond to the ask, rates, and season. Where out-of-state buyers actually originate. Elijah builds and maintains that library for your market and refreshes it as regimes shift.</p>
+                </div>
+                <div class="explainer-box">
+                    <h3>Underwriting Intelligence (what you use)</h3>
+                    <p>Listing Underwrite Cards, CRE deal audits, Active Listing Monitor, document enrichment, weekly briefs, and portfolio queues. Each deliverable answers a specific decision: Take or Pass, cut or hold, re-target or wait, PASS or WARN at IC. PDF plus secure portal. No black-box score.</p>
+                </div>
+            </div>
+            <p style="margin-top:1rem;">That is why it is called Elijah: one intelligence layer that keeps learning your market, with underwriting products built on top so brokers, lenders, and developers get decisions they can defend, not another dashboard to interpret.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     <div class="section">
+        <div class="label">Underwriting Intelligence</div>
+        <div class="title-sans">Deliverables built for specific decisions.</div>
+        <p class="subtitle max-720">Every card ships for a moment in the workflow: sign the listing, cut the price, re-target buyers, pass on a deal, or brief the IC.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section" style="padding-top: 0;">
         <div class="label">Before the Agreement</div>
         <div class="title">Underwrite before you commit.</div>
         <p class="subtitle max-720">Walk into every listing appointment or deal review with a defensible call. Elijah produces a card per property with pricing posture, risk flags, and a clear verdict.</p>
